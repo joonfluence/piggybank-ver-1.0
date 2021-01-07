@@ -7,7 +7,7 @@ class App extends Component {
   }
   
   async componentDidMount(){
-    const user = await axios.get("/api/hello");
+    const user = await axios.get("api/hello");
     const { data : { message} } = user;
     console.log(message);
     this.setState({ message });
