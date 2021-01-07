@@ -1,11 +1,12 @@
 {
-  "name": "react-express",
+  "name": "money_manager_2021",
   "version": "1.0.0",
   "description": "money management app",
   "main": "server.js",
   "scripts": {
     "client": "cd client && npm run start",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "dev" : "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
