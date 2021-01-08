@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
-import { payingCategorySchema } from "./Category.js";
+import { PayingCategorySchema } from "./PayingCategory.js";
 
-const payingSchema = new mongoose.Schema({
-    category: payingCategorySchema,
+const PayingSchema = new mongoose.Schema({
+    category: PayingCategorySchema,
     createdAt: { type: Date, default: Date.now },
     date: { type: Date, required: true, default: Date.now },
     title: { type: String, required: true },
@@ -10,4 +10,5 @@ const payingSchema = new mongoose.Schema({
     price: { type: Number, required: true }
 });
 
-export default payingSchema;
+const model = mongoose.model("Paying", PayingSchema);
+export default PayingSchema;

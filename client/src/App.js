@@ -3,7 +3,10 @@ import axios from "axios";
 
 class App extends Component {
   state = {
-      message : ""
+      message: ""
+      // name : "",
+      // price : "",
+      // location : ""
   }
   
   async componentDidMount(){
@@ -18,6 +21,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>{message}</h1>
+        <p>Hello</p>
       </div>
     );
   }

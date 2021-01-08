@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
-import { savingCategorySchema } from "./Category.js";
+import { SavingCategorySchema } from "./SavingCategory.js";
 
-const savingSchema = new mongoose.Schema({
-    category: savingCategorySchema,
+const SavingSchema = new mongoose.Schema({
+    category: SavingCategorySchema,
     createdAt: { type: Date, default: Date.now },
     date: { type: Date, required: true, default: Date.now },
     title: { type: String, required: true },
@@ -10,4 +10,5 @@ const savingSchema = new mongoose.Schema({
     price: { type: Number, required: true }
 });
 
-export default savingSchema;
+const model = mongoose.model("Saving", SavingSchema);
+export default SavingSchema;
