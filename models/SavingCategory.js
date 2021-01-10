@@ -9,3 +9,4 @@ export const SavingCategorySchema = new mongoose.Schema({
 });
 
 const model = mongoose.model("SavingCategory", SavingCategorySchema);
+export default model;

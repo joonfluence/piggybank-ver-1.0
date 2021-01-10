@@ -12,3 +12,4 @@ export const PayingCategorySchema = new mongoose.Schema({
 });
 
 const model = mongoose.model("PayingCategory", PayingCategorySchema);
+export default model;
