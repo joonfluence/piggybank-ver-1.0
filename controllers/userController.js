@@ -1,26 +1,9 @@
 import User from "../models/User.js"
 
-export const getHome = (req, res) => {
-    res.send("Home");
-}
-
-export const getUserInfo = async (req, res) => {
-    try {
-        const user = await User.create({
-            name : "Joonho Lee",
-            userId : "Joonfluence",
-            email : "goodfluence@naver.com",
-            password : "1234",
-            montlyBudget : 600000,
-            savingGoal : 0
-        });
-        user.save();
-        console.log(user);
-    } catch(error) {
-        console.log(error);
-        res.redirect("/");
-        res.status(400);
-    } finally {
-        res.end();
-    }
-}
+export const getPayingInfo = (req, res) => res.send("getPayingInfo");
+export const postPayingInfo = (req, res) => res.send("postPayingInfo");
+export const getUserInfo = (req, res) => res.send("getUserInfo");
+export const editUserInfo = (req, res) => res.send("editUserInfo");
+export const getSavingInfo = (req, res) => res.send("getSavingInfo");
+export const getSavingDetail = (req, res) => res.send("getSavingDetail");
+export const getPayingDetail = (req, res) => res.send("getPayingDetail");
