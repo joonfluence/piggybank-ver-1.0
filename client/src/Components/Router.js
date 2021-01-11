@@ -5,12 +5,12 @@ import {
     Route,
     Redirect
 } from "react-router-dom";
-import Home from "../Routes/Home"
-import Join from "../Routes/Join";
-import Login from "../Routes/Login";
-import MyPage from "../Routes/MyPage";
-import Saving from "../Routes/Saving";
-import Detail from "../Routes/Detail";
+import Home from "../Routes/Home/Home"
+import Join from "../Routes/Join/Join";
+import Login from "../Routes/Login/Login";
+import MyPage from "../Routes/Myspace/MyPage";
+import Saving from "../Routes/Saving/Saving";
+import Detail from "../Routes/Detail/Detail";
 
 export default () => {
     return (
