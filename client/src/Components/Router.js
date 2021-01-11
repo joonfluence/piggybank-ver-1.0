@@ -2,7 +2,8 @@ import React from "react";
 import {
     BrowserRouter as Router,
     Switch,
-    Route    
+    Route,
+    Redirect
 } from "react-router-dom";
 import Home from "../Routes/Home"
 import Join from "../Routes/Join";
@@ -22,8 +23,9 @@ export default () => {
                     <Route path="/mypage" exact component={MyPage}/>
                     <Route path="/mypage/:id" exact component={MyPage}/>
                     <Route path="/saving" exact component={Saving}/>
-                    <Route path="/saving/:category" exact component={Detail}/>
-                    <Route path="/consumption/:category" exact component={Detail}/>
+                    <Route path="/saving/:id" exact component={Detail}/>
+                    <Route path="/consumption/:id" exact component={Detail}/>
+                    <Redirect from="*" to="/" />
                 </Switch>
             </>
         </Router>
