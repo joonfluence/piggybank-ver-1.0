@@ -19,7 +19,6 @@ class App extends Component {
   render(){
     return (
       <>
-        <Nav />
         <Router />
         <GlobalStyles />
         <h1>Hi!</h1>

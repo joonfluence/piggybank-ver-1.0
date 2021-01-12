@@ -1,30 +1,41 @@
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 
-const Header = styled.header`
+const Nav = styled.nav`
     background-color: #9943EF;
     display: flex;
     justify-content: space-between;
 `;
 
-export default () => {
+const List = styled.li`
+    border-bottom: 3px solid #9932cc;
+`;
+
+const SLink = styled(Link)`
+
+`;
+
+export default withRouter(({location : { pathname }}) => {
     return (
-        <Header>
-            <li>
-                <a href="/">Home</a>
-            </li>
-            <li>
-                <a href="/saving">Saving</a>
-            </li>
-            <li>
-                <a href="/mypage">MyPage</a>
-            </li>
-            <li>
-                <a href="/join">Join</a>
-            </li>
-            <li>
-                <a href="/login">login</a>
-            </li>
-        </Header>
+        <Nav>
+            <List>
+               <SLink to="/">Home</SLink>
+            </List>
+            <List>
+                <SLink to="/saving">Saving</SLink>
+            </List>
+            <List>
+                <SLink to="/mypage">MyPage</SLink>
+            </List>
+            <List>
+                <SLink to="/join">Join</SLink>
+            </List>
+            <List>
+                <SLink to="/login">login</SLink>
+            </List>
+            <List>
+                Search
+            </List>
+        </Nav>
     )
-}
+})

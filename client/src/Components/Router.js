@@ -11,11 +11,13 @@ import Login from "../Routes/Login/LoginPresenter";
 import MyPage from "../Routes/Myspace/MyPageContainer";
 import Saving from "../Routes/Saving/SavingPresenter";
 import Detail from "../Routes/Detail/DetailPresenter";
+import Nav from "./Nav";
 
 export default () => {
     return (
         <Router>
             <>
+                <Nav />
                 <Switch>
                     <Route path="/" exact component={Home}/>
                     <Route path="/join" exact component={Join}/>

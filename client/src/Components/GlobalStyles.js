@@ -19,8 +19,8 @@ const globalStyles = createGlobalStyle`
         list-style: none;
     }
 
-    nav {
-        font-size: 48px;
+    header {
+        font-size: 24px;
         font-weight: 600;
     }
 
