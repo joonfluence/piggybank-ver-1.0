@@ -10,7 +10,7 @@ class App extends Component {
   }
 
   componentDidMount = async() => {
-    const money = await axios.get("/api/");
+    const money = await axios.get("/api");
     console.log(money.data);
     this.setState({ data : money.data });
   }
@@ -20,7 +20,6 @@ class App extends Component {
       <>
         <Router />
         <GlobalStyles />
-        <h1>Hi!</h1>
       </>
     );
   }

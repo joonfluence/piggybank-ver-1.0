@@ -5,7 +5,9 @@ import PropTypes from "prop-types";
 class JoinPresenter extends React.Component {
     render(){
         return(
-            <div></div>
+            <div>
+                <h1>JoinPresenter</h1>
+            </div>
         )
     }
 }

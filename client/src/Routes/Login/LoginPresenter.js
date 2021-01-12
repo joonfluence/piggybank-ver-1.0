@@ -5,7 +5,9 @@ import PropTypes from "prop-types";
 class LoginPresenter extends React.Component {
     render(){
         return(
-            <div></div>
+            <div>
+                <h1>LoginPresenter</h1>
+            </div>
         )
     }
 }

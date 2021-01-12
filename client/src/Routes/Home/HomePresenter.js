@@ -5,7 +5,9 @@ import PropTypes from "prop-types";
 class HomePresenter extends React.Component {
     render(){
         return(
-            <div></div>
+            <div>
+                <h1>HomePresenter</h1>
+            </div>
         )
     }
 }
