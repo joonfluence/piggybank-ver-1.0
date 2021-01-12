@@ -1,5 +1,5 @@
 import express from "express";
-import { getPayingInfo, postPayingInfo, getUserInfo, editUserInfo, getSavingInfo, getSavingDetail, getPayingDetail } from "../controllers/userController.js";
+import { getPayingInfo, postPayingInfo, getUserInfo, editUserInfo, getSavingInfo, getSavingDetail, getPayingDetail } from "./apiController.js";
 
 const apiRouter = express.Router();
 

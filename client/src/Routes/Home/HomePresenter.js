@@ -6,7 +6,7 @@ class HomePresenter extends React.Component {
     render(){
         return(
             <div>
-                <h1>HomePresenter</h1>
+                <h1>{`data received : ${this.props.data}`}</h1>
             </div>
         )
     }
