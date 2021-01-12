@@ -2,7 +2,6 @@ import { Component } from "react";
 import GlobalStyles from "./GlobalStyles";
 import axios from "axios";
 import Router from "./Router";
-import Nav from "./Nav";
 
 class App extends Component {
   constructor(props){

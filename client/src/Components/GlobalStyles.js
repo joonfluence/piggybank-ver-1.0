@@ -24,10 +24,22 @@ const globalStyles = createGlobalStyle`
         font-weight: 600;
     }
 
+    #root {
+        max-width: 1080px;
+    }
+
+    html {
+        margin: 0 auto;
+        text-align: center;
+    }
+
     body {
         font-size: 18px;
         font-weight: 400;
-        font-family: 'Poor Story', cursive;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* font-family: 'Poor Story', cursive; */
     }
 `
 

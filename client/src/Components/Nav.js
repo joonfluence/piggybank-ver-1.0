@@ -2,6 +2,7 @@ import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 
 const Nav = styled.nav`
+    width: 1080px;
     background-color: #9943EF;
     display: flex;
     justify-content: space-between;
