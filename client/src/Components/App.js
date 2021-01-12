@@ -1,4 +1,5 @@
 import { Component } from "react";
+import GlobalStyles from "./GlobalStyles";
 import axios from "axios";
 import Router from "./Router";
 import Nav from "./Nav";
@@ -16,12 +17,13 @@ class App extends Component {
   }
 
   render(){
-    const [ data ] = this.state;
+    // const [ data ] = this.state;
     return (
       <>
-        <title>{data}</title>
         <Nav />
         <Router />
+        <GlobalStyles />
+        <h1>Hi!</h1>
       </>
     );
   }
