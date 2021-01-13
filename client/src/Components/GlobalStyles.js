@@ -3,6 +3,7 @@ import reset from "styled-reset";
 
 const globalStyles = createGlobalStyle`
     ${reset};
+    
     * {
         border-radius: 4px;
         animation-duration: 300ms;
@@ -25,21 +26,15 @@ const globalStyles = createGlobalStyle`
     }
 
     #root {
+        margin: 0 auto;
         max-width: 1080px;
     }
 
-    html {
-        margin: 0 auto;
-        text-align: center;
-    }
-
     body {
+        position: relative;
         font-size: 18px;
         font-weight: 400;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        /* font-family: 'Poor Story', cursive; */
+        text-align: center;
     }
 `
 

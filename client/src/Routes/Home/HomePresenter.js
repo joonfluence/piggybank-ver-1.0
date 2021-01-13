@@ -1,13 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import InputBoard from "../../Components/InputBoard";
+import MainBoard from "../../Components/MainBoard";
 
 class HomePresenter extends React.Component {
-    render(){
-        return(
-            <div>
-                <h1>{`data received : ${this.props.data}`}</h1>
-            </div>
+    render() {
+        return (
+            <>
+                <MainBoard></MainBoard>
+                <InputBoard></InputBoard>
+            </>
         )
     }
 }
