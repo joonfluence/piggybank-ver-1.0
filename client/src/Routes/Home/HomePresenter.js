@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import InputBoard from "../../Components/InputBoard";
 import MainBoard from "../../Components/MainBoard";
+import UserInfo from "../../Components/UserInfo";
 
 class HomePresenter extends React.Component {
     render() {
@@ -10,6 +11,7 @@ class HomePresenter extends React.Component {
             <>
                 <MainBoard></MainBoard>
                 <InputBoard></InputBoard>
+                <UserInfo></UserInfo>
             </>
         )
     }

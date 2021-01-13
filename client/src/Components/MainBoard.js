@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-const MainContainer = styled.div`
+const MainContainer = styled.section`
     padding-top : 50px;
+    height: 300px;
+    background-color : darkgreen;
 `;
 
 export default () => {

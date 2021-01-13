@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-const FormContainer = styled.div`
-
+const FormContainer = styled.section`
+    background-color : darkgray;
+    height: 600px;
 `;
 
 const FormTitle = styled.h1`
     font-size: 28px;
     font-weight: 600;
-    margin: 50px;
 `;
 
 const FormFormat = styled.form`
