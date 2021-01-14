@@ -1,6 +1,6 @@
 # Account Book
 
-Account Book build by React, React Hooks, React Router, Express, MongoDB. 
+Account Book build by React, React Router, Express, MongoDB. 
 
 ## Screens
 
