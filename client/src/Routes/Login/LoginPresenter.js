@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import Login from "../../Components/Login";
 
 const LoginPresenterBlock = styled.div``;
 
 const LoginPresenter = () => {
   return (
     <LoginPresenterBlock>
-      <h1>LoginPresenter</h1>
+      <Login></Login>
     </LoginPresenterBlock>
   );
 };

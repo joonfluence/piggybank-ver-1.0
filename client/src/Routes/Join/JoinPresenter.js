@@ -1,13 +1,17 @@
-import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
+import React from 'react';
+import styled from 'styled-components';
+import Join from '../../Components/Join';
+
+const JoinPresenterBlock = styled.div`
+  
+`;
 
 const JoinPresenter = () => {
-  return (
-    <div>
-      <h1>JoinPresenter</h1>
-    </div>
-  );
+    return (
+        <JoinPresenterBlock>
+            <Join></Join>
+        </JoinPresenterBlock>
+    );
 };
 
 export default JoinPresenter;
