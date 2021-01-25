@@ -8,14 +8,14 @@ const MYSPACE = "/myspace/:id";
 const MYSPAGE_CHANGE = "/myspace/edit/:id";
 
 const routes = {
-    home : HOME,
-    api : API,
-    user : USER,
-    saving : SAVING,
-    savings : SAVING_DETAIL,
-    consumption : COMSUMPTION_DEATIL,
-    myspace : MYSPACE,
-    editMyspace : MYSPAGE_CHANGE
+  home: HOME,
+  api: API,
+  user: USER,
+  saving: SAVING,
+  savings: SAVING_DETAIL,
+  consumption: COMSUMPTION_DEATIL,
+  myspace: MYSPACE,
+  editMyspace: MYSPAGE_CHANGE,
 };
 
 export default routes;

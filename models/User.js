@@ -13,6 +13,7 @@ const UserSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
   saving: [{ type: Schema.Types.ObjectId, ref: "Saving" }],
   paying: [{ type: Schema.Types.ObjectId, ref: "Paying" }],
+  token: String,
 });
 
 UserSchema.pre("save", function (next) {
@@ -34,11 +35,20 @@ UserSchema.pre("save", function (next) {
   }
 });
 
-UserSchema.method.comparePassword = function (plainPassword) {
+UserSchema.methods.comparePassword = function (plainPassword, cb) {
   let user = this;
   bcrypt.compare(plainPassword, user.password, function (err, result) {
-    return result;
+    if (err) return cb(err);
+    return cb(null, result);
   });
+};
+
+UserSchema.methods.generateToken = function () {
+  let user = this;
+  console.log(typeof user._id);
+  let token = jwt.sign(user._id.toJSON(), "Token");
+  user.token = token;
+  user.save();
 };
 
 const model = mongoose.model("User", UserSchema);
