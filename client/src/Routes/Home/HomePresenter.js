@@ -5,16 +5,16 @@ import InputBoard from "../../Components/InputBoard";
 import MainBoard from "../../Components/MainBoard";
 import UserInfo from "../../Components/UserInfo";
 
-class HomePresenter extends React.Component {
-    render() {
-        return (
-            <>
-                <MainBoard></MainBoard>
-                <InputBoard></InputBoard>
-                <UserInfo></UserInfo>
-            </>
-        )
-    }
-}
+const HomePresenterBlock = styled.div``;
+
+const HomePresenter = () => {
+  return (
+    <HomePresenterBlock>
+      <MainBoard></MainBoard>
+      <InputBoard></InputBoard>
+      <UserInfo></UserInfo>
+    </HomePresenterBlock>
+  );
+};
 
 export default HomePresenter;

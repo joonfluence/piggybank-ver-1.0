@@ -5,16 +5,14 @@ import InputBoard from "../../Components/InputBoard";
 import MainBoard from "../../Components/MainBoard";
 import UserInfo from "../../Components/UserInfo";
 
-class SavingPresenter extends React.Component {
-    render() {
-        return (
-            <>
-                <MainBoard></MainBoard>
-                <InputBoard></InputBoard>
-                <UserInfo></UserInfo>
-            </>
-        )
-    }
-}
+const SavingPresenter = () => {
+  return (
+    <>
+      <MainBoard></MainBoard>
+      <InputBoard></InputBoard>
+      <UserInfo></UserInfo>
+    </>
+  );
+};
 
 export default SavingPresenter;

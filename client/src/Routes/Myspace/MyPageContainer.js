@@ -1,10 +1,17 @@
 import React from "react";
+import styled from 'styled-components';
 import MyPagePresenter from "./MyPagePresenter";
 
-export default class extends React.Component {
-    render(){
-        return (
+const MyPageContainerBlock = styled.div`
+
+`;
+
+const MyPageContainer = () => {
+    return (
+        <MyPageContainerBlock>
             <MyPagePresenter></MyPagePresenter>
-        )
-    }
-}
+        </MyPageContainerBlock>
+    );
+};
+
+export default MyPageContainer;

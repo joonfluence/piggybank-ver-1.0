@@ -1,10 +1,17 @@
 import React from "react";
+import styled from 'styled-components';
 import SavingPresenter from "./SavingPresenter";
 
-export default class extends React.Component {
-    render(){
-        return (
+const SavingContainerBlock = styled.div`
+
+`;
+
+const SavingContainer = () => {
+    return (
+        <SavingContainerBlock>
             <SavingPresenter></SavingPresenter>
-        )
-    }
-}
+        </SavingContainerBlock>
+    );
+};
+
+export default SavingContainer;

@@ -5,7 +5,6 @@ const globalStyles = createGlobalStyle`
     ${reset};
     
     * {
-        border-radius: 4px;
         animation-duration: 300ms;
     }
     a {
@@ -21,7 +20,7 @@ const globalStyles = createGlobalStyle`
     }
 
     header {
-        font-size: 24px;
+        font-size: 1.5rem;
         font-weight: 600;
     }
 
@@ -32,10 +31,12 @@ const globalStyles = createGlobalStyle`
 
     body {
         position: relative;
-        font-size: 18px;
+        font-size: 1rem;
         font-weight: 400;
+        max-width: 768px;
         text-align: center;
+        margin: 0 auto;
     }
-`
+`;
 
 export default globalStyles;
