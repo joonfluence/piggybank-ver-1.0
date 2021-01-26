@@ -52,24 +52,36 @@ export const postLogin = async (req, res) => {
         if (!isMatch) {
           return res.json({
             LoginSucess: false,
-            message: "비밀번호가 서로 다릅니다",
+            message: "비밀번호가 틀립니다",
           });
+        } else {
+          // 토큰을 생성하여, 쿠키에 저장해줄 것.
+          user.generateToken();
+          return res
+            .cookie("x_auth", user.token)
+            .status(200)
+            .json({ LoginSucess: true, userId: user._id, jwt: user.token });
         }
-        // 토큰을 생성하여,
-        user.generateToken();
-        return res
-          .cookie("x_auth", user.token)
-          .status(200)
-          .json({ LoginSucess: true, userId: user._id, jwt: user.token });
       });
     } else {
       return res.json({
         LoginSucess: false,
-        message: "비밀번호가 서로 다릅니다",
+        message: "입력하신 비밀번호가 서로 다릅니다",
       });
     }
   } catch (err) {
     throw err;
+  }
+};
+
+export const getLogOut = (req, res) => {
+  try {
+    User.findByIdAndUpdate(req.user._id, { token: "" });
+    return res.status(200).send({
+      success: true,
+    });
+  } catch (err) {
+    return res.json({ sucess: false, err });
   }
 };
 

@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 
 const saltRounds = 10;
 const Schema = mongoose.Schema;
@@ -46,9 +48,19 @@ UserSchema.methods.comparePassword = function (plainPassword, cb) {
 UserSchema.methods.generateToken = function () {
   let user = this;
   console.log(typeof user._id);
-  let token = jwt.sign(user._id.toJSON(), "Token");
+  let token = jwt.sign(user._id.toJSON(), process.env.TOKEN);
   user.token = token;
   user.save();
+};
+
+// 여기서 this는 모델 자체를 가리킨다.
+UserSchema.statics.findByToken = function (token, cb) {
+  let user = this;
+  let decoded = jwt.verify(token, process.env.TOKEN);
+  user.findOne({ _id: decoded, token: token }, (err, user) => {
+    if (err) return cb(err);
+    cb(null, user);
+  });
 };
 
 const model = mongoose.model("User", UserSchema);

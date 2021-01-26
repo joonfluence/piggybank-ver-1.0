@@ -1,4 +1,5 @@
 import express from "express";
+import { Auth } from "../middlewares.js";
 import {
   getPayingInfo,
   postPayingInfo,
@@ -9,13 +10,15 @@ import {
   getPayingDetail,
   postJoin,
   postLogin,
+  getLogOut,
 } from "./apiController.js";
 
 const apiRouter = express.Router();
 
-// 회원가입 및 로그인
+// 회원가입 및 로그인, 로그아웃
 apiRouter.post("/users/join", postJoin);
 apiRouter.post("/users/login", postLogin);
+apiRouter.get("/users/logout", Auth, getLogOut);
 
 apiRouter.get("/", getPayingInfo);
 apiRouter.post("/", postPayingInfo);
