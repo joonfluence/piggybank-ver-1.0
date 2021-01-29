@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import Login from "../../Components/Login";
+import Login from ".";
 
 const LoginPresenterBlock = styled.div``;
 
