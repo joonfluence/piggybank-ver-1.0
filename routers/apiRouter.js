@@ -30,7 +30,7 @@ import {
   getLoanInfo,
   getRealestateInfo,
 } from "./apiController.js";
-import routes from "../routes";
+import routes from "../routes.js";
 
 const apiRouter = express.Router();
 
@@ -67,7 +67,7 @@ apiRouter.get(routes.categoryEatout, getEatOutInfo);
 apiRouter.get(routes.categoryGrocery, getGroceryInfo);
 apiRouter.get(routes.categoryFashion, getFashionInfo);
 apiRouter.get(routes.categoryLiqour, getLiquorInfo);
-apiRouter.get(routes.categoryTranportation, getTransporInfo);
+apiRouter.get(routes.categoryTransportation, getTransporInfo);
 apiRouter.get(routes.categoryEducation, getEducationInfo);
 apiRouter.get(routes.categoryRent, getRentInfo);
 apiRouter.get(routes.categoryDonation, getDonationInfo);
