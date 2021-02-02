@@ -1,21 +1,27 @@
 import express from "express";
 import { Auth } from "../middlewares.js";
 import {
-  getPayingInfo,
-  postPayingInfo,
-  getUserInfo,
   editUserInfo,
-  getSavingInfo,
-  getSavingDetail,
-  getPayingDetail,
+  getUserInfo,
   postJoin,
   postLogin,
   getLogOut,
   getAuth,
+} from "../controllers/UserController";
+import {
+  getPayingInfo,
+  postPayingInfo,
+  getPayingDetail,
   editPayingInfo,
-  postSavingInfo,
   deletePayingInfo,
+} from "../controllers/PayController";
+import {
+  postSavingInfo,
+  getSavingDetail,
+  getSavingInfo,
   editSavingInfo,
+} from "../controllers/SaveController";
+import {
   getEatOutInfo,
   getGroceryInfo,
   getFashionInfo,
@@ -29,7 +35,7 @@ import {
   getStockInfo,
   getLoanInfo,
   getRealestateInfo,
-} from "./apiController.js";
+} from "../controllers/CategoryController";
 import routes from "../routes.js";
 
 const apiRouter = express.Router();
@@ -47,20 +53,20 @@ apiRouter.get(routes.mypage(), getUserInfo);
 apiRouter.post(routes.editMypage(), editUserInfo);
 
 // 4) 소비정보 CRUD
-apiRouter.get(routes.paying, getPayingInfo);
-apiRouter.post(routes.postPaying(), postPayingInfo);
-apiRouter.post(routes.editPaying(), editPayingInfo);
-apiRouter.get(routes.deletePaying(), deletePayingInfo);
+apiRouter.get(routes.paying, Auth, getPayingInfo);
+apiRouter.post(routes.paying, Auth, postPayingInfo);
+apiRouter.put(routes.payings(), Auth, editPayingInfo);
+apiRouter.delete(routes.payings(), Auth, deletePayingInfo);
 
 // 5) 저축정보 CRUD
-apiRouter.get(routes.saving, getSavingInfo);
-apiRouter.post(routes.postSaving(), postSavingInfo);
-apiRouter.post(routes.editSaving(), editSavingInfo);
-apiRouter.get(routes.deleteSaving(), deletePayingInfo);
+apiRouter.get(routes.saving, Auth, getSavingInfo);
+apiRouter.post(routes.saving, Auth, postSavingInfo);
+apiRouter.put(routes.savings(), Auth, editSavingInfo);
+apiRouter.delete(routes.savings(), Auth, deletePayingInfo);
 
 // 6) 디테일 정보
-apiRouter.get(routes.payings(), getPayingDetail);
-apiRouter.get(routes.savings(), getSavingDetail);
+apiRouter.get(routes.payings(), Auth, getPayingDetail);
+apiRouter.get(routes.savings(), Auth, getSavingDetail);
 
 // 7) 소비 카테고리별 정보
 apiRouter.get(routes.categoryEatout, getEatOutInfo);
@@ -78,5 +84,7 @@ apiRouter.get(routes.categoryDeposit, getDepositInfo);
 apiRouter.get(routes.categoryStock, getStockInfo);
 apiRouter.get(routes.categoryLoan, getLoanInfo);
 apiRouter.get(routes.categoryRealestate, getRealestateInfo);
+
+// 월별 라우터가 추가되어야 할 것 같음.
 
 export default apiRouter;

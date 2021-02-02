@@ -1,5 +1,5 @@
 import axios from "axios";
-import { routes } from "../../routes";
+import { routes } from "./routes";
 
 const api = axios.create({
   baseURL: "/api",

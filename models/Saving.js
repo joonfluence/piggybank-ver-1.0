@@ -10,7 +10,14 @@ const SavingSchema = new Schema({
   title: { type: String, required: true },
   memo: { type: String },
   price: { type: Number, required: true },
-  category: [{ type: Schema.Types.ObjectId, ref: "SavingCategory" }],
+  user: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  category: {
+    isDeposit: { type: Boolean },
+    isSavings: { type: Boolean },
+    isStock: { type: Boolean },
+    isLoan: { type: Boolean },
+    isHousing: { type: Boolean },
+  },
 });
 
 const model = mongoose.model("Saving", SavingSchema);
