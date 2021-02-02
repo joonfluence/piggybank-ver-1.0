@@ -2,8 +2,75 @@ import Saving from "../models/Saving.js";
 
 // 4) 저축정보 CRUD Controller
 
-export const postSavingInfo = (req, res) => res.send("PostSavingInfo");
-export const getSavingInfo = (req, res) => res.send("getSavingInfo");
-export const editSavingInfo = (req, res) => res.send("editSavingInfo");
-export const deleteSavingInfo = (req, res) => res.send("deleteSavingInfo");
-export const getSavingDetail = (req, res) => res.send("getSavingDetail");
+export const postSavingInfo = async (req, res) => {
+  const { user, category, title, price } = req.body;
+  try {
+    const newSaving = await Saving.create({
+      user,
+      category,
+      title,
+      price,
+    });
+    return res.status(201).json(newSaving);
+  } catch (error) {
+    return res.status(500).json({ success: false, error });
+  }
+};
+
+export const getSavingInfo = async (req, res) => {
+  const { _id } = req.user;
+  try {
+    const userInfo = await Saving.find({ user: [_id] });
+    return res.status(200).json(userInfo);
+  } catch (error) {
+    return res.status(500).json({ sucess: false, error });
+  }
+};
+
+export const editSavingInfo = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    const savingInfo = await Saving.findByIdAndUpdate(
+      { _id: id },
+      req.body,
+      {
+        new: true,
+      },
+      (err, info) => {
+        if (err) return res.status(404).json({ error: "Not Found" });
+      }
+    );
+    return res.status(200).json(savingInfo);
+  } catch (error) {
+    return res.status(500).json({ sucess: false, error });
+  }
+};
+
+export const deleteSavingInfo = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    await Saving.findByIdAndRemove({ _id: id });
+    return res.status(204).json();
+  } catch (error) {
+    return res.status(500).json({ success: false, error });
+  }
+};
+
+export const getSavingDetail = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    const { title, price } = await Saving.findById({ _id: id });
+    return res.status(200).json({
+      title,
+      price,
+    });
+  } catch (error) {
+    return res.status(500).json({ sucess: false, error });
+  }
+};

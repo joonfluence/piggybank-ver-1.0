@@ -7,35 +7,27 @@ import {
   postLogin,
   getLogOut,
   getAuth,
-} from "../controllers/UserController";
+} from "../controllers/UserController.js";
 import {
   getPayingInfo,
   postPayingInfo,
   getPayingDetail,
   editPayingInfo,
   deletePayingInfo,
-} from "../controllers/PayController";
+} from "../controllers/PayController.js";
 import {
   postSavingInfo,
   getSavingDetail,
   getSavingInfo,
   editSavingInfo,
-} from "../controllers/SaveController";
+  deleteSavingInfo,
+} from "../controllers/SaveController.js";
 import {
-  getEatOutInfo,
-  getGroceryInfo,
-  getFashionInfo,
-  getLiquorInfo,
-  getTransporInfo,
-  getEducationInfo,
-  getRentInfo,
-  getDonationInfo,
-  getSavingsInfo,
-  getDepositInfo,
-  getStockInfo,
-  getLoanInfo,
-  getRealestateInfo,
-} from "../controllers/CategoryController";
+  getPayingCategory,
+  getPayingCategoryMonth,
+  getSavingCategory,
+  getSavingCategoryMonth,
+} from "../controllers/CategoryController.js";
 import routes from "../routes.js";
 
 const apiRouter = express.Router();
@@ -62,29 +54,18 @@ apiRouter.delete(routes.payings(), Auth, deletePayingInfo);
 apiRouter.get(routes.saving, Auth, getSavingInfo);
 apiRouter.post(routes.saving, Auth, postSavingInfo);
 apiRouter.put(routes.savings(), Auth, editSavingInfo);
-apiRouter.delete(routes.savings(), Auth, deletePayingInfo);
+apiRouter.delete(routes.savings(), Auth, deleteSavingInfo);
 
 // 6) 디테일 정보
 apiRouter.get(routes.payings(), Auth, getPayingDetail);
 apiRouter.get(routes.savings(), Auth, getSavingDetail);
 
 // 7) 소비 카테고리별 정보
-apiRouter.get(routes.categoryEatout, getEatOutInfo);
-apiRouter.get(routes.categoryGrocery, getGroceryInfo);
-apiRouter.get(routes.categoryFashion, getFashionInfo);
-apiRouter.get(routes.categoryLiqour, getLiquorInfo);
-apiRouter.get(routes.categoryTransportation, getTransporInfo);
-apiRouter.get(routes.categoryEducation, getEducationInfo);
-apiRouter.get(routes.categoryRent, getRentInfo);
-apiRouter.get(routes.categoryDonation, getDonationInfo);
+apiRouter.get(routes.categoryPaying(), getPayingCategory);
+apiRouter.get(routes.categoryPayingMonth(), getPayingCategoryMonth);
 
 // 8) 저축 카테고리별 정보
-apiRouter.get(routes.categorySaving, getSavingsInfo);
-apiRouter.get(routes.categoryDeposit, getDepositInfo);
-apiRouter.get(routes.categoryStock, getStockInfo);
-apiRouter.get(routes.categoryLoan, getLoanInfo);
-apiRouter.get(routes.categoryRealestate, getRealestateInfo);
-
-// 월별 라우터가 추가되어야 할 것 같음.
+apiRouter.get(routes.categorySaving(), getSavingCategory);
+apiRouter.get(routes.categorySavingMonth(), getSavingCategoryMonth);
 
 export default apiRouter;
