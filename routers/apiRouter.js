@@ -14,6 +14,7 @@ import {
   getPayingDetail,
   editPayingInfo,
   deletePayingInfo,
+  getPayingMonth,
 } from "../controllers/PayController.js";
 import {
   postSavingInfo,
@@ -21,13 +22,19 @@ import {
   getSavingInfo,
   editSavingInfo,
   deleteSavingInfo,
+  getSavingMonth,
 } from "../controllers/SaveController.js";
 import {
   getPayingCategory,
-  getPayingCategoryMonth,
   getSavingCategory,
-  getSavingCategoryMonth,
 } from "../controllers/CategoryController.js";
+import {
+  getBudgetInfo,
+  postBudgetInfo,
+  editBudgetInfo,
+  getBudgetDetail,
+  getBudgetMonth,
+} from "../controllers/BudgetController.js";
 import routes from "../routes.js";
 
 const apiRouter = express.Router();
@@ -41,8 +48,8 @@ apiRouter.get(routes.logout, Auth, getLogOut);
 apiRouter.get(routes.auth, Auth, getAuth);
 
 // 3) 사용자 정보
-apiRouter.get(routes.mypage(), getUserInfo);
-apiRouter.post(routes.editMypage(), editUserInfo);
+apiRouter.get(routes.mypage(), Auth, getUserInfo);
+apiRouter.post(routes.editMypage(), Auth, editUserInfo);
 
 // 4) 소비정보 CRUD
 apiRouter.get(routes.paying, Auth, getPayingInfo);
@@ -59,13 +66,18 @@ apiRouter.delete(routes.savings(), Auth, deleteSavingInfo);
 // 6) 디테일 정보
 apiRouter.get(routes.payings(), Auth, getPayingDetail);
 apiRouter.get(routes.savings(), Auth, getSavingDetail);
+apiRouter.get(routes.payingMonth(), Auth, getPayingMonth);
+apiRouter.get(routes.savingMonth(), Auth, getSavingMonth);
 
-// 7) 소비 카테고리별 정보
-apiRouter.get(routes.categoryPaying(), getPayingCategory);
-apiRouter.get(routes.categoryPayingMonth(), getPayingCategoryMonth);
+// 7) 소비 & 저축 카테고리별 정보
+apiRouter.get(routes.categoryPaying(), Auth, getPayingCategory);
+apiRouter.get(routes.categorySaving(), Auth, getSavingCategory);
 
-// 8) 저축 카테고리별 정보
-apiRouter.get(routes.categorySaving(), getSavingCategory);
-apiRouter.get(routes.categorySavingMonth(), getSavingCategoryMonth);
+// 8) 예산 정보
+apiRouter.get(routes.budget, Auth, getBudgetInfo);
+apiRouter.post(routes.budget, Auth, postBudgetInfo);
+apiRouter.put(routes.budgets(), Auth, editBudgetInfo);
+apiRouter.get(routes.budgets(), Auth, getBudgetDetail);
+apiRouter.get(routes.budgetMonth(), Auth, getBudgetMonth);
 
 export default apiRouter;

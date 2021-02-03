@@ -10,11 +10,10 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  montlyBudget: { type: Number, required: true },
-  savingGoal: { type: Number, required: true },
   createdAt: { type: Date, default: Date.now },
   saving: [{ type: Schema.Types.ObjectId, ref: "Saving" }],
   paying: [{ type: Schema.Types.ObjectId, ref: "Paying" }],
+  budget: [{ type: Schema.Types.ObjectId, ref: "Budget" }],
   token: String,
 });
 

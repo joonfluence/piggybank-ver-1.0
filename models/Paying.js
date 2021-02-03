@@ -11,6 +11,7 @@ const PayingSchema = new Schema({
   memo: { type: String },
   price: { type: Number, required: true },
   user: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  budget: [{ type: Schema.Types.ObjectId, ref: "Budget" }],
   category: {
     isGrocery: { type: Boolean },
     isEatOut: { type: Boolean },

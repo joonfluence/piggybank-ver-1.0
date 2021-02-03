@@ -3,16 +3,19 @@ import Saving from "../models/Saving.js";
 // 4) 저축정보 CRUD Controller
 
 export const postSavingInfo = async (req, res) => {
-  const { user, category, title, price } = req.body;
+  const { category, title, price } = req.body;
+  const { _id } = req.user;
+
   try {
     const newSaving = await Saving.create({
-      user,
+      user: [_id],
       category,
       title,
       price,
     });
     return res.status(201).json(newSaving);
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ success: false, error });
   }
 };
@@ -23,6 +26,7 @@ export const getSavingInfo = async (req, res) => {
     const userInfo = await Saving.find({ user: [_id] });
     return res.status(200).json(userInfo);
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ sucess: false, error });
   }
 };
@@ -44,6 +48,7 @@ export const editSavingInfo = async (req, res) => {
     );
     return res.status(200).json(savingInfo);
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ sucess: false, error });
   }
 };
@@ -56,6 +61,7 @@ export const deleteSavingInfo = async (req, res) => {
     await Saving.findByIdAndRemove({ _id: id });
     return res.status(204).json();
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ success: false, error });
   }
 };
@@ -65,12 +71,12 @@ export const getSavingDetail = async (req, res) => {
     params: { id },
   } = req;
   try {
-    const { title, price } = await Saving.findById({ _id: id });
-    return res.status(200).json({
-      title,
-      price,
-    });
+    const savingInfo = await Saving.findById({ _id: id });
+    return res.status(200).json(savingInfo);
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ sucess: false, error });
   }
 };
+
+export const getSavingMonth = (req, res) => res.send("getSavingMonth");

@@ -6,10 +6,11 @@ const Schema = mongoose.Schema;
 
 const SavingSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
-  date: { type: Date, required: true, default: Date.now },
-  title: { type: String, required: true },
+  date: { type: Date },
+  savingGoal: { type: Number },
+  title: { type: String },
   memo: { type: String },
-  price: { type: Number, required: true },
+  savings: { type: Number },
   user: [{ type: Schema.Types.ObjectId, ref: "User" }],
   category: {
     isDeposit: { type: Boolean },

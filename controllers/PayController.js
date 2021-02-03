@@ -13,6 +13,7 @@ export const postPayingInfo = async (req, res) => {
     });
     return res.status(201).json(newPaying);
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ success: false, error });
   }
 };
@@ -24,6 +25,7 @@ export const getPayingInfo = async (req, res) => {
     const userInfo = await Paying.find({ user: [_id] });
     return res.status(200).json(userInfo);
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ sucess: false, error });
   }
   // console.log(newUser);
@@ -47,6 +49,7 @@ export const editPayingInfo = async (req, res) => {
     );
     return res.status(200).json(payingInfo);
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ sucess: false, error });
   }
 };
@@ -59,6 +62,7 @@ export const deletePayingInfo = async (req, res) => {
     await Paying.findByIdAndRemove({ _id: id });
     return res.status(204).json();
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ sucess: false, error });
   }
 };
@@ -69,12 +73,11 @@ export const getPayingDetail = async (req, res) => {
   } = req;
   try {
     const payInfo = await Paying.findById({ _id: id });
-    const { title, price } = payInfo;
-    return res.status(200).json({
-      title,
-      price,
-    });
+    return res.status(200).json(payInfo);
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ sucess: false, error });
   }
 };
+
+export const getPayingMonth = (req, res) => res.send("getPayingMonth");
