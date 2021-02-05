@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import getCurrentDate from "../date.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -8,9 +9,11 @@ const saltRounds = 10;
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
+  name: { type: String, required: true },
+  id: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now },
+  createdAt: { type: Date, default: getCurrentDate() },
   saving: [{ type: Schema.Types.ObjectId, ref: "Saving" }],
   paying: [{ type: Schema.Types.ObjectId, ref: "Paying" }],
   budget: [{ type: Schema.Types.ObjectId, ref: "Budget" }],

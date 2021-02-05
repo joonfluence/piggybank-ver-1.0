@@ -3,17 +3,14 @@ import getCurrentDate from "../date.js";
 
 const Schema = mongoose.Schema;
 
-// saving => 연간 데이터로 산출하고, 월간 정보로 입력 받을 것
-
-const SavingSchema = new Schema({
+const SavingGoalSchema = new Schema({
   createdAt: { type: Date, default: getCurrentDate() },
   date: { type: Date, default: getCurrentDate() },
   title: { type: String },
-  memo: { type: String },
-  savings: { type: Number },
+  budget: { type: Number },
+  remained: { type: Number }, // budget 값을 어떻게 remained의 default 값으로 설정할 수 있을까?
   user: [{ type: Schema.Types.ObjectId, ref: "User" }],
-  category: [{ type: Schema.Types.ObjectId, ref: "SavingGoal" }],
 });
 
-const model = mongoose.model("Saving", SavingSchema);
+const model = mongoose.model("SavingGoal", SavingGoalSchema);
 export default model;
