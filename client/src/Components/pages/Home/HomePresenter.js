@@ -1,19 +1,25 @@
 import React from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
-import InputBoard from "../../InputBoard";
-import MainBoard from "../../MainBoard";
+// import PropTypes from "prop-types";
+import Header from "../../Header";
+import CreateTemplate from "../../CreateTemplate";
 import UserInfo from "../../UserInfo";
 
-const HomePresenterBlock = styled.div``;
+const HomePresenterBlock = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const HomePresenter = () => {
   return (
-    <HomePresenterBlock>
-      <MainBoard></MainBoard>
-      <InputBoard></InputBoard>
+    <>
+      <Header />
+      <HomePresenterBlock>
+        <CreateTemplate></CreateTemplate>
+      </HomePresenterBlock>
       <UserInfo></UserInfo>
-    </HomePresenterBlock>
+    </>
   );
 };
 

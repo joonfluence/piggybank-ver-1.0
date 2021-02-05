@@ -7,7 +7,6 @@ const UserInfoBlock = styled.article`
   height: 200px;
   top: 20%;
   right: 0;
-  background-color: grey;
 `;
 
 const UserProfileImg = styled.div`
@@ -24,10 +23,10 @@ const UserInfo = () => {
   return (
     <UserInfoBlock>
       <UserProfileImg></UserProfileImg>
-      <Title>이준호</Title>
+      {/* <Title>이준호</Title>
       <Title>950624</Title>
       <Title>목표금액</Title>
-      <Title>목표예산</Title>
+      <Title>목표예산</Title> */}
     </UserInfoBlock>
   );
 };

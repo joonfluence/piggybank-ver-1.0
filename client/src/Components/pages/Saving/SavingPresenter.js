@@ -1,15 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import InputBoard from "../../InputBoard";
-import MainBoard from "../../MainBoard";
+import CreateTemplate from "../../CreateTemplate";
 import UserInfo from "../../UserInfo";
 
 const SavingPresenter = () => {
   return (
     <>
-      <MainBoard></MainBoard>
-      <InputBoard></InputBoard>
+      <CreateTemplate></CreateTemplate>
       <UserInfo></UserInfo>
     </>
   );
