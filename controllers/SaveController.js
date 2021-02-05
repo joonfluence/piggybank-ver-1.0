@@ -79,4 +79,29 @@ export const getSavingDetail = async (req, res) => {
   }
 };
 
-export const getSavingMonth = (req, res) => res.send("getSavingMonth");
+export const getSavingMonth = async (req, res) => {
+  const {
+    params: { year, month },
+  } = req;
+
+  try {
+    const nextMonthInt = Number(month) + 1;
+    const nextMonth =
+      nextMonthInt.toString() < 10
+        ? 0 + nextMonthInt.toString()
+        : nextMonthInt.toString();
+
+    // monthInfo < 데이터 < monthInfo + 1와 같은 방식으로 월별 데이터를 가져올 수 있을 것.
+
+    const monthlySaving = await Saving.find({
+      date: {
+        $gt: new Date(`${year}-${month}-01T00:00:00.000Z`),
+        $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
+      },
+    });
+
+    return res.status(200).json(monthlySaving);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+};
