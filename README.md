@@ -4,9 +4,11 @@ Account Book build by React, React Router, Express, MongoDB.
 
 ## Screens
 
-- [ ] Join
+- [ ] Join 
 - [ ] Login 
-- [ ] Home(Consumption, Search)
-- [ ] Saving(Search) 
+- [ ] Home 
+- [ ] Paying (Detail, Month, Category) 
+- [ ] Saving (Detail, Month, Category) 
+- [ ] Budeget (Month)  
 - [ ] MyPage 
-- [ ] Detail(Consumption, Saving)
+- [ ] Detail(Paying, Saving) 

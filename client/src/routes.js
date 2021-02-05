@@ -16,29 +16,24 @@ const MYPAGE_EDIT = "/mypage/:id/edit";
 // Payings
 
 const PAYING = "/payings";
-const PAYING_MONTH = "/payings/:month";
+const PAYING_DETAIL = "/payings/:id";
+const PAYING_MONTH = "/payings/:year/:month";
+const CATEGORY_PAYING = "/payings/:category";
 
 // Savings
 
 const SAVING = "/savings";
-const SAVING_MONTH = "/payings/:month";
-
-// Details
-
-const PAYING_DETAIL = "/payings/:id";
 const SAVING_DETAIL = "/savings/:id";
-
-// 소비 카테고리
-
-const CATEGORY_PAYING = "/payings/:category";
-const CATEGORY_PAYING_MONTH = "/payings/:category/:month";
-
-// 저축 카테고리
-
+const SAVING_MONTH = "/savings/:year/:month";
 const CATEGORY_SAVING = "/savings/:category";
-const CATEGORY_SAVING_MONTH = "/savings/:category/:month";
 
-// 저축 카테고리
+// 예산 카테고리
+
+const BUDGET = "/budgets";
+const BUDGET_DETAIL = "/budgets/:id";
+const BUDGET_MONTH = "/budgets/:year/:month";
+
+const SAVING_GOAL = "/savingGoal";
 
 const routes = {
   home: HOME,
@@ -51,16 +46,16 @@ const routes = {
       return SAVING_DETAIL;
     }
   },
-  payingMonth: (month) => {
-    if (month) {
-      return `/payings/${month}`;
+  payingMonth: (year, month) => {
+    if (year && month) {
+      return `/payings/${year}/${month}`;
     } else {
       return PAYING_MONTH;
     }
   },
-  savingMonth: (month) => {
-    if (month) {
-      return `/savings/${month}`;
+  savingMonth: (year, month) => {
+    if (year && month) {
+      return `/savings/${year}/${month}`;
     } else {
       return SAVING_MONTH;
     }
@@ -98,13 +93,6 @@ const routes = {
       return CATEGORY_PAYING;
     }
   },
-  categoryPayingMonth: (category, month) => {
-    if ((category, month)) {
-      return `/payings/${category}/${month}`;
-    } else {
-      return CATEGORY_PAYING_MONTH;
-    }
-  },
   categorySaving: (category) => {
     if (category) {
       return `/savings/${category}`;
@@ -112,12 +100,21 @@ const routes = {
       return CATEGORY_SAVING;
     }
   },
-  categorySavingMonth: (category, month) => {
-    if ((category, month)) {
-      return `/savings/${category}/${month}`;
+  budget: BUDGET,
+  budgets: (id) => {
+    if (id) {
+      return `budgets/:id`;
     } else {
-      return CATEGORY_SAVING_MONTH;
+      return BUDGET_DETAIL;
     }
   },
+  budgetMonth: (year, month) => {
+    if (year && month) {
+      return `/budgets/${year}/${month}`;
+    } else {
+      return BUDGET_MONTH;
+    }
+  },
+  savingGoal: SAVING_GOAL,
 };
 export default routes;

@@ -11,7 +11,6 @@ const USER_AUTH = "/users/auth";
 // My space
 
 const MYPAGE = "/mypage/:id";
-const MYPAGE_EDIT = "/mypage/:id/edit";
 
 // Payings
 
@@ -75,13 +74,6 @@ const routes = {
       return `/mypage/${id}`;
     } else {
       return MYPAGE;
-    }
-  },
-  editMypage: (id) => {
-    if (id) {
-      return `/mypage/${id}/edit`;
-    } else {
-      return MYPAGE_EDIT;
     }
   },
   categoryPaying: (category) => {
