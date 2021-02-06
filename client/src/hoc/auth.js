@@ -11,6 +11,7 @@ function auth(SpecificComponent) {
     useEffect(() => {
       dispatch(AuthCheck()).then((response) => {
         // isAuth : false, 즉 로그인하지 않은 상태
+        console.log(response);
         if (!response.payload.isAuth) {
           alert("로그인이 필요합니다");
           props.history.push("/login");

@@ -1,20 +1,16 @@
-import React from 'react';
-import Header from '../../Header.js';
-import styled from 'styled-components';
+import React from "react";
+import Header from "../../Header.js";
+import styled from "styled-components";
 
-const BudgetPresenterBlock = styled.div`
-
-`;
+const BudgetPresenterBlock = styled.div``;
 
 const BudgetPresenter = () => {
-    return (
-        <>
+  return (
+    <>
       <Header></Header>
-        <BudgetPresenterBlock>
-            
-        </BudgetPresenterBlock>
-        </>
-    );
+      <BudgetPresenterBlock></BudgetPresenterBlock>
+    </>
+  );
 };
 
 export default BudgetPresenter;

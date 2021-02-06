@@ -1,6 +1,5 @@
 import { userApi } from "../api";
-import { AUTH_USER, REGISTER_USER } from "../types";
-import { LOGIN_USER } from "../types.js";
+import { AUTH_USER, REGISTER_USER, LOGIN_USER } from "../types";
 
 export const joinUser = async (dataBody) => {
   const request = await userApi.postJoin(dataBody);
@@ -25,6 +24,7 @@ export const AuthCheck = (dataToSubmit) => {
     .getAuth(dataToSubmit)
     .then((response) => response.data);
 
+  console.log(request);
   return {
     type: AUTH_USER,
     payload: request,

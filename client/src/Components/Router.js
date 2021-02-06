@@ -26,13 +26,13 @@ const Router = () => {
         <Route path="/" exact component={Home} />
         <Route path="/join" exact component={Join} />
         <Route path="/login" exact component={Login} />
-        <Route path={routes.mypage()} exact component={auth(MyPage)} />
-        <Route path={routes.paying} exact component={auth(Paying)} />
-        <Route path={routes.saving} exact component={auth(Saving)} />
-        <Route path={routes.budget} exact component={auth(Budget)} />
-        <Route path={routes.savingGoal} exact component={auth(SavingGoal)} />
-        <Route path={routes.payings()} exact component={auth(PayingDetail)} />
-        <Route path={routes.savings()} exact component={auth(SavingDetail)} />
+        <Route path={routes.mypage()} exact component={MyPage} />
+        <Route path={routes.paying} exact component={Paying} />
+        <Route path={routes.saving} exact component={Saving} />
+        <Route path={routes.budget} exact component={Budget} />
+        <Route path={routes.savingGoal} exact component={SavingGoal} />
+        <Route path={routes.payings()} exact component={PayingDetail} />
+        <Route path={routes.savings()} exact component={SavingDetail} />
         <Route
           path={routes.budgetMonth()}
           exact
