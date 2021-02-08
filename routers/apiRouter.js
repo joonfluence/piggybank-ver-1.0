@@ -35,6 +35,13 @@ import {
   getBudgetDetail,
   getBudgetMonth,
 } from "../controllers/BudgetController.js";
+import {
+  getGoalInfo,
+  postGoalInfo,
+  editGoalInfo,
+  getGoalDetail,
+  getGoalMonth,
+} from "../controllers/SavingGoalController.js";
 import routes from "../routes.js";
 
 const apiRouter = express.Router();
@@ -79,5 +86,13 @@ apiRouter.post(routes.budget, Auth, postBudgetInfo);
 apiRouter.put(routes.budgets(), Auth, editBudgetInfo);
 apiRouter.get(routes.budgets(), Auth, getBudgetDetail);
 apiRouter.get(routes.budgetMonth(), Auth, getBudgetMonth);
+
+// 9) 저축 목표 정보
+
+apiRouter.get(routes.savingGoal, Auth, getGoalInfo);
+apiRouter.post(routes.savingGoal, Auth, postGoalInfo);
+apiRouter.put(routes.savingGoals(), Auth, editGoalInfo);
+apiRouter.get(routes.savingGoals(), Auth, getGoalDetail);
+apiRouter.get(routes.savingGoalMonth(), Auth, getGoalMonth);
 
 export default apiRouter;

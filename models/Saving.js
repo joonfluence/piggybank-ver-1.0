@@ -8,11 +8,13 @@ const Schema = mongoose.Schema;
 const SavingSchema = new Schema({
   createdAt: { type: Date, default: getCurrentDate() },
   date: { type: Date, default: getCurrentDate() },
-  title: { type: String },
+  title: { type: String, required: true },
+  savings: { type: Number, required: true },
   memo: { type: String },
-  savings: { type: Number },
-  user: [{ type: Schema.Types.ObjectId, ref: "User" }],
-  category: [{ type: Schema.Types.ObjectId, ref: "SavingGoal" }],
+  user: [{ type: Schema.Types.ObjectId, ref: "User", require: true }],
+  category: [
+    { type: Schema.Types.ObjectId, ref: "SavingGoal", required: true },
+  ],
 });
 
 const model = mongoose.model("Saving", SavingSchema);

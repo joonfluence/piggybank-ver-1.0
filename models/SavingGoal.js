@@ -7,8 +7,7 @@ const SavingGoalSchema = new Schema({
   createdAt: { type: Date, default: getCurrentDate() },
   date: { type: Date, default: getCurrentDate() },
   title: { type: String },
-  budget: { type: Number },
-  remained: { type: Number }, // budget 값을 어떻게 remained의 default 값으로 설정할 수 있을까?
+  goalPrice: { type: Number },
   user: [{ type: Schema.Types.ObjectId, ref: "User" }],
 });
 
