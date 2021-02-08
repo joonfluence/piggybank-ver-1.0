@@ -6,7 +6,7 @@ const api = axios.create({
 });
 
 export const userApi = {
-  getLogOut: () => api.get(routes.login),
+  getLogOut: () => api.get(routes.logout),
   postLogin: (data) => api.post(routes.login, data),
   postJoin: (data) => api.post(routes.join, data),
   getAuth: (data) => api.get(routes.auth, data),

@@ -4,12 +4,11 @@ import Saving from "../models/Saving.js";
 
 export const postSavingInfo = async (req, res) => {
   const { category, title, price } = req.body;
-  const { _id } = req.user;
-
+  const { _id: userID } = req.user;
   try {
     const newSaving = await Saving.create({
-      user: [_id],
-      category,
+      user: [userID],
+      category, // :[categoryID]
       title,
       price,
     });
@@ -79,6 +78,8 @@ export const getSavingDetail = async (req, res) => {
   }
 };
 
+// 테스트가 요구됨.
+
 export const getSavingMonth = async (req, res) => {
   const {
     params: { year, month },
@@ -91,16 +92,17 @@ export const getSavingMonth = async (req, res) => {
         ? 0 + nextMonthInt.toString()
         : nextMonthInt.toString();
 
-    // monthInfo < 데이터 < monthInfo + 1와 같은 방식으로 월별 데이터를 가져올 수 있을 것.
+    // 현재, 정기적금에 해당하는 title에 해당하는 요소만 바꿔준다.
 
-    const monthlySaving = await Saving.find({
+    const categorySaving = await Saving.find({
+      title: "정기적금",
       date: {
         $gt: new Date(`${year}-${month}-01T00:00:00.000Z`),
         $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
       },
-    });
+    }).populate("category", "title goalPrice");
 
-    return res.status(200).json(monthlySaving);
+    return res.status(200).json(categorySaving);
   } catch (error) {
     return res.status(500).json(error);
   }

@@ -32,6 +32,12 @@ const BUDGET = "/budgets";
 const BUDGET_DETAIL = "/budgets/:id";
 const BUDGET_MONTH = "/budgets/:year/:month";
 
+// 저축 목표 카테고리
+
+const SAVING_GOAL = "/savingsGoal";
+const SAVING_GOAL_DETAIL = "/savingsGoal/:id";
+const SAVING_GOAL_MONTH = "/savingsGoal/:year/:month";
+
 const routes = {
   home: HOME,
   api: API,
@@ -103,6 +109,21 @@ const routes = {
       return `/budgets/${year}/${month}`;
     } else {
       return BUDGET_MONTH;
+    }
+  },
+  savingGoal: SAVING_GOAL,
+  savingGoals: (id) => {
+    if (id) {
+      return `/savingsGoal/:id`;
+    } else {
+      return SAVING_GOAL_DETAIL;
+    }
+  },
+  savingGoalMonth: (year, month) => {
+    if (year && month) {
+      return `/savingsGoal/${year}/${month}`;
+    } else {
+      return SAVING_GOAL_MONTH;
     }
   },
 };
