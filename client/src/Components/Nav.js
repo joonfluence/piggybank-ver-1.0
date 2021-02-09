@@ -4,6 +4,8 @@ import { BsPerson, BsFillPersonFill, BsPersonPlus } from "react-icons/bs";
 import { IoSearch } from "react-icons/io5";
 import { GrLogout, GrLogin } from "react-icons/gr";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { LogOutUser } from "../actions/user_actions";
 // import { COLORS } from "./GlobalStyles";
 
 const Header = styled.nav`
@@ -44,7 +46,10 @@ const SLink = styled(Link)`
   align-items: center;
 `;
 
-const Nav = withRouter(({ location: { pathname } }) => {
+/* 로그인 상태와 로그인 상태가 아닌 경우를 나누어, NavBar를 구성해준다. 또한 이 부분은 아이콘으로도 뵤여줄 것. BsFillPersonFill(로그인) */
+
+const Nav = ({ location: { pathname }, history, isAuth }) => {
+  const dispatch = useDispatch();
   return (
     <Header>
       <NavBlock>
@@ -55,33 +60,50 @@ const Nav = withRouter(({ location: { pathname } }) => {
             </SLink>
           </List>
         </LogoBlock>
-        {/* 로그인 상태와 로그인 상태가 아닌 경우를 나누어, NavBar를 구성해준다. 또한 이 부분은 아이콘으로도 뵤여줄 것. 
-        BsFillPersonFill(로그인)*/}
         <UserBlock>
-          <List current={pathname === "/mypage"}>
-            <SLink to="/mypage">
-              <BsPerson />
-              마이페이지
-            </SLink>
-          </List>
-          <List current={pathname === "/join"}>
-            <SLink to="/join">
-              <BsPersonPlus />
-              회원가입
-            </SLink>
-          </List>
-          <List current={pathname === "/login"}>
-            <SLink to="/login">
-              <GrLogin />
-              로그인
-            </SLink>
-          </List>
-          <List>
-            <SLink to="api/users/logout">
-              <GrLogout />
-              로그아웃
-            </SLink>
-          </List>
+          {isAuth ? (
+            <>
+              <List current={pathname === "/mypage"}>
+                <SLink to="/mypage">
+                  <BsPerson />
+                  마이페이지
+                </SLink>
+              </List>
+              <List>
+                <span
+                  style={{ cursor: "pointer" }}
+                  onClick={() =>
+                    dispatch(LogOutUser).then((response) => {
+                      console.log(isAuth);
+                      if (response.payload.LogOutSuccess) {
+                        window.location.replace("/");
+                      } else {
+                        alert("Error Occured");
+                      }
+                    })
+                  }
+                >
+                  <GrLogout />
+                  로그아웃
+                </span>
+              </List>
+            </>
+          ) : (
+            <>
+              <List current={pathname === "/join"}>
+                <SLink to="/join">
+                  <BsPersonPlus />
+                  회원가입
+                </SLink>
+              </List>
+              <List current={pathname === "/login"}>
+                <SLink to="/login">
+                  <GrLogin />
+                  로그인
+                </SLink>
+              </List>
+            </>
+          )}
         </UserBlock>
         <List>
           <IoSearch /> Search
@@ -89,6 +111,6 @@ const Nav = withRouter(({ location: { pathname } }) => {
       </NavBlock>
     </Header>
   );
-});
+};
 
-export default Nav;
+export default withRouter(Nav);
