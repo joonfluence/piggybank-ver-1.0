@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const CreateListBlock = styled.div``;
+const CreateListBlock = styled.div`
+  padding-bottom: 1rem;
+`;
 
 const InputContentBlock = styled.div`
   background-color: #ffe0f9;

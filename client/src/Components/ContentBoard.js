@@ -4,10 +4,10 @@ import CreateList from "./CreateList";
 import { AiOutlinePlus } from "react-icons/ai";
 
 const CreateBoardBlock = styled.section`
-  svg {
-    color: #5956e9;
-    font-size: 2.5rem;
-  }
+  /* border: 1px solid black; */
+  margin: 0 auto;
+  /* padding: 20px; */
+  width: 50%;
 `;
 
 const FormTitle = styled.h1`
@@ -15,16 +15,64 @@ const FormTitle = styled.h1`
   font-weight: 600;
 `;
 
-const FormFormat = styled.form``;
+const FormFormat = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
 
-const FormInput = styled.input``;
+const FormInputContainer = styled.div`
+  margin: 0 auto;
+`;
 
-const CreateBoard = () => {
-  const { input, setInput } = useState("");
+const FormInput = styled.input`
+  border: 1px solid black;
+  width: 364px;
+  height: 3rem;
 
-  const onButtonClick = () => {};
-  const onChange = (e) => {
-    setInput(e.target.value);
+  &::placeholder {
+    font-size: 1.2rem;
+  }
+
+  &:last-child {
+    cursor: pointer;
+  }
+`;
+
+const IconContainer = styled.div`
+  svg {
+    border-radius: 20px;
+    background-color: #5956e9;
+    color: white;
+    font-size: 2.5rem;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`;
+
+const CreateBoard = ({ Date, InfoName }) => {
+  const [open, setOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [memo, setMemo] = useState("");
+  const [date, setDate] = useState("");
+
+  const onButtonClick = () => setOpen(!open);
+
+  const onChangeName = (e) => {
+    setName(e.target.value);
+  };
+
+  const onChangePrice = (e) => {
+    setPrice(e.target.value);
+  };
+
+  const onChangeMemo = (e) => {
+    setMemo(e.target.value);
+  };
+
+  const onChangeDate = (e) => {
+    setDate(e.target.value);
   };
 
   const onSubmit = (e) => {
@@ -33,39 +81,63 @@ const CreateBoard = () => {
 
   return (
     <>
-      <AiOutlinePlus onClick={onButtonClick} />
-      <CreateBoardBlock>
-        <FormTitle>2020년 1월 20일 소비정보</FormTitle>
-        <FormFormat onSubmit={onSubmit}>
-          {/* Date 객체로 받아, 현재 날짜로 나타내줘야 함. */}
-          <FormInput
-            onChange={onChange}
-            placeholder="지출명"
-            value={input}
-          ></FormInput>
-          <FormInput
-            onChange={onChange}
-            placeholder="지출금액"
-            value={input}
-          ></FormInput>
-          <FormInput
-            onChange={onChange}
-            placeholder="메모"
-            value={input}
-          ></FormInput>
-          <FormInput
-            onChange={onChange}
-            type="date"
-            value="2021-02-04"
-            placeholder="날짜"
-          ></FormInput>
-          <FormInput id="CS" type="radio"></FormInput>
-          <label htmlFor="CS">소비 </label>
-          <FormInput id="SV" type="radio"></FormInput>
-          <label htmlFor="SV">저축 </label>
-          <FormInput type="submit" value="전송하기"></FormInput>
-        </FormFormat>
-      </CreateBoardBlock>
+      <IconContainer onClick={onButtonClick} open={open}>
+        <AiOutlinePlus />
+      </IconContainer>
+      {open && (
+        <CreateBoardBlock>
+          <FormTitle>
+            2021년 {Date}월 {InfoName}정보
+          </FormTitle>
+          <FormFormat onSubmit={onSubmit}>
+            <FormInputContainer>
+              <FormInput
+                onChange={onChangeName}
+                placeholder={InfoName + "명"}
+                value={name}
+              ></FormInput>
+            </FormInputContainer>
+            <FormInputContainer>
+              <FormInput
+                onChange={onChangePrice}
+                placeholder={InfoName + "액"}
+                value={price}
+              ></FormInput>
+            </FormInputContainer>
+            <FormInputContainer>
+              <FormInput
+                onChange={onChangeMemo}
+                placeholder="메모"
+                value={memo}
+              ></FormInput>
+            </FormInputContainer>
+            <FormInputContainer>
+              <FormInput
+                onChange={onChangeDate}
+                type="date"
+                value={date}
+              ></FormInput>
+            </FormInputContainer>
+            <FormInputContainer>
+              <FormInput
+                style={{ width: "30px" }}
+                id="CS"
+                type="radio"
+              ></FormInput>
+              <label htmlFor="CS">소비 </label>
+              <FormInput
+                style={{ width: "30px" }}
+                id="SV"
+                type="radio"
+              ></FormInput>
+              <label htmlFor="SV">저축 </label>
+            </FormInputContainer>
+            <FormInputContainer>
+              <FormInput type="submit" value="전송하기"></FormInput>
+            </FormInputContainer>
+          </FormFormat>
+        </CreateBoardBlock>
+      )}
       <CreateList></CreateList>
     </>
   );

@@ -8,7 +8,7 @@ const SavingGoalContainerBlock = styled.div``;
 const SavingGoalContainer = () => {
   return (
     <SavingGoalContainerBlock>
-      <Header></Header>
+      <Header HeaderInfo="자산"></Header>
       <SavingGoalPresenter></SavingGoalPresenter>
     </SavingGoalContainerBlock>
   );

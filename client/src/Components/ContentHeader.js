@@ -1,43 +1,41 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 import { ResponsivePie } from "@nivo/pie";
 
-const ContentHeaderBlock = styled.div`
-
-`;
+const ContentHeaderBlock = styled.div``;
 
 const data = [
-    {
-      id: "lisp",
-      label: "lisp",
-      value: 341,
-      color: "hsl(181, 70%, 50%)",
-    },
-    {
-      id: "java",
-      label: "java",
-      value: 563,
-      color: "hsl(236, 70%, 50%)",
-    },
-    {
-      id: "scala",
-      label: "scala",
-      value: 185,
-      color: "hsl(349, 70%, 50%)",
-    },
-    {
-      id: "sass",
-      label: "sass",
-      value: 297,
-      color: "hsl(125, 70%, 50%)",
-    },
-    {
-      id: "c",
-      label: "c",
-      value: 446,
-      color: "hsl(61, 70%, 50%)",
-    },
-  ];  
+  {
+    id: "lisp",
+    label: "lisp",
+    value: 341,
+    color: "hsl(181, 70%, 50%)",
+  },
+  {
+    id: "java",
+    label: "java",
+    value: 563,
+    color: "hsl(236, 70%, 50%)",
+  },
+  {
+    id: "scala",
+    label: "scala",
+    value: 185,
+    color: "hsl(349, 70%, 50%)",
+  },
+  {
+    id: "sass",
+    label: "sass",
+    value: 297,
+    color: "hsl(125, 70%, 50%)",
+  },
+  {
+    id: "c",
+    label: "c",
+    value: 446,
+    color: "hsl(61, 70%, 50%)",
+  },
+];
 
 const ContentTitle = styled.div`
   display: flex;
@@ -66,9 +64,9 @@ const ImageCircle = styled.div`
 `;
 
 const ContentHeader = () => {
-    return (
-        <ContentHeaderBlock>
-            <ContentTitle>
+  return (
+    <ContentHeaderBlock>
+      <ContentTitle>
         <Content>
           <ContentInfo>
             <h1>2월 </h1>
@@ -188,8 +186,8 @@ const ContentHeader = () => {
           </ImageCircle>
         </Content>
       </ContentTitle>
-        </ContentHeaderBlock>
-    );
+    </ContentHeaderBlock>
+  );
 };
 
 export default ContentHeader;

@@ -8,7 +8,7 @@ const PayingContainerBlock = styled.div``;
 const PavingContainer = () => {
   return (
     <PayingContainerBlock>
-      <Header></Header>
+      <Header HeaderInfo="지출"></Header>
       <PayingPresenter></PayingPresenter>
     </PayingContainerBlock>
   );

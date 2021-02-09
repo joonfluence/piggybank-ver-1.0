@@ -5,7 +5,7 @@ import BudgetPresenter from "./BudgetPresenter";
 const BudgetContainer = () => {
   return (
     <>
-      <Header></Header>
+      <Header HeaderInfo="예산"></Header>
       <BudgetPresenter />
     </>
   );

@@ -8,7 +8,7 @@ const SavingContainerBlock = styled.div``;
 const SavingContainer = () => {
   return (
     <SavingContainerBlock>
-      <Header></Header>
+      <Header HeaderInfo="저축"></Header>
       <SavingPresenter></SavingPresenter>
     </SavingContainerBlock>
   );

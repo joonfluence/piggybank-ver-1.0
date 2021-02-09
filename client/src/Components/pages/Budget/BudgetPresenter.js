@@ -7,6 +7,7 @@ import ContentLists from "../../ContentLists";
 const BudgetPresenterBlock = styled.div`
   background-color: white;
 `;
+
 const BudgetPresenter = () => {
   return (
     <>

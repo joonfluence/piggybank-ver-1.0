@@ -4,10 +4,7 @@ import { useSelector } from "react-redux";
 import Home from "../Components/pages/Home/";
 import Join from "../Components/pages/Join/Join";
 import Login from "../Components/pages/Login/Login";
-import MyPage from "../Components/pages/Myspace/";
 import Saving from "../Components/pages/Saving/";
-import PayingDetail from "../Components/pages/Paying/Detail/";
-import SavingDetail from "../Components/pages/Saving/Detail/";
 import Paying from "../Components/pages/Paying/";
 import Budget from "../Components/pages/Budget/";
 import PayingMonth from "../Components/pages/Paying/Month/";
@@ -26,19 +23,15 @@ const Router = () => {
 
   return (
     <BrowserRouter>
-      {/* 로그인/로그아웃 상태를 구분짓기 위한 props를 전달해준다. */}
       <Nav isAuth={isAuth} />
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/join" exact component={Join} />
         <Route path="/login" exact component={Login} />
-        <Route path={routes.mypage()} exact component={MyPage} />
         <Route path={routes.paying} exact component={Paying} />
         <Route path={routes.saving} exact component={Saving} />
         <Route path={routes.budget} exact component={Budget} />
         <Route path={routes.savingGoal} exact component={SavingGoal} />
-        <Route path={routes.payings()} exact component={PayingDetail} />
-        <Route path={routes.savings()} exact component={SavingDetail} />
         <Route
           path={routes.budgetMonth()}
           exact
@@ -54,8 +47,6 @@ const Router = () => {
           exact
           component={auth(SavingMonth)}
         />
-        {/* <Route path={routes.categoryPaying()} component={Category} /> */}
-        {/* <Route path={routes.categorySaving()} component={Category} /> */}
         <Redirect from="*" to="/" />
       </Switch>
     </BrowserRouter>

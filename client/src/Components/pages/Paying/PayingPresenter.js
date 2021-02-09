@@ -1,12 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import CreateTemplate from "../../CreateTemplate";
+import ContentBoard from "../../ContentBoard";
+import ContentHeader from "../../ContentHeader";
+
+const PayingPresenterBlock = styled.div`
+  background-color: white;
+`;
 
 const PayingPresenter = () => {
   return (
     <>
-      <CreateTemplate></CreateTemplate>
+      <PayingPresenterBlock>
+        <ContentHeader></ContentHeader>
+        <ContentBoard Date="2" InfoName="지출"></ContentBoard>
+      </PayingPresenterBlock>
     </>
   );
 };

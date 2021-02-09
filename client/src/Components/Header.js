@@ -14,11 +14,9 @@ const HeaderBlock = styled.div`
 
 const HeaderTitle = styled.h1``;
 
-const HeaderImage = styled.div`
-  /* 오류발생 */
-  background-image: url("../images/piggybank_illustration-removebg.png");
-  width: 100px;
-  height: 100px;
+const HeaderImage = styled.img`
+  width: 200px;
+  height: 200px;
 `;
 
 const ButtonBlock = styled.div`
@@ -46,12 +44,12 @@ const ButtonElements = styled.li`
 
 const SLink = styled(Link)``;
 
-const Header = () => {
+const Header = ({ HeaderInfo }) => {
   return (
     <>
       <HeaderBlock>
-        <HeaderTitle>당신의 지출을 좀 더 쉽게 관리하세요</HeaderTitle>
-        <HeaderImage></HeaderImage>
+        <HeaderTitle>당신의 {HeaderInfo}을 좀 더 쉽게 관리하세요</HeaderTitle>
+        <HeaderImage src="http://127.0.0.1:8887/piggybank_illustration-removebg.png"></HeaderImage>
       </HeaderBlock>
       <ButtonBlock>
         <ButtonList>
