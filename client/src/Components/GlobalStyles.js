@@ -39,6 +39,11 @@ const globalStyles = createGlobalStyle`
         border-radius: 4px;
     }
 
+    #wrapper {
+        width: 80%;
+        margin: 0 auto;
+    }
+
     button, form, input {
         background:none;
         border: none;

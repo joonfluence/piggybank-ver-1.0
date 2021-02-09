@@ -106,19 +106,13 @@ const Login = (props) => {
 
     const response = await dispatch(loginUser(body));
 
-    // console.log(response);
-    // console.log(user);
-    // console.log(isAuth);
-    // console.log(store.getState());
-
     if (response.LoginSuccess) {
       props.history.push("/");
     } else {
       alert("Error Occured");
     }
 
-    // 로그인 이후에 reducer에 존재하는 user에 user_id를 할당해주면 될 것 같음. 그리고 나머지 요소들에서 로그인 여부에 따른 처리를 해주면 될 것 같음.
-    // NavBar 같은 곳에서
+    // NavBar 같은 곳에서 로그인 이후에 reducer에 존재하는 user에 user_id를 할당해주면 될 것 같음. 그리고 나머지 요소들에서 로그인 여부에 따른 처리를 해주면 될 것 같음.
   };
 
   return (
@@ -149,10 +143,6 @@ const Login = (props) => {
           <Button>회원가입</Button>
         </a>
       </ButtonContainer>
-      {/* <SocialLoginBlock>
-        <AiFillFacebook className="fb-icon" />
-        <RiKakaoTalkFill className="kk-icon" />
-      </SocialLoginBlock> */}
     </LoginForm>
   );
 };

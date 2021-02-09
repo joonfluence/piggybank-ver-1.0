@@ -5,7 +5,6 @@ const CreateListBlock = styled.div``;
 
 const InputContentBlock = styled.div`
   background-color: #ffe0f9;
-  width: 80%;
   margin: 3rem;
 `;
 

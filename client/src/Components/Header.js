@@ -23,7 +23,7 @@ const HeaderImage = styled.div`
 
 const ButtonBlock = styled.div`
   display: flex;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 `;
 

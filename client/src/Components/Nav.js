@@ -1,28 +1,18 @@
 import { Link, withRouter } from "react-router-dom";
 import { FaPiggyBank } from "react-icons/fa";
 import { BsPerson, BsFillPersonFill, BsPersonPlus } from "react-icons/bs";
-import { IoSearch } from "react-icons/io5";
 import { GrLogout, GrLogin } from "react-icons/gr";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { LogOutUser } from "../actions/user_actions";
 // import { COLORS } from "./GlobalStyles";
 
-const Header = styled.nav`
+const NavContainer = styled.nav`
   position: fixed;
   z-index: 1;
   height: 10vh;
-  width: 100%;
+  width: 80%;
   line-height: 30px;
-`;
-
-const LogoBlock = styled.ul`
-  display: flex;
-  svg {
-    font-size: 1.5rem;
-    /* color:  */
-  }
-  flex: 1;
 `;
 
 const NavBlock = styled.div`
@@ -30,12 +20,22 @@ const NavBlock = styled.div`
   display: flex;
 `;
 
+const LogoBlock = styled.ul`
+  display: flex;
+  margin-left: 1rem;
+  svg {
+    font-size: 1.5rem;
+    /* color:  */
+  }
+  flex: 1;
+`;
+
 const UserBlock = styled.div`
   display: flex;
 `;
 
 const List = styled.li`
-  margin-left: 0.5rem;
+  margin-right: 1.5rem;
 
   border-bottom: 3px solid
     ${(props) => (props.current ? "black" : "transparent")};
@@ -51,7 +51,7 @@ const SLink = styled(Link)`
 const Nav = ({ location: { pathname }, history, isAuth }) => {
   const dispatch = useDispatch();
   return (
-    <Header>
+    <NavContainer>
       <NavBlock>
         <LogoBlock>
           <List current={pathname === "/"}>
@@ -105,11 +105,8 @@ const Nav = ({ location: { pathname }, history, isAuth }) => {
             </>
           )}
         </UserBlock>
-        <List>
-          <IoSearch /> Search
-        </List>
       </NavBlock>
-    </Header>
+    </NavContainer>
   );
 };
 

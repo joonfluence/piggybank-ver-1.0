@@ -3,7 +3,6 @@ import styled from "styled-components";
 // import PropTypes from "prop-types";
 import Header from "../../Header";
 import CreateTemplate from "../../CreateTemplate";
-import UserInfo from "../../UserInfo";
 
 const HomePresenterBlock = styled.div`
   display: flex;
@@ -18,7 +17,6 @@ const HomePresenter = () => {
       <HomePresenterBlock>
         <CreateTemplate></CreateTemplate>
       </HomePresenterBlock>
-      <UserInfo></UserInfo>
     </>
   );
 };
