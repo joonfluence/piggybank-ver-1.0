@@ -86,6 +86,29 @@ export const getBudgetMonth = async (req, res) => {
       },
     });
 
+    let sum = 0;
+    let temp = 0;
+    let budgetSum = 0;
+    let categorySum = 0;
+    // 나중에는 사용자의 input value를 바탕으로 값을 받아줄 것임.
+    let category = "의복비";
+
+    for (let i = 0; i < monthlyBudget.length; i++) {
+      if (monthlyBudget[i].monthlyBudget) {
+        budgetSum = monthlyBudget[i].monthlyBudget;
+      }
+
+      temp = monthlyBudget[i].budget;
+      sum += temp;
+
+      console.log(monthlyBudget[i]);
+
+      if (monthlyBudget[i].title === category) {
+        temp = monthlyBudget[i].budget;
+        categorySum += temp;
+      }
+    }
+
     return res.status(200).json(monthlyBudget);
   } catch (err) {
     return res.status(500).json(err);

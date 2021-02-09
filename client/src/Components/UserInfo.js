@@ -5,7 +5,7 @@ const UserInfoBlock = styled.article`
   position: absolute;
   width: 300px;
   height: 200px;
-  top: 20%;
+  top: 30%;
   right: 0;
 `;
 

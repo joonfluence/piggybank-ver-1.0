@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Home from "../Components/pages/Home/";
 import Join from "../Components/pages/Join/Join";
 import Login from "../Components/pages/Login/Login";
@@ -13,15 +14,20 @@ import PayingMonth from "../Components/pages/Paying/Month/";
 import SavingMonth from "../Components/pages/Saving/Month/";
 import BudgetMonth from "../Components/pages/Budget/Month/";
 import SavingGoal from "../Components/pages/SavingGoal/";
-// import Category from "../Components/pages/Paying/Detail/";
 import Nav from "./Nav";
 import routes from "../routes.js";
 import auth from "../hoc/auth";
 
 const Router = () => {
+  const { user, isAuth } = useSelector(({ userReducer }) => ({
+    user: userReducer.user,
+    isAuth: userReducer.isAuth,
+  }));
+
   return (
     <BrowserRouter>
-      <Nav />
+      {/* 로그인/로그아웃 상태를 구분짓기 위한 props를 전달해준다. */}
+      <Nav isAuth={isAuth} />
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/join" exact component={Join} />

@@ -20,15 +20,13 @@ export const postPayingInfo = async (req, res) => {
 
 export const getPayingInfo = async (req, res) => {
   const { _id } = req.user;
-  // console.log(req.user);
+  console.log(req.user);
   try {
     const userInfo = await Paying.find({ user: [_id] });
     return res.status(200).json(userInfo);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ sucess: false, error });
   }
-  // console.log(newUser);
 };
 
 export const editPayingInfo = async (req, res) => {
@@ -95,14 +93,15 @@ export const getPayingMonth = async (req, res) => {
 
     // monthInfo < 데이터 < monthInfo + 1와 같은 방식으로 월별 데이터를 가져올 수 있을 것.
 
-    const monthlyPaying = await Paying.find({
+    const categorySaving = await Paying.find({
+      title: "과자",
       date: {
         $gt: new Date(`${year}-${month}-01T00:00:00.000Z`),
         $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
       },
-    });
+    }).populate("category", "title budget");
 
-    return res.status(200).json(monthlyPaying);
+    return res.status(200).json(categorySaving);
   } catch (error) {
     return res.status(500).json(error);
   }
