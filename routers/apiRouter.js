@@ -34,6 +34,7 @@ import {
   editBudgetInfo,
   getBudgetDetail,
   getBudgetMonth,
+  deleteBudgetInfo,
 } from "../controllers/BudgetController.js";
 import {
   getGoalInfo,
@@ -41,6 +42,7 @@ import {
   editGoalInfo,
   getGoalDetail,
   getGoalMonth,
+  deleteGoalInfo,
 } from "../controllers/SavingGoalController.js";
 import routes from "../routes.js";
 
@@ -84,15 +86,16 @@ apiRouter.get(routes.categorySaving(), Auth, getSavingCategory);
 apiRouter.get(routes.budget, Auth, getBudgetInfo);
 apiRouter.post(routes.budget, Auth, postBudgetInfo);
 apiRouter.put(routes.budgets(), Auth, editBudgetInfo);
+apiRouter.get(routes.budgets(), Auth, deleteBudgetInfo);
 apiRouter.get(routes.budgets(), Auth, getBudgetDetail);
 apiRouter.get(routes.budgetMonth(), Auth, getBudgetMonth);
 
 // 9) 저축 목표 정보
-
 apiRouter.get(routes.savingGoal, Auth, getGoalInfo);
 apiRouter.post(routes.savingGoal, Auth, postGoalInfo);
 apiRouter.put(routes.savingGoals(), Auth, editGoalInfo);
 apiRouter.get(routes.savingGoals(), Auth, getGoalDetail);
+apiRouter.get(routes.savingGoals(), Auth, deleteGoalInfo);
 apiRouter.get(routes.savingGoalMonth(), Auth, getGoalMonth);
 
 export default apiRouter;

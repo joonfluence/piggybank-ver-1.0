@@ -1,3 +1,4 @@
+import BudgetPresenter from "../client/src/Components/pages/Budget/BudgetPresenter.js";
 import SavingGoal from "../models/SavingGoal.js";
 
 export const postGoalInfo = async (req, res) => {
@@ -50,6 +51,19 @@ export const editGoalInfo = async (req, res) => {
       }
     );
     return res.status(200).json(newSavingGoalInfo);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ sucess: false, error });
+  }
+};
+
+export const deleteGoalInfo = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    await SavingGoal.findByIdAndRemove({ _id: id });
+    return res.status(204).json();
   } catch (error) {
     console.log(error);
     return res.status(500).json({ sucess: false, error });

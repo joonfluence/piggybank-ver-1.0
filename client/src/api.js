@@ -30,29 +30,30 @@ export const savingApi = {
 
 // Budget과 savingGoal을 추가하여야 함.
 
-// 추후 구현 예정
+export const budgetApi = {
+  getBudgetInfo: () => api.get(routes.budget),
+  postBudgetInfo: (data) => api.post(routes.budget, data),
+  editBudgetInfo: (id) => api.put(routes.budgets(), id),
+  getBudgetMonth: ([year, month]) =>
+    api.get(routes.budgetMonth(), [year, month]),
+  // getBudgetDetail: (id) => api.get(routes.budgets(), id),
+};
 
-export const categoryApi = {
-  getGroceryInfo: () => api.get(routes.categoryGrocery),
-  getEatOutInfo: () => api.get(routes.categoryEatout),
-  getFashionInfo: () => api.get(routes.categoryFashion),
-  getLiquorInfo: () => api.get(routes.categoryLiqour),
-  getTransporInfo: () => api.get(routes.categoryTranportation),
-  getEducationInfo: () => api.get(routes.categoryEducation),
-  getRentInfo: () => api.get(routes.categoryRent),
-  getDonationInfo: () => api.get(routes.categoryDonation),
-  getDepositInfo: () => api.get(routes.categoryDeposit),
-  getSavingsInfo: () => api.get(routes.categorySaving),
-  getStockInfo: () => api.get(routes.categoryStock),
-  getLoanInfo: () => api.get(routes.categoryLoan),
-  getRealestateInfo: () => api.get(routes.categoryRealestate),
+export const savingGoalApi = {
+  getGoalInfo: () => api.get(routes.savingGoal),
+  postGoalInfo: (data) => api.post(routes.savingGoal, data),
+  editGoalInfo: (id) => api.put(routes.savingGoals(), id),
+  getGoalMonth: ([year, month]) =>
+    api.get(routes.savingGoalMonth(), [year, month]),
+  // getGoalDetail: (id) => api.get(routes.savingGoals(), id),
 };
 
 // 추후 구현 예정
-
-export const myApi = {
-  getUserInfo: (id) => api.get(routes.mypage(id)),
-  editUserInfo: (id) => api.post(routes.editMypage(id)),
-};
-
-export default api;
+// export const categoryApi = {
+//   getCategoryInfo: () => api.get(routes.category()),
+// };
+// export const myApi = {
+//   getUserInfo: (id) => api.get(routes.mypage(id)),
+//   editUserInfo: (id) => api.post(routes.editMypage(id)),
+// };
+// export default api;
