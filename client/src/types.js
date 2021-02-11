@@ -5,21 +5,25 @@ export const LOGOUT_USER = "logout_user";
 export const AUTH_USER = "auth_user";
 
 // 지출
-export const CREATE_PAYING = "create_Paying";
-export const UPDATE_PAYING = "update_Paying";
-export const DELETE_PAYING = "delete_Paying";
+export const CREATE_PAYING = "create_paying";
+export const READ_PAYING = "read_paying";
+export const UPDATE_PAYING = "update_paying";
+export const DELETE_PAYING = "delete_paying";
 
 // 저축
-export const CREATE_SAVING = "create_Saving";
-export const UPDATE_SAVING = "update_Saving";
-export const DELETE_SAVING = "delete_Saving";
+export const CREATE_SAVING = "create_saving";
+export const READ_SAVING = "read_saving";
+export const UPDATE_SAVING = "update_saving";
+export const DELETE_SAVING = "delete_saving";
 
 // 지출 목표
-export const CREATE_BUDGET = "create_Budget";
-export const UPDATE_BUDGET = "update_Budget";
-export const DELETE_BUDGET = "delete_Budget";
+export const CREATE_BUDGET = "create_budget";
+export const READ_BUDGET = "read_budget";
+export const UPDATE_BUDGET = "update_budget";
+export const DELETE_BUDGET = "delete_budget";
 
 // 저축 목표
-export const CREATE_SAVING_GOAL = "create_SavingGoal";
-export const UPDATE_SAVING_GOAL = "update_SavingGoal";
-export const DELETE_SAVING_GOAL = "delete_SavingGoal";
+export const CREATE_SAVING_GOAL = "create_savingGoal";
+export const READ_SAVING_GOAL = "read_savingGoal";
+export const UPDATE_SAVING_GOAL = "update_savingGoal";
+export const DELETE_SAVING_GOAL = "delete_savingGoal";

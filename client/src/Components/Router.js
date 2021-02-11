@@ -15,6 +15,8 @@ import Nav from "./Nav";
 import routes from "../routes.js";
 import auth from "../hoc/auth";
 
+// 나중에 user 이름을 띄워서, 안녕하세요 준호님과 같은 모습을 보여줄 수도 있을 것임.
+
 const Router = () => {
   const { user, isAuth } = useSelector(({ userReducer }) => ({
     user: userReducer.user,

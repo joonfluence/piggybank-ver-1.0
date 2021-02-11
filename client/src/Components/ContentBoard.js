@@ -50,12 +50,12 @@ const IconContainer = styled.div`
   }
 `;
 
-const CreateBoard = ({ Date, InfoName }) => {
+const CreateBoard = ({ date, title, price, memo, category, InfoName }) => {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [memo, setMemo] = useState("");
-  const [date, setDate] = useState("");
+  const [inputPrice, setInputPrice] = useState("");
+  const [inputMemo, setInputMemo] = useState("");
+  const [createdDate, setcreatedDate] = useState("");
 
   const onButtonClick = () => setOpen(!open);
 
@@ -64,15 +64,15 @@ const CreateBoard = ({ Date, InfoName }) => {
   };
 
   const onChangePrice = (e) => {
-    setPrice(e.target.value);
+    setInputPrice(e.target.value);
   };
 
   const onChangeMemo = (e) => {
-    setMemo(e.target.value);
+    setInputMemo(e.target.value);
   };
 
   const onChangeDate = (e) => {
-    setDate(e.target.value);
+    setcreatedDate(e.target.value);
   };
 
   const onSubmit = (e) => {
@@ -87,7 +87,7 @@ const CreateBoard = ({ Date, InfoName }) => {
       {open && (
         <CreateBoardBlock>
           <FormTitle>
-            2021년 {Date}월 {InfoName}정보
+            2021년 {date}월 {InfoName}정보
           </FormTitle>
           <FormFormat onSubmit={onSubmit}>
             <FormInputContainer>
@@ -101,21 +101,21 @@ const CreateBoard = ({ Date, InfoName }) => {
               <FormInput
                 onChange={onChangePrice}
                 placeholder={InfoName + "액"}
-                value={price}
+                value={inputPrice}
               ></FormInput>
             </FormInputContainer>
             <FormInputContainer>
               <FormInput
                 onChange={onChangeMemo}
                 placeholder="메모"
-                value={memo}
+                value={inputMemo}
               ></FormInput>
             </FormInputContainer>
             <FormInputContainer>
               <FormInput
                 onChange={onChangeDate}
                 type="date"
-                value={date}
+                value={createdDate}
               ></FormInput>
             </FormInputContainer>
             <FormInputContainer>

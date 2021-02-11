@@ -1,13 +1,30 @@
-import { CREATE_PAYING, UPDATE_PAYING, DELETE_PAYING } from "../types";
+import {
+  CREATE_PAYING,
+  READ_PAYING,
+  UPDATE_PAYING,
+  DELETE_PAYING,
+} from "../types";
 
-const paying_reducer = (state = {}, action) => {
+// 관리할 States : 날짜, 제목, 메모, 가격, 카테고리
+
+const initialState = {
+  date: "",
+  title: "",
+  price: "",
+  memo: "",
+  category: "",
+};
+
+const paying_reducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_PAYING:
-      return;
+      return { ...state, CreateSuccess: action.payload };
+    case READ_PAYING:
+      return { ...state, ReadSuccess: action.payload };
     case UPDATE_PAYING:
-      return;
+      return { ...state, UpdateSuccess: action.payload };
     case DELETE_PAYING:
-      return;
+      return { ...state, DeleteSuccess: action.payload };
     default:
       return state;
   }

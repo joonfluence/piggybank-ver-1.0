@@ -16,9 +16,9 @@ function userReducer(state = initialState, action) {
         LoginSuccess: action.LoginSuccess,
       };
     case REGISTER_USER:
-      return { ...state, JoinSucess: action.payload };
+      return { ...state, JoinSuccess: action.payload };
     case AUTH_USER:
-      return { ...state, AuthSucess: action.payload };
+      return { ...state, AuthSuccess: action.payload };
     // 로그아웃 테스트 해볼 것.
     case LOGOUT_USER:
       return {

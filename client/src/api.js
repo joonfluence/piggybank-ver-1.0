@@ -12,26 +12,25 @@ export const userApi = {
   getAuth: (data) => api.get(routes.auth, data),
 };
 
-export const myApi = {
-  getUserInfo: (id) => api.get(routes.mypage(id)),
-  editUserInfo: (id) => api.post(routes.editMypage(id)),
-};
-
 export const payingApi = {
   getPayingInfo: () => api.get(routes.paying),
-  getPayingDetail: (id) => api.get(routes.payings(id)),
-  postPayingInfo: (id) => api.post(routes.postPaying(id)),
-  editPayingInfo: (id) => api.post(routes.editPaying(id)),
-  deletePayingInfo: (id) => api.get(routes.deletePaying(id)),
+  postPayingInfo: (data) => api.post(routes.postPaying(), data),
+  editPayingInfo: (id) => api.post(routes.editPaying(), id),
+  deletePayingInfo: (id) => api.get(routes.deletePaying(), id),
+  // getPayingDetail: (id) => api.get(routes.payings(), id),
 };
 
 export const savingApi = {
   getSavingInfo: () => api.get(routes.saving),
-  getSavingDetail: (id) => api.get(routes.savings(id)),
-  postSavingInfo: (id) => api.post(routes.postSaving(id)),
+  postSavingInfo: (data) => api.post(routes.postSaving(data)),
   editSavingInfo: (id) => api.post(routes.editSaving(id)),
   deleteSavingInfo: (id) => api.get(routes.deleteSaving(id)),
+  // getSavingDetail: (id) => api.get(routes.savings(id)),
 };
+
+// Budget과 savingGoal을 추가하여야 함.
+
+// 추후 구현 예정
 
 export const categoryApi = {
   getGroceryInfo: () => api.get(routes.categoryGrocery),
@@ -47,6 +46,13 @@ export const categoryApi = {
   getStockInfo: () => api.get(routes.categoryStock),
   getLoanInfo: () => api.get(routes.categoryLoan),
   getRealestateInfo: () => api.get(routes.categoryRealestate),
+};
+
+// 추후 구현 예정
+
+export const myApi = {
+  getUserInfo: (id) => api.get(routes.mypage(id)),
+  editUserInfo: (id) => api.post(routes.editMypage(id)),
 };
 
 export default api;

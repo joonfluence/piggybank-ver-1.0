@@ -8,15 +8,31 @@ const PayingPresenterBlock = styled.div`
   background-color: white;
 `;
 
-const PayingPresenter = () => {
+const PayingPresenter = ({ date, title, price, memo, category, InfoName }) => {
   return (
     <>
       <PayingPresenterBlock>
         <ContentHeader></ContentHeader>
-        <ContentBoard Date="2" InfoName="지출"></ContentBoard>
+        <ContentBoard
+          date={""}
+          title={""}
+          price={""}
+          memo={""}
+          category={""}
+          InfoName={InfoName}
+        ></ContentBoard>
       </PayingPresenterBlock>
     </>
   );
+};
+
+PayingPresenter.propTypes = {
+  date: PropTypes.instanceOf(Date),
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number,
+  memo: PropTypes.string,
+  category: PropTypes.string.isRequired,
+  InfoName: PropTypes.string,
 };
 
 export default PayingPresenter;
