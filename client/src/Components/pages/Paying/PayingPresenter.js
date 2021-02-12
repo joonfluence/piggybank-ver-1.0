@@ -1,26 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import ContentBoard from "../../ContentBoard";
-import ContentHeader from "../../ContentHeader";
 
 const PayingPresenterBlock = styled.div`
   background-color: white;
 `;
 
-const PayingPresenter = ({ date, title, price, memo, category, InfoName }) => {
+const PayingPresenter = ({
+  date,
+  title,
+  price,
+  memo,
+  category,
+  InfoName,
+  children,
+}) => {
   return (
     <>
       <PayingPresenterBlock>
-        <ContentHeader></ContentHeader>
-        <ContentBoard
-          date={""}
-          title={""}
-          price={""}
-          memo={""}
-          category={""}
-          InfoName={InfoName}
-        ></ContentBoard>
+        {children}
+        {date} {title} {price} {memo} {category} {InfoName}
       </PayingPresenterBlock>
     </>
   );

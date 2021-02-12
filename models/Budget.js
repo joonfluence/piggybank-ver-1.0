@@ -6,8 +6,8 @@ const Schema = mongoose.Schema;
 const BudgetSchema = new Schema({
   createdAt: { type: Date, default: getCurrentDate() },
   date: { type: Date, default: getCurrentDate() },
-  title: { type: String, required: true },
-  budget: { type: Number, required: true },
+  title: { type: String },
+  budget: { type: Number },
   monthlyBudget: { type: Number },
   remained: { type: Number },
   user: [{ type: Schema.Types.ObjectId, ref: "User" }],

@@ -11,7 +11,6 @@ const USER_AUTH = "/users/auth";
 // My space
 
 const MYPAGE = "/mypage/:id";
-const MYPAGE_EDIT = "/mypage/:id/edit";
 
 // Payings
 
@@ -33,7 +32,11 @@ const BUDGET = "/budgets";
 const BUDGET_DETAIL = "/budgets/:id";
 const BUDGET_MONTH = "/budgets/:year/:month";
 
-const SAVING_GOAL = "/savingGoal";
+// 저축 목표 카테고리
+
+const SAVING_GOAL = "/savingsGoal";
+const SAVING_GOAL_DETAIL = "/savingsGoal/:id";
+const SAVING_GOAL_MONTH = "/savingsGoal/:year/:month";
 
 const routes = {
   home: HOME,
@@ -79,13 +82,6 @@ const routes = {
       return MYPAGE;
     }
   },
-  editMypage: (id) => {
-    if (id) {
-      return `/mypage/${id}/edit`;
-    } else {
-      return MYPAGE_EDIT;
-    }
-  },
   categoryPaying: (category) => {
     if (category) {
       return `/payings`;
@@ -116,5 +112,19 @@ const routes = {
     }
   },
   savingGoal: SAVING_GOAL,
+  savingGoals: (id) => {
+    if (id) {
+      return `/savingsGoal/:id`;
+    } else {
+      return SAVING_GOAL_DETAIL;
+    }
+  },
+  savingGoalMonth: (year, month) => {
+    if (year && month) {
+      return `/savingsGoal/${year}/${month}`;
+    } else {
+      return SAVING_GOAL_MONTH;
+    }
+  },
 };
 export default routes;

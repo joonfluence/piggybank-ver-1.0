@@ -6,32 +6,24 @@ const BudgetPresenterBlock = styled.div`
   background-color: white;
 `;
 
-const BudgetPresenter = ({
-  date,
-  title,
-  price,
-  priceSum,
-  pricePercentage,
-  memo,
-  category,
-  children,
-}) => {
+const BudgetPresenter = ({ children, date, title, price, memo }) => {
   return (
-    <>
-      <BudgetPresenterBlock>{children}</BudgetPresenterBlock>
-    </>
+    <BudgetPresenterBlock>
+      {children}
+      {date}
+      {title}
+      {price}
+      {memo}
+    </BudgetPresenterBlock>
   );
 };
 
-BudgetPresenter.propTypes = {
-  date: PropTypes.instanceOf(Date),
-  title: PropTypes.string.isRequired,
-  price: PropTypes.number,
-  priceSum: PropTypes.number,
-  pricePercentage: PropTypes.number,
-  memo: PropTypes.string,
-  category: PropTypes.string.isRequired,
-  InfoName: PropTypes.string,
-};
+// date, title, price, memo
+// BudgetPresenter.propTypes = {
+//   date: PropTypes.instanceOf(Date),
+//   title: PropTypes.string.isRequired,
+//   price: PropTypes.number,
+//   memo: PropTypes.string,
+// };
 
 export default BudgetPresenter;

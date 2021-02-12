@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Header from "../../Header";
 import SavingPresenter from "./SavingPresenter";
+import ContentBoard from "../../ContentBoard";
+import ContentHeader from "../../ContentHeader";
 
 const SavingContainerBlock = styled.div``;
 
@@ -16,7 +18,10 @@ const SavingContainer = () => {
   return (
     <SavingContainerBlock>
       <Header HeaderInfo="저축"></Header>
-      <SavingPresenter></SavingPresenter>
+      <SavingPresenter>
+        <ContentHeader></ContentHeader>
+        <ContentBoard></ContentBoard>
+      </SavingPresenter>
     </SavingContainerBlock>
   );
 };

@@ -87,8 +87,8 @@ apiRouter.get(routes.budget, Auth, getBudgetInfo);
 apiRouter.post(routes.budget, Auth, postBudgetInfo);
 apiRouter.put(routes.budgets(), Auth, editBudgetInfo);
 apiRouter.get(routes.budgets(), Auth, deleteBudgetInfo);
-apiRouter.get(routes.budgets(), Auth, getBudgetDetail);
 apiRouter.get(routes.budgetMonth(), Auth, getBudgetMonth);
+apiRouter.get(routes.budgets(), Auth, getBudgetDetail);
 
 // 9) 저축 목표 정보
 apiRouter.get(routes.savingGoal, Auth, getGoalInfo);

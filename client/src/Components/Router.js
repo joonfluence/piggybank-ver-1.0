@@ -7,9 +7,6 @@ import Login from "../Components/pages/Login/Login";
 import Saving from "../Components/pages/Saving/";
 import Paying from "../Components/pages/Paying/";
 import Budget from "../Components/pages/Budget/";
-import PayingMonth from "../Components/pages/Paying/Month/";
-import SavingMonth from "../Components/pages/Saving/Month/";
-import BudgetMonth from "../Components/pages/Budget/Month/";
 import SavingGoal from "../Components/pages/SavingGoal/";
 import Nav from "./Nav";
 import routes from "../routes.js";
@@ -34,21 +31,6 @@ const Router = () => {
         <Route path={routes.saving} exact component={Saving} />
         <Route path={routes.budget} exact component={Budget} />
         <Route path={routes.savingGoal} exact component={SavingGoal} />
-        <Route
-          path={routes.budgetMonth()}
-          exact
-          component={auth(BudgetMonth)}
-        />
-        <Route
-          path={routes.payingMonth()}
-          exact
-          component={auth(PayingMonth)}
-        />
-        <Route
-          path={routes.savingMonth()}
-          exact
-          component={auth(SavingMonth)}
-        />
         <Redirect from="*" to="/" />
       </Switch>
     </BrowserRouter>

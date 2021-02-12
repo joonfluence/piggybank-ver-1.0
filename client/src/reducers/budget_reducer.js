@@ -9,14 +9,12 @@ import {
 // 관리할 States : 날짜, 제목, 액수, 카테고리, 퍼센테이지, 전체금액, 전체금액에서 카테고리의 금액이 차지하는 비중
 
 const initialState = {
-  date: "",
-  title: "",
-  price: "",
-  priceSum: "",
-  pricePercentage: "",
-  categoryPercentage: "",
-  memo: "",
-  category: "",
+  date: new Date("2021", "02", "13"),
+  title: "식비",
+  price: 20000,
+  memo: "아무 메모",
+  budgetSum: 0,
+  categorySum: 0,
 };
 
 // date, title, budget, monthlyBudget, budgetSum, pricePercentage, categoryPercentage, category
@@ -32,7 +30,16 @@ const budgetReducer = (state = initialState, action) => {
     case DELETE_BUDGET:
       return { ...state, DeleteSuccess: action.payload };
     case MONTH_BUDGET:
-      return { ...state, MonthInfoSuccess: action.payload };
+      return {
+        ...state,
+        monthInfoSuccess: action.payload,
+        budgetSum: action.payload.budgetSum,
+        categorySum: action.payload.categorySum,
+        date: action.payload.date,
+        title: action.payload.title,
+        price: action.payload.price,
+        memo: action.payload.memo,
+      };
     default:
       return state;
   }

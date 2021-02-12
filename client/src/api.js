@@ -17,6 +17,8 @@ export const payingApi = {
   postPayingInfo: (data) => api.post(routes.postPaying(), data),
   editPayingInfo: (id) => api.post(routes.editPaying(), id),
   deletePayingInfo: (id) => api.get(routes.deletePaying(), id),
+  getPayingMonth: ([year, month]) =>
+    api.get(routes.payingMonth(), [year, month]),
   // getPayingDetail: (id) => api.get(routes.payings(), id),
 };
 
@@ -34,6 +36,7 @@ export const budgetApi = {
   getBudgetInfo: () => api.get(routes.budget),
   postBudgetInfo: (data) => api.post(routes.budget, data),
   editBudgetInfo: (id) => api.put(routes.budgets(), id),
+  deleteBudgetInfo: (id) => api.get(routes.budgets(), id),
   getBudgetMonth: ([year, month]) =>
     api.get(routes.budgetMonth(), [year, month]),
   // getBudgetDetail: (id) => api.get(routes.budgets(), id),
@@ -47,13 +50,3 @@ export const savingGoalApi = {
     api.get(routes.savingGoalMonth(), [year, month]),
   // getGoalDetail: (id) => api.get(routes.savingGoals(), id),
 };
-
-// 추후 구현 예정
-// export const categoryApi = {
-//   getCategoryInfo: () => api.get(routes.category()),
-// };
-// export const myApi = {
-//   getUserInfo: (id) => api.get(routes.mypage(id)),
-//   editUserInfo: (id) => api.post(routes.editMypage(id)),
-// };
-// export default api;

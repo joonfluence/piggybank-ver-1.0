@@ -6,19 +6,16 @@ const SavingGoalPresenterBlock = styled.div`
   background-color: white;
 `;
 
-const SavingGoalPresenter = ({
-  date,
-  title,
-  price,
-  priceSum,
-  pricePercentage,
-  memo,
-  category,
-  children,
-}) => {
+const SavingGoalPresenter = ({ date, title, price, memo, children }) => {
   return (
     <>
-      <SavingGoalPresenterBlock>{children}</SavingGoalPresenterBlock>
+      <SavingGoalPresenterBlock>
+        {children}
+        {date}
+        {title}
+        {price}
+        {memo}
+      </SavingGoalPresenterBlock>
     </>
   );
 };

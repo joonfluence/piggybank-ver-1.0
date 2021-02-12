@@ -1,7 +1,7 @@
 import Budget from "../models/Budget.js";
 
 export const postBudgetInfo = async (req, res) => {
-  const { category, title, budget } = req.body;
+  const { title, budget, monthlyBudget } = req.body;
   const { _id } = req.user;
   try {
     // monthlyBudget은 삭제하고 항목별 budget의 합으로 값을 저장해주자.
@@ -9,7 +9,7 @@ export const postBudgetInfo = async (req, res) => {
       user: [_id],
       title,
       budget,
-      category,
+      monthlyBudget,
     });
     return res.status(201).json(newBudget);
   } catch (error) {
@@ -79,9 +79,7 @@ export const getBudgetDetail = async (req, res) => {
 };
 
 export const getBudgetMonth = async (req, res) => {
-  const {
-    params: { year, month },
-  } = req;
+  const { year, month } = req.params;
 
   try {
     const nextMonthInt = Number(month) + 1;
@@ -92,6 +90,13 @@ export const getBudgetMonth = async (req, res) => {
 
     // monthInfo < 데이터 < monthInfo + 1와 같은 방식으로 월별 데이터를 가져올 수 있을 것.
 
+    let temp = 0;
+    let budget = 0;
+    let budgetSum = 0;
+    let categorySum = 0;
+    // 나중에는 사용자의 input value를 바탕으로 값을 받아줄 것임.
+    let title = "의복비";
+
     const monthlyBudget = await Budget.find({
       date: {
         $gt: new Date(`${year}-${month}-01T00:00:00.000Z`),
@@ -99,31 +104,34 @@ export const getBudgetMonth = async (req, res) => {
       },
     });
 
-    let sum = 0;
-    let temp = 0;
-    let budgetSum = 0;
-    let categorySum = 0;
-    // 나중에는 사용자의 input value를 바탕으로 값을 받아줄 것임.
-    let category = "의복비";
+    const categoryBudget = await Budget.find({
+      title: `${title}`,
+      date: {
+        $gt: new Date(`${year}-${month}-01T00:00:00.000Z`),
+        $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
+      },
+    });
+
+    console.log(monthlyBudget.length);
+    console.log(categoryBudget.length);
 
     for (let i = 0; i < monthlyBudget.length; i++) {
       if (monthlyBudget[i].monthlyBudget) {
         budgetSum = monthlyBudget[i].monthlyBudget;
       }
 
-      temp = monthlyBudget[i].budget;
-      sum += temp;
-
-      console.log(monthlyBudget[i]);
-
-      if (monthlyBudget[i].title === category) {
+      if (categoryBudget.length == 1) {
+        budget = categoryBudget[0].budget;
+      } else {
         temp = monthlyBudget[i].budget;
         categorySum += temp;
       }
     }
 
-    return res.status(200).json(monthlyBudget);
+    return res
+      .status(200)
+      .json({ categoryBudget, categorySum, budgetSum, budget });
   } catch (err) {
-    return res.status(500).json(err);
+    return res.status(500).json({ err });
   }
 };

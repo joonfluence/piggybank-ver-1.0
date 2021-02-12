@@ -23,9 +23,9 @@ export const getPayingInfo = async (req, res) => {
   console.log(req.user);
   try {
     const userInfo = await Paying.find({ user: [_id] });
-    return res.status(200).json(userInfo);
+    return res.status(200).json({ success: true, userInfo });
   } catch (error) {
-    return res.status(500).json({ sucess: false, error });
+    return res.status(500).json({ success: false, error });
   }
 };
 
@@ -93,15 +93,43 @@ export const getPayingMonth = async (req, res) => {
 
     // monthInfo < 데이터 < monthInfo + 1와 같은 방식으로 월별 데이터를 가져올 수 있을 것.
 
-    const categorySaving = await Paying.find({
-      title: "과자",
+    const monthlyPaying = await Paying.find({
+      date: {
+        $gt: new Date(`${year}-${month}-01T00:00:00.000Z`),
+        $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
+      },
+    });
+
+    let temp = 0;
+    let payingSum = 0;
+    let categorySum = 0;
+    // 나중에는 사용자의 input value를 바탕으로 값을 받아줄 것임.
+    let category = "과자";
+
+    const categoryPaying = await Paying.find({
+      title: `${category}`,
       date: {
         $gt: new Date(`${year}-${month}-01T00:00:00.000Z`),
         $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
       },
     }).populate("category", "title budget");
 
-    return res.status(200).json(categorySaving);
+    // 카테고리의 합을 나타내야 할 것임.
+
+    for (let i = 0; i < monthlyPaying.length; i++) {
+      temp = monthlyPaying[i].price;
+      payingSum += temp;
+    }
+
+    for (let i = 0; i < categoryPaying.length; i++) {
+      temp = categoryPaying[i].price;
+      categorySum += temp;
+    }
+
+    console.log("payingSum :" + payingSum);
+    console.log("categorySum :" + categorySum);
+
+    return res.status(200).json({ monthSucess: true, payingSum, categorySum });
   } catch (error) {
     return res.status(500).json(error);
   }

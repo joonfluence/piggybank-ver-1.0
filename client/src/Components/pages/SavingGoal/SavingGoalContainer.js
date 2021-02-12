@@ -5,32 +5,22 @@ import SavingGoalPresenter from "./SavingGoalPresenter";
 import ContentHeader from "../../ContentHeader";
 import FormBoard from "../../FormBoard";
 import ContentLists from "../../ContentLists";
+import { useSelector } from "react-redux";
 
 const SavingGoalContainerBlock = styled.div``;
 
 const SavingGoalContainer = () => {
-  // const { date, title, price, priceSum, pricePercentage, categoryPercentage, memo, category } = useSelector(({ savingGoalReducer }) => ({
-  //   date: savingGoalReducer.payload.date,
-  //   title: savingGoalReducer.payload.title,
-  //   price: savingGoalReducer.payload.price,
-  //   priceSum: savingGoalReducer.payload.priceSum,
-  //   pricePercentage: savingGoalReducer.payload.pricePercentage,
-  //   memo: savingGoalReducer.payload.memo,
-  //   category: savingGoalReducer.payload.category,
-  // }));
+  const { date, title, price, memo } = useSelector(({ savingGoalReducer }) => ({
+    date: savingGoalReducer.payload.date,
+    title: savingGoalReducer.payload.title,
+    price: savingGoalReducer.payload.price,
+    memo: savingGoalReducer.payload.memo,
+  }));
 
   return (
     <SavingGoalContainerBlock>
       <Header HeaderInfo="자산"></Header>
-      <SavingGoalPresenter
-        date={""}
-        title={""}
-        price={""}
-        priceSum={""}
-        pricePercentage={""}
-        memo={""}
-        category={""}
-      >
+      <SavingGoalPresenter date={date} title={title} price={price} memo={memo}>
         <ContentHeader />
         <FormBoard />
         <ContentLists />

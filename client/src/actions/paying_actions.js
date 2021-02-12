@@ -4,6 +4,7 @@ import {
   READ_PAYING,
   UPDATE_PAYING,
   DELETE_PAYING,
+  MONTH_PAYING,
 } from "../types";
 
 export const createPaying = async (dataBody) => {
@@ -38,6 +39,15 @@ export const deletePaying = async (id) => {
 
   return {
     type: DELETE_PAYING,
+    payload: request,
+  };
+};
+
+export const monthPaying = async ([year, month]) => {
+  const request = await payingApi.getPayingMonth([year, month]);
+
+  return {
+    type: MONTH_PAYING,
     payload: request,
   };
 };
