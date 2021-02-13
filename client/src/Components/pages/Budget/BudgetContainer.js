@@ -1,9 +1,7 @@
 import React from "react";
 import Header from "../../Header";
 import BudgetPresenter from "./BudgetPresenter";
-import ContentHeader from "../../ContentHeader";
 import FormBoard from "../../FormBoard";
-import ContentLists from "../../ContentLists";
 import { useSelector } from "react-redux";
 
 const BudgetContainer = () => {
@@ -27,9 +25,7 @@ const BudgetContainer = () => {
     <>
       <Header HeaderInfo="예산"></Header>
       <BudgetPresenter>
-        <ContentHeader budgetSum={budgetSum} />
         <FormBoard />
-        <ContentLists />
       </BudgetPresenter>
     </>
   );

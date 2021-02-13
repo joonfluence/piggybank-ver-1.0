@@ -10,6 +10,10 @@ import Budget from "../Components/pages/Budget/";
 import SavingGoal from "../Components/pages/SavingGoal/";
 import Nav from "./Nav";
 import routes from "../routes.js";
+import SavingGoalMonth from "./pages/SavingGoal/Month";
+import BudgetMonth from "./pages/Budget/Month";
+import SavingMonth from "./pages/Saving/Month";
+import PayingMonth from "./pages/Paying/Month";
 import auth from "../hoc/auth";
 
 // 나중에 user 이름을 띄워서, 안녕하세요 준호님과 같은 모습을 보여줄 수도 있을 것임.
@@ -31,6 +35,14 @@ const Router = () => {
         <Route path={routes.saving} exact component={Saving} />
         <Route path={routes.budget} exact component={Budget} />
         <Route path={routes.savingGoal} exact component={SavingGoal} />
+        <Route path={routes.payingMonth} exact component={PayingMonth} />
+        <Route path={routes.savingMonth} exact component={SavingMonth} />
+        <Route path={routes.budgetMonth} exact component={BudgetMonth} />
+        <Route
+          path={routes.savingGoalMonth}
+          exact
+          component={SavingGoalMonth}
+        />
         <Redirect from="*" to="/" />
       </Switch>
     </BrowserRouter>

@@ -2,9 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Header from "../../Header";
 import SavingGoalPresenter from "./SavingGoalPresenter";
-import ContentHeader from "../../ContentHeader";
 import FormBoard from "../../FormBoard";
-import ContentLists from "../../ContentLists";
 import { useSelector } from "react-redux";
 
 const SavingGoalContainerBlock = styled.div``;
@@ -21,9 +19,7 @@ const SavingGoalContainer = () => {
     <SavingGoalContainerBlock>
       <Header HeaderInfo="자산"></Header>
       <SavingGoalPresenter date={date} title={title} price={price} memo={memo}>
-        <ContentHeader />
         <FormBoard />
-        <ContentLists />
       </SavingGoalPresenter>
     </SavingGoalContainerBlock>
   );

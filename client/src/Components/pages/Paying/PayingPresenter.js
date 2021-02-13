@@ -6,19 +6,10 @@ const PayingPresenterBlock = styled.div`
   background-color: white;
 `;
 
-const PayingPresenter = ({
-  date,
-  title,
-  price,
-  memo,
-  category,
-  InfoName,
-  children,
-}) => {
+const PayingPresenter = ({ date, title, price, memo, category, InfoName }) => {
   return (
     <>
       <PayingPresenterBlock>
-        {children}
         {date} {title} {price} {memo} {category} {InfoName}
       </PayingPresenterBlock>
     </>

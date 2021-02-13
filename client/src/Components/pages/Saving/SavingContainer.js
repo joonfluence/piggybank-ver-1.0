@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Header from "../../Header";
 import SavingPresenter from "./SavingPresenter";
-import ContentBoard from "../../ContentBoard";
+import ContentBoard from "../../CreateBoard";
 import ContentHeader from "../../ContentHeader";
 
 const SavingContainerBlock = styled.div``;
