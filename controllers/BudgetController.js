@@ -18,6 +18,8 @@ export const postBudgetInfo = async (req, res) => {
   }
 };
 
+// 아래 요소를 바꿔주어야 할 것이다.
+
 export const getBudgetInfo = async (req, res) => {
   const { _id } = req.user;
   try {
@@ -134,9 +136,7 @@ export const getBudgetMonth = async (req, res) => {
       }
     }
 
-    return res
-      .status(200)
-      .json({ monthlyBudget, categoryBudget, categorySum, budgetSum });
+    return res.status(200).json({ budgetSum });
   } catch (err) {
     return res.status(500).json({ err });
   }

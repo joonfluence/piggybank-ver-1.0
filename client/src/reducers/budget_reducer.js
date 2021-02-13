@@ -33,12 +33,12 @@ const budgetReducer = (state = initialState, action) => {
       return {
         ...state,
         monthInfoSuccess: action.payload,
-        budgetSum: action.payload.budgetSum,
-        categorySum: action.payload.categorySum,
-        date: action.payload.categoryBudget.date,
-        title: action.payload.categoryBudget.title,
-        budget: action.payload.categoryBudget.budget,
-        memo: action.payload.categoryBudget.memo,
+        // budgetSum: action.payload.budgetSum,
+        // categorySum: action.payload.categorySum,
+        // date: action.payload.categoryBudget.date,
+        // title: action.payload.categoryBudget.title,
+        // budget: action.payload.categoryBudget.budget,
+        // memo: action.payload.categoryBudget.memo,
       };
     default:
       return state;

@@ -1,19 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { monthBudget } from "../../../actions/budget_actions.js"
 
 const BudgetPresenterBlock = styled.div`
   background-color: white;
 `;
 
 const BudgetPresenter = ({ children, date, title, price, memo }) => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(monthBudget(["2021", "02"]));
+  });
+
   return (
     <BudgetPresenterBlock>
-      {children}
+      {children}{/* 
       {date}
       {title}
       {price}
-      {memo}
+      {memo} */}
     </BudgetPresenterBlock>
   );
 };

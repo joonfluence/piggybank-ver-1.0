@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import PieTotalRatio from "./visuals/PieTotalRatio";
 import { useDispatch, useSelector } from "react-redux";
-import { monthBudget } from "../actions/budget_actions";
 
 const ContentHeaderBlock = styled.div``;
 const ContentTitle = styled.div`
@@ -35,10 +34,6 @@ const ImageCircle = styled.div`
 
 const ContentHeader = () => {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(monthBudget(["2021", "02"]));
-  });
 
   const { budgetSum } = useSelector(({ budgetReducer }) => ({
     budgetSum: budgetReducer.budgetSum,

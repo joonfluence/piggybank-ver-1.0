@@ -83,7 +83,7 @@ const SocialLoginBlock = styled.div`
   }
 `;
 
-const Login = (props) => {
+const Login = ({ history }) => {
   const dispatch = useDispatch();
   const [Id, setId] = useState("");
   const [Password, setPassword] = useState("");
@@ -107,7 +107,7 @@ const Login = (props) => {
     const response = await dispatch(loginUser(body));
 
     if (response.LoginSuccess) {
-      props.history.push("/");
+      history.push("/");
     } else {
       alert("Error Occured");
     }
