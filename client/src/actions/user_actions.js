@@ -11,6 +11,7 @@ export const joinUser = async (dataBody) => {
 
 export const loginUser = async (dataBody) => {
   // postLogin: () => axios.post("api/users/login"); & axios.post<T = any, R = AxiosResponse<T>>(url: string, data?: any, config?: AxiosRequestConfig): Promise<R>;
+
   const request = await userApi.postLogin(dataBody);
   return {
     type: LOGIN_USER,

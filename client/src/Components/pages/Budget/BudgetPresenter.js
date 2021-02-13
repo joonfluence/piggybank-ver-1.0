@@ -18,12 +18,11 @@ const BudgetPresenter = ({ children, date, title, price, memo }) => {
   );
 };
 
-// date, title, price, memo
-// BudgetPresenter.propTypes = {
-//   date: PropTypes.instanceOf(Date),
-//   title: PropTypes.string.isRequired,
-//   price: PropTypes.number,
-//   memo: PropTypes.string,
-// };
+BudgetPresenter.propTypes = {
+  date: PropTypes.instanceOf(Date),
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number,
+  memo: PropTypes.string,
+};
 
 export default BudgetPresenter;

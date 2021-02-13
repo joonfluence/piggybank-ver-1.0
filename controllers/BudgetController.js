@@ -11,10 +11,10 @@ export const postBudgetInfo = async (req, res) => {
       budget,
       monthlyBudget,
     });
-    return res.status(201).json(newBudget);
+    return res.status(201).json({ CreateSuccess: true });
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ success: false });
+    return res.status(500).json({ CreateSuccess: false });
   }
 };
 
@@ -22,9 +22,9 @@ export const getBudgetInfo = async (req, res) => {
   const { _id } = req.user;
   try {
     const budgetInfo = await Budget.find({ user: [_id] }, (err, budget) => {
-      if (err) return res.status(404).json({ success: false });
+      if (err) return res.status(404).json({ ReadSuccess: false });
     });
-    return res.status(200).json(budgetInfo);
+    return res.status(200).json({ ReadSuccess: true });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ error });
@@ -45,10 +45,10 @@ export const editBudgetInfo = async (req, res) => {
         if (err) return res.status(404).json({ error: "Not Found" });
       }
     );
-    return res.status(200).json(newInfo);
+    return res.status(200).json({ UpdateSuccess: true });
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ sucess: false, error });
+    return res.status(500).json({ UpdateSuccess: false, error });
   }
 };
 
@@ -71,10 +71,10 @@ export const getBudgetDetail = async (req, res) => {
   } = req;
   try {
     const BudgetInfo = await Budget.findById({ _id: id });
-    return res.status(200).json(BudgetInfo);
+    return res.status(200).json({ DeleteSuccess: true });
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ sucess: false, error });
+    return res.status(500).json({ DeleteSuccess: false, error });
   }
 };
 
@@ -115,11 +115,17 @@ export const getBudgetMonth = async (req, res) => {
     console.log(monthlyBudget.length);
     console.log(categoryBudget.length);
 
+    // console.log(date);
+    // console.log(title);
+    // console.log(memo);
+    // console.log(categorySum);
+    // console.log(budgetSum);
+    // console.log(budget);
+
     for (let i = 0; i < monthlyBudget.length; i++) {
       if (monthlyBudget[i].monthlyBudget) {
         budgetSum = monthlyBudget[i].monthlyBudget;
       }
-
       if (categoryBudget.length == 1) {
         budget = categoryBudget[0].budget;
       } else {
@@ -130,7 +136,7 @@ export const getBudgetMonth = async (req, res) => {
 
     return res
       .status(200)
-      .json({ categoryBudget, categorySum, budgetSum, budget });
+      .json({ monthlyBudget, categoryBudget, categorySum, budgetSum });
   } catch (err) {
     return res.status(500).json({ err });
   }

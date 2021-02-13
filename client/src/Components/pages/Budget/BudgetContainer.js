@@ -17,6 +17,12 @@ const BudgetContainer = () => {
     })
   );
 
+  console.log(budgetSum);
+  console.log(date);
+  console.log(title);
+  console.log(price);
+  console.log(memo);
+
   return (
     <>
       <Header HeaderInfo="예산"></Header>
@@ -35,4 +41,5 @@ const BudgetContainer = () => {
 // title: budgetReducer.payload.title,
 // price: budgetReducer.payload.price,
 // memo: budgetReducer.payload.memo,
+
 export default BudgetContainer;

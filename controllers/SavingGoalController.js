@@ -1,4 +1,3 @@
-import BudgetPresenter from "../client/src/Components/pages/Budget/BudgetPresenter.js";
 import SavingGoal from "../models/SavingGoal.js";
 
 export const postGoalInfo = async (req, res) => {
