@@ -16,27 +16,29 @@ const MYPAGE = "/mypage/:id";
 
 const PAYING = "/payings";
 const PAYING_DETAIL = "/payings/:id";
-const PAYING_MONTH = "/payings/month";
-const CATEGORY_PAYING = "/payings/category";
+const PAYING_MONTH = "/payings/month/";
+const CATEGORY_PAYING = "/payings/:category/";
 
 // Savings
 
 const SAVING = "/savings";
 const SAVING_DETAIL = "/savings/:id";
 const SAVING_MONTH = "/savings/month";
-const CATEGORY_SAVING = "/savings/category";
+const CATEGORY_SAVING = "/savings/:category/";
 
 // 예산 카테고리
 
 const BUDGET = "/budgets";
 const BUDGET_DETAIL = "/budgets/:id";
 const BUDGET_MONTH = "/budgets/month";
+const CATEGORY_BUDGET = "/budgets/:category/";
 
 // 저축 목표 카테고리
 
 const SAVING_GOAL = "/savingsGoal";
 const SAVING_GOAL_DETAIL = "/savingsGoal/:id";
 const SAVING_GOAL_MONTH = "/savingsGoal/month";
+const CATEGORY_SAVING_GOAL = "/savingsGoal/:category/";
 
 const routes = {
   home: HOME,
@@ -72,16 +74,23 @@ const routes = {
   },
   categoryPaying: (category) => {
     if (category) {
-      return `/payings`;
+      return `/payings/${category}/`;
     } else {
       return CATEGORY_PAYING;
     }
   },
   categorySaving: (category) => {
     if (category) {
-      return `/savings/${category}`;
+      return `/savings/${category}/`;
     } else {
       return CATEGORY_SAVING;
+    }
+  },
+  categoryBudget: (category) => {
+    if (category) {
+      return `/budgets/${category}/`;
+    } else {
+      return CATEGORY_BUDGET;
     }
   },
   budget: BUDGET,

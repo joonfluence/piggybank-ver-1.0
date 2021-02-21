@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Header from "../../Header";
 import SavingPresenter from "./SavingPresenter";
-import ContentBoard from "../../CreateBoard";
-import ContentHeader from "../../ContentHeader";
+import CreateBoard from "../../CreateBoard";
+import CreateList from "../../CreateList";
 
 const SavingContainerBlock = styled.div``;
 
@@ -19,8 +19,8 @@ const SavingContainer = () => {
     <SavingContainerBlock>
       <Header HeaderInfo="저축"></Header>
       <SavingPresenter>
-        <ContentHeader></ContentHeader>
-        <ContentBoard></ContentBoard>
+        <CreateBoard></CreateBoard>
+        <CreateList></CreateList>
       </SavingPresenter>
     </SavingContainerBlock>
   );

@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Header from "../../Header";
 import PayingPresenter from "./PayingPresenter";
-
+import CreateBoard from "../../CreateBoard";
+import CreateList from "../../CreateList";
 import { useSelector } from "react-redux";
 
 const PayingContainerBlock = styled.div``;
@@ -22,13 +23,13 @@ const PavingContainer = () => {
     <PayingContainerBlock>
       <Header HeaderInfo="지출"></Header>
       <PayingPresenter
-        date=""
-        title=""
-        price=""
-        memo=""
-        category=""
+        title="title"
+        category="category"
         categoryInfoName="지출"
-      ></PayingPresenter>
+      >
+        <CreateBoard></CreateBoard>
+        <CreateList></CreateList>
+      </PayingPresenter>
     </PayingContainerBlock>
   );
 };

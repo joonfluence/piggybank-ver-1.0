@@ -1,33 +1,62 @@
 import React from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
-import FormBoard from "../../FormBoard";
+// import PropTypes from "prop-types";
+import PieTotalRatio from "../../visuals/PieTotalRatio";
+import TotalRatioChart from "../../visuals/TotalRatioChart";
+
+const data = [
+  {
+    id: "총 소비액수",
+    value: 100, // 전체 소비액
+    color: "hsl(181, 70%, 50%)", // 카테고리 색상
+  },
+  {
+    id: "남은 예산",
+    value: 200,
+    color: "hsl(236, 70%, 50%)",
+  },
+];
 
 const HomePresenterBlock = styled.div`
   background-color: white;
+  height: 80vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `;
 
-const ButtonList = styled.div`
-  display: flex;
-  margin: 1rem;
+const ChartBlock = styled.div`
+  width: 100%;
+  height: 100%;
 `;
 
 const HomePresenter = () => {
   return (
     <>
       <HomePresenterBlock>
-        <ButtonList>
-          {/* 
-          두 버튼에 1) 지출목표액 입력하기 2) 소비목표액 입력하기, 두 개로 나눠서 입력 받기. 
-          그리고 해당 데이터들은 전부 백엔드 및 프론트엔드에 보관될 예정임 
-          */}
-          <FormBoard></FormBoard>
-          <FormBoard></FormBoard>
-        </ButtonList>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <ChartBlock>
+            <TotalRatioChart />
+          </ChartBlock>
+          <ChartBlock>
+            <TotalRatioChart />
+          </ChartBlock>
+          <ChartBlock>
+            <TotalRatioChart />
+          </ChartBlock>
+          <ChartBlock>
+            <TotalRatioChart />
+          </ChartBlock>
+        </div>
+        <ChartBlock>
+          <PieTotalRatio data={data} />
+        </ChartBlock>
+        <ChartBlock>
+          <PieTotalRatio data={data} />
+        </ChartBlock>
       </HomePresenterBlock>
     </>
   );

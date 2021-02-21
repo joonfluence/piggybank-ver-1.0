@@ -4,6 +4,7 @@ import Header from "../../../Header";
 import Nav from "../../../Nav";
 import ContentHeader from "../../../ContentHeader";
 import ContentBody from "../../../ContentBody";
+import CenterButton from "../../../CenterButton";
 
 const PayingMonthBlock = styled.div`
   background-color: white;
@@ -17,6 +18,7 @@ const PayingMonth = () => {
     <>
       <Nav></Nav>
       <Header HeaderInfo="월 지출"></Header>
+      <CenterButton />
       <PayingMonthBlock>
         <ContentHeader></ContentHeader>
         <ContentBody></ContentBody>

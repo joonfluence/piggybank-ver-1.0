@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const BudgetSchema = new Schema({
   createdAt: { type: Date, default: getCurrentDate() },
   date: { type: Date, default: getCurrentDate() },
-  title: { type: String },
+  title: { type: String, unique: true },
   budget: { type: Number },
   monthlyBudget: { type: Number },
   remained: { type: Number },

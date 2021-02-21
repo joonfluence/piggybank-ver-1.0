@@ -43,11 +43,11 @@ export const deleteBudget = async (id) => {
   };
 };
 
-export const monthBudget = async (year, month) => {
-  const request = await budgetApi.getBudgetMonth(year, month);
+// export const monthBudget = async (year, month) => {
+//   const request = await budgetApi.getBudgetMonth(year, month);
 
-  return {
-    type: MONTH_BUDGET,
-    payload: request,
-  };
-};
+//   return {
+//     type: MONTH_BUDGET,
+//     payload: request,
+//   };
+// };

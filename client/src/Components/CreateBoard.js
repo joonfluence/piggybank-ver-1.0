@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import CreateList from "./CreateList";
 import { AiOutlinePlus } from "react-icons/ai";
 
 const CreateBoardBlock = styled.section`
@@ -138,7 +137,6 @@ const CreateBoard = ({ date, title, price, memo, category, InfoName }) => {
           </FormFormat>
         </CreateBoardBlock>
       )}
-      <CreateList></CreateList>
     </>
   );
 };

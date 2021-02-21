@@ -5,15 +5,15 @@ import FormBoard from "../../FormBoard";
 import { useSelector } from "react-redux";
 
 const BudgetContainer = () => {
-  const { budgetSum, date, title, price, memo } = useSelector(
-    ({ budgetReducer }) => ({
-      // budgetSum: budgetReducer.budgetSum,
-      // date: budgetReducer.payload.date,
-      // title: budgetReducer.payload.title,
-      // price: budgetReducer.payload.price,
-      // memo: budgetReducer.payload.memo,
-    })
-  );
+  // const { budgetSum, date, title, price, memo } = useSelector(
+  //   ({ budgetReducer }) => ({
+  // budgetSum: budgetReducer.budgetSum,
+  // date: budgetReducer.payload.date,
+  // title: budgetReducer.payload.title,
+  // price: budgetReducer.payload.price,
+  // memo: budgetReducer.payload.memo,
+  // })
+  // );
 
   // console.log(budgetSum);
   // console.log(date);

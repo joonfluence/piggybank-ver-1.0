@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import CenterButton from "../../CenterButton";
 
 const SavingPresenterBlock = styled.div`
   background-color: white;
@@ -18,6 +19,7 @@ const SavingPresenter = ({
   return (
     <>
       <SavingPresenterBlock>
+        <CenterButton />
         {children}
         {date}
         {title}
