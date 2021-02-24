@@ -32,7 +32,7 @@ const ImageCircle = styled.div`
   height: 300px;
 `;
 
-const ContentHeader = () => {
+const ContentHeader = ({ year, month }) => {
   const dispatch = useDispatch();
 
   const { budgetSum } = useSelector(({ budgetReducer }) => ({
@@ -56,14 +56,14 @@ const ContentHeader = () => {
     },
   ];
 
-  let month = new Date().getMonth() + 1;
-
   return (
     <ContentHeaderBlock>
       <ContentTitle>
         <Content>
           <ContentInfo>
-            <h1> {month.toString()} 월</h1>
+            <h1>
+              {year.toString()}년 {month.toString()} 월
+            </h1>
             <h2>남은 예산</h2>
             <h3>
               {" "}

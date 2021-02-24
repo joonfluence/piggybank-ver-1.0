@@ -8,7 +8,6 @@ import ContentBody from "../../../ContentBody";
 
 const SavingGoalMonthBlock = styled.div`
   background-color: white;
-  height: 80vh;
 `;
 
 const SavingGoalMonth = () => {

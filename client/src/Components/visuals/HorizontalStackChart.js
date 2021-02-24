@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { ResponsiveBar } from "@nivo/bar";
 
 const HorizontalStackChartBlock = styled.div`
-  width: 1000px;
-  height: 1000px;
+  width: 100%;
+  height: 100%;
 `;
 
 const HorizontalStackChart = ({ barData }) => {

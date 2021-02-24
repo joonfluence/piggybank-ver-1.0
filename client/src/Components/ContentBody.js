@@ -127,7 +127,8 @@ const barData = [
 const ContentBodyBlock = styled.div``;
 
 const ChartBlock = styled.div`
-  width: 300px;
+  position: relative;
+  width: 100%;
   height: 300px;
 `;
 
