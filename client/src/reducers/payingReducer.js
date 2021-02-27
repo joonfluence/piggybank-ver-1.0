@@ -9,11 +9,12 @@ import {
 // 관리할 States : 날짜, 제목, 메모, 가격, 카테고리
 
 const initialState = {
-  date: "",
+  date: new Date(),
   title: "",
-  price: "",
+  price: 0,
   memo: "",
   category: "",
+  payingSum: 0,
 };
 
 const payingReducer = (state = initialState, action) => {

@@ -27,6 +27,11 @@ function userReducer(state = initialState, action) {
         isAuth: action.isAuth,
         LogOutSuccess: action.payload,
       };
+    case "test":
+      return {
+        ...state,
+        testSuccess: action.payload,
+      };
     default:
       return state;
   }

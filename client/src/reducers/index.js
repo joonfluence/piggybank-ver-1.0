@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
-import userReducer from "./user_reducer";
-import payingReducer from "./paying_reducer";
-import savingReducer from "./saving_reducer";
-import savingGoalReducer from "./savingGoal_reducer";
-import budgetReducer from "./budget_reducer";
+import userReducer from "./userReducer";
+import payingReducer from "./payingReducer";
+import savingReducer from "./savingReducer";
+import savingGoalReducer from "./savingGoalReducer";
+import budgetReducer from "./budgetReducer";
+import dateReducer from "./dateReducer";
 
 const rootReducer = combineReducers({
   userReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   savingReducer,
   savingGoalReducer,
   budgetReducer,
+  dateReducer,
 });
 
 export default rootReducer;
