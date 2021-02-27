@@ -14,7 +14,8 @@ import SavingGoalMonth from "./pages/SavingGoal/Month";
 import BudgetMonth from "./pages/Budget/Month";
 import SavingMonth from "./pages/Saving/Month";
 import PayingMonth from "./pages/Paying/Month";
-import auth from "../hoc/auth";
+import TestPage from "./pages/test/testPage";
+import Auth from "../hoc/auth";
 
 // 나중에 user 이름을 띄워서, 안녕하세요 준호님과 같은 모습을 보여줄 수도 있을 것임.
 
@@ -31,18 +32,35 @@ const Router = () => {
         <Route path="/" exact component={Home} />
         <Route path="/join" exact component={Join} />
         <Route path="/login" exact component={Login} />
-        <Route path={routes.paying} exact component={Paying} />
-        <Route path={routes.saving} exact component={Saving} />
-        <Route path={routes.budget} exact component={Budget} />
-        <Route path={routes.savingGoal} exact component={SavingGoal} />
-        <Route path={routes.payingMonth} exact component={PayingMonth} />
-        <Route path={routes.savingMonth} exact component={SavingMonth} />
-        <Route path={routes.budgetMonth} exact component={BudgetMonth} />
+        <Route path={routes.paying} exact component={Auth(Paying, true)} />
+        <Route path={routes.saving} exact component={Auth(Saving, true)} />
+        <Route path={routes.budget} exact component={Auth(Budget, true)} />
+        <Route
+          path={routes.savingGoal}
+          exact
+          component={Auth(SavingGoal, true)}
+        />
+        <Route
+          path={routes.payingMonth}
+          exact
+          component={Auth(PayingMonth, true)}
+        />
+        <Route
+          path={routes.savingMonth}
+          exact
+          component={Auth(SavingMonth, true)}
+        />
+        <Route
+          path={routes.budgetMonth}
+          exact
+          component={Auth(BudgetMonth, true)}
+        />
         <Route
           path={routes.savingGoalMonth}
           exact
-          component={SavingGoalMonth}
+          component={Auth(SavingGoalMonth, true)}
         />
+        <Route path={"/test"} exact component={Auth(TestPage, true)} />
         <Redirect from="*" to="/" />
       </Switch>
     </BrowserRouter>

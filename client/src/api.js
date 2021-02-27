@@ -2,14 +2,15 @@ import axios from "axios";
 import routes from "./routes";
 
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: "http://localhost:5000/api",
+  withCredentials: true,
 });
 
 export const userApi = {
-  getLogOut: () => api.get(routes.logout),
+  getLogOut: () => api.get(routes.logout, { withCredentials: true }),
   postLogin: (data) => api.post(routes.login, data),
   postJoin: (data) => api.post(routes.join, data),
-  getAuth: (data) => api.get(routes.auth, data),
+  getAuth: () => api.get(routes.auth),
 };
 
 export const payingApi = {
