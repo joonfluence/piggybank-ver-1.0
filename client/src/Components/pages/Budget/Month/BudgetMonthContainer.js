@@ -1,23 +1,43 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import DateModal from '../../../../utils/DateModal';
-import BudgetMonthPresenter from './BudgetMonthPresenter';
+import React, { useState } from "react";
+import styled from "styled-components";
+import Header from "../../../Header";
+import CenterButton from "../../../CenterButton";
+import BudgetMonthPresenter from "./BudgetMonthPresenter";
+import { useSelector } from "react-redux";
 
 const BudgetMonthContainerBlock = styled.div``;
 
 const BudgetMonthContainer = () => {
-    // useSelector를 통해, 변경된 데이터를 보내주는 형태가 될 것임. 
-    const [year, setYear] = useState(new Date().getFullYear());
-    const [month, setMonth] = useState(new Date().getMonth() + 1);
-    const [modalOpen, setModalOpen] = useState(false);
+  const { yearInfo, monthInfo } = useSelector(({ dateReducer }) => ({
+    yearInfo: dateReducer.yearInfo,
+    monthInfo: dateReducer.monthInfo,
+  }));
 
-    return (
-        <BudgetMonthContainerBlock>
-            <BudgetMonthPresenter year={year} month={month}>
-                <DateModal year={year} month={month} modalOpen= {modalOpen} setYear={setYear} setMonth={setMonth} setModalOpen={setModalOpen}/>
-            </BudgetMonthPresenter>
-        </BudgetMonthContainerBlock>
-    );
+  const { budgetSum, budgetInfo } = useSelector(({ budgetReducer }) => ({
+    budgetSum: budgetReducer.budgetSum,
+    budgetInfo: budgetReducer.budgetInfo,
+  }));
+
+  const { payingSum } = useSelector(({ payingReducer }) => ({
+    payingSum: payingReducer.payingSum,
+  }));
+
+  const pocketMoney = budgetSum - payingSum;
+
+  return (
+    <BudgetMonthContainerBlock>
+      <Header HeaderInfo="월 지출"></Header>
+      <CenterButton />
+      <BudgetMonthPresenter
+        yearInfo={yearInfo}
+        monthInfo={monthInfo}
+        pocketMoney={pocketMoney}
+        budgetSum={budgetSum}
+        payingSum={payingSum}
+        budgetInfo={budgetInfo}
+      />
+    </BudgetMonthContainerBlock>
+  );
 };
 
 export default BudgetMonthContainer;

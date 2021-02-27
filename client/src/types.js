@@ -31,3 +31,7 @@ export const READ_SAVING_GOAL = "read_savingGoal";
 export const UPDATE_SAVING_GOAL = "update_savingGoal";
 export const DELETE_SAVING_GOAL = "delete_savingGoal";
 export const MONTH_SAVING_GOAL = "month_savingGoal";
+
+// 날짜 목표
+export const CREATE_DATE = "create_date";
+export const UPDATE_DATE = "update_date";

@@ -7,12 +7,12 @@ const HorizontalStackChartBlock = styled.div`
   height: 100%;
 `;
 
-const HorizontalStackChart = ({ barData }) => {
+const HorizontalStackChart = ({ barData, budgetInfo }) => {
   return (
     <HorizontalStackChartBlock>
       <ResponsiveBar
         data={barData}
-        keys={["hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
+        keys={budgetInfo}
         indexBy="country"
         margin={{ top: 0, right: 130, bottom: 50, left: 60 }}
         padding={0.2}

@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { AiFillFacebook, AiFillLock } from "react-icons/ai";
-import { RiKakaoTalkFill } from "react-icons/ri";
+import { AiFillLock } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
-import { loginUser } from "../../../actions/user_actions";
+import { loginUser } from "../../../actions/userActions";
 import { withRouter } from "react-router-dom";
 
 const LoginForm = styled.form`
@@ -66,20 +65,6 @@ const Button = styled.button`
 
   &:hover {
     cursor: pointer;
-  }
-`;
-
-const SocialLoginBlock = styled.div`
-  .fb-icon {
-    color: #3a559f;
-  }
-  .kk-icon {
-    color: #391b1b;
-    background-color: yellow;
-  }
-  svg {
-    font-size: 2rem;
-    margin: 5px;
   }
 `;
 

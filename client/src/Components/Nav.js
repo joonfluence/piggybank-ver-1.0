@@ -1,10 +1,10 @@
 import { Link, withRouter } from "react-router-dom";
 import { FaPiggyBank } from "react-icons/fa";
-import { BsPerson, BsFillPersonFill, BsPersonPlus } from "react-icons/bs";
+import { BsPerson, BsPersonPlus } from "react-icons/bs";
 import { GrLogout, GrLogin } from "react-icons/gr";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { LogOutUser } from "../actions/user_actions";
+import { LogOutUser } from "../actions/userActions";
 // import { COLORS } from "./GlobalStyles";
 
 const NavContainer = styled.nav`

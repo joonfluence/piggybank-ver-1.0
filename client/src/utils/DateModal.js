@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { budgetApi } from "../api";
+import { getDateInfo } from "../actions/dateAction";
 
 const ModalBackground = styled.div`
   position: absolute;
-  content: "";
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -21,7 +21,6 @@ const ModalWrapper = styled.div`
   margin: 0 0 0 -250px;
   background: #eee;
   z-index: 2;
-
   & > div > h1 {
     font-size: 2rem;
     padding: 1.5rem;
@@ -45,10 +44,13 @@ const DateModalForm = styled.form`
   }
 `;
 const ModalButton = styled.button`
-  background-color: blue;
-  margin: 0 auto;
-  width: 5rem;
-  height: 1.5rem;
+  background-color: #f4ecfb;
+  position: absolute;
+  right: 20%;
+  top: 42%;
+  height: 2rem;
+  z-index: 2;
+  font-size: 1.2rem;
   cursor: pointer;
 `;
 const SubmitBtn = styled.button`
@@ -59,19 +61,17 @@ const SubmitBtn = styled.button`
   cursor: pointer;
 `;
 
-const DateModal = ({
-  year,
-  month,
-  modalOpen,
-  setYear,
-  setMonth,
-  setModalOpen,
-}) => {
+const DateModal = () => {
+  const [year, setYear] = useState(new Date().getFullYear());
+  const [month, setMonth] = useState(new Date().getMonth() + 1);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const dispatch = useDispatch();
   const onSubmitModal = async (e) => {
-    await budgetApi.getBudgetMonth([year, month]);
     e.preventDefault();
-    setYear(year);
-    setMonth(month);
+    await dispatch(getDateInfo([year, month]));
+    setYear("");
+    setMonth("");
     setModalOpen(false);
   };
 
@@ -93,7 +93,7 @@ const DateModal = ({
 
   return (
     <>
-      <ModalButton onClick={onOpenModal}>Modal Open</ModalButton>
+      <ModalButton onClick={onOpenModal}>조회하기</ModalButton>
       {modalOpen && (
         <>
           <ModalBackground></ModalBackground>

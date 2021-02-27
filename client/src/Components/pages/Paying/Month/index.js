@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Header from "../../../Header";
-import Nav from "../../../Nav";
 import ContentHeader from "../../../ContentHeader";
 import CenterButton from "../../../CenterButton";
 import HorizontalStackChart from "../../../visuals/HorizontalStackChart";
@@ -144,7 +143,6 @@ const ChartBlock = styled.div`
 const PayingMonth = () => {
   return (
     <>
-      <Nav></Nav>
       <Header HeaderInfo="월 지출"></Header>
       <CenterButton />
       <PayingMonthBlock>

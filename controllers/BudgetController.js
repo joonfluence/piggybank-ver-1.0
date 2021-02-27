@@ -26,12 +26,13 @@ export const getBudgetInfo = async (req, res) => {
     const budgetInfo = await Budget.find({ user: [_id] }, (err, budget) => {
       if (err) return res.status(404).json({ ReadSuccess: false });
     });
-    return res.status(200).json({ ReadSuccess: true });
+    return res.status(200).json({ budgetInfo, ReadSuccess: true });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ error });
   }
 };
+
 export const editBudgetInfo = async (req, res) => {
   const {
     params: { id },
@@ -73,10 +74,10 @@ export const getBudgetDetail = async (req, res) => {
   } = req;
   try {
     const BudgetInfo = await Budget.findById({ _id: id });
-    return res.status(200).json({ DeleteSuccess: true });
+    return res.status(200).json({ DetailSuccess: true });
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ DeleteSuccess: false, error });
+    return res.status(500).json({ DetailSuccess: false, error });
   }
 };
 
@@ -114,16 +115,6 @@ export const getBudgetMonth = async (req, res) => {
       },
     });
 
-    console.log(monthlyBudget.length);
-    console.log(categoryBudget.length);
-
-    // console.log(date);
-    // console.log(title);
-    // console.log(memo);
-    // console.log(categorySum);
-    // console.log(budgetSum);
-    // console.log(budget);
-
     for (let i = 0; i < monthlyBudget.length; i++) {
       if (monthlyBudget[i].monthlyBudget) {
         budgetSum = monthlyBudget[i].monthlyBudget;
@@ -136,7 +127,7 @@ export const getBudgetMonth = async (req, res) => {
       }
     }
 
-    return res.status(200).json({ budgetSum });
+    return res.status(200).json({ budgetSum, monthSuccess: true });
   } catch (err) {
     return res.status(500).json({ err });
   }

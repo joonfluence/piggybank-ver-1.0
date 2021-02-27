@@ -22,36 +22,27 @@ const Content = styled.div`
 const ContentInfo = styled.div`
   display: flex;
   justify-content: space-between;
+  & > h1 {
+    margin: 1rem;
+  }
 `;
 
 const ImageCircle = styled.div`
-  position: absolute;
-  left: 60%;
-  top: 30%;
-  width: 300px;
-  height: 300px;
+  position: relative;
 `;
 
-const ContentHeader = ({ year, month }) => {
+const ContentHeader = ({ yearInfo, monthInfo, used, remained, diff }) => {
   const dispatch = useDispatch();
-
-  const { budgetSum } = useSelector(({ budgetReducer }) => ({
-    budgetSum: budgetReducer.budgetSum,
-  }));
-
-  const { monthlyPaying } = useSelector(({ payingReducer }) => ({
-    payingSum: payingReducer.payingSum,
-  }));
 
   const data = [
     {
       id: "총 소비액수",
-      value: { monthlyPaying }, // 전체 소비액
+      value: used, // 전체 소비액
       color: "hsl(181, 70%, 50%)", // 카테고리 색상
     },
     {
       id: "남은 예산",
-      value: { budgetSum } - { monthlyPaying },
+      value: remained,
       color: "hsl(236, 70%, 50%)",
     },
   ];
@@ -61,14 +52,10 @@ const ContentHeader = ({ year, month }) => {
       <ContentTitle>
         <Content>
           <ContentInfo>
-            <h1>
-              {year.toString()}년 {month.toString()} 월
-            </h1>
-            <h2>남은 예산</h2>
-            <h3>
-              {" "}
-              {budgetSum} - {monthlyPaying} 원{" "}
-            </h3>
+            <h2>
+              {yearInfo}년 {monthInfo}월 남은 예산
+              {diff}원
+            </h2>
           </ContentInfo>
           <ImageCircle>
             <PieTotalRatio data={data}></PieTotalRatio>

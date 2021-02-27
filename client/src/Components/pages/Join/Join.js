@@ -5,7 +5,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { FaPiggyBank } from "react-icons/fa";
 import { GiMoneyStack } from "react-icons/gi";
-import { joinUser } from "../../../actions/user_actions";
+import { joinUser } from "../../../actions/userActions";
 import { useDispatch } from "react-redux";
 
 const JoinBlock = styled.form`
