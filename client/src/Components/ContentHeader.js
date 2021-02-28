@@ -32,8 +32,6 @@ const ImageCircle = styled.div`
 `;
 
 const ContentHeader = ({ yearInfo, monthInfo, used, remained, diff }) => {
-  const dispatch = useDispatch();
-
   const data = [
     {
       id: "총 소비액수",

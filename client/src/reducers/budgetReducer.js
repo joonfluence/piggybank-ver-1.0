@@ -20,15 +20,16 @@ const initialState = {
 
 // date, title, budget, monthlyBudget, budgetSum, pricePercentage, categoryPercentage, category
 
-const budgetReducer = (state = initialState, action) => {
+function budgetReducer(state = initialState, action) {
+  console.log("실행된다");
   switch (action.type) {
     case CREATE_BUDGET:
       return { ...state, CreateSuccess: action.payload };
     case READ_BUDGET:
       return {
         ...state,
-        ReadSuccess: action.payload.ReadSuccess,
-        budgetInfo: action.payload.budgetInfo,
+        ReadSuccess: action.ReadSuccess,
+        budgetInfo: action.budgetInfo,
       };
     case UPDATE_BUDGET:
       return { ...state, UpdateSuccess: action.payload };
@@ -48,6 +49,6 @@ const budgetReducer = (state = initialState, action) => {
     default:
       return state;
   }
-};
+}
 
 export default budgetReducer;

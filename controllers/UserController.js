@@ -73,6 +73,7 @@ export const postLogin = async (req, res) => {
 export const getLogOut = (req, res) => {
   try {
     User.findByIdAndUpdate(req.user._id, { token: "" });
+    res.cookie("x_auth", "");
     return res.status(200).send({
       LogOutSuccess: true,
       userId: "",

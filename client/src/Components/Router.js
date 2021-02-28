@@ -29,38 +29,21 @@ const Router = () => {
     <BrowserRouter>
       <Nav isAuth={isAuth} />
       <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/join" exact component={Join} />
-        <Route path="/login" exact component={Login} />
-        <Route path={routes.paying} exact component={Auth(Paying, true)} />
-        <Route path={routes.saving} exact component={Auth(Saving, true)} />
-        <Route path={routes.budget} exact component={Auth(Budget, true)} />
-        <Route
-          path={routes.savingGoal}
-          exact
-          component={Auth(SavingGoal, true)}
-        />
-        <Route
-          path={routes.payingMonth}
-          exact
-          component={Auth(PayingMonth, true)}
-        />
-        <Route
-          path={routes.savingMonth}
-          exact
-          component={Auth(SavingMonth, true)}
-        />
-        <Route
-          path={routes.budgetMonth}
-          exact
-          component={Auth(BudgetMonth, true)}
-        />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/join" component={Join} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path={routes.paying} component={Paying} />
+        <Route exact path={routes.saving} component={Saving} />
+        <Route exact path={routes.budget} component={Budget} />
+        <Route exact path={routes.savingGoal} component={SavingGoal} />
+        <Route exact path={routes.payingMonth} component={PayingMonth} />
+        <Route exact path={routes.savingMonth} component={SavingMonth} />
+        <Route exact path={routes.budgetMonth} component={BudgetMonth} />
         <Route
           path={routes.savingGoalMonth}
           exact
-          component={Auth(SavingGoalMonth, true)}
+          component={SavingGoalMonth}
         />
-        <Route path={"/test"} exact component={Auth(TestPage, true)} />
         <Redirect from="*" to="/" />
       </Switch>
     </BrowserRouter>

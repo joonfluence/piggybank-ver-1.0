@@ -23,9 +23,14 @@ export const postBudgetInfo = async (req, res) => {
 export const getBudgetInfo = async (req, res) => {
   const { _id } = req.user;
   try {
-    const budgetInfo = await Budget.find({ user: [_id] }, (err, budget) => {
-      if (err) return res.status(404).json({ ReadSuccess: false });
-    });
+    const budgetInfo = await Budget.find(
+      { user: [_id] },
+      { title: 1, budget: 1 },
+      (err, budget) => {
+        if (err) return res.status(404).json({ ReadSuccess: false });
+      }
+    );
+
     return res.status(200).json({ budgetInfo, ReadSuccess: true });
   } catch (error) {
     console.log(error);

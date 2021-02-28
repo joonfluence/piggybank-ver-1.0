@@ -72,16 +72,7 @@ const Nav = ({ location: { pathname }, history, isAuth }) => {
               <List>
                 <span
                   style={{ cursor: "pointer" }}
-                  onClick={() =>
-                    dispatch(LogOutUser).then((response) => {
-                      console.log(isAuth);
-                      if (response.payload.LogOutSuccess) {
-                        window.location.replace("/");
-                      } else {
-                        alert("Error Occured");
-                      }
-                    })
-                  }
+                  onClick={() => dispatch(LogOutUser())}
                 >
                   <GrLogout />
                   로그아웃

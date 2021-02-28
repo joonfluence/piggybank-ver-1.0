@@ -25,7 +25,21 @@ const ContentBody = ({ pocketMoney, budgetSum, payingSum, budgetInfo }) => {
     },
   ];
 
-  const barData = budgetInfo;
+  console.log(budgetInfo);
+  budgetInfo.map((budget) => console.log(budget));
+
+  const barData = [
+    {
+      category: "식비",
+      식비: 51000,
+      식비Color: "hsl(11, 70%, 50%)",
+    },
+    {
+      category: "의복비",
+      의복비: 100000,
+      의복비Color: "hsl(205, 70%, 50%)",
+    },
+  ];
 
   return (
     <ContentBodyBlock>

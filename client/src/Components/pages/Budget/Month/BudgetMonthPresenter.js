@@ -21,8 +21,11 @@ const BudgetMonthPresenter = ({
 }) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(readBudget);
-  });
+    async function fetchMontData() {
+      await dispatch(readBudget());
+    }
+    fetchMontData();
+  }, []);
 
   return (
     <BudgetMonthPresenterBlock>

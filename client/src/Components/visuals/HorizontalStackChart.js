@@ -12,10 +12,10 @@ const HorizontalStackChart = ({ barData, budgetInfo }) => {
     <HorizontalStackChartBlock>
       <ResponsiveBar
         data={barData}
-        keys={budgetInfo}
-        indexBy="country"
-        margin={{ top: 0, right: 130, bottom: 50, left: 60 }}
-        padding={0.2}
+        keys={budgetInfo.map((budget) => budget.title)}
+        indexBy="category"
+        margin={{ top: 0, right: 130, bottom: 30, left: 60 }}
+        padding={0.5}
         layout="horizontal"
         valueScale={{ type: "linear" }}
         indexScale={{ type: "band", round: true }}
@@ -55,24 +55,6 @@ const HorizontalStackChart = ({ barData, budgetInfo }) => {
           },
         ]}
         borderColor={{ from: "color", modifiers: [["darker", 1.6]] }}
-        axisTop={null}
-        axisRight={null}
-        axisBottom={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: "country",
-          legendPosition: "middle",
-          legendOffset: 32,
-        }}
-        axisLeft={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: "food",
-          legendPosition: "middle",
-          legendOffset: -40,
-        }}
         labelSkipWidth={12}
         labelSkipHeight={12}
         labelTextColor={{ from: "color", modifiers: [["darker", 1.6]] }}

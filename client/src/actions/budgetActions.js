@@ -21,7 +21,8 @@ export const readBudget = async () => {
 
   return {
     type: READ_BUDGET,
-    payload: request,
+    ReadSuccess: request.data.ReadSuccess,
+    budgetInfo: request.data.budgetInfo,
   };
 };
 
@@ -43,11 +44,11 @@ export const deleteBudget = async (id) => {
   };
 };
 
-// export const monthBudget = async (year, month) => {
-//   const request = await budgetApi.getBudgetMonth(year, month);
+export const monthBudget = async (dataToSubmit) => {
+  const request = await budgetApi.getBudgetMonth(dataToSubmit);
 
-//   return {
-//     type: MONTH_BUDGET,
-//     payload: request,
-//   };
-// };
+  return {
+    type: MONTH_BUDGET,
+    payload: request,
+  };
+};

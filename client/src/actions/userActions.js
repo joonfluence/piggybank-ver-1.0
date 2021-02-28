@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 import { userApi } from "../api";
 import { AUTH_USER, REGISTER_USER, LOGIN_USER, LOGOUT_USER } from "../types";
 
@@ -11,8 +12,6 @@ export const joinUser = async (dataBody) => {
 };
 
 export const loginUser = async (dataBody) => {
-  // postLogin: () => axios.post("api/users/login"); & axios.post<T = any, R = AxiosResponse<T>>(url: string, data?: any, config?: AxiosRequestConfig): Promise<R>;
-
   const request = await userApi.postLogin(dataBody);
   return {
     type: LOGIN_USER,
@@ -24,8 +23,6 @@ export const loginUser = async (dataBody) => {
 
 export const AuthCheck = () => {
   const request = userApi.getAuth().then((response) => response.data);
-
-  console.log(request);
   return {
     type: AUTH_USER,
     payload: request,
@@ -33,6 +30,8 @@ export const AuthCheck = () => {
 };
 
 export const LogOutUser = async () => {
+  console.log(Cookies.get());
+  console.log(document.cookies);
   const request = await userApi.getLogOut().then((response) => response.data);
   console.log("request", request);
   return {
