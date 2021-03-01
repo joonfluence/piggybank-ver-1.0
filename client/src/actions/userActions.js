@@ -30,10 +30,7 @@ export const AuthCheck = () => {
 };
 
 export const LogOutUser = async () => {
-  console.log(Cookies.get());
-  console.log(document.cookies);
   const request = await userApi.getLogOut().then((response) => response.data);
-  console.log("request", request);
   return {
     type: LOGOUT_USER,
     userId: request.userId,
@@ -48,7 +45,6 @@ export const cookieTest = async () => {
     {},
     { withCredentials: true }
   );
-  console.log(request);
 
   return {
     type: "test",

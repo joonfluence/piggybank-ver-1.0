@@ -43,12 +43,13 @@ export const deletePaying = async (id) => {
   };
 };
 
-export const monthPaying = async ([year, month]) => {
-  const request = await payingApi.getPayingMonth([year, month]);
+export const monthPaying = async (dataBody) => {
+  const request = await payingApi.getPayingMonth(dataBody);
 
   return {
     type: MONTH_PAYING,
-    payload: request,
+    monthSucess: request.data.monthSucess,
+    payingSum: request.data.payingSum,
   };
 };
 

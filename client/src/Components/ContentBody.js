@@ -11,7 +11,7 @@ const ChartBlock = styled.div`
   height: 300px;
 `;
 
-const ContentBody = ({ pocketMoney, budgetSum, payingSum, budgetInfo }) => {
+const ContentBody = ({ payingSum, pocketMoney, monthlyBudget }) => {
   const data = [
     {
       id: "총 소비액수",
@@ -20,24 +20,8 @@ const ContentBody = ({ pocketMoney, budgetSum, payingSum, budgetInfo }) => {
     },
     {
       id: "남은 예산",
-      value: pocketMoney,
+      value: pocketMoney, // 남은 예산
       color: "hsl(236, 70%, 50%)",
-    },
-  ];
-
-  console.log(budgetInfo);
-  budgetInfo.map((budget) => console.log(budget));
-
-  const barData = [
-    {
-      category: "식비",
-      식비: 51000,
-      식비Color: "hsl(11, 70%, 50%)",
-    },
-    {
-      category: "의복비",
-      의복비: 100000,
-      의복비Color: "hsl(205, 70%, 50%)",
     },
   ];
 
@@ -47,7 +31,7 @@ const ContentBody = ({ pocketMoney, budgetSum, payingSum, budgetInfo }) => {
         <PieTotalRatio data={data} />
       </ChartBlock>
       <ChartBlock>
-        <HorizontalStackChart barData={barData} budgetInfo={budgetInfo} />
+        <HorizontalStackChart monthlyBudget={monthlyBudget} />
       </ChartBlock>
     </ContentBodyBlock>
   );

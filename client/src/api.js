@@ -18,8 +18,7 @@ export const payingApi = {
   postPayingInfo: (data) => api.post(routes.postPaying(), data),
   editPayingInfo: (id) => api.post(routes.editPaying(), id),
   deletePayingInfo: (id) => api.get(routes.deletePaying(), id),
-  getPayingMonth: ([year, month]) =>
-    api.get(routes.payingMonth(), [year, month]),
+  getPayingMonth: (data) => api.post(routes.payingMonth, data),
   // getPayingDetail: (id) => api.get(routes.payings(), id),
 };
 
@@ -38,7 +37,7 @@ export const budgetApi = {
   postBudgetInfo: (data) => api.post(routes.budget, data),
   editBudgetInfo: (id) => api.put(routes.budgets(), id),
   deleteBudgetInfo: (id) => api.get(routes.budgets(), id),
-  getBudgetMonth: ([year, month]) => api.get(routes.budgetMonth, [year, month]),
+  getBudgetMonth: (data) => api.post(routes.budgetMonth, data),
   // getBudgetDetail: (id) => api.get(routes.budgets(), id),
 };
 
@@ -46,6 +45,6 @@ export const savingGoalApi = {
   getGoalInfo: () => api.get(routes.savingGoal),
   postGoalInfo: (data) => api.post(routes.savingGoal, data),
   editGoalInfo: (id) => api.put(routes.savingGoals(), id),
-  getGoalMonth: (year, month) => api.get(routes.savingGoalMonth(), year, month),
+  getGoalMonth: (data) => api.post(routes.savingGoalMonth, data),
   // getGoalDetail: (id) => api.get(routes.savingGoals(), id),
 };

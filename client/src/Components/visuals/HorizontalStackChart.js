@@ -1,91 +1,51 @@
 import React from "react";
 import styled from "styled-components";
-import { ResponsiveBar } from "@nivo/bar";
+import { GrMoney } from "react-icons/gr";
 
 const HorizontalStackChartBlock = styled.div`
-  width: 100%;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
 `;
 
-const HorizontalStackChart = ({ barData, budgetInfo }) => {
+const BudgetInfoBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+  width: 10rem;
+  height: 10rem;
+  background-color: #ffdec0;
+  border-radius: 1rem;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background-color: white;
+    width: 3rem;
+    height: 3rem;
+  }
+`;
+
+const HorizontalStackChart = ({ monthlyBudget }) => {
   return (
     <HorizontalStackChartBlock>
-      <ResponsiveBar
-        data={barData}
-        keys={budgetInfo.map((budget) => budget.title)}
-        indexBy="category"
-        margin={{ top: 0, right: 130, bottom: 30, left: 60 }}
-        padding={0.5}
-        layout="horizontal"
-        valueScale={{ type: "linear" }}
-        indexScale={{ type: "band", round: true }}
-        colors={{ scheme: "nivo" }}
-        defs={[
-          {
-            id: "dots",
-            type: "patternDots",
-            background: "inherit",
-            color: "#38bcb2",
-            size: 4,
-            padding: 1,
-            stagger: true,
-          },
-          {
-            id: "lines",
-            type: "patternLines",
-            background: "inherit",
-            color: "#eed312",
-            rotation: -45,
-            lineWidth: 6,
-            spacing: 10,
-          },
-        ]}
-        fill={[
-          {
-            match: {
-              id: "fries",
-            },
-            id: "dots",
-          },
-          {
-            match: {
-              id: "sandwich",
-            },
-            id: "lines",
-          },
-        ]}
-        borderColor={{ from: "color", modifiers: [["darker", 1.6]] }}
-        labelSkipWidth={12}
-        labelSkipHeight={12}
-        labelTextColor={{ from: "color", modifiers: [["darker", 1.6]] }}
-        legends={[
-          {
-            dataFrom: "keys",
-            anchor: "bottom-right",
-            direction: "column",
-            justify: false,
-            translateX: 120,
-            translateY: 0,
-            itemsSpacing: 2,
-            itemWidth: 100,
-            itemHeight: 20,
-            itemDirection: "left-to-right",
-            itemOpacity: 0.85,
-            symbolSize: 20,
-            effects: [
-              {
-                on: "hover",
-                style: {
-                  itemOpacity: 1,
-                },
-              },
-            ],
-          },
-        ]}
-        animate={true}
-        motionStiffness={90}
-        motionDamping={15}
-      />
+      {monthlyBudget ? (
+        monthlyBudget.map((budget) => (
+          <BudgetInfoBlock>
+            <div>
+              <GrMoney />
+            </div>
+            <span>항목 : {budget.title}</span>
+            <span>금액 : {budget.budget}</span>
+          </BudgetInfoBlock>
+        ))
+      ) : (
+        <div>empty</div>
+      )}
     </HorizontalStackChartBlock>
   );
 };

@@ -83,50 +83,39 @@ export const getGoalDetail = async (req, res) => {
 };
 
 export const getGoalMonth = async (req, res) => {
-  const {
-    params: { year, month },
-  } = req;
+  const { year, month } = req.body;
+  const { _id } = req.user;
 
   try {
+    const newMonth =
+      month.toString().length < 2 ? 0 + month.toString() : month.toString();
     const nextMonthInt = Number(month) + 1;
     const nextMonth =
-      nextMonthInt.toString() < 10
+      nextMonthInt.toString().length < 2
         ? 0 + nextMonthInt.toString()
         : nextMonthInt.toString();
 
     // monthInfo < 데이터 < monthInfo + 1와 같은 방식으로 월별 데이터를 가져올 수 있을 것.
 
     const monthlySavingGoal = await SavingGoal.find({
+      user: [_id],
       date: {
-        $gt: new Date(`${year}-${month}-01T00:00:00.000Z`),
+        $gt: new Date(`${year}-${newMonth}-01T00:00:00.000Z`),
         $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
       },
     });
 
-    let sum = 0;
-    let temp = 0;
-    let budgetSum = 0;
-    let categorySum = 0;
-    // 나중에는 사용자의 input value를 바탕으로 값을 받아줄 것임.
-    let category = "정기예금";
+    let SavingGoalSum = 0;
 
     for (let i = 0; i < monthlySavingGoal.length; i++) {
-      if (monthlySavingGoal[i].monthlySavingGoal) {
-        budgetSum = monthlySavingGoal[i].monthlySavingGoal;
-      }
-
+      let temp = 0;
       temp = monthlySavingGoal[i].budget;
-      sum += temp;
-
-      console.log(monthlySavingGoal[i]);
-
-      if (monthlySavingGoal[i].title === category) {
-        temp = monthlySavingGoal[i].budget;
-        categorySum += temp;
-      }
+      SavingGoalSum += temp;
     }
 
-    return res.status(200).json(monthlySavingGoal);
+    return res
+      .status(200)
+      .json({ monthlySavingGoal, SavingGoalSum, monthSuccess: true });
   } catch (err) {
     return res.status(500).json(err);
   }

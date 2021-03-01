@@ -81,25 +81,27 @@ export const getPayingDetail = async (req, res) => {
 // 사용자가 입력한 숫자가 02와 같은 형식이 아닐 경우, 예외처리가 필요할 것임.
 
 export const getPayingMonth = async (req, res) => {
-  const {
-    query: { year, month, category },
-  } = req;
+  const { year, month } = req.body;
+  const { _id } = req.user;
   try {
-    console.log(year, month);
+    const newMonth =
+      month.toString().length < 2 ? 0 + month.toString() : month.toString();
     const nextMonthInt = Number(month) + 1;
     const nextMonth =
-      nextMonthInt.toString() < 10
+      nextMonthInt.toString().length < 2
         ? 0 + nextMonthInt.toString()
         : nextMonthInt.toString();
 
     // monthInfo < 데이터 < monthInfo + 1와 같은 방식으로 월별 데이터를 가져올 수 있을 것.
 
     const monthlyPaying = await Paying.find({
+      user: [_id],
       date: {
-        $gt: new Date(`${year}-${month}-01T00:00:00.000Z`),
+        $gt: new Date(`${year}-${newMonth}-01T00:00:00.000Z`),
         $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
       },
     });
+    console.log(monthlyPaying);
 
     let temp = 0;
     let payingSum = 0;

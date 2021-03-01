@@ -1,20 +1,20 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import DateModal from "../../../../utils/DateModal";
+import CenterButton from "../../../CenterButton";
+import Header from "../../../Header";
 import ContentHeader from "../../../ContentHeader";
 import ContentBody from "../../../ContentBody";
-import PropTypes from "prop-types";
+import DateModal from "../../../../utils/DateModal";
 import { useDispatch } from "react-redux";
 import { monthBudget } from "../../../../actions/budgetActions";
 import { monthPaying } from "../../../../actions/payingActions";
 
-const BudgetMonthPresenterBlock = styled.div``;
-const BudgetMonthBlock = styled.div`
+const SavingGoalsPresenterBlock = styled.div`
   position: relative;
   background-color: white;
 `;
 
-const BudgetMonthPresenter = ({
+const SavingGoalsPresenter = ({
   yearInfo,
   monthInfo,
   budgetSum,
@@ -37,8 +37,8 @@ const BudgetMonthPresenter = ({
   }, [yearInfo, monthInfo]);
 
   return (
-    <BudgetMonthPresenterBlock>
-      <BudgetMonthBlock>
+    <>
+      <SavingGoalsPresenterBlock>
         <DateModal />
         <ContentHeader
           yearInfo={yearInfo}
@@ -48,22 +48,13 @@ const BudgetMonthPresenter = ({
         ></ContentHeader>
         <ContentBody
           budgetSum={budgetSum}
-          monthlyBudget={monthlyBudget}
           payingSum={payingSum}
           pocketMoney={pocketMoney}
+          monthlyBudget={monthlyBudget}
         ></ContentBody>
-      </BudgetMonthBlock>
-    </BudgetMonthPresenterBlock>
+      </SavingGoalsPresenterBlock>
+    </>
   );
 };
 
-BudgetMonthPresenter.propTypes = {
-  yearInfo: PropTypes.number,
-  monthInfo: PropTypes.number,
-  budgetSum: PropTypes.number,
-  payingSum: PropTypes.number,
-  pocketMoney: PropTypes.number,
-  monthlyBudget: PropTypes.number,
-};
-
-export default BudgetMonthPresenter;
+export default SavingGoalsPresenter;

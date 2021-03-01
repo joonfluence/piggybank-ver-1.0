@@ -5,8 +5,8 @@ export const getDateInfo = async (dataToSubmit) => {
   const request = await budgetApi.getBudgetMonth(dataToSubmit);
   return {
     type: CREATE_DATE,
-    yearInfo: dataToSubmit[0],
-    monthInfo: dataToSubmit[1],
+    yearInfo: dataToSubmit.year,
+    monthInfo: dataToSubmit.month,
     payload: request,
   };
 };

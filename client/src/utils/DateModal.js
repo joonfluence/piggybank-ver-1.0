@@ -46,10 +46,11 @@ const DateModalForm = styled.form`
 const ModalButton = styled.button`
   background-color: #f4ecfb;
   position: absolute;
-  right: 20%;
-  top: 42%;
-  height: 2rem;
-  z-index: 2;
+  right: 12%;
+  top: 8%;
+  width: 5rem;
+  height: 3rem;
+  z-index: 1;
   font-size: 1.2rem;
   cursor: pointer;
 `;
@@ -62,14 +63,24 @@ const SubmitBtn = styled.button`
 `;
 
 const DateModal = () => {
-  const [year, setYear] = useState(new Date().getFullYear());
-  const [month, setMonth] = useState(new Date().getMonth() + 1);
+  const tempYear = new Date().getFullYear();
+  const tempMonth = new Date().getMonth() + 1;
+
+  const [year, setYear] = useState(tempYear.toString());
+  const [month, setMonth] = useState(tempMonth.toString());
+
+  console.log(tempYear, tempMonth);
+
   const [modalOpen, setModalOpen] = useState(false);
 
   const dispatch = useDispatch();
   const onSubmitModal = async (e) => {
     e.preventDefault();
-    await dispatch(getDateInfo([year, month]));
+    let body = {
+      year: `${year}`,
+      month: `${month}`,
+    };
+    await dispatch(getDateInfo(body));
     setYear("");
     setMonth("");
     setModalOpen(false);

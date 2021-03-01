@@ -13,9 +13,9 @@ const BudgetMonthContainer = () => {
     monthInfo: dateReducer.monthInfo,
   }));
 
-  const { budgetSum, budgetInfo } = useSelector(({ budgetReducer }) => ({
+  const { budgetSum, monthlyBudget } = useSelector(({ budgetReducer }) => ({
     budgetSum: budgetReducer.budgetSum,
-    budgetInfo: budgetReducer.budgetInfo,
+    monthlyBudget: budgetReducer.monthlyBudget,
   }));
 
   const { payingSum } = useSelector(({ payingReducer }) => ({
@@ -34,7 +34,7 @@ const BudgetMonthContainer = () => {
         pocketMoney={pocketMoney}
         budgetSum={budgetSum}
         payingSum={payingSum}
-        budgetInfo={budgetInfo}
+        monthlyBudget={monthlyBudget}
       />
     </BudgetMonthContainerBlock>
   );

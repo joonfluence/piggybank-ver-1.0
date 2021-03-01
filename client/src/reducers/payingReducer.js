@@ -30,9 +30,8 @@ const payingReducer = (state = initialState, action) => {
     case MONTH_PAYING:
       return {
         ...state,
-        monthSucess: action.payload.monthSucess,
-        payingSum: action.payload.payingSum,
-        categorySum: action.payload.categorySum,
+        monthSucess: action.monthSucess,
+        payingSum: action.payingSum,
       };
     default:
       return state;

@@ -87,53 +87,72 @@ export const getBudgetDetail = async (req, res) => {
 };
 
 export const getBudgetMonth = async (req, res) => {
-  const { year, month } = req.params;
+  const { year, month } = req.body;
+  const { _id } = req.user;
 
   try {
+    const newMonth =
+      month.toString().length < 2 ? 0 + month.toString() : month.toString();
     const nextMonthInt = Number(month) + 1;
     const nextMonth =
-      nextMonthInt.toString() < 10
+      nextMonthInt.toString().length < 2
         ? 0 + nextMonthInt.toString()
         : nextMonthInt.toString();
 
     // monthInfo < 데이터 < monthInfo + 1와 같은 방식으로 월별 데이터를 가져올 수 있을 것.
 
-    let temp = 0;
-    let budget = 0;
-    let budgetSum = 0;
-    let categorySum = 0;
-    // 나중에는 사용자의 input value를 바탕으로 값을 받아줄 것임.
-    let title = "의복비";
-
-    const monthlyBudget = await Budget.find({
-      date: {
-        $gt: new Date(`${year}-${month}-01T00:00:00.000Z`),
-        $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
+    const monthlyBudget = await Budget.find(
+      {
+        user: [_id],
+        date: {
+          $gt: new Date(`${year}-${newMonth}-01T00:00:00.000Z`),
+          $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
+        },
       },
-    });
+      { title: 1, budget: 1 }
+    );
+
+    let budgetSum = 0;
+
+    for (let i = 0; i < monthlyBudget.length; i++) {
+      let temp = 0;
+      temp = monthlyBudget[i].budget;
+      budgetSum += temp;
+    }
+
+    return res
+      .status(200)
+      .json({ monthlyBudget, budgetSum, monthSuccess: true });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ err });
+  }
+};
+
+export const categoryMonth = async (req, res) => {
+  const { title, year, month } = req.body;
+
+  try {
+    const newMonth = month.length < 2 ? 0 + month : month;
+    const nextMonthInt = Number(month) + 1;
+    const nextMonth =
+      nextMonthInt.toString().length < 2
+        ? 0 + nextMonthInt.toString()
+        : nextMonthInt.toString();
+
+    // monthInfo < 데이터 < monthInfo + 1와 같은 방식으로 월별 데이터를 가져올 수 있을 것.
 
     const categoryBudget = await Budget.find({
       title: `${title}`,
       date: {
-        $gt: new Date(`${year}-${month}-01T00:00:00.000Z`),
+        $gt: new Date(`${year}-${newMonth}-01T00:00:00.000Z`),
         $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
       },
     });
 
-    for (let i = 0; i < monthlyBudget.length; i++) {
-      if (monthlyBudget[i].monthlyBudget) {
-        budgetSum = monthlyBudget[i].monthlyBudget;
-      }
-      if (categoryBudget.length == 1) {
-        budget = categoryBudget[0].budget;
-      } else {
-        temp = monthlyBudget[i].budget;
-        categorySum += temp;
-      }
-    }
-
-    return res.status(200).json({ budgetSum, monthSuccess: true });
+    return res.status(200).json({ categoryBudget, monthSuccess: true });
   } catch (err) {
+    console.log(err);
     return res.status(500).json({ err });
   }
 };

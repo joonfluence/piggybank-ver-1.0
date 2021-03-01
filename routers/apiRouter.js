@@ -74,8 +74,8 @@ apiRouter.put(routes.savings(), Auth, editSavingInfo);
 apiRouter.delete(routes.savings(), Auth, deleteSavingInfo);
 
 // 6) 디테일 정보
-apiRouter.get(routes.payingMonth, Auth, getPayingMonth);
-apiRouter.get(routes.savingMonth, Auth, getSavingMonth);
+apiRouter.post(routes.payingMonth, Auth, getPayingMonth);
+apiRouter.post(routes.savingMonth, Auth, getSavingMonth);
 // apiRouter.get(routes.payings(), Auth, getPayingDetail);
 // apiRouter.get(routes.savings(), Auth, getSavingDetail);
 
@@ -89,7 +89,7 @@ apiRouter.get(routes.budget, Auth, getBudgetInfo);
 apiRouter.post(routes.budget, Auth, postBudgetInfo);
 apiRouter.put(routes.budgets(), Auth, editBudgetInfo);
 apiRouter.get(routes.budgets(), Auth, deleteBudgetInfo);
-apiRouter.get(routes.budgetMonth, Auth, getBudgetMonth);
+apiRouter.post(routes.budgetMonth, Auth, getBudgetMonth);
 apiRouter.get(routes.budgets(), Auth, getBudgetDetail);
 
 // 9) 저축 목표 정보
@@ -98,6 +98,6 @@ apiRouter.post(routes.savingGoal, Auth, postGoalInfo);
 apiRouter.put(routes.savingGoals(), Auth, editGoalInfo);
 apiRouter.get(routes.savingGoals(), Auth, getGoalDetail);
 apiRouter.get(routes.savingGoals(), Auth, deleteGoalInfo);
-apiRouter.get(routes.savingGoalMonth, Auth, getGoalMonth);
+apiRouter.post(routes.savingGoalMonth, Auth, getGoalMonth);
 
 export default apiRouter;
