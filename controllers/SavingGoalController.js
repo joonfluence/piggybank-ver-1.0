@@ -1,15 +1,14 @@
 import SavingGoal from "../models/SavingGoal.js";
 
 export const postGoalInfo = async (req, res) => {
-  const { title, goalPrice, remained } = req.body;
+  const { title, price } = req.body;
   const { _id } = req.user;
   try {
     // monthlyBudget은 삭제하고 항목별 budget의 합으로 값을 저장해주자.
     const newSavingGoal = await SavingGoal.create({
       user: [_id],
       title,
-      goalPrice,
-      remained,
+      price,
     });
     return res.status(201).json(newSavingGoal);
   } catch (error) {
@@ -97,25 +96,28 @@ export const getGoalMonth = async (req, res) => {
 
     // monthInfo < 데이터 < monthInfo + 1와 같은 방식으로 월별 데이터를 가져올 수 있을 것.
 
-    const monthlySavingGoal = await SavingGoal.find({
-      user: [_id],
-      date: {
-        $gt: new Date(`${year}-${newMonth}-01T00:00:00.000Z`),
-        $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
+    const monthlySavingGoal = await SavingGoal.find(
+      {
+        user: [_id],
+        date: {
+          $gt: new Date(`${year}-${newMonth}-01T00:00:00.000Z`),
+          $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
+        },
       },
-    });
+      { title: 1, price: 1 }
+    );
 
-    let SavingGoalSum = 0;
+    let savingGoalSum = 0;
 
     for (let i = 0; i < monthlySavingGoal.length; i++) {
       let temp = 0;
-      temp = monthlySavingGoal[i].budget;
-      SavingGoalSum += temp;
+      temp = monthlySavingGoal[i].price;
+      savingGoalSum += temp;
     }
 
     return res
       .status(200)
-      .json({ monthlySavingGoal, SavingGoalSum, monthSuccess: true });
+      .json({ monthlySavingGoal, savingGoalSum, monthSuccess: true });
   } catch (err) {
     return res.status(500).json(err);
   }

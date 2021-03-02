@@ -43,11 +43,13 @@ export const deleteSavingGoal = async (id) => {
   };
 };
 
-export const monthSavingGoal = async ([year, month]) => {
-  const request = await savingGoalApi.getGoalMonth([year, month]);
+export const monthSavingGoal = async (dataBody) => {
+  const request = await savingGoalApi.getGoalMonth(dataBody);
 
   return {
     type: MONTH_SAVING_GOAL,
-    payload: request,
+    monthlySavingGoal: request.data.monthlySavingGoal,
+    savingGoalSum: request.data.savingGoalSum,
+    monthSuccess: request.data.monthSuccess,
   };
 };

@@ -11,16 +11,16 @@ const ChartBlock = styled.div`
   height: 300px;
 `;
 
-const ContentBody = ({ payingSum, pocketMoney, monthlyBudget }) => {
+const ContentBody = ({ used, remained, monthlyData }) => {
   const data = [
     {
-      id: "총 소비액수",
-      value: payingSum, // 전체 소비액
+      id: "총 소비/저축액수",
+      value: used, // 전체 소비액
       color: "hsl(181, 70%, 50%)", // 카테고리 색상
     },
     {
-      id: "남은 예산",
-      value: pocketMoney, // 남은 예산
+      id: "남은 예산/목표액",
+      value: remained, // 남은 예산
       color: "hsl(236, 70%, 50%)",
     },
   ];
@@ -31,7 +31,7 @@ const ContentBody = ({ payingSum, pocketMoney, monthlyBudget }) => {
         <PieTotalRatio data={data} />
       </ChartBlock>
       <ChartBlock>
-        <HorizontalStackChart monthlyBudget={monthlyBudget} />
+        <HorizontalStackChart monthlyData={monthlyData} />
       </ChartBlock>
     </ContentBodyBlock>
   );

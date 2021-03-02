@@ -4,9 +4,10 @@ import {
   READ_SAVING,
   UPDATE_SAVING,
   DELETE_SAVING,
+  MONTH_SAVING,
 } from "../types";
 
-export const createPaying = async (dataBody) => {
+export const createSaving = async (dataBody) => {
   const request = await savingApi.postSavingInfo(dataBody);
 
   return {
@@ -15,7 +16,7 @@ export const createPaying = async (dataBody) => {
   };
 };
 
-export const readPaying = async () => {
+export const readSaving = async () => {
   const request = await savingApi.getSavingInfo();
 
   return {
@@ -24,7 +25,7 @@ export const readPaying = async () => {
   };
 };
 
-export const updatePaying = async (id) => {
+export const updateSaving = async (id) => {
   const request = await savingApi.editSavingInfo(id);
 
   return {
@@ -33,11 +34,22 @@ export const updatePaying = async (id) => {
   };
 };
 
-export const deletePaying = async (id) => {
+export const deleteSaving = async (id) => {
   const request = await savingApi.deleteSavingInfo(id);
 
   return {
     type: DELETE_SAVING,
     payload: request,
+  };
+};
+
+export const monthSaving = async (dataToSubmit) => {
+  const request = await savingApi.getSavingMonth(dataToSubmit);
+
+  return {
+    type: MONTH_SAVING,
+    monthSuccess: request.data.monthSuccess,
+    savingSum: request.data.savingSum,
+    monthlySaving: request.data.monthlySaving,
   };
 };

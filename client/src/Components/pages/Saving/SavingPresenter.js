@@ -1,32 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import CenterButton from "../../CenterButton";
+import CreateBoard from "../../CreateBoard";
+import CreateList from "../../CreateList";
 
 const SavingPresenterBlock = styled.div`
   background-color: white;
 `;
 
-const SavingPresenter = ({
-  date,
-  title,
-  price,
-  memo,
-  category,
-  InfoName,
-  children,
-}) => {
+const SavingPresenter = ({ dataList }) => {
   return (
     <>
       <SavingPresenterBlock>
-        <CenterButton />
-        {children}
-        {date}
-        {title}
-        {price}
-        {memo}
-        {category}
-        {InfoName}
+        <CreateBoard></CreateBoard>
+        <CreateList dataList={dataList}></CreateList>
       </SavingPresenterBlock>
     </>
   );

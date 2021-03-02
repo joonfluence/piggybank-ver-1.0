@@ -69,8 +69,6 @@ const DateModal = () => {
   const [year, setYear] = useState(tempYear.toString());
   const [month, setMonth] = useState(tempMonth.toString());
 
-  console.log(tempYear, tempMonth);
-
   const [modalOpen, setModalOpen] = useState(false);
 
   const dispatch = useDispatch();

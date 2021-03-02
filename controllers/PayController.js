@@ -114,7 +114,9 @@ export const getPayingMonth = async (req, res) => {
 
     console.log("payingSum :" + payingSum);
 
-    return res.status(200).json({ monthSucess: true, payingSum });
+    return res
+      .status(200)
+      .json({ monthlyPaying, monthSucess: true, payingSum });
   } catch (error) {
     console.log(error);
     return res.status(500).json(error);

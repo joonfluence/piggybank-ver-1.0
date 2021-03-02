@@ -7,7 +7,7 @@ const SavingGoalSchema = new Schema({
   createdAt: { type: Date, default: getCurrentDate() },
   date: { type: Date, default: getCurrentDate() },
   title: { type: String },
-  goalPrice: { type: Number },
+  price: { type: Number },
   user: [{ type: Schema.Types.ObjectId, ref: "User" }],
 });
 

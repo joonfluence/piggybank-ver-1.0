@@ -43,14 +43,14 @@ const BudgetMonthPresenter = ({
         <ContentHeader
           yearInfo={yearInfo}
           monthInfo={monthInfo}
-          payingSum={payingSum}
-          pocketMoney={pocketMoney}
+          used={payingSum}
+          remained={pocketMoney}
         ></ContentHeader>
         <ContentBody
           budgetSum={budgetSum}
-          monthlyBudget={monthlyBudget}
-          payingSum={payingSum}
-          pocketMoney={pocketMoney}
+          monthlyData={monthlyBudget}
+          used={payingSum}
+          remained={pocketMoney}
         ></ContentBody>
       </BudgetMonthBlock>
     </BudgetMonthPresenterBlock>
@@ -63,7 +63,7 @@ BudgetMonthPresenter.propTypes = {
   budgetSum: PropTypes.number,
   payingSum: PropTypes.number,
   pocketMoney: PropTypes.number,
-  monthlyBudget: PropTypes.number,
+  monthlyBudget: PropTypes.array,
 };
 
 export default BudgetMonthPresenter;

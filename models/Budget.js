@@ -7,7 +7,7 @@ const BudgetSchema = new Schema({
   createdAt: { type: Date, default: getCurrentDate() },
   date: { type: Date, default: getCurrentDate() },
   title: { type: String, unique: true },
-  budget: { type: Number },
+  price: { type: Number },
   monthlyBudget: { type: Number },
   remained: { type: Number },
   user: [{ type: Schema.Types.ObjectId, ref: "User" }],

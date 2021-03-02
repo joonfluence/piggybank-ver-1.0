@@ -1,17 +1,16 @@
 import Budget from "../models/Budget.js";
 
 export const postBudgetInfo = async (req, res) => {
-  const { title, budget, monthlyBudget } = req.body;
+  const { title, price } = req.body;
   const { _id } = req.user;
   try {
     // monthlyBudget은 삭제하고 항목별 budget의 합으로 값을 저장해주자.
     const newBudget = await Budget.create({
       user: [_id],
       title,
-      budget,
-      monthlyBudget,
+      price,
     });
-    return res.status(201).json({ CreateSuccess: true });
+    return res.status(201).json({ newBudget, CreateSuccess: true });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ CreateSuccess: false });
@@ -109,14 +108,14 @@ export const getBudgetMonth = async (req, res) => {
           $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
         },
       },
-      { title: 1, budget: 1 }
+      { title: 1, price: 1 }
     );
 
     let budgetSum = 0;
 
     for (let i = 0; i < monthlyBudget.length; i++) {
       let temp = 0;
-      temp = monthlyBudget[i].budget;
+      temp = monthlyBudget[i].price;
       budgetSum += temp;
     }
 

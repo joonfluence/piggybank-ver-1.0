@@ -30,17 +30,17 @@ const BudgetInfoBlock = styled.div`
   }
 `;
 
-const HorizontalStackChart = ({ monthlyBudget }) => {
+const HorizontalStackChart = ({ monthlyData }) => {
   return (
     <HorizontalStackChartBlock>
-      {monthlyBudget ? (
-        monthlyBudget.map((budget) => (
+      {monthlyData ? (
+        monthlyData.map((data) => (
           <BudgetInfoBlock>
             <div>
               <GrMoney />
             </div>
-            <span>항목 : {budget.title}</span>
-            <span>금액 : {budget.budget}</span>
+            <span>항목 : {data.title}</span>
+            <span>금액 : {data.price}</span>
           </BudgetInfoBlock>
         ))
       ) : (

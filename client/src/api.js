@@ -19,7 +19,7 @@ export const payingApi = {
   editPayingInfo: (id) => api.post(routes.editPaying(), id),
   deletePayingInfo: (id) => api.get(routes.deletePaying(), id),
   getPayingMonth: (data) => api.post(routes.payingMonth, data),
-  // getPayingDetail: (id) => api.get(routes.payings(), id),
+  getPayingDetail: (id) => api.get(routes.payings(), id),
 };
 
 export const savingApi = {
@@ -27,7 +27,8 @@ export const savingApi = {
   postSavingInfo: (data) => api.post(routes.postSaving(data)),
   editSavingInfo: (id) => api.post(routes.editSaving(id)),
   deleteSavingInfo: (id) => api.get(routes.deleteSaving(id)),
-  // getSavingDetail: (id) => api.get(routes.savings(id)),
+  getSavingMonth: (data) => api.post(routes.savingMonth, data),
+  getSavingDetail: (id) => api.get(routes.savings(id)),
 };
 
 // Budget과 savingGoal을 추가하여야 함.
@@ -38,7 +39,7 @@ export const budgetApi = {
   editBudgetInfo: (id) => api.put(routes.budgets(), id),
   deleteBudgetInfo: (id) => api.get(routes.budgets(), id),
   getBudgetMonth: (data) => api.post(routes.budgetMonth, data),
-  // getBudgetDetail: (id) => api.get(routes.budgets(), id),
+  getBudgetDetail: (id) => api.get(routes.budgets(), id),
 };
 
 export const savingGoalApi = {
@@ -46,5 +47,5 @@ export const savingGoalApi = {
   postGoalInfo: (data) => api.post(routes.savingGoal, data),
   editGoalInfo: (id) => api.put(routes.savingGoals(), id),
   getGoalMonth: (data) => api.post(routes.savingGoalMonth, data),
-  // getGoalDetail: (id) => api.get(routes.savingGoals(), id),
+  getGoalDetail: (id) => api.get(routes.savingGoals(), id),
 };

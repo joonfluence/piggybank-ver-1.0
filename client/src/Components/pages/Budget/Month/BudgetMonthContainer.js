@@ -26,7 +26,7 @@ const BudgetMonthContainer = () => {
 
   return (
     <BudgetMonthContainerBlock>
-      <Header HeaderInfo="월 지출"></Header>
+      <Header HeaderInfo="월 예산"></Header>
       <CenterButton />
       <BudgetMonthPresenter
         yearInfo={yearInfo}

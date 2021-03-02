@@ -76,8 +76,8 @@ apiRouter.delete(routes.savings(), Auth, deleteSavingInfo);
 // 6) 디테일 정보
 apiRouter.post(routes.payingMonth, Auth, getPayingMonth);
 apiRouter.post(routes.savingMonth, Auth, getSavingMonth);
-// apiRouter.get(routes.payings(), Auth, getPayingDetail);
-// apiRouter.get(routes.savings(), Auth, getSavingDetail);
+apiRouter.get(routes.payings(), Auth, getPayingDetail);
+apiRouter.get(routes.savings(), Auth, getSavingDetail);
 
 // 7) 소비 & 저축 카테고리별 정보
 apiRouter.get(routes.categoryPaying(), Auth, getPayingCategory);

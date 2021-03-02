@@ -81,29 +81,45 @@ export const getSavingDetail = async (req, res) => {
 // 테스트가 요구됨.
 
 export const getSavingMonth = async (req, res) => {
-  const {
-    params: { year, month },
-  } = req;
+  const { year, month } = req.body;
+  const { _id } = req.user;
 
   try {
+    const newMonth =
+      month.toString().length < 2 ? 0 + month.toString() : month.toString();
     const nextMonthInt = Number(month) + 1;
     const nextMonth =
       nextMonthInt.toString() < 10
         ? 0 + nextMonthInt.toString()
         : nextMonthInt.toString();
 
-    // 현재, 정기적금에 해당하는 title에 해당하는 요소만 바꿔준다.
-
-    const categorySaving = await Saving.find({
-      title: "정기적금",
-      date: {
-        $gt: new Date(`${year}-${month}-01T00:00:00.000Z`),
-        $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
+    const monthlySaving = await Saving.find(
+      {
+        user: [_id],
+        date: {
+          $gt: new Date(`${year}-${newMonth}-01T00:00:00.000Z`),
+          $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
+        },
       },
-    }).populate("category", "title goalPrice");
+      { title: 1, price: 1 }
+    );
 
-    return res.status(200).json(categorySaving);
+    console.log(newMonth, nextMonth);
+    console.log(monthlySaving);
+
+    let savingSum = 0;
+    let temp = 0;
+
+    for (let i = 0; i < monthlySaving.length; i++) {
+      temp = monthlySaving[i].price;
+      savingSum += temp;
+    }
+
+    return res
+      .status(200)
+      .json({ monthlySaving, savingSum, monthSuccess: true });
   } catch (error) {
+    console.log(error);
     return res.status(500).json(error);
   }
 };

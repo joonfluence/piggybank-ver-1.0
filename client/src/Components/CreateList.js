@@ -18,36 +18,21 @@ const InputPrice = styled.div``;
 
 const InputDate = styled.div``;
 
-const CreateList = () => {
+const CreateList = ({ dataList }) => {
   return (
     <CreateListBlock>
       <InputContentBlock>
-        <InputContent>
-          <InputTitle>김밥천국</InputTitle>
-          <InputPrice>2500</InputPrice>
-          <InputDate>2021/02/01</InputDate>
-        </InputContent>
-      </InputContentBlock>
-      <InputContentBlock>
-        <InputContent>
-          <InputTitle>맥도날드</InputTitle>
-          <InputPrice>5000</InputPrice>
-          <InputDate>2021/02/02</InputDate>
-        </InputContent>
-      </InputContentBlock>
-      <InputContentBlock>
-        <InputContent>
-          <InputTitle>다이소</InputTitle>
-          <InputPrice>3000</InputPrice>
-          <InputDate>2021/02/04</InputDate>
-        </InputContent>
-      </InputContentBlock>
-      <InputContentBlock>
-        <InputContent>
-          <InputTitle>뭐냐</InputTitle>
-          <InputPrice>1000</InputPrice>
-          <InputDate>2021/02/04</InputDate>
-        </InputContent>
+        {dataList ? (
+          dataList.map((data) => (
+            <InputContent>
+              <InputTitle>{data.title}</InputTitle>
+              <InputPrice>{data.title}</InputPrice>
+              <InputDate>{data.date}</InputDate>
+            </InputContent>
+          ))
+        ) : (
+          <div>empty</div>
+        )}
       </InputContentBlock>
     </CreateListBlock>
   );

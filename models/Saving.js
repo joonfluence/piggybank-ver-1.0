@@ -9,7 +9,7 @@ const SavingSchema = new Schema({
   createdAt: { type: Date, default: getCurrentDate() },
   date: { type: Date, default: getCurrentDate() },
   title: { type: String, required: true },
-  savings: { type: Number, required: true },
+  price: { type: Number, required: true },
   memo: { type: String },
   user: [{ type: Schema.Types.ObjectId, ref: "User", require: true }],
   category: [

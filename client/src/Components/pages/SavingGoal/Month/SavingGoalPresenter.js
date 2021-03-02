@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import CenterButton from "../../../CenterButton";
-import Header from "../../../Header";
 import ContentHeader from "../../../ContentHeader";
 import ContentBody from "../../../ContentBody";
 import DateModal from "../../../../utils/DateModal";
 import { useDispatch } from "react-redux";
-import { monthBudget } from "../../../../actions/budgetActions";
-import { monthPaying } from "../../../../actions/payingActions";
+import { monthSavingGoal } from "../../../../actions/savingGoalActions";
+import { monthSaving } from "../../../../actions/savingActions";
 
 const SavingGoalsPresenterBlock = styled.div`
   position: relative;
@@ -17,10 +15,10 @@ const SavingGoalsPresenterBlock = styled.div`
 const SavingGoalsPresenter = ({
   yearInfo,
   monthInfo,
-  budgetSum,
-  payingSum,
+  savingGoalSum,
+  savingSum,
   pocketMoney,
-  monthlyBudget,
+  monthlySavingGoal,
 }) => {
   const dispatch = useDispatch();
 
@@ -30,8 +28,8 @@ const SavingGoalsPresenter = ({
       month: monthInfo,
     };
     async function fetchPageData() {
-      await dispatch(monthBudget(body));
-      await dispatch(monthPaying(body));
+      await dispatch(monthSaving(body));
+      await dispatch(monthSavingGoal(body));
     }
     fetchPageData();
   }, [yearInfo, monthInfo]);
@@ -43,14 +41,14 @@ const SavingGoalsPresenter = ({
         <ContentHeader
           yearInfo={yearInfo}
           monthInfo={monthInfo}
-          payingSum={payingSum}
-          pocketMoney={pocketMoney}
+          used={savingSum}
+          remained={pocketMoney}
         ></ContentHeader>
         <ContentBody
-          budgetSum={budgetSum}
-          payingSum={payingSum}
-          pocketMoney={pocketMoney}
-          monthlyBudget={monthlyBudget}
+          savingGoalSum={savingGoalSum}
+          used={savingSum}
+          remained={pocketMoney}
+          monthlyData={monthlySavingGoal}
         ></ContentBody>
       </SavingGoalsPresenterBlock>
     </>

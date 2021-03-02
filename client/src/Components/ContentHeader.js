@@ -32,21 +32,19 @@ const ImageCircle = styled.div`
   height: 200px;
 `;
 
-const ContentHeader = ({ yearInfo, monthInfo, payingSum, pocketMoney }) => {
+const ContentHeader = ({ yearInfo, monthInfo, used, remained }) => {
   const data = [
     {
-      id: "총 소비액수",
-      value: payingSum, // 전체 소비액
+      id: "총 소비/저축액수",
+      value: used, // 전체 소비액
       color: "hsl(181, 70%, 50%)", // 카테고리 색상
     },
     {
-      id: "남은 예산",
-      value: pocketMoney,
+      id: "남은 예산/목표액",
+      value: remained,
       color: "hsl(236, 70%, 50%)",
     },
   ];
-
-  console.log(data);
 
   return (
     <ContentHeaderBlock>
@@ -54,7 +52,7 @@ const ContentHeader = ({ yearInfo, monthInfo, payingSum, pocketMoney }) => {
         <Content>
           <ContentInfo>
             <h3>
-              {yearInfo}년 {monthInfo}월 남은예산 {pocketMoney}원
+              {yearInfo}년 {monthInfo}월 남은금액 {remained}원
             </h3>
           </ContentInfo>
           <ImageCircle>

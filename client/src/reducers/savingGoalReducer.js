@@ -28,7 +28,12 @@ const savingGoalReducer = (state = initialState, action) => {
     case DELETE_SAVING_GOAL:
       return { ...state, DeleteSuccess: action.payload };
     case MONTH_SAVING_GOAL:
-      return { ...state, MonthInfoSuccess: action.payload };
+      return {
+        ...state,
+        monthlySavingGoal: action.monthlySavingGoal,
+        monthSuccess: action.monthSuccess,
+        savingGoalSum: action.savingGoalSum,
+      };
     default:
       return state;
   }

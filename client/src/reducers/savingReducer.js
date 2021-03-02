@@ -3,14 +3,13 @@ import {
   READ_SAVING,
   UPDATE_SAVING,
   DELETE_SAVING,
+  MONTH_SAVING,
 } from "../types";
 
 const initialState = {
-  date: "",
-  title: "",
-  price: "",
-  memo: "",
-  category: "",
+  monthlySaving: 0,
+  savingSum: 0,
+  savingList: [],
 };
 
 const savingReducer = (state = initialState, action) => {
@@ -23,6 +22,13 @@ const savingReducer = (state = initialState, action) => {
       return { ...state, UpdateSuccess: action.payload };
     case DELETE_SAVING:
       return { ...state, DeleteSuccess: action.payload };
+    case MONTH_SAVING:
+      return {
+        ...state,
+        monthlySaving: action.monthlySaving,
+        savingSum: action.savingSum,
+        monthSuccess: action.monthSuccess,
+      };
     default:
       return state;
   }

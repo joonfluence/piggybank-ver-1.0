@@ -6,6 +6,8 @@ import { AiFillAccountBook } from "react-icons/ai";
 import routes from "../routes";
 
 const ButtonBlock = styled.div`
+  position: relative;
+  z-index: 2;
   display: flex;
   width: 100%;
   margin: 0 auto;
