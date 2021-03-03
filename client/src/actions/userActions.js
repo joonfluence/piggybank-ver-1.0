@@ -21,11 +21,13 @@ export const loginUser = async (dataBody) => {
   };
 };
 
-export const AuthCheck = () => {
-  const request = userApi.getAuth().then((response) => response.data);
+export const AuthCheck = async () => {
+  const request = await userApi.getAuth();
   return {
     type: AUTH_USER,
-    payload: request,
+    success: request.data.success,
+    userInfo: request.data._id,
+    isAuth: request.data.isAuth,
   };
 };
 

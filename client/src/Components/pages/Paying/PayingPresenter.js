@@ -10,7 +10,7 @@ const PayingPresenterBlock = styled.div`
   background-color: white;
 `;
 
-const PayingPresenter = ({ dataList }) => {
+const PayingPresenter = ({ dataList, userInfo }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,8 +22,8 @@ const PayingPresenter = ({ dataList }) => {
   return (
     <>
       <PayingPresenterBlock>
-        <CreateBoard></CreateBoard>
-        <CreateList dataList={dataList}></CreateList>
+        <CreateBoard userInfo={userInfo} InfoName="지출" />
+        <CreateList dataList={dataList} />
       </PayingPresenterBlock>
     </>
   );

@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { AiOutlinePlus } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { createPaying } from "../actions/payingActions";
+import { createSaving } from "../actions/savingActions";
+import { AuthCheck } from "../actions/userActions";
 
 const CreateBoardBlock = styled.section`
   /* border: 1px solid black; */
@@ -14,7 +18,7 @@ const FormTitle = styled.h1`
   font-weight: 600;
 `;
 
-const FormFormat = styled.form`
+const CreateFormBlock = styled.form`
   display: flex;
   flex-direction: column;
 `;
@@ -49,13 +53,15 @@ const IconContainer = styled.div`
   }
 `;
 
-const CreateBoard = ({ date, title, price, memo, category, InfoName }) => {
+const CreateBoard = ({ userInfo, title, price, memo, category, InfoName }) => {
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [inputPrice, setInputPrice] = useState("");
   const [inputMemo, setInputMemo] = useState("");
+  const [isPaying, setIsPaying] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
   const [createdDate, setcreatedDate] = useState("");
-
   const onButtonClick = () => setOpen(!open);
 
   const onChangeName = (e) => {
@@ -76,7 +82,26 @@ const CreateBoard = ({ date, title, price, memo, category, InfoName }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    let body = {
+      user: userInfo,
+      date: createdDate,
+      title: name,
+      price: inputPrice,
+      memo: inputMemo,
+    };
+    if (isPaying) {
+      dispatch(createPaying(body));
+    } else {
+      dispatch(createSaving(body));
+    }
+    setName("");
+    setInputPrice("");
+    setInputMemo("");
+    setcreatedDate("");
   };
+
+  const year = new Date().getFullYear();
+  const date = new Date().getMonth() + 1;
 
   return (
     <>
@@ -86,9 +111,9 @@ const CreateBoard = ({ date, title, price, memo, category, InfoName }) => {
       {open && (
         <CreateBoardBlock>
           <FormTitle>
-            2021년 {date}월 {InfoName}정보
+            {year}년 {date}월 {InfoName}정보
           </FormTitle>
-          <FormFormat onSubmit={onSubmit}>
+          <CreateFormBlock onSubmit={onSubmit}>
             <FormInputContainer>
               <FormInput
                 onChange={onChangeName}
@@ -121,20 +146,24 @@ const CreateBoard = ({ date, title, price, memo, category, InfoName }) => {
               <FormInput
                 style={{ width: "30px" }}
                 id="CS"
+                onChange={() => setIsPaying(!isPaying)}
                 type="radio"
+                value={isPaying}
               ></FormInput>
               <label htmlFor="CS">소비 </label>
               <FormInput
                 style={{ width: "30px" }}
                 id="SV"
+                onChange={() => setIsSaving(!isSaving)}
                 type="radio"
+                value={isSaving}
               ></FormInput>
               <label htmlFor="SV">저축 </label>
             </FormInputContainer>
             <FormInputContainer>
               <FormInput type="submit" value="전송하기"></FormInput>
             </FormInputContainer>
-          </FormFormat>
+          </CreateFormBlock>
         </CreateBoardBlock>
       )}
     </>

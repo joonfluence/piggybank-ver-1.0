@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import TotalRatioChart from "./visuals/TotalRatioChart";
+import MonthDataList from "./visuals/MonthDataList";
+import NewPieChart from "../utils/NewPieChart";
 import PieTotalRatio from "./visuals/PieTotalRatio";
-import HorizontalStackChart from "./visuals/HorizontalStackChart";
 
 const ContentBodyBlock = styled.div``;
 
@@ -20,7 +22,7 @@ const ContentBody = ({ used, remained, monthlyData }) => {
     },
     {
       id: "남은 예산/목표액",
-      value: remained, // 남은 예산
+      value: remained,
       color: "hsl(236, 70%, 50%)",
     },
   ];
@@ -31,7 +33,7 @@ const ContentBody = ({ used, remained, monthlyData }) => {
         <PieTotalRatio data={data} />
       </ChartBlock>
       <ChartBlock>
-        <HorizontalStackChart monthlyData={monthlyData} />
+        <MonthDataList monthlyData={monthlyData} />
       </ChartBlock>
     </ContentBodyBlock>
   );

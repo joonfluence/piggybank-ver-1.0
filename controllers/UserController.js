@@ -90,8 +90,6 @@ export const getAuth = (req, res) => {
     success: true,
     _id: req.user._id,
     isAuth: true,
-    // montlyBudget: req.user.montlyBudget,
-    // savingGoal: req.user.savingGoal,
   });
 };
 

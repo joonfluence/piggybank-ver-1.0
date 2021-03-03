@@ -15,7 +15,7 @@ export const userApi = {
 
 export const payingApi = {
   getPayingInfo: () => api.get(routes.paying),
-  postPayingInfo: (data) => api.post(routes.postPaying(), data),
+  postPayingInfo: (data) => api.post(routes.paying, data),
   editPayingInfo: (id) => api.post(routes.editPaying(), id),
   deletePayingInfo: (id) => api.get(routes.deletePaying(), id),
   getPayingMonth: (data) => api.post(routes.payingMonth, data),
@@ -24,7 +24,7 @@ export const payingApi = {
 
 export const savingApi = {
   getSavingInfo: () => api.get(routes.saving),
-  postSavingInfo: (data) => api.post(routes.postSaving(data)),
+  postSavingInfo: (data) => api.post(routes.saving, data),
   editSavingInfo: (id) => api.post(routes.editSaving(id)),
   deleteSavingInfo: (id) => api.get(routes.deleteSaving(id)),
   getSavingMonth: (data) => api.post(routes.savingMonth, data),

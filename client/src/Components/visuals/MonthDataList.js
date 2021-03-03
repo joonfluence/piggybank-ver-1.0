@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { GrMoney } from "react-icons/gr";
 
-const HorizontalStackChartBlock = styled.div`
+const MonthDataListBlock = styled.div`
   display: flex;
   justify-content: center;
   margin: 0 auto;
@@ -30,9 +30,9 @@ const BudgetInfoBlock = styled.div`
   }
 `;
 
-const HorizontalStackChart = ({ monthlyData }) => {
+const MonthDataList = ({ monthlyData }) => {
   return (
-    <HorizontalStackChartBlock>
+    <MonthDataListBlock>
       {monthlyData ? (
         monthlyData.map((data) => (
           <BudgetInfoBlock>
@@ -46,8 +46,8 @@ const HorizontalStackChart = ({ monthlyData }) => {
       ) : (
         <div>empty</div>
       )}
-    </HorizontalStackChartBlock>
+    </MonthDataListBlock>
   );
 };
 
-export default HorizontalStackChart;
+export default MonthDataList;

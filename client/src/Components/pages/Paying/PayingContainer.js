@@ -13,11 +13,15 @@ const PavingContainer = () => {
     payingList: payingReducer.payingList,
   }));
 
+  const { user } = useSelector(({ userReducer }) => ({
+    user: userReducer.user,
+  }));
+
   return (
     <PayingContainerBlock>
       <Header HeaderInfo="지출"></Header>
       <CenterButton />
-      <PayingPresenter dataList={payingList}></PayingPresenter>
+      <PayingPresenter userInfo={user} dataList={payingList}></PayingPresenter>
     </PayingContainerBlock>
   );
 };

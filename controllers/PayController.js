@@ -7,11 +7,10 @@ export const postPayingInfo = async (req, res) => {
   try {
     const newPaying = await Paying.create({
       user,
-      category,
       title,
       price,
     });
-    return res.status(201).json(newPaying);
+    return res.status(201).json({ newPaying, success: true });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ success: false, error });
@@ -117,6 +116,7 @@ export const getPayingMonth = async (req, res) => {
     }
 
     console.log("payingSum :" + payingSum);
+    console.log(monthlyPaying);
 
     return res
       .status(200)

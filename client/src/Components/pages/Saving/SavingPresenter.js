@@ -22,7 +22,7 @@ const SavingPresenter = ({ dataList }) => {
   return (
     <>
       <SavingPresenterBlock>
-        <CreateBoard></CreateBoard>
+        <CreateBoard InfoName="저축"></CreateBoard>
         <CreateList dataList={dataList}></CreateList>
       </SavingPresenterBlock>
     </>
