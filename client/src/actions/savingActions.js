@@ -21,7 +21,8 @@ export const readSaving = async () => {
 
   return {
     type: READ_SAVING,
-    payload: request,
+    savingList: request.data.savingList,
+    success: request.data.success,
   };
 };
 

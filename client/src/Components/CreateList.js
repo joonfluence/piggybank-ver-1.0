@@ -19,6 +19,7 @@ const InputPrice = styled.div``;
 const InputDate = styled.div``;
 
 const CreateList = ({ dataList }) => {
+  console.log(dataList);
   return (
     <CreateListBlock>
       <InputContentBlock>
@@ -26,7 +27,7 @@ const CreateList = ({ dataList }) => {
           dataList.map((data) => (
             <InputContent>
               <InputTitle>{data.title}</InputTitle>
-              <InputPrice>{data.title}</InputPrice>
+              <InputPrice>{data.price}</InputPrice>
               <InputDate>{data.date}</InputDate>
             </InputContent>
           ))

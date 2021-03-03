@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import CreateBoard from "../../CreateBoard";
 import CreateList from "../../CreateList";
+import { readPaying } from "../../../actions/payingActions";
+import { useDispatch } from "react-redux";
 
 const PayingPresenterBlock = styled.div`
   background-color: white;
 `;
 
 const PayingPresenter = ({ dataList }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    async function fetchPageData() {
+      await dispatch(readPaying());
+    }
+    fetchPageData();
+  }, []);
   return (
     <>
       <PayingPresenterBlock>
@@ -20,12 +30,7 @@ const PayingPresenter = ({ dataList }) => {
 };
 
 PayingPresenter.propTypes = {
-  date: PropTypes.instanceOf(Date),
-  title: PropTypes.string.isRequired,
-  price: PropTypes.number,
-  memo: PropTypes.string,
-  category: PropTypes.string.isRequired,
-  InfoName: PropTypes.string,
+  dateList: PropTypes.string,
 };
 
 export default PayingPresenter;

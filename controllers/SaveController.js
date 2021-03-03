@@ -22,8 +22,17 @@ export const postSavingInfo = async (req, res) => {
 export const getSavingInfo = async (req, res) => {
   const { _id } = req.user;
   try {
-    const userInfo = await Saving.find({ user: [_id] });
-    return res.status(200).json(userInfo);
+    const savingList = await Saving.find(
+      { user: [_id] },
+      {
+        title: 1,
+        price: 1,
+        date: 1,
+        category: 1,
+      }
+    );
+    console.log(savingList);
+    return res.status(200).json({ savingList, success: true });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ sucess: false, error });

@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import CreateBoard from "../../CreateBoard";
 import CreateList from "../../CreateList";
+import { readSaving } from "../../../actions/savingActions";
+import { useDispatch } from "react-redux";
 
 const SavingPresenterBlock = styled.div`
   background-color: white;
 `;
 
 const SavingPresenter = ({ dataList }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    async function fetchPageData() {
+      await dispatch(readSaving());
+    }
+    fetchPageData();
+  }, []);
   return (
     <>
       <SavingPresenterBlock>
@@ -20,12 +30,7 @@ const SavingPresenter = ({ dataList }) => {
 };
 
 SavingPresenter.propTypes = {
-  date: PropTypes.instanceOf(Date),
-  title: PropTypes.string.isRequired,
-  price: PropTypes.number,
-  memo: PropTypes.string,
-  category: PropTypes.string.isRequired,
-  InfoName: PropTypes.string,
+  dataList: PropTypes.array,
 };
 
 export default SavingPresenter;

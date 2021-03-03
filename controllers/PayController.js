@@ -20,11 +20,15 @@ export const postPayingInfo = async (req, res) => {
 
 export const getPayingInfo = async (req, res) => {
   const { _id } = req.user;
-  console.log(req.user);
   try {
-    const userInfo = await Paying.find({ user: [_id] });
-    return res.status(200).json({ success: true, userInfo });
+    const payingList = await Paying.find(
+      { user: [_id] },
+      { title: 1, price: 1, date: 1, category: 1 }
+    );
+    console.log(payingList);
+    return res.status(200).json({ success: true, payingList });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ success: false, error });
   }
 };

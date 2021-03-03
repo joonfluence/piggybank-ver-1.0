@@ -19,7 +19,11 @@ const payingReducer = (state = initialState, action) => {
     case CREATE_PAYING:
       return { ...state, CreateSuccess: action.payload };
     case READ_PAYING:
-      return { ...state, ReadSuccess: action.payload };
+      return {
+        ...state,
+        ReadSuccess: action.success,
+        payingList: action.payingList,
+      };
     case UPDATE_PAYING:
       return { ...state, UpdateSuccess: action.payload };
     case DELETE_PAYING:
