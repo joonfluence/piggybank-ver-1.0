@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { readPaying } from "../actions/payingActions";
 
 const CreateListBlock = styled.div`
   padding-bottom: 1rem;
@@ -19,7 +21,6 @@ const InputPrice = styled.div``;
 const InputDate = styled.div``;
 
 const CreateList = ({ dataList }) => {
-  console.log(dataList);
   return (
     <CreateListBlock>
       <InputContentBlock>

@@ -1,33 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
-import { monthBudget } from "../../../actions/budgetActions.js";
 import CenterButton from "../../CenterButton.js";
+import FormBoard from "../../FormBoard";
 
 const BudgetPresenterBlock = styled.div`
   background-color: white;
 `;
 
-const BudgetPresenter = ({ children, date, title, price, memo }) => {
+const BudgetPresenter = ({ children }) => {
   // const dispatch = useDispatch();
   return (
     <BudgetPresenterBlock>
       <CenterButton />
-      {children}
-      {date}
-      {title}
-      {price}
-      {memo}
+      <FormBoard />
     </BudgetPresenterBlock>
   );
-};
-
-BudgetPresenter.propTypes = {
-  date: PropTypes.instanceOf(Date),
-  title: PropTypes.string.isRequired,
-  price: PropTypes.number,
-  memo: PropTypes.string,
 };
 
 export default BudgetPresenter;

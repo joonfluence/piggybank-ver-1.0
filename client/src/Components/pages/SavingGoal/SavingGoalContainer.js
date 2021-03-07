@@ -4,6 +4,7 @@ import Header from "../../Header";
 import SavingGoalPresenter from "./SavingGoalPresenter";
 import FormBoard from "../../FormBoard";
 import { useSelector } from "react-redux";
+import Auth from "../../../hoc/auth";
 
 const SavingGoalContainerBlock = styled.div``;
 
@@ -25,4 +26,4 @@ const SavingGoalContainer = () => {
   );
 };
 
-export default SavingGoalContainer;
+export default Auth(SavingGoalContainer, true);

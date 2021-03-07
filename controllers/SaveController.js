@@ -31,7 +31,6 @@ export const getSavingInfo = async (req, res) => {
         category: 1,
       }
     );
-    console.log(savingList);
     return res.status(200).json({ savingList, success: true });
   } catch (error) {
     console.log(error);

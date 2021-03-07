@@ -7,6 +7,7 @@ import { FaPiggyBank } from "react-icons/fa";
 import { GiMoneyStack } from "react-icons/gi";
 import { joinUser } from "../../../actions/userActions";
 import { useDispatch } from "react-redux";
+import Auth from "../../../hoc/auth";
 
 const JoinBlock = styled.form`
   position: absolute;
@@ -164,4 +165,4 @@ const Join = () => {
   );
 };
 
-export default Join;
+export default Auth(Join, false);

@@ -1,6 +1,8 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { getTestInfo } from "../../../hoc/test";
 
 const TestPageBlock = styled.div`
   background-color: white;
@@ -11,7 +13,10 @@ const TestPageBlock = styled.div`
 `;
 
 const TestPage = () => {
-  axios.post("http://localhost:5000/test", {}, { withCredentials: true });
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getTestInfo());
+  }, [dispatch]);
 
   return (
     <TestPageBlock>
@@ -23,4 +28,4 @@ const TestPage = () => {
   );
 };
 
-export default TestPage;
+export default React.memo(TestPage);

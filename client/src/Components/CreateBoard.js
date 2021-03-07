@@ -4,7 +4,6 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { createPaying } from "../actions/payingActions";
 import { createSaving } from "../actions/savingActions";
-import { AuthCheck } from "../actions/userActions";
 
 const CreateBoardBlock = styled.section`
   /* border: 1px solid black; */
@@ -53,16 +52,23 @@ const IconContainer = styled.div`
   }
 `;
 
-const CreateBoard = ({ userInfo, title, price, memo, category, InfoName }) => {
+const CreateBoard = ({ userInfo, InfoName, isPaying, location }) => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [inputPrice, setInputPrice] = useState("");
   const [inputMemo, setInputMemo] = useState("");
-  const [isPaying, setIsPaying] = useState(true);
-  const [isSaving, setIsSaving] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("소비");
   const [createdDate, setcreatedDate] = useState("");
   const onButtonClick = () => setOpen(!open);
+
+  let body = {
+    user: userInfo,
+    date: createdDate,
+    title: name,
+    price: inputPrice,
+    memo: inputMemo,
+  };
 
   const onChangeName = (e) => {
     setName(e.target.value);
@@ -80,18 +86,15 @@ const CreateBoard = ({ userInfo, title, price, memo, category, InfoName }) => {
     setcreatedDate(e.target.value);
   };
 
+  const handleRadioChange = (e) => {
+    setSelectedOption(e.target.value);
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
-    let body = {
-      user: userInfo,
-      date: createdDate,
-      title: name,
-      price: inputPrice,
-      memo: inputMemo,
-    };
-    if (isPaying) {
+    if (selectedOption === "소비") {
       dispatch(createPaying(body));
-    } else {
+    } else if (selectedOption === "저축") {
       dispatch(createSaving(body));
     }
     setName("");
@@ -143,22 +146,31 @@ const CreateBoard = ({ userInfo, title, price, memo, category, InfoName }) => {
               ></FormInput>
             </FormInputContainer>
             <FormInputContainer>
-              <FormInput
-                style={{ width: "30px" }}
-                id="CS"
-                onChange={() => setIsPaying(!isPaying)}
-                type="radio"
-                value={isPaying}
-              ></FormInput>
-              <label htmlFor="CS">소비 </label>
-              <FormInput
-                style={{ width: "30px" }}
-                id="SV"
-                onChange={() => setIsSaving(!isSaving)}
-                type="radio"
-                value={isSaving}
-              ></FormInput>
-              <label htmlFor="SV">저축 </label>
+              {isPaying ? (
+                <>
+                  <FormInput
+                    style={{ width: "30px" }}
+                    id="CS"
+                    onChange={handleRadioChange}
+                    type="radio"
+                    checked={selectedOption === "소비"}
+                    value="소비"
+                  ></FormInput>
+                  <label htmlFor="CS">소비 </label>
+                </>
+              ) : (
+                <>
+                  <FormInput
+                    style={{ width: "30px" }}
+                    id="SV"
+                    onChange={handleRadioChange}
+                    type="radio"
+                    checked={selectedOption === "저축"}
+                    value="저축"
+                  ></FormInput>
+                  <label htmlFor="SV">저축 </label>
+                </>
+              )}
             </FormInputContainer>
             <FormInputContainer>
               <FormInput type="submit" value="전송하기"></FormInput>

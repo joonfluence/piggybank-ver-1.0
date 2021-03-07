@@ -17,7 +17,7 @@ export const loginUser = async (dataBody) => {
     type: LOGIN_USER,
     LoginSuccess: request.data.LoginSuccess,
     userId: request.data.userId,
-    Auth: true,
+    isAuth: request.data.isAuth,
   };
 };
 

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "../../Header";
 import CenterButton from "../../CenterButton";
 import HomePresenter from "./HomePresenter";
+import Auth from "../../../hoc/auth";
 
 const HomeContainer = () => {
   return (
@@ -13,4 +14,4 @@ const HomeContainer = () => {
   );
 };
 
-export default HomeContainer;
+export default Auth(HomeContainer, null);

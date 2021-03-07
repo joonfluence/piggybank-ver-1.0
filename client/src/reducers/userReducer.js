@@ -12,13 +12,18 @@ function userReducer(state = initialState, action) {
       return {
         ...state,
         user: action.userId,
-        isAuth: action.Auth,
+        isAuth: action.isAuth,
         LoginSuccess: action.LoginSuccess,
       };
     case REGISTER_USER:
       return { ...state, JoinSuccess: action.payload };
     case AUTH_USER:
-      return { ...state, AuthSuccess: action.payload };
+      return {
+        ...state,
+        success: action.success,
+        userInfo: action.userInfo,
+        isAuth: action.isAuth,
+      };
     // 로그아웃 테스트 해볼 것.
     case LOGOUT_USER:
       return {

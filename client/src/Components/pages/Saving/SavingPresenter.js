@@ -18,11 +18,12 @@ const SavingPresenter = ({ dataList }) => {
       await dispatch(readSaving());
     }
     fetchPageData();
-  }, []);
+  }, [dataList.length]);
+
   return (
     <>
       <SavingPresenterBlock>
-        <CreateBoard InfoName="저축"></CreateBoard>
+        <CreateBoard isPaying={false} InfoName="저축"></CreateBoard>
         <CreateList dataList={dataList}></CreateList>
       </SavingPresenterBlock>
     </>

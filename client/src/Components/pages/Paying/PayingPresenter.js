@@ -3,8 +3,9 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import CreateBoard from "../../CreateBoard";
 import CreateList from "../../CreateList";
-import { readPaying } from "../../../actions/payingActions";
 import { useDispatch } from "react-redux";
+import { readPaying } from "../../../actions/payingActions";
+import { useSelector } from "react-redux";
 
 const PayingPresenterBlock = styled.div`
   background-color: white;
@@ -14,15 +15,13 @@ const PayingPresenter = ({ dataList, userInfo }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    async function fetchPageData() {
-      await dispatch(readPaying());
-    }
-    fetchPageData();
-  }, []);
+    dispatch(readPaying());
+  }, [userInfo]);
+
   return (
     <>
       <PayingPresenterBlock>
-        <CreateBoard userInfo={userInfo} InfoName="지출" />
+        <CreateBoard userInfo={userInfo} isPaying={true} InfoName="지출" />
         <CreateList dataList={dataList} />
       </PayingPresenterBlock>
     </>

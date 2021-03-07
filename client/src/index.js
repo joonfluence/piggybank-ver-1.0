@@ -8,16 +8,31 @@ import ReduxThunk from "redux-thunk";
 import { createLogger } from "redux-logger";
 import rootReducer from "./reducers";
 import { composeWithDevTools } from "redux-devtools-extension";
+import storage from "redux-persist/lib/storage";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore, persistReducer } from "redux-persist";
 
 const logger = createLogger();
+
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 const store = createStore(
-  rootReducer,
+  persistedReducer,
   composeWithDevTools(applyMiddleware(logger, ReduxThunk, promiseMiddleware))
 );
 
+let persistor = persistStore(store);
+
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <PersistGate persistor={persistor}>
+      <App />
+    </PersistGate>
   </Provider>,
   document.getElementById("wrapper")
 );

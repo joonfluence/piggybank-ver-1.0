@@ -4,6 +4,7 @@ import Header from "../../../Header";
 import CenterButton from "../../../CenterButton";
 import PayingMonthPresenter from "./PayingMonthPresenter";
 import { useSelector } from "react-redux";
+import Auth from "../../../../hoc/auth";
 
 const PayingMonthContainerBlock = styled.div``;
 
@@ -40,4 +41,4 @@ const PayingMonthContainer = () => {
   );
 };
 
-export default PayingMonthContainer;
+export default Auth(PayingMonthContainer, true);

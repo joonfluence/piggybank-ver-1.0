@@ -14,14 +14,13 @@ import SavingGoalMonth from "./pages/SavingGoal/Month";
 import BudgetMonth from "./pages/Budget/Month";
 import SavingMonth from "./pages/Saving/Month";
 import PayingMonth from "./pages/Paying/Month";
-import TestPage from "./pages/test/testPage";
 import Auth from "../hoc/auth";
+import TestPage from "./pages/test/testPage";
 
 // 나중에 user 이름을 띄워서, 안녕하세요 준호님과 같은 모습을 보여줄 수도 있을 것임.
 
 const Router = () => {
-  const { user, isAuth } = useSelector(({ userReducer }) => ({
-    user: userReducer.user,
+  const { isAuth } = useSelector(({ userReducer }) => ({
     isAuth: userReducer.isAuth,
   }));
 
@@ -40,10 +39,11 @@ const Router = () => {
         <Route exact path={routes.savingMonth} component={SavingMonth} />
         <Route exact path={routes.budgetMonth} component={BudgetMonth} />
         <Route
-          path={routes.savingGoalMonth}
           exact
+          path={routes.savingGoalMonth}
           component={SavingGoalMonth}
         />
+        <Route exact path={routes.test} component={TestPage} />
         <Redirect from="*" to="/" />
       </Switch>
     </BrowserRouter>

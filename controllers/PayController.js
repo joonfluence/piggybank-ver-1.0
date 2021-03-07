@@ -24,7 +24,6 @@ export const getPayingInfo = async (req, res) => {
       { user: [_id] },
       { title: 1, price: 1, date: 1, category: 1 }
     );
-    console.log(payingList);
     return res.status(200).json({ success: true, payingList });
   } catch (error) {
     console.log(error);
@@ -114,9 +113,6 @@ export const getPayingMonth = async (req, res) => {
       temp = monthlyPaying[i].price;
       payingSum += temp;
     }
-
-    console.log("payingSum :" + payingSum);
-    console.log(monthlyPaying);
 
     return res
       .status(200)

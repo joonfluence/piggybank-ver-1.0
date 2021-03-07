@@ -21,6 +21,7 @@ export const readPaying = async () => {
 
   return {
     type: READ_PAYING,
+    payload: request,
     success: request.data.success,
     payingList: request.data.payingList,
   };
