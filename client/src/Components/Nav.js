@@ -3,13 +3,14 @@ import { FaPiggyBank } from "react-icons/fa";
 import { BsPerson, BsPersonPlus } from "react-icons/bs";
 import { GrLogout, GrLogin } from "react-icons/gr";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { LogOutUser } from "../actions/userActions";
+import routes from "../routes";
 // import { COLORS } from "./GlobalStyles";
 
 const NavContainer = styled.nav`
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   height: 10vh;
   width: 80%;
   line-height: 30px;
@@ -36,7 +37,6 @@ const UserBlock = styled.div`
 
 const List = styled.li`
   margin-right: 1.5rem;
-
   border-bottom: 3px solid
     ${(props) => (props.current ? "black" : "transparent")};
 `;
@@ -48,14 +48,18 @@ const SLink = styled(Link)`
 
 /* 로그인 상태와 로그인 상태가 아닌 경우를 나누어, NavBar를 구성해준다. 또한 이 부분은 아이콘으로도 뵤여줄 것. BsFillPersonFill(로그인) */
 
-const Nav = ({ location: { pathname }, history, isAuth }) => {
+const Nav = ({ location: { pathname }, history }) => {
   const dispatch = useDispatch();
+  const { user, isAuth } = useSelector(({ userReducer }) => ({
+    user: userReducer.user,
+    isAuth: userReducer.isAuth,
+  }));
   return (
     <NavContainer>
       <NavBlock>
         <LogoBlock>
-          <List current={pathname === "/"}>
-            <SLink to="/">
+          <List current={pathname === routes.home}>
+            <SLink to={routes.home}>
               <FaPiggyBank /> PiggyBank
             </SLink>
           </List>
@@ -63,8 +67,8 @@ const Nav = ({ location: { pathname }, history, isAuth }) => {
         <UserBlock>
           {isAuth ? (
             <>
-              <List current={pathname === "/mypage"}>
-                <SLink to="/mypage">
+              <List current={pathname === routes.mypage(user)}>
+                <SLink to={routes.mypage(user)}>
                   <BsPerson />
                   마이페이지
                 </SLink>

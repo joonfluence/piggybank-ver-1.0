@@ -1,9 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import Auth from "../../../../hoc/auth";
 import CenterButton from "../../../CenterButton";
 import Header from "../../../Header";
-import SavingGoalsPresenter from "./SavingGoalPresenter";
+import SavingGoalsPresenter from "./SavingGoalMPresenter";
 
 const SavingGoalContainerBlock = styled.div``;
 
@@ -42,4 +43,4 @@ const SavingGoalContainer = () => {
   );
 };
 
-export default SavingGoalContainer;
+export default Auth(SavingGoalContainer, true);

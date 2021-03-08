@@ -1,3 +1,3 @@
-import SavingGoalsContainer from "./SavingGoalContainer";
+import SavingGoalsMContainer from "./SavingGoalMContainer";
 
-export default SavingGoalsContainer;
+export default SavingGoalsMContainer;

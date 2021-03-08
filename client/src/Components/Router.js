@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
 import Home from "../Components/pages/Home/";
 import Join from "../Components/pages/Join/Join";
 import Login from "../Components/pages/Login/Login";
@@ -14,19 +13,13 @@ import SavingGoalMonth from "./pages/SavingGoal/Month";
 import BudgetMonth from "./pages/Budget/Month";
 import SavingMonth from "./pages/Saving/Month";
 import PayingMonth from "./pages/Paying/Month";
-import Auth from "../hoc/auth";
-import TestPage from "./pages/test/testPage";
 
 // 나중에 user 이름을 띄워서, 안녕하세요 준호님과 같은 모습을 보여줄 수도 있을 것임.
 
 const Router = () => {
-  const { isAuth } = useSelector(({ userReducer }) => ({
-    isAuth: userReducer.isAuth,
-  }));
-
   return (
     <BrowserRouter>
-      <Nav isAuth={isAuth} />
+      <Nav />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/join" component={Join} />
@@ -43,7 +36,6 @@ const Router = () => {
           path={routes.savingGoalMonth}
           component={SavingGoalMonth}
         />
-        <Route exact path={routes.test} component={TestPage} />
         <Redirect from="*" to="/" />
       </Switch>
     </BrowserRouter>

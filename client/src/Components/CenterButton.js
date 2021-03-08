@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { GiPiggyBank, GiTakeMyMoney, GiStairsGoal } from "react-icons/gi";
+import { GiPiggyBank, GiTakeMyMoney } from "react-icons/gi";
 import { AiFillAccountBook } from "react-icons/ai";
 import routes from "../routes";
 
@@ -36,18 +36,11 @@ const ButtonElementsList = styled.li`
   }
 `;
 
-const SLink = styled(Link)``;
-
 const HiddenBlock = styled.ul`
   visibility: hidden;
   position: absolute;
   background-color: #5956e9;
-  width: 10%;
   text-align: center;
-`;
-
-const HiddenLink = styled(Link)`
-  font-size: 1.5rem;
 `;
 
 const CenterButton = () => {
@@ -55,46 +48,50 @@ const CenterButton = () => {
     <ButtonBlock>
       <ButtonList>
         <ButtonElementsList>
-          <SLink to="/budgets">
-            <AiFillAccountBook />
-            Budget
-          </SLink>
+          <AiFillAccountBook />
+          탐색하기
           <HiddenBlock>
             <li>
-              <HiddenLink to={routes.budgetMonth}>Month Data</HiddenLink>
+              <Link to={routes.paying}>총 지출내역</Link>
+            </li>
+            <li>
+              <Link to={routes.saving}>총 저축내역</Link>
+            </li>
+            <li>
+              <Link to={routes.budgetMonth}>이번달 지출내역</Link>
+            </li>
+            <li>
+              <Link to={routes.savingGoalMonth}>이번달 저축내역</Link>
             </li>
           </HiddenBlock>
         </ButtonElementsList>
         <ButtonElementsList>
-          <SLink to="/payings">
-            <GiTakeMyMoney />
-            Payings
-          </SLink>
+          <AiFillAccountBook />
+          생성하기
           <HiddenBlock>
             <li>
-              <HiddenLink to={routes.payingMonth}>Month Data</HiddenLink>
+              <Link to={routes.paying}>
+                <GiTakeMyMoney />
+                소비내역 작성하기
+              </Link>
             </li>
-          </HiddenBlock>
-        </ButtonElementsList>
-        <ButtonElementsList>
-          <SLink to="/savingsGoal">
-            <GiStairsGoal />
-            Saving Goal
-          </SLink>
-          <HiddenBlock>
             <li>
-              <HiddenLink to={routes.savingGoalMonth}>Month Data</HiddenLink>
+              <Link to={routes.saving}>
+                <GiPiggyBank />
+                저축내역 작성하기
+              </Link>
             </li>
-          </HiddenBlock>
-        </ButtonElementsList>
-        <ButtonElementsList>
-          <SLink to="/savings">
-            <GiPiggyBank />
-            Savings
-          </SLink>
-          <HiddenBlock>
             <li>
-              <HiddenLink to={routes.savingMonth}>Month Data</HiddenLink>
+              <Link to={routes.budget}>
+                <AiFillAccountBook />
+                예산목표 작성하기
+              </Link>
+            </li>
+            <li>
+              <Link to={routes.savingGoal}>
+                <AiFillAccountBook />
+                저축목표 작성하기
+              </Link>
             </li>
           </HiddenBlock>
         </ButtonElementsList>

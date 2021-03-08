@@ -4,10 +4,7 @@ import { ResponsivePie } from "@nivo/pie";
 
 // 배열 안에 객체를 보관하고, 거기에 데이터를 담아 보관해야 하기 때문에, 해당 데이터를 받아와서 출력해줘야 한다. 그러므로 해당 데이터를 아예 컴포넌트로 분리시키는 편이 나을 것이다.
 
-const ResponsivePieChart = styled(ResponsivePie)`
-  width: 100px;
-  height: 100px;
-`;
+const ResponsivePieChart = styled(ResponsivePie)``;
 
 const PieTotalRatio = ({ data }) => {
   return (
