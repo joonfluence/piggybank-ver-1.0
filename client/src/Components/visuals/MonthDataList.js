@@ -1,51 +1,54 @@
 import React from "react";
 import styled from "styled-components";
-import { GrMoney } from "react-icons/gr";
+import CategoryBlock from "./CategoryBlock";
 
 const MonthDataListBlock = styled.div`
   display: flex;
-  justify-content: center;
+  align-items: center;
   margin: 0 auto;
 `;
 
-const BudgetInfoBlock = styled.div`
+const TotalRatioChartBlock = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin: 1rem;
-  width: 10rem;
-  height: 10rem;
-  background-color: #ffdec0;
-  border-radius: 1rem;
-
-  & > div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 1rem;
-    background-color: white;
-    width: 3rem;
-    height: 3rem;
-  }
+  margin: 1.5rem;
 `;
 
-const MonthDataList = ({ monthlyData }) => {
+const TotalRatioGaugeBlock = styled.div`
+  position: relative;
+  background-color: grey;
+  width: 10rem;
+  height: 1rem;
+`;
+
+const TotalRatioGauge = styled.div`
+  background-color: skyblue;
+  width: ${(props) => props.gaudge / 10000 + `%`};
+  height: 1rem;
+`;
+
+const MonthDataList = ({ monthlyData, color, isBudget, isCategory }) => {
   return (
     <MonthDataListBlock>
       {monthlyData ? (
         monthlyData.map((data) => (
-          <BudgetInfoBlock>
-            <div>
-              <GrMoney />
-            </div>
-            <span>항목 : {data.title}</span>
-            <span>금액 : {data.price}</span>
-          </BudgetInfoBlock>
+          <TotalRatioChartBlock>
+            <CategoryBlock color={color} data={data} isCategory={isCategory} />
+          </TotalRatioChartBlock>
         ))
       ) : (
         <div>empty</div>
       )}
+      {/* 해당 카테고리의 title을 통해, 해당 데이터가 얼마나 있는지 알아봐야한다.  */}
+      <TotalRatioGaugeBlock>
+        <TotalRatioGauge />
+        <p>원 </p>
+        {isBudget ? (
+          <p>({`소비율 ` + 1 / 10000 + `%`})</p>
+        ) : (
+          <p>({`달성률 ` + 1 / 10000 + `%`})</p>
+        )}
+      </TotalRatioGaugeBlock>
     </MonthDataListBlock>
   );
 };

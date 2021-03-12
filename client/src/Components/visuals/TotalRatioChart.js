@@ -1,29 +1,34 @@
 import React from "react";
 import styled from "styled-components";
 
-const TotalRatioChartBlock = styled.div``;
+const TotalRatioChartBlock = styled.div`
+  margin: 1.5rem;
+`;
 
 const TotalRatioGaugeBlock = styled.div`
   position: relative;
   background-color: grey;
-  margin: 1rem;
+  width: 6rem;
+  height: 1rem;
 `;
 
 const TotalRatioDescription = styled.div``;
 
 const TotalRatioGauge = styled.div`
-  position: absolute;
   background-color: skyblue;
-  width: 100%;
-  height: 5px;
+  width: ${(props) => props.gaudge / 10000 + `%`};
+  height: 1rem;
 `;
 
-const TotalRatioChart = () => {
+const TotalRatioChart = ({ title, price }) => {
   return (
     <TotalRatioChartBlock>
-      <TotalRatioDescription>총OOO액</TotalRatioDescription>
+      <TotalRatioDescription>
+        <h4>{title}</h4>
+      </TotalRatioDescription>
       <TotalRatioGaugeBlock>
-        <TotalRatioGauge gaudge></TotalRatioGauge>
+        <TotalRatioGauge gaudge={price}></TotalRatioGauge>
+        <span>{price}원</span>
       </TotalRatioGaugeBlock>
     </TotalRatioChartBlock>
   );
