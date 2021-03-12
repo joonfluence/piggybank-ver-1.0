@@ -5,6 +5,7 @@ import CenterButton from "../../../CenterButton";
 import BudgetMonthPresenter from "./BudgetMonthPresenter";
 import { useSelector } from "react-redux";
 import Auth from "../../../../hoc/auth";
+import { Helmet } from "react-helmet";
 
 const BudgetMonthContainerBlock = styled.div`
   width: 100%;
@@ -30,18 +31,30 @@ const BudgetMonthContainer = () => {
   const pocketMoney = budgetSum - payingSum;
 
   return (
-    <BudgetMonthContainerBlock>
-      <Header HeaderInfo="월 예산"></Header>
-      <CenterButton />
-      <BudgetMonthPresenter
-        yearInfo={yearInfo}
-        monthInfo={monthInfo}
-        pocketMoney={pocketMoney}
-        budgetSum={budgetSum}
-        payingSum={payingSum}
-        monthlyBudget={monthlyBudget}
-      />
-    </BudgetMonthContainerBlock>
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="96x96"
+          href="http://localhost:3000/favicon-96x96.png"
+        ></link>
+        <title>이번달 소비관리 | 돼지저금통</title>
+      </Helmet>
+      <BudgetMonthContainerBlock>
+        <Header HeaderInfo="월 예산"></Header>
+        <CenterButton />
+        <BudgetMonthPresenter
+          yearInfo={yearInfo}
+          monthInfo={monthInfo}
+          pocketMoney={pocketMoney}
+          budgetSum={budgetSum}
+          payingSum={payingSum}
+          monthlyBudget={monthlyBudget}
+        />
+      </BudgetMonthContainerBlock>
+    </>
   );
 };
 
