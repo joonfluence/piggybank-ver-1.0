@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { getDateInfo } from "../actions/dateAction";
+import { COLORS } from "../Components/GlobalStyles";
 
 const ModalBackground = styled.div`
   position: absolute;
@@ -36,28 +37,27 @@ const DateModalForm = styled.form`
   display: flex;
   flex-direction: column;
   margin: 150px 0 0 0;
-  & > input {
-    margin: 0 auto;
-    width: 80%;
-    height: 1.5rem;
-    background-color: skyblue;
-  }
+`;
+const Input = styled.input`
+  margin: 0 auto;
+  width: 80%;
+  height: 1.5rem;
+  border: 1px solid #99d4ff;
+  background-color: ${(props) => props.color};
 `;
 const ModalButton = styled.button`
   background-color: #f4ecfb;
-  position: absolute;
-  right: 12%;
-  top: 8%;
-  width: 5rem;
-  height: 3rem;
+  flex: 1;
+  margin-right: 2rem;
   z-index: 1;
   font-size: 1.2rem;
   cursor: pointer;
 `;
 const SubmitBtn = styled.button`
-  background-color: blue;
+  background-color: ${(props) => props.color};
+  border: 1.7px solid #4645ff;
   margin: 0 auto;
-  width: 80%;
+  width: 80.3%;
   height: 1.5rem;
   cursor: pointer;
 `;
@@ -102,7 +102,7 @@ const DateModal = () => {
 
   return (
     <>
-      <ModalButton onClick={onOpenModal}>조회하기</ModalButton>
+      <ModalButton onClick={onOpenModal}>조회</ModalButton>
       {modalOpen && (
         <>
           <ModalBackground></ModalBackground>
@@ -113,19 +113,23 @@ const DateModal = () => {
             <div>
               <h1>연/월 데이터를 입력해주세요</h1>
               <DateModalForm method="GET" onSubmit={onSubmitModal}>
-                <input
+                <Input
+                  color={COLORS.skyblue}
                   type="text"
                   name="year"
                   onChange={onChangeYear}
                   value={year}
-                ></input>
-                <input
+                ></Input>
+                <Input
+                  color={COLORS.skyblue}
                   type="text"
                   name="month"
                   onChange={onChangeMonth}
                   value={month}
-                ></input>
-                <SubmitBtn type="submit">전송</SubmitBtn>
+                ></Input>
+                <SubmitBtn color={COLORS.navy} type="submit">
+                  전송
+                </SubmitBtn>
               </DateModalForm>
             </div>
           </ModalWrapper>

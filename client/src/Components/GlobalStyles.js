@@ -33,6 +33,7 @@ const globalStyles = createGlobalStyle`
         position: relative;
         font-size: 1rem;
         font-weight: 400;
+        font-family: EuclidCircleA;
         text-align: center;
         background-color: #F4ECFB;
         margin: 0 auto;
@@ -54,15 +55,14 @@ const globalStyles = createGlobalStyle`
 export default globalStyles;
 
 export const COLORS = {
-  navy: "#5956E9", //버튼색, 표 배경색, NavBar
+  navy: "#9d9cff", //버튼색, 표 배경색, NavBar
   lightpurple: "#F4ECFB", // 배경색
-  apricot: "#FFDEC0", // 아이템 배경색, 유저 배경색
-  pink: "#FFE0F9", //시간에 대한 배경색
-  skyblue: "#EAF6FF", //카테고리 배경색
+  apricot: "#ffecdb", // 아이템 배경색, 유저 배경색
+  pink: "#ffdef8", //시간에 대한 배경색
+  skyblue: "#c9e8ff", //카테고리 배경색
   black: "#000000",
   white: "#FFFFFF",
   red: "#F43518",
-  blue: "#5956E9",
   green: "#2E8849",
   darkgrey: "#292930",
 };

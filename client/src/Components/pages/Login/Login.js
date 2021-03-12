@@ -5,6 +5,7 @@ import { AiFillLock } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 import { loginUser } from "../../../actions/userActions";
 import { withRouter } from "react-router-dom";
+import { COLORS } from "../../GlobalStyles";
 
 const LoginForm = styled.form`
   position: absolute;
@@ -53,7 +54,7 @@ const ButtonContainer = styled.div`
 `;
 
 const Button = styled.button`
-  background: #5956e9;
+  background: ${(props) => props.color};
   border: none;
   outline: none;
   font-weight: 600;
@@ -122,7 +123,9 @@ const Login = ({ history }) => {
         ></Input>
       </InputContainer>
       <ButtonContainer>
-        <Button type="submit">로그인</Button>
+        <Button color={COLORS.navy} type="submit">
+          로그인
+        </Button>
         {/* 로그인 안된 상태에서만 가능하도록 처리해줘야 함. */}
         <a href="/join">
           <Button>회원가입</Button>

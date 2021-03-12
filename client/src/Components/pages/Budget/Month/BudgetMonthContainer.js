@@ -6,7 +6,11 @@ import BudgetMonthPresenter from "./BudgetMonthPresenter";
 import { useSelector } from "react-redux";
 import Auth from "../../../../hoc/auth";
 
-const BudgetMonthContainerBlock = styled.div``;
+const BudgetMonthContainerBlock = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: white;
+`;
 
 const BudgetMonthContainer = () => {
   const { yearInfo, monthInfo } = useSelector(({ dateReducer }) => ({

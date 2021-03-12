@@ -2,19 +2,31 @@ import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import DateModal from "../../../utils/DateModal";
-// import PropTypes from "prop-types";
+import { COLORS } from "../../GlobalStyles";
+import MonthDataList from "../../visuals/MonthDataList";
 import PieTotalRatio from "../../visuals/PieTotalRatio";
-import TotalRatioChart from "../../visuals/TotalRatioChart";
 
 const HomePresenterBlock = styled.div`
   position: relative;
   background-color: white;
-  height: 100vh;
   display: flex;
+  justify-content: space-around;
+  align-items: center;
 `;
 
 const ChartBlock = styled.div`
-  position: relative;
+  width: 20rem;
+  height: 20rem;
+  & > span {
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 3rem;
+  }
+`;
+
+const ColumnBlock = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const HomePresenter = () => {
@@ -46,7 +58,7 @@ const HomePresenter = () => {
     },
     {
       id: "남은 예산",
-      value: budgetSum - payingSum,
+      value: savingGoalSum - payingSum,
       color: "hsl(236, 70%, 50%)",
     },
   ];
@@ -68,40 +80,39 @@ const HomePresenter = () => {
     <>
       <HomePresenterBlock>
         <DateModal />
-        <>
-          <>
-            {monthlyBudget ? (
-              monthlyBudget.map((budget) => (
-                <ChartBlock>
-                  <TotalRatioChart title={budget.title} price={budget.price} />
-                </ChartBlock>
-              ))
-            ) : (
-              <div> empty </div>
-            )}
-          </>
-          <>
-            {monthlySavingGoal ? (
-              monthlySavingGoal.map((goal) => (
-                <ChartBlock>
-                  <TotalRatioChart title={goal.title} price={goal.price} />
-                </ChartBlock>
-              ))
-            ) : (
-              <div> empty </div>
-            )}
-          </>
-        </>
-        <>
-          <ChartBlock>
-            <h2>이번달 예산 및 지출내역</h2>
-            <PieTotalRatio data={payingData} />
-          </ChartBlock>
-          <ChartBlock>
-            <h2>이번달 저축목표 및 저축내역</h2>
-            <PieTotalRatio data={savingData} />
-          </ChartBlock>
-        </>
+        <ColumnBlock>
+          <MonthDataList
+            isBudget={true}
+            monthlyData={monthlyBudget}
+            color={COLORS.apricot}
+          />
+          <MonthDataList
+            isBudget={false}
+            monthlyData={monthlySavingGoal}
+            color={COLORS.pink}
+          />
+        </ColumnBlock>
+        <ChartBlock>
+          <span>예산 및 지출내역</span>
+          <PieTotalRatio data={payingData} color="set1" />
+          <p>
+            {`소비율 ` +
+              Math.floor((1 - (budgetSum - payingSum) / budgetSum) * 100, 2) +
+              `%`}
+          </p>
+        </ChartBlock>
+        <ChartBlock>
+          <span>저축 목표 및 내역</span>
+          <PieTotalRatio data={savingData} color="set1" />
+          <p>
+            {`달성률 ` +
+              Math.floor(
+                (1 - (savingGoalSum - savingSum) / savingGoalSum) * 100,
+                2
+              ) +
+              `%`}
+          </p>
+        </ChartBlock>
       </HomePresenterBlock>
     </>
   );

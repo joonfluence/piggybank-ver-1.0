@@ -8,7 +8,6 @@ const initialState = {
 function userReducer(state = initialState, action) {
   switch (action.type) {
     case LOGIN_USER:
-      // console.log(action);
       return {
         ...state,
         user: action.userId,
@@ -20,7 +19,7 @@ function userReducer(state = initialState, action) {
     case AUTH_USER:
       return {
         ...state,
-        success: action.success,
+        success: action.LogOutSuccess,
         userInfo: action.userInfo,
         isAuth: action.isAuth,
       };

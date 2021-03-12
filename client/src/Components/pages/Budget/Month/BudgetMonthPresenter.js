@@ -7,13 +7,17 @@ import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { monthBudget } from "../../../../actions/budgetActions";
 import { monthPaying } from "../../../../actions/payingActions";
+import { COLORS } from "../../../GlobalStyles";
 
 const BudgetMonthPresenterBlock = styled.div``;
 const BudgetMonthBlock = styled.div`
   position: relative;
-  background-color: white;
 `;
-
+const HeaderBlock = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
 const BudgetMonthPresenter = ({
   yearInfo,
   monthInfo,
@@ -39,18 +43,24 @@ const BudgetMonthPresenter = ({
   return (
     <BudgetMonthPresenterBlock>
       <BudgetMonthBlock>
-        <DateModal />
-        <ContentHeader
-          yearInfo={yearInfo}
-          monthInfo={monthInfo}
-          used={payingSum}
-          remained={pocketMoney}
-        ></ContentHeader>
+        <HeaderBlock>
+          <ContentHeader
+            yearInfo={yearInfo}
+            monthInfo={monthInfo}
+            used={payingSum}
+            remained={pocketMoney}
+            isBudget={true}
+            budgetSum={budgetSum}
+          ></ContentHeader>
+          <DateModal />
+        </HeaderBlock>
         <ContentBody
           budgetSum={budgetSum}
           monthlyData={monthlyBudget}
           used={payingSum}
           remained={pocketMoney}
+          isBudget={true}
+          color={COLORS.apricot}
         ></ContentBody>
       </BudgetMonthBlock>
     </BudgetMonthPresenterBlock>

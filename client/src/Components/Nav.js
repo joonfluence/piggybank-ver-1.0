@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { LogOutUser } from "../actions/userActions";
 import routes from "../routes";
+import { COLORS } from "./GlobalStyles";
 // import { COLORS } from "./GlobalStyles";
 
 const NavContainer = styled.nav`
@@ -17,7 +18,7 @@ const NavContainer = styled.nav`
 `;
 
 const NavBlock = styled.div`
-  background-color: #5956e9;
+  background-color: ${(props) => props.color};
   display: flex;
 `;
 
@@ -56,7 +57,7 @@ const Nav = ({ location: { pathname }, history }) => {
   }));
   return (
     <NavContainer>
-      <NavBlock>
+      <NavBlock color={COLORS.navy}>
         <LogoBlock>
           <List current={pathname === routes.home}>
             <SLink to={routes.home}>
@@ -76,7 +77,13 @@ const Nav = ({ location: { pathname }, history }) => {
               <List>
                 <span
                   style={{ cursor: "pointer" }}
-                  onClick={() => dispatch(LogOutUser())}
+                  onClick={() =>
+                    dispatch(LogOutUser()).then((response) => {
+                      if (response.LogOutSuccess) {
+                        window.location.href = "/";
+                      }
+                    })
+                  }
                 >
                   <GrLogout />
                   로그아웃

@@ -103,7 +103,6 @@ export const getPayingMonth = async (req, res) => {
         $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
       },
     });
-    console.log(monthlyPaying);
 
     let temp = 0;
     let payingSum = 0;

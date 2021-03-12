@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { AiOutlinePlus } from "react-icons/ai";
+import { COLORS } from "./GlobalStyles";
 
 const FormBoardBlock = styled.div`
   position: relative;
@@ -37,7 +38,7 @@ const Input = styled.input`
 const IconContainer = styled.div`
   svg {
     border-radius: 20px;
-    background-color: #5956e9;
+    background-color: ${(props) => props.color};
     color: white;
     font-size: 2.5rem;
     &:hover {
@@ -55,7 +56,7 @@ const FormBoard = () => {
   };
   return (
     <>
-      <IconContainer onClick={onButtonClick} open={open}>
+      <IconContainer color={COLORS.navy} onClick={onButtonClick} open={open}>
         <AiOutlinePlus />
       </IconContainer>
       {open && (

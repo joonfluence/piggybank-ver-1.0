@@ -6,6 +6,7 @@ import { monthSavingGoal } from "../../../../actions/savingGoalActions";
 import { monthSaving } from "../../../../actions/savingActions";
 import { useDispatch } from "react-redux";
 import DateModal from "../../../../utils/DateModal";
+import { COLORS } from "../../../GlobalStyles";
 
 const SavingMonthPresenterBlock = styled.div`
   position: relative;
@@ -43,12 +44,15 @@ const SavingMonthPresenter = ({
           monthInfo={monthInfo}
           used={savingSum}
           remained={pocketMoney}
+          isBudget={false}
+          savingGoalSum={savingGoalSum}
         ></ContentHeader>
         <ContentBody
           savingGoalSum={savingGoalSum}
           used={savingSum}
           remained={pocketMoney}
           monthlyData={monthlySavingGoal}
+          color={COLORS.pink}
         ></ContentBody>
       </SavingMonthPresenterBlock>
     </>

@@ -1,36 +1,58 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
 import styled from "styled-components";
-import { readPaying } from "../actions/payingActions";
+import { COLORS } from "./GlobalStyles";
+import { BsCheckCircle } from "react-icons/bs";
+import { RiDeleteBack2Fill } from "react-icons/ri";
+import CategoryBlock from "./visuals/CategoryBlock";
 
 const CreateListBlock = styled.div`
   padding-bottom: 1rem;
 `;
 
 const InputContentBlock = styled.div`
-  background-color: #ffe0f9;
-  margin: 3rem;
+  background-color: ${(props) => props.color};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  & > div > svg {
+    cursor: pointer;
+  }
 `;
 
-const InputContent = styled.div``;
+const BackgroundBlock = styled.div`
+  display: flex;
+  width: 80%;
+  margin: 3rem;
+  background-color: ${(props) => props.color};
 
-const InputTitle = styled.div``;
-
-const InputPrice = styled.div``;
-
-const InputDate = styled.div``;
+  & > div:last-child() {
+    flex: 1;
+    font-size: 1.5rem;
+  }
+`;
 
 const CreateList = ({ dataList }) => {
   return (
     <CreateListBlock>
-      <InputContentBlock>
+      <InputContentBlock color={COLORS.pink}>
         {dataList ? (
           dataList.map((data) => (
-            <InputContent>
-              <InputTitle>{data.title}</InputTitle>
-              <InputPrice>{data.price}</InputPrice>
-              <InputDate>{data.date}</InputDate>
-            </InputContent>
+            <BackgroundBlock color={COLORS.white}>
+              <div>
+                <CategoryBlock
+                  data={data}
+                  color={COLORS.skyblue}
+                  isCategory={data.category ? true : false}
+                />
+              </div>
+              <div>
+                <span>{data.price}</span>
+                <span>{data.memo}</span>
+                <BsCheckCircle />
+                <RiDeleteBack2Fill />
+              </div>
+            </BackgroundBlock>
           ))
         ) : (
           <div>empty</div>

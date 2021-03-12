@@ -26,6 +26,7 @@ const PayingMonthPresenter = ({
   yearInfo,
   monthInfo,
   payingSum,
+  budgetSum,
   monthlyBudget,
   pocketMoney,
 }) => {
@@ -83,6 +84,8 @@ const PayingMonthPresenter = ({
           monthInfo={monthInfo}
           used={payingSum}
           remained={pocketMoney}
+          isBudget={true}
+          budgetSum={budgetSum}
         ></ContentHeader>
         <ChartBlock>
           <TotalRatioChart data={data} />

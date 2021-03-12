@@ -4,6 +4,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { createPaying } from "../actions/payingActions";
 import { createSaving } from "../actions/savingActions";
+import { COLORS } from "./GlobalStyles";
 
 const CreateBoardBlock = styled.section`
   /* border: 1px solid black; */
@@ -43,7 +44,7 @@ const FormInput = styled.input`
 const IconContainer = styled.div`
   svg {
     border-radius: 20px;
-    background-color: #5956e9;
+    background-color: ${(props) => props.color};
     color: white;
     font-size: 2.5rem;
     &:hover {
@@ -108,7 +109,7 @@ const CreateBoard = ({ userInfo, InfoName, isPaying, location }) => {
 
   return (
     <>
-      <IconContainer onClick={onButtonClick} open={open}>
+      <IconContainer color={COLORS.navy} onClick={onButtonClick} open={open}>
         <AiOutlinePlus />
       </IconContainer>
       {open && (

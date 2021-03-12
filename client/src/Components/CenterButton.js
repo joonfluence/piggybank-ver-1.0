@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { GiPiggyBank, GiTakeMyMoney } from "react-icons/gi";
 import { AiFillAccountBook } from "react-icons/ai";
 import routes from "../routes";
+import { COLORS } from "./GlobalStyles";
 
 const ButtonBlock = styled.div`
   position: relative;
@@ -18,7 +19,7 @@ const ButtonList = styled.ul`
   align-items: center;
   justify-content: space-around;
   flex: 1;
-  background-color: #5956e9;
+  background-color: ${(props) => props.color};
 `;
 
 const ButtonElementsList = styled.li`
@@ -39,18 +40,18 @@ const ButtonElementsList = styled.li`
 const HiddenBlock = styled.ul`
   visibility: hidden;
   position: absolute;
-  background-color: #5956e9;
+  background-color: ${(props) => props.color};
   text-align: center;
 `;
 
 const CenterButton = () => {
   return (
     <ButtonBlock>
-      <ButtonList>
+      <ButtonList color={COLORS.navy}>
         <ButtonElementsList>
           <AiFillAccountBook />
           탐색하기
-          <HiddenBlock>
+          <HiddenBlock color={COLORS.navy}>
             <li>
               <Link to={routes.paying}>총 지출내역</Link>
             </li>
@@ -68,7 +69,7 @@ const CenterButton = () => {
         <ButtonElementsList>
           <AiFillAccountBook />
           생성하기
-          <HiddenBlock>
+          <HiddenBlock color={COLORS.navy}>
             <li>
               <Link to={routes.paying}>
                 <GiTakeMyMoney />

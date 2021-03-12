@@ -6,14 +6,14 @@ import { ResponsivePie } from "@nivo/pie";
 
 const ResponsivePieChart = styled(ResponsivePie)``;
 
-const PieTotalRatio = ({ data }) => {
+const PieTotalRatio = ({ data, color }) => {
   return (
     <>
       <ResponsivePieChart
         data={data}
-        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+        margin={{ top: 0, right: 40, bottom: 0, left: 40 }}
         cornerRadius={3}
-        colors={{ scheme: "category10" }}
+        colors={{ scheme: color }}
         borderWidth={1}
         borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
         radialLabelsSkipAngle={10}

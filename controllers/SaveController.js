@@ -112,9 +112,6 @@ export const getSavingMonth = async (req, res) => {
       { title: 1, price: 1 }
     );
 
-    console.log(newMonth, nextMonth);
-    console.log(monthlySaving);
-
     let savingSum = 0;
     let temp = 0;
 

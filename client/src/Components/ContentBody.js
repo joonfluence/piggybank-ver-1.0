@@ -1,19 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import TotalRatioChart from "./visuals/TotalRatioChart";
 import MonthDataList from "./visuals/MonthDataList";
-import NewPieChart from "../utils/NewPieChart";
 import PieTotalRatio from "./visuals/PieTotalRatio";
 
-const ContentBodyBlock = styled.div``;
-
-const ChartBlock = styled.div`
+const ContentBodyBlock = styled.div`
   position: relative;
-  width: 100%;
-  height: 300px;
+  display: flex;
+  justify-content: space-around;
 `;
 
-const ContentBody = ({ used, remained, monthlyData }) => {
+const ChartBlock = styled.div`
+  width: 20rem;
+  height: 20rem;
+`;
+
+const ContentBody = ({ used, remained, monthlyData, color, isBudget }) => {
   const data = [
     {
       id: "총 소비/저축액수",
@@ -29,11 +30,15 @@ const ContentBody = ({ used, remained, monthlyData }) => {
 
   return (
     <ContentBodyBlock>
+      <div>
+        <MonthDataList
+          monthlyData={monthlyData}
+          color={color}
+          isBudget={isBudget}
+        />
+      </div>
       <ChartBlock>
-        <PieTotalRatio data={data} />
-      </ChartBlock>
-      <ChartBlock>
-        <MonthDataList monthlyData={monthlyData} />
+        <PieTotalRatio data={data} color="set1" />
       </ChartBlock>
     </ContentBodyBlock>
   );

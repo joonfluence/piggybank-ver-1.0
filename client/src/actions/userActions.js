@@ -37,7 +37,7 @@ export const LogOutUser = async () => {
     type: LOGOUT_USER,
     userId: request.userId,
     isAuth: request.isAuth,
-    payload: request,
+    LogOutSuccess: request.LogOutSuccess,
   };
 };
 
