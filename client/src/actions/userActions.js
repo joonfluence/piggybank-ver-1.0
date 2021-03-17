@@ -1,5 +1,4 @@
 import axios from "axios";
-import Cookies from "js-cookie";
 import { userApi } from "../api";
 import { AUTH_USER, REGISTER_USER, LOGIN_USER, LOGOUT_USER } from "../types";
 
@@ -38,18 +37,5 @@ export const LogOutUser = async () => {
     userId: request.userId,
     isAuth: request.isAuth,
     LogOutSuccess: request.LogOutSuccess,
-  };
-};
-
-export const cookieTest = async () => {
-  const request = await axios.post(
-    "http://localhost:5000/test",
-    {},
-    { withCredentials: true }
-  );
-
-  return {
-    type: "test",
-    payload: request,
   };
 };

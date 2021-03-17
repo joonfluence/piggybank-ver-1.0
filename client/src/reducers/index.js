@@ -5,7 +5,6 @@ import savingReducer from "./savingReducer";
 import savingGoalReducer from "./savingGoalReducer";
 import budgetReducer from "./budgetReducer";
 import dateReducer from "./dateReducer";
-import testReducer from "../hoc/test";
 
 const rootReducer = combineReducers({
   userReducer,
@@ -14,7 +13,6 @@ const rootReducer = combineReducers({
   savingGoalReducer,
   budgetReducer,
   dateReducer,
-  testReducer,
 });
 
 export default rootReducer;
