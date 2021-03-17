@@ -1,79 +1,90 @@
 import Paying from "../models/Paying.js";
-import Budget from "../models/Budget.js";
+import Saving from "../models/Saving.js";
 
 export const getPayingCategory = async (req, res) => {
   const {
-    query: { year, month },
-    params: { category },
+    body: { year, month, category },
+    user: { _id },
   } = req;
   try {
+    const newMonth =
+      month.toString().length < 2 ? 0 + month.toString() : month.toString();
     const nextMonthInt = Number(month) + 1;
     const nextMonth =
-      nextMonthInt.toString() < 10
+      nextMonthInt.toString().length < 2
         ? 0 + nextMonthInt.toString()
         : nextMonthInt.toString();
 
     let temp = 0;
-    let payingSum = 0;
     let categorySum = 0;
-    // 나중에는 사용자의 input value를 바탕으로 값을 받아줄 것임.
+
+    // category의 title을 바탕으로 데이터를 aggregate 해줘야 한다.
 
     const categoryPaying = await Paying.find({
-      title: `${category}`,
+      user: [_id],
+      category: [`${category}`],
       date: {
-        $gt: new Date(`${year}-${month}-01T00:00:00.000Z`),
+        $gt: new Date(`${year}-${newMonth}-01T00:00:00.000Z`),
         $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
       },
-    }).populate("category", "title budget");
-
-    // 카테고리의 합을 나타내야 할 것임.
+    }).populate("category", "title price");
 
     for (let i = 0; i < categoryPaying.length; i++) {
       temp = categoryPaying[i].price;
       categorySum += temp;
     }
 
-    console.log("categorySum :" + categorySum);
-
-    return res.status(200).json({ monthSucess: true, categorySum });
+    return res.status(200).json({
+      categorySuccess: true,
+      categoryPaying,
+      categorySum,
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).json(error);
   }
 };
 
-export const getSavingCategory = (req, res) => res.send("getSavingCategory");
-
-export const getBudgetCategory = async (req, res) => {
-  const { year, month } = req.query;
-  const { category } = req.params;
-
+export const getSavingCategory = async (req, res) => {
+  const {
+    body: { year, month, category },
+    user: { _id },
+  } = req;
   try {
+    const newMonth =
+      month.toString().length < 2 ? 0 + month.toString() : month.toString();
     const nextMonthInt = Number(month) + 1;
     const nextMonth =
-      nextMonthInt.toString() < 10
+      nextMonthInt.toString().length < 2
         ? 0 + nextMonthInt.toString()
         : nextMonthInt.toString();
 
-    // monthInfo < 데이터 < monthInfo + 1와 같은 방식으로 월별 데이터를 가져올 수 있을 것.
-
     let temp = 0;
-    let budget = 0;
     let categorySum = 0;
 
-    const categoryBudget = await Budget.find({
-      title: `${category}`,
+    // category의 title을 바탕으로 데이터를 aggregate 해줘야 한다.
+
+    const categorySaving = await Saving.find({
+      user: [_id],
+      category: [`${category}`],
       date: {
-        $gt: new Date(`${year}-${month}-01T00:00:00.000Z`),
+        $gt: new Date(`${year}-${newMonth}-01T00:00:00.000Z`),
         $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
       },
-    });
+    }).populate("category", "title price");
 
-    return res.status(200).json({ categoryBudget });
-  } catch (err) {
-    console.log(err);
-    return res.status(500).json({ err });
+    for (let i = 0; i < categorySaving.length; i++) {
+      temp = categorySaving[i].price;
+      categorySum += temp;
+    }
+
+    return res.status(200).json({
+      categorySuccess: true,
+      categorySaving,
+      categorySum,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json(error);
   }
 };
-export const getSavingGoalCategory = (req, res) =>
-  res.send("getSavingGoalCategory");

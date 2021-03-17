@@ -1,4 +1,5 @@
 import SavingGoal from "../models/SavingGoal.js";
+import Saving from "../models/Saving.js";
 
 export const postGoalInfo = async (req, res) => {
   const { title, price } = req.body;
@@ -26,7 +27,7 @@ export const getGoalInfo = async (req, res) => {
         if (err) return res.status(404).json({ success: false });
       }
     );
-    return res.status(200).json(savingGoalInfo);
+    return res.status(200).json({ savingGoalInfo });
   } catch (error) {
     // console.log(error);
     return res.status(500).json({ error });
@@ -59,9 +60,10 @@ export const deleteGoalInfo = async (req, res) => {
   const {
     params: { id },
   } = req;
+
   try {
     await SavingGoal.findByIdAndRemove({ _id: id });
-    return res.status(204).json();
+    return res.status(204).json({ success: true });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ sucess: false, error });
@@ -108,17 +110,41 @@ export const getGoalMonth = async (req, res) => {
     );
 
     let savingGoalSum = 0;
+    let categorySaving = 0;
+    let categoryPrice = 0;
+    let categorySum = 0;
 
     for (let i = 0; i < monthlySavingGoal.length; i++) {
       let temp = 0;
       temp = monthlySavingGoal[i].price;
       savingGoalSum += temp;
+
+      categorySaving = await Saving.find({
+        user: [_id],
+        category: [monthlySavingGoal[i]._id],
+        date: {
+          $gt: new Date(`${year}-${newMonth}-01T00:00:00.000Z`),
+          $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
+        },
+      }).populate("category", "title price");
+
+      for (let i = 0; i < categorySaving.length; i++) {
+        temp = categorySaving[i].price;
+        categorySum += temp;
+        categoryPrice += temp;
+      }
+      monthlySavingGoal[i].categoryPrice = categoryPrice;
+      categoryPrice = 0;
     }
 
-    return res
-      .status(200)
-      .json({ monthlySavingGoal, savingGoalSum, monthSuccess: true });
+    return res.status(200).json({
+      monthlySavingGoal,
+      savingGoalSum,
+      categorySum,
+      monthSuccess: true,
+    });
   } catch (err) {
+    console.log(err);
     return res.status(500).json(err);
   }
 };

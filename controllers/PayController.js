@@ -5,10 +5,12 @@ import Paying from "../models/Paying.js";
 export const postPayingInfo = async (req, res) => {
   const { user, category, title, price } = req.body;
   try {
+    console.log(category);
     const newPaying = await Paying.create({
       user,
       title,
       price,
+      category,
     });
     return res.status(201).json({ newPaying, success: true });
   } catch (error) {
@@ -23,7 +25,8 @@ export const getPayingInfo = async (req, res) => {
     const payingList = await Paying.find(
       { user: [_id] },
       { title: 1, price: 1, date: 1, category: 1 }
-    );
+    ).populate("category");
+
     return res.status(200).json({ success: true, payingList });
   } catch (error) {
     console.log(error);
@@ -60,10 +63,10 @@ export const deletePayingInfo = async (req, res) => {
   } = req;
   try {
     await Paying.findByIdAndRemove({ _id: id });
-    return res.status(204).json();
+    return res.status(204).json({ success: true });
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ sucess: false, error });
+    return res.status(500).json({ success: false, error });
   }
 };
 

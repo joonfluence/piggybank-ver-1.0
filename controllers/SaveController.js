@@ -8,9 +8,10 @@ export const postSavingInfo = async (req, res) => {
   try {
     const newSaving = await Saving.create({
       user: [userID],
-      category, // :[categoryID]
+      category,
       title,
       price,
+      category: { _id: category },
     });
     return res.status(201).json(newSaving);
   } catch (error) {
@@ -30,7 +31,8 @@ export const getSavingInfo = async (req, res) => {
         date: 1,
         category: 1,
       }
-    );
+    ).populate("category");
+
     return res.status(200).json({ savingList, success: true });
   } catch (error) {
     console.log(error);

@@ -8,6 +8,7 @@ const SavingGoalSchema = new Schema({
   date: { type: Date, default: getCurrentDate() },
   title: { type: String },
   price: { type: Number },
+  categoryPrice: { type: Number },
   user: [{ type: Schema.Types.ObjectId, ref: "User" }],
 });
 

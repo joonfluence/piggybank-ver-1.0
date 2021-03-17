@@ -8,7 +8,7 @@ const BudgetSchema = new Schema({
   date: { type: Date, default: getCurrentDate() },
   title: { type: String, unique: true },
   price: { type: Number },
-  monthlyBudget: { type: Number },
+  categoryPrice: { type: Number },
   remained: { type: Number },
   user: [{ type: Schema.Types.ObjectId, ref: "User" }],
 });

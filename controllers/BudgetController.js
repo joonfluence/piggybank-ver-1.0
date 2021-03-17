@@ -1,4 +1,5 @@
 import Budget from "../models/Budget.js";
+import Paying from "../models/Paying.js";
 
 export const postBudgetInfo = async (req, res) => {
   const { title, price } = req.body;
@@ -108,20 +109,40 @@ export const getBudgetMonth = async (req, res) => {
           $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
         },
       },
-      { title: 1, price: 1 }
+      { title: 1, price: 1, categorySum: 1 }
     );
 
     let budgetSum = 0;
+    let categoryPrice = 0;
+    let categorySum = 0;
+    let categoryPaying = 0;
 
     for (let i = 0; i < monthlyBudget.length; i++) {
       let temp = 0;
       temp = monthlyBudget[i].price;
       budgetSum += temp;
+
+      categoryPaying = await Paying.find({
+        user: [_id],
+        category: [monthlyBudget[i]._id],
+        date: {
+          $gt: new Date(`${year}-${newMonth}-01T00:00:00.000Z`),
+          $lt: new Date(`${year}-${nextMonth}-01T00:00:00.000Z`),
+        },
+      }).populate("category", "title price");
+
+      for (let i = 0; i < categoryPaying.length; i++) {
+        temp = categoryPaying[i].price;
+        categoryPrice += temp;
+        categorySum += temp;
+      }
+      monthlyBudget[i].categoryPrice = categoryPrice;
+      categoryPrice = 0;
     }
 
     return res
       .status(200)
-      .json({ monthlyBudget, budgetSum, monthSuccess: true });
+      .json({ monthlyBudget, categorySum, budgetSum, monthSuccess: true });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ err });
