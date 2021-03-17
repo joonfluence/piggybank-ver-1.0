@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { getDateInfo } from "../actions/dateAction";
@@ -49,6 +49,7 @@ const ModalButton = styled.button`
   background-color: #f4ecfb;
   flex: 1;
   margin-right: 2rem;
+  margin-left: 1rem;
   z-index: 1;
   font-size: 1.2rem;
   cursor: pointer;
@@ -72,6 +73,15 @@ const DateModal = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    window.addEventListener("keydown", (event) => {
+      if (event.KeyCode === 27) {
+        setModalOpen(false);
+      }
+    });
+  }, [modalOpen]);
+
   const onSubmitModal = async (e) => {
     e.preventDefault();
     let body = {
