@@ -1,35 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 
-const TotalRatioChartBlock = styled.div`
-  margin: 1.5rem;
-`;
-
-const TotalRatioGaugeBlock = styled.div`
-  position: relative;
-  background-color: grey;
-  width: 6rem;
-  height: 1rem;
-`;
-
-const TotalRatioDescription = styled.div``;
-
+const TotalRatioChartBlock = styled.div``;
 const TotalRatioGauge = styled.div`
   background-color: skyblue;
-  width: ${(props) => props.gaudge / 10000 + `%`};
+  width: ${(props) => props.gaudge + `%`};
   height: 1rem;
 `;
+const TotalRatioChart = ({ categorySum, isBudget, data }) => {
+  let gaudge = Math.floor((categorySum * 100) / data.price, 2);
 
-const TotalRatioChart = ({ title, price }) => {
   return (
     <TotalRatioChartBlock>
-      <TotalRatioDescription>
-        <h4>{title}</h4>
-      </TotalRatioDescription>
-      <TotalRatioGaugeBlock>
-        <TotalRatioGauge gaudge={price}></TotalRatioGauge>
-        <span>{price}원</span>
-      </TotalRatioGaugeBlock>
+      <TotalRatioGauge gaudge={gaudge} />
+      <span>총소비액 : {categorySum}원</span>
+      {isBudget ? (
+        <p>({`소비율 ` + gaudge + `%`})</p>
+      ) : (
+        <p>({`달성률 ` + gaudge + `%`})</p>
+      )}
     </TotalRatioChartBlock>
   );
 };

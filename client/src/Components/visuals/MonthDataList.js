@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { COLORS } from "../GlobalStyles";
 import CategoryBlock from "./CategoryBlock";
+import TotalRatioTemplate from "./TotalRatioTemplate";
+import { monthBudget } from "../../actions/budgetActions";
+import { monthSavingGoal } from "../../actions/savingGoalActions";
 
 const MonthDataListBlock = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   margin: 0 auto;
 `;
@@ -11,44 +17,47 @@ const MonthDataListBlock = styled.div`
 const TotalRatioChartBlock = styled.div`
   display: flex;
   align-items: center;
+  background-color: ${(props) => props.color};
   margin: 1.5rem;
 `;
 
-const TotalRatioGaugeBlock = styled.div`
-  position: relative;
-  background-color: grey;
-  width: 10rem;
-  height: 1rem;
-`;
+const MonthDataList = ({ monthlyData, color, isBudget }) => {
+  const dispatch = useDispatch();
+  const { yearInfo, monthInfo } = useSelector(({ dateReducer }) => ({
+    yearInfo: dateReducer.yearInfo,
+    monthInfo: dateReducer.monthInfo,
+  }));
 
-const TotalRatioGauge = styled.div`
-  background-color: skyblue;
-  width: ${(props) => props.gaudge / 10000 + `%`};
-  height: 1rem;
-`;
+  useEffect(() => {
+    let body = {
+      year: yearInfo,
+      month: monthInfo,
+    };
+    if (isBudget) {
+      dispatch(monthBudget(body));
+    } else {
+      dispatch(monthSavingGoal(body));
+    }
+  }, [monthlyData.length]);
 
-const MonthDataList = ({ monthlyData, color, isBudget, isCategory }) => {
   return (
     <MonthDataListBlock>
       {monthlyData ? (
         monthlyData.map((data) => (
-          <TotalRatioChartBlock>
-            <CategoryBlock color={color} data={data} isCategory={isCategory} />
+          <TotalRatioChartBlock color={COLORS.grey}>
+            <CategoryBlock color={color} data={data} isCategory={false} />
+            <TotalRatioTemplate
+              data={data}
+              yearInfo={yearInfo}
+              monthInfo={monthInfo}
+              isBudget={isBudget}
+              categorySum={data.categoryPrice}
+            />
           </TotalRatioChartBlock>
         ))
       ) : (
         <div>empty</div>
       )}
-      {/* 해당 카테고리의 title을 통해, 해당 데이터가 얼마나 있는지 알아봐야한다.  */}
-      <TotalRatioGaugeBlock>
-        <TotalRatioGauge />
-        <p>원 </p>
-        {isBudget ? (
-          <p>({`소비율 ` + 1 / 10000 + `%`})</p>
-        ) : (
-          <p>({`달성률 ` + 1 / 10000 + `%`})</p>
-        )}
-      </TotalRatioGaugeBlock>
     </MonthDataListBlock>
   );
 };
