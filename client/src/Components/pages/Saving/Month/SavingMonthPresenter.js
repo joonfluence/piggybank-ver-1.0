@@ -1,62 +1,30 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import ContentHeader from "../../../ContentHeader";
-import ContentBody from "../../../ContentBody";
-import { monthSavingGoal } from "../../../../actions/savingGoalActions";
-import { monthSaving } from "../../../../actions/savingActions";
-import { useDispatch } from "react-redux";
-import DateModal from "../../../../utils/DateModal";
-import { COLORS } from "../../../GlobalStyles";
+import { readSaving } from "../../../../actions/savingActions";
+import { useDispatch, useSelector } from "react-redux";
+import CreateList from "../../../CreateList";
 
 const SavingMonthPresenterBlock = styled.div`
   position: relative;
   background-color: white;
 `;
 
-const SavingMonthPresenter = ({
-  yearInfo,
-  monthInfo,
-  savingGoalSum,
-  savingSum,
-  pocketMoney,
-  monthlySavingGoal,
-}) => {
+const SavingMonthPresenter = () => {
   const dispatch = useDispatch();
+  const { savingList } = useSelector(({ savingReducer }) => ({
+    savingList: savingReducer.savingList,
+  }));
 
   useEffect(() => {
-    let body = {
-      year: yearInfo,
-      month: monthInfo,
-    };
-    async function fetchPageData() {
-      await dispatch(monthSaving(body));
-      await dispatch(monthSavingGoal(body));
-    }
-    fetchPageData();
-  }, [yearInfo, monthInfo]);
+    dispatch(readSaving());
+  }, [savingList.length]);
 
   return (
     <>
       <SavingMonthPresenterBlock>
-        <DateModal />
-        <ContentHeader
-          yearInfo={yearInfo}
-          monthInfo={monthInfo}
-          used={savingSum}
-          remained={pocketMoney}
-          isBudget={false}
-          savingGoalSum={savingGoalSum}
-        ></ContentHeader>
-        <ContentBody
-          savingGoalSum={savingGoalSum}
-          used={savingSum}
-          remained={pocketMoney}
-          monthlyData={monthlySavingGoal}
-          color={COLORS.pink}
-        ></ContentBody>
+        <CreateList isPaying={false} dataList={savingList} isCategory={true} />
       </SavingMonthPresenterBlock>
     </>
   );
 };
-
 export default SavingMonthPresenter;

@@ -1,30 +1,27 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import CreateBoard from "../../CreateBoard";
-import CreateList from "../../CreateList";
-import { readSaving } from "../../../actions/savingActions";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const SavingPresenterBlock = styled.div`
   background-color: white;
 `;
 
 const SavingPresenter = ({ dataList }) => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    async function fetchPageData() {
-      await dispatch(readSaving());
-    }
-    fetchPageData();
-  }, [dataList.length]);
-
+  const { monthlySavingGoal } = useSelector(({ savingGoalReducer }) => ({
+    monthlySavingGoal: savingGoalReducer.monthlySavingGoal,
+  }));
   return (
     <>
       <SavingPresenterBlock>
-        <CreateBoard isPaying={false} InfoName="저축"></CreateBoard>
-        <CreateList dataList={dataList}></CreateList>
+        <CreateBoard
+          dataList={dataList}
+          isPaying={false}
+          InfoName="저축"
+          isOpen={true}
+          selectOptions={monthlySavingGoal}
+        ></CreateBoard>
       </SavingPresenterBlock>
     </>
   );
