@@ -3,11 +3,10 @@ import styled from "styled-components";
 import { AiFillLock } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
-import { FaPiggyBank } from "react-icons/fa";
-import { GiMoneyStack } from "react-icons/gi";
 import { joinUser } from "../../../actions/userActions";
 import { useDispatch } from "react-redux";
 import Auth from "../../../hoc/auth";
+import { COLORS } from "../../GlobalStyles";
 
 const JoinBlock = styled.form`
   position: absolute;
@@ -42,7 +41,19 @@ const InputContainer = styled.div`
   }
 
   &:last-child {
-    margin-top: 1.5rem;
+    background: ${(props) => props.color};
+    border: none;
+    outline: none;
+    font-weight: 600;
+    /* padding: 10px; */
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 100%;
+    flex: 1;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
 
@@ -97,31 +108,31 @@ const Join = () => {
 
   return (
     <JoinBlock onSubmit={onSubmit}>
-      <label htmlFor="name">이름</label>
+      <label htmlFor="name"></label>
       <InputContainer>
         <BsFillPersonFill />
         <Input
           id="name"
           type="name"
-          placeholder="홍길동"
+          placeholder="이름을 입력하세요"
           onChange={onNameChange}
           value={Name}
           required
         />
       </InputContainer>
-      <label htmlFor="ID">아이디</label>
+      <label htmlFor="ID"></label>
       <InputContainer>
         <BsFillPersonFill />
         <Input
           id="id"
           type="id"
-          placeholder="helloworld"
+          placeholder="아이디를 입력하세요"
           onChange={onIdChange}
           value={Id}
           required
         />
       </InputContainer>
-      <label htmlFor="password">비밀번호</label>
+      <label htmlFor="password"></label>
       <InputContainer>
         <AiFillLock />
         <Input
@@ -134,7 +145,7 @@ const Join = () => {
           required
         ></Input>
       </InputContainer>
-      <label htmlFor="password2">비밀번호 확인</label>
+      <label htmlFor="password2"></label>
       <InputContainer>
         <AiFillLock />
         <Input
@@ -147,7 +158,7 @@ const Join = () => {
           required
         ></Input>
       </InputContainer>
-      <label htmlFor="email">이메일</label>
+      <label htmlFor="email"></label>
       <InputContainer>
         <MdEmail />
         <Input
@@ -158,7 +169,7 @@ const Join = () => {
           required
         ></Input>
       </InputContainer>
-      <InputContainer>
+      <InputContainer color={COLORS.lightpurple}>
         <Input id="submit" type="submit" value="전송하기" />
       </InputContainer>
     </JoinBlock>

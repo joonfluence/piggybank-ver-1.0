@@ -32,7 +32,6 @@ const CategoryBlock = ({ data, color, isCategory }) => {
       </div>
       <span>항목 : {data.title}</span>
       <span>금액 : {data.price}</span>
-      {/* 아예 category 정보가 없는 데이터도 있으므로 db를 전부 삭제해주고 새로 다시 채울 것 */}
       {isCategory && data.category[0] ? (
         <span> 카테고리 : {data.category[0].title}</span>
       ) : (

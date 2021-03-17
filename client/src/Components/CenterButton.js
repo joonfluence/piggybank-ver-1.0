@@ -12,6 +12,7 @@ const ButtonBlock = styled.div`
   display: flex;
   width: 100%;
   margin: 0 auto;
+  font-family: "Oswald", sans-serif;
 `;
 
 const ButtonList = styled.ul`
@@ -20,6 +21,7 @@ const ButtonList = styled.ul`
   justify-content: space-around;
   flex: 1;
   background-color: ${(props) => props.color};
+  box-shadow: 0px 0px 3px 1px ${(props) => props.borderColor};
 `;
 
 const ButtonElementsList = styled.li`
@@ -41,22 +43,23 @@ const HiddenBlock = styled.ul`
   visibility: hidden;
   position: absolute;
   background-color: ${(props) => props.color};
+
   text-align: center;
 `;
 
 const CenterButton = () => {
   return (
     <ButtonBlock>
-      <ButtonList color={COLORS.navy}>
+      <ButtonList color={COLORS.navy} borderColor={COLORS.darkNavy}>
         <ButtonElementsList>
           <AiFillAccountBook />
           탐색하기
           <HiddenBlock color={COLORS.navy}>
             <li>
-              <Link to={routes.paying}>총 지출내역</Link>
+              <Link to={routes.payingMonth}>총 지출내역</Link>
             </li>
             <li>
-              <Link to={routes.saving}>총 저축내역</Link>
+              <Link to={routes.savingMonth}>총 저축내역</Link>
             </li>
             <li>
               <Link to={routes.budgetMonth}>이번달 지출내역</Link>

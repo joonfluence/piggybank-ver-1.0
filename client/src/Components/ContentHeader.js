@@ -17,7 +17,7 @@ const Content = styled.div`
   justify-content: space-around;
   margin: 2rem;
   height: 15vh;
-  width: 80%;
+  width: 90%;
 `;
 
 const ContentInfo = styled.div`

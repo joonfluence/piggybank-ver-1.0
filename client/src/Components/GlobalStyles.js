@@ -3,13 +3,8 @@ import { createGlobalStyle } from "styled-components";
 /* ${reset}; */
 
 const globalStyles = createGlobalStyle`
-  @font-face {
-    font-family: "EuclidCircleA";
-    src: url("../fonts/EuclidCircularA-Medium.eot");
-    src: url("../fonts/EuclidCircularA-Medium.eot?#iefix") format(‘embedded-opentype’),
-      url("../fonts/EuclidCircularA-Medium.woff2") format(‘woff2’),
-      url("../fonts/EuclidCircularA-Medium.ttf") format("truetype");
-  }
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Oswald:wght@500&display=swap');
     * {
         margin: 0;
         padding: 0;
@@ -26,14 +21,20 @@ const globalStyles = createGlobalStyle`
         list-style: none;
     }
     header {
-        font-size: 1.5rem;
+        font-size: 1rem;
         font-weight: 600;
+        font-style: inherit;
     }
+    
+    ul, li > a {
+      font-family: "Oswald", sans-serif;
+    }
+    
     body {
         position: relative;
         font-size: 1rem;
         font-weight: 400;
-        font-family: EuclidCircleA;
+        font-family: 'Lato', sans-serif;
         text-align: center;
         background-color: #F4ECFB;
         margin: 0 auto;
@@ -56,6 +57,7 @@ export default globalStyles;
 
 export const COLORS = {
   navy: "#9d9cff", //버튼색, 표 배경색, NavBar
+  darkNavy: "#5d5bfc",
   lightpurple: "#F4ECFB", // 배경색
   apricot: "#ffecdb", // 아이템 배경색, 유저 배경색
   pink: "#ffdef8", //시간에 대한 배경색
@@ -64,5 +66,6 @@ export const COLORS = {
   white: "#FFFFFF",
   red: "#F43518",
   green: "#2E8849",
+  grey: "#dbdbdb",
   darkgrey: "#292930",
 };

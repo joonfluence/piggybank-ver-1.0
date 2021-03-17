@@ -49,6 +49,7 @@ const ButtonContainer = styled.div`
     display: flex;
     button {
       flex: 1;
+      background-color: ${(props) => props.color};
     }
   }
 `;
@@ -123,12 +124,12 @@ const Login = ({ history }) => {
         ></Input>
       </InputContainer>
       <ButtonContainer>
-        <Button color={COLORS.navy} type="submit">
+        <Button color={COLORS.skyblue} type="submit">
           로그인
         </Button>
         {/* 로그인 안된 상태에서만 가능하도록 처리해줘야 함. */}
         <a href="/join">
-          <Button>회원가입</Button>
+          <Button color={COLORS.navy}>회원가입</Button>
         </a>
       </ButtonContainer>
     </LoginForm>

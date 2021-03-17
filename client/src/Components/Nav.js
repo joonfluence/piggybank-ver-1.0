@@ -7,11 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { LogOutUser } from "../actions/userActions";
 import routes from "../routes";
 import { COLORS } from "./GlobalStyles";
-// import { COLORS } from "./GlobalStyles";
 
 const NavContainer = styled.nav`
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   height: 10vh;
   width: 80%;
   line-height: 30px;
@@ -19,6 +18,7 @@ const NavContainer = styled.nav`
 
 const NavBlock = styled.div`
   background-color: ${(props) => props.color};
+  box-shadow: 0px 0px 3px 1px ${(props) => props.borderColor};
   display: flex;
 `;
 
@@ -27,12 +27,11 @@ const LogoBlock = styled.ul`
   margin-left: 1rem;
   svg {
     font-size: 1.5rem;
-    /* color:  */
   }
   flex: 1;
 `;
 
-const UserBlock = styled.div`
+const UserBlock = styled.ul`
   display: flex;
 `;
 
@@ -49,7 +48,7 @@ const SLink = styled(Link)`
 
 /* 로그인 상태와 로그인 상태가 아닌 경우를 나누어, NavBar를 구성해준다. 또한 이 부분은 아이콘으로도 뵤여줄 것. BsFillPersonFill(로그인) */
 
-const Nav = ({ location: { pathname }, history }) => {
+const Nav = ({ location: { pathname } }) => {
   const dispatch = useDispatch();
   const { user, isAuth } = useSelector(({ userReducer }) => ({
     user: userReducer.user,
@@ -57,7 +56,7 @@ const Nav = ({ location: { pathname }, history }) => {
   }));
   return (
     <NavContainer>
-      <NavBlock color={COLORS.navy}>
+      <NavBlock color={COLORS.navy} borderColor={COLORS.darkNavy}>
         <LogoBlock>
           <List current={pathname === routes.home}>
             <SLink to={routes.home}>

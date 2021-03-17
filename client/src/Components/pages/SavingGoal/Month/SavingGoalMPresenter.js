@@ -13,6 +13,12 @@ const SavingGoalsPresenterBlock = styled.div`
   background-color: white;
 `;
 
+const HeaderBlock = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+
 const SavingGoalsPresenter = ({
   yearInfo,
   monthInfo,
@@ -38,15 +44,17 @@ const SavingGoalsPresenter = ({
   return (
     <>
       <SavingGoalsPresenterBlock>
-        <DateModal />
-        <ContentHeader
-          yearInfo={yearInfo}
-          monthInfo={monthInfo}
-          used={savingSum}
-          remained={pocketMoney}
-          isBudget={false}
-          savingGoalSum={savingGoalSum}
-        ></ContentHeader>
+        <HeaderBlock>
+          <ContentHeader
+            yearInfo={yearInfo}
+            monthInfo={monthInfo}
+            used={savingSum}
+            remained={pocketMoney}
+            isBudget={false}
+            savingGoalSum={savingGoalSum}
+          ></ContentHeader>
+          <DateModal />
+        </HeaderBlock>
         <ContentBody
           savingGoalSum={savingGoalSum}
           used={savingSum}

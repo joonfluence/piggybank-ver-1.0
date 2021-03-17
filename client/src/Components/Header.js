@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const HeaderBlock = styled.div`
+const HeaderBlock = styled.header`
   background-color: white;
+  box-shadow: 0px 2px 5px 1px white;
   height: 40vh;
   display: flex;
   align-items: center;

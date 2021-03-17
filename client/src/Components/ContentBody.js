@@ -14,7 +14,14 @@ const ChartBlock = styled.div`
   height: 20rem;
 `;
 
-const ContentBody = ({ used, remained, monthlyData, color, isBudget }) => {
+const ContentBody = ({
+  used,
+  remained,
+  monthlyData,
+  color,
+  isBudget,
+  isCategory,
+}) => {
   const data = [
     {
       id: "총 소비/저축액수",
@@ -35,6 +42,7 @@ const ContentBody = ({ used, remained, monthlyData, color, isBudget }) => {
           monthlyData={monthlyData}
           color={color}
           isBudget={isBudget}
+          isCategory={isCategory}
         />
       </div>
       <ChartBlock>
