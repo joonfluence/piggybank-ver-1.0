@@ -25,7 +25,6 @@ import {
   getSavingMonth,
 } from "../controllers/SaveController.js";
 import {
-  getBudgetCategory,
   getPayingCategory,
   getSavingCategory,
 } from "../controllers/CategoryController.js";
@@ -80,24 +79,23 @@ apiRouter.get(routes.payings(), Auth, getPayingDetail);
 apiRouter.get(routes.savings(), Auth, getSavingDetail);
 
 // 7) 소비 & 저축 카테고리별 정보
-apiRouter.get(routes.categoryPaying(), Auth, getPayingCategory);
-apiRouter.get(routes.categorySaving(), Auth, getSavingCategory);
-apiRouter.get(routes.categoryBudget(), Auth, getBudgetCategory);
+apiRouter.post(routes.categoryPaying, Auth, getPayingCategory);
+apiRouter.post(routes.categorySaving, Auth, getSavingCategory);
 
 // 8) 예산 정보
 apiRouter.get(routes.budget, Auth, getBudgetInfo);
 apiRouter.post(routes.budget, Auth, postBudgetInfo);
 apiRouter.put(routes.budgets(), Auth, editBudgetInfo);
-apiRouter.get(routes.budgets(), Auth, deleteBudgetInfo);
-apiRouter.post(routes.budgetMonth, Auth, getBudgetMonth);
+apiRouter.delete(routes.budgets(), Auth, deleteBudgetInfo);
 apiRouter.get(routes.budgets(), Auth, getBudgetDetail);
+apiRouter.post(routes.budgetMonth, Auth, getBudgetMonth);
 
 // 9) 저축 목표 정보
 apiRouter.get(routes.savingGoal, Auth, getGoalInfo);
 apiRouter.post(routes.savingGoal, Auth, postGoalInfo);
 apiRouter.put(routes.savingGoals(), Auth, editGoalInfo);
 apiRouter.get(routes.savingGoals(), Auth, getGoalDetail);
-apiRouter.get(routes.savingGoals(), Auth, deleteGoalInfo);
+apiRouter.delete(routes.savingGoals(), Auth, deleteGoalInfo);
 apiRouter.post(routes.savingGoalMonth, Auth, getGoalMonth);
 
 export default apiRouter;

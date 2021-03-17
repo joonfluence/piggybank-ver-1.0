@@ -16,19 +16,21 @@ export const userApi = {
 export const payingApi = {
   getPayingInfo: () => api.get(routes.paying),
   postPayingInfo: (data) => api.post(routes.paying, data),
-  editPayingInfo: (id) => api.post(routes.editPaying(), id),
-  deletePayingInfo: (id) => api.get(routes.deletePaying(), id),
+  editPayingInfo: (id) => api.put(routes.payings(id)),
+  deletePayingInfo: (id) => api.delete(routes.payings(id)),
   getPayingMonth: (data) => api.post(routes.payingMonth, data),
   getPayingDetail: (id) => api.get(routes.payings(), id),
+  getCategoryInfo: (data) => api.post(routes.categoryPaying, data),
 };
 
 export const savingApi = {
   getSavingInfo: () => api.get(routes.saving),
   postSavingInfo: (data) => api.post(routes.saving, data),
-  editSavingInfo: (id) => api.post(routes.editSaving(id)),
-  deleteSavingInfo: (id) => api.get(routes.deleteSaving(id)),
+  editSavingInfo: (id) => api.put(routes.savings(id)),
+  deleteSavingInfo: (id) => api.delete(routes.savings(id)),
   getSavingMonth: (data) => api.post(routes.savingMonth, data),
   getSavingDetail: (id) => api.get(routes.savings(id)),
+  getCategoryInfo: (data) => api.post(routes.categorySaving, data),
 };
 
 // Budget과 savingGoal을 추가하여야 함.
@@ -36,8 +38,8 @@ export const savingApi = {
 export const budgetApi = {
   getBudgetInfo: () => api.get(routes.budget),
   postBudgetInfo: (data) => api.post(routes.budget, data),
-  editBudgetInfo: (id) => api.put(routes.budgets(), id),
-  deleteBudgetInfo: (id) => api.get(routes.budgets(), id),
+  editBudgetInfo: (id) => api.put(routes.budgets(id)),
+  deleteBudgetInfo: (id) => api.delete(routes.budgets(id)),
   getBudgetMonth: (data) => api.post(routes.budgetMonth, data),
   getBudgetDetail: (id) => api.get(routes.budgets(), id),
 };
@@ -45,7 +47,8 @@ export const budgetApi = {
 export const savingGoalApi = {
   getGoalInfo: () => api.get(routes.savingGoal),
   postGoalInfo: (data) => api.post(routes.savingGoal, data),
-  editGoalInfo: (id) => api.put(routes.savingGoals(), id),
+  deleteGoalInfo: (id) => api.delete(routes.savingGoals(id)),
+  editGoalInfo: (id) => api.put(routes.savingGoals(id)),
   getGoalMonth: (data) => api.post(routes.savingGoalMonth, data),
-  getGoalDetail: (id) => api.get(routes.savingGoals(), id),
+  getGoalDetail: (id) => api.get(routes.savingGoals(id)),
 };

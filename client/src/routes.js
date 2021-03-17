@@ -16,14 +16,14 @@ const MYPAGE = "/mypage/:id";
 
 const PAYING = "/payings";
 const PAYING_DETAIL = "/payings/:id";
-const PAYING_MONTH = "/payings/date";
+const PAYING_MONTH = "/payings/list";
 const CATEGORY_PAYING = "/payings/category";
 
 // Savings
 
 const SAVING = "/savings";
 const SAVING_DETAIL = "/savings/:id";
-const SAVING_MONTH = "/savings/date";
+const SAVING_MONTH = "/savings/list";
 const CATEGORY_SAVING = "/savings/category";
 
 // 예산 카테고리
@@ -70,24 +70,12 @@ const routes = {
       return MYPAGE;
     }
   },
-  categoryPaying: (category) => {
-    if (category) {
-      return `/payings`;
-    } else {
-      return CATEGORY_PAYING;
-    }
-  },
-  categorySaving: (category) => {
-    if (category) {
-      return `/savings/${category}`;
-    } else {
-      return CATEGORY_SAVING;
-    }
-  },
+  categoryPaying: CATEGORY_PAYING,
+  categorySaving: CATEGORY_SAVING,
   budget: BUDGET,
   budgets: (id) => {
     if (id) {
-      return `budgets/:id`;
+      return `budgets/${id}`;
     } else {
       return BUDGET_DETAIL;
     }
@@ -96,7 +84,7 @@ const routes = {
   savingGoal: SAVING_GOAL,
   savingGoals: (id) => {
     if (id) {
-      return `/savingsGoal/:id`;
+      return `/savingsGoal/${id}`;
     } else {
       return SAVING_GOAL_DETAIL;
     }
