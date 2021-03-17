@@ -21,7 +21,7 @@ export const readSavingGoal = async () => {
 
   return {
     type: READ_SAVING_GOAL,
-    payload: request,
+    savingGoalInfo: request.data.savingGoalInfo,
   };
 };
 
@@ -51,5 +51,6 @@ export const monthSavingGoal = async (dataBody) => {
     monthlySavingGoal: request.data.monthlySavingGoal,
     savingGoalSum: request.data.savingGoalSum,
     monthSuccess: request.data.monthSuccess,
+    categorySum: request.data.categorySum,
   };
 };

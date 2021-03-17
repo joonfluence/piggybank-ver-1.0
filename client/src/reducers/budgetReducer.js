@@ -40,6 +40,7 @@ function budgetReducer(state = initialState, action) {
         budgetSum: action.budgetSum,
         monthlyBudget: action.monthlyBudget,
         monthSuccess: action.monthSuccess,
+        categorySum: action.categorySum,
       };
     default:
       return state;

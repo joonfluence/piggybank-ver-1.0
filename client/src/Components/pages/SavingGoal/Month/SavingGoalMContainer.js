@@ -15,18 +15,17 @@ const SavingGoalContainer = () => {
     monthInfo: dateReducer.monthInfo,
   }));
 
-  const { savingGoalSum, monthlySavingGoal } = useSelector(
-    ({ savingGoalReducer }) => ({
-      savingGoalSum: savingGoalReducer.savingGoalSum,
-      monthlySavingGoal: savingGoalReducer.monthlySavingGoal,
-    })
-  );
-
-  const { savingSum } = useSelector(({ savingReducer }) => ({
-    savingSum: savingReducer.savingSum,
+  const {
+    savingGoalSum,
+    monthlySavingGoal,
+    savingGoalCategorySum,
+  } = useSelector(({ savingGoalReducer }) => ({
+    savingGoalSum: savingGoalReducer.savingGoalSum,
+    monthlySavingGoal: savingGoalReducer.monthlySavingGoal,
+    savingGoalCategorySum: savingGoalReducer.categorySum,
   }));
 
-  const pocketMoney = savingGoalSum - savingSum;
+  const pocketMoney = savingGoalSum - savingGoalCategorySum;
 
   return (
     <>
@@ -48,7 +47,7 @@ const SavingGoalContainer = () => {
           monthInfo={monthInfo}
           pocketMoney={pocketMoney}
           savingGoalSum={savingGoalSum}
-          savingSum={savingSum}
+          savingSum={savingGoalCategorySum}
           monthlySavingGoal={monthlySavingGoal}
         />
       </SavingGoalContainerBlock>

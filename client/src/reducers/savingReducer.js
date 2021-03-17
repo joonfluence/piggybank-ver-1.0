@@ -4,6 +4,7 @@ import {
   UPDATE_SAVING,
   DELETE_SAVING,
   MONTH_SAVING,
+  CATEGORY_SAVING,
 } from "../types";
 
 const initialState = {
@@ -32,6 +33,12 @@ const savingReducer = (state = initialState, action) => {
         monthlySaving: action.monthlySaving,
         savingSum: action.savingSum,
         monthSuccess: action.monthSuccess,
+      };
+    case CATEGORY_SAVING:
+      return {
+        ...state,
+        payload: action.payload.data,
+        categorySum: action.categorySum,
       };
     default:
       return state;

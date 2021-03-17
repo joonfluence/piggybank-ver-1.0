@@ -5,6 +5,7 @@ import {
   UPDATE_PAYING,
   DELETE_PAYING,
   MONTH_PAYING,
+  CATEGORY_PAYING,
 } from "../types";
 
 export const createPaying = async (dataBody) => {
@@ -28,6 +29,7 @@ export const readPaying = async () => {
 };
 
 export const updatePaying = async (id) => {
+  console.log(id);
   const request = await payingApi.editPayingInfo(id);
 
   return {
@@ -37,6 +39,7 @@ export const updatePaying = async (id) => {
 };
 
 export const deletePaying = async (id) => {
+  console.log(id);
   const request = await payingApi.deletePayingInfo(id);
 
   return {
@@ -50,16 +53,16 @@ export const monthPaying = async (dataBody) => {
 
   return {
     type: MONTH_PAYING,
-    monthSucess: request.data.monthSucess,
+    monthSuccess: request.data.monthSuccess,
     payingSum: request.data.payingSum,
   };
 };
 
-// export const detailPaying = async (id) => {
-//   const request = await payingApi.getPayingDetail(id);
+export const categoryPaying = async (category) => {
+  const request = await payingApi.getCategoryInfo(category);
 
-//   return {
-//     type: UPDATE_PAYING,
-//     payload: request,
-//   };
-// };
+  return {
+    type: CATEGORY_PAYING,
+    categorySum: request.data.categorySum,
+  };
+};

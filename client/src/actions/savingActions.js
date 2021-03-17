@@ -5,6 +5,7 @@ import {
   UPDATE_SAVING,
   DELETE_SAVING,
   MONTH_SAVING,
+  CATEGORY_SAVING,
 } from "../types";
 
 export const createSaving = async (dataBody) => {
@@ -23,10 +24,12 @@ export const readSaving = async () => {
     type: READ_SAVING,
     savingList: request.data.savingList,
     success: request.data.success,
+    test: request.data.test,
   };
 };
 
 export const updateSaving = async (id) => {
+  console.log(id);
   const request = await savingApi.editSavingInfo(id);
 
   return {
@@ -52,5 +55,15 @@ export const monthSaving = async (dataToSubmit) => {
     monthSuccess: request.data.monthSuccess,
     savingSum: request.data.savingSum,
     monthlySaving: request.data.monthlySaving,
+  };
+};
+
+export const categorySaving = async (category) => {
+  const request = await savingApi.getCategoryInfo(category);
+
+  return {
+    type: CATEGORY_SAVING,
+    payload: request,
+    categorySum: request.data.categorySum,
   };
 };

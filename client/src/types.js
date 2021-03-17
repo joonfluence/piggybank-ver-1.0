@@ -10,6 +10,7 @@ export const READ_PAYING = "read_paying";
 export const UPDATE_PAYING = "update_paying";
 export const DELETE_PAYING = "delete_paying";
 export const MONTH_PAYING = "month_paying";
+export const CATEGORY_PAYING = "category_paying";
 
 // 저축
 export const CREATE_SAVING = "create_saving";
@@ -17,6 +18,7 @@ export const READ_SAVING = "read_saving";
 export const UPDATE_SAVING = "update_saving";
 export const DELETE_SAVING = "delete_saving";
 export const MONTH_SAVING = "month_saving";
+export const CATEGORY_SAVING = "category_saving";
 
 // 지출 목표
 export const CREATE_BUDGET = "create_budget";

@@ -4,6 +4,7 @@ import {
   UPDATE_PAYING,
   DELETE_PAYING,
   MONTH_PAYING,
+  CATEGORY_PAYING,
 } from "../types";
 
 // 관리할 States : 날짜, 제목, 메모, 가격, 카테고리
@@ -12,6 +13,7 @@ const initialState = {
   monthlyPaying: 0,
   payingSum: 0,
   payingList: [],
+  categorySum: 0,
 };
 
 const payingReducer = (state = initialState, action) => {
@@ -31,8 +33,13 @@ const payingReducer = (state = initialState, action) => {
     case MONTH_PAYING:
       return {
         ...state,
-        monthSucess: action.monthSucess,
+        monthSuccess: action.monthSuccess,
         payingSum: action.payingSum,
+      };
+    case CATEGORY_PAYING:
+      return {
+        ...state,
+        categorySum: action.categorySum,
       };
     default:
       return state;

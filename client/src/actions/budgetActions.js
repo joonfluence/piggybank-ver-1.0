@@ -46,10 +46,14 @@ export const deleteBudget = async (id) => {
 
 export const monthBudget = async (dataToSubmit) => {
   const request = await budgetApi.getBudgetMonth(dataToSubmit);
+
+  console.log(request);
+
   return {
     type: MONTH_BUDGET,
     budgetSum: request.data.budgetSum,
     monthlyBudget: request.data.monthlyBudget,
     monthSuccess: request.data.monthSuccess,
+    categorySum: request.data.categorySum,
   };
 };
