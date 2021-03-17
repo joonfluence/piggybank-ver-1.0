@@ -61,6 +61,7 @@ const BudgetMonthPresenter = ({
           remained={pocketMoney}
           isBudget={true}
           color={COLORS.apricot}
+          isCategory={false}
         ></ContentBody>
       </BudgetMonthBlock>
     </BudgetMonthPresenterBlock>

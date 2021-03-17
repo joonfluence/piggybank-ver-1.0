@@ -12,11 +12,24 @@ const HomePresenterBlock = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  & > div:last-child {
+    position: absolute;
+    top: 10%;
+    right: 0%;
+
+    & > button {
+      width: 6rem;
+      height: 3rem;
+      border-radius: 10px;
+    }
+  }
 `;
 
 const ChartBlock = styled.div`
   width: 20rem;
   height: 20rem;
+  margin: 3rem;
   & > span {
     font-weight: 600;
     font-size: 1rem;
@@ -27,38 +40,39 @@ const ChartBlock = styled.div`
 const ColumnBlock = styled.div`
   display: flex;
   flex-direction: column;
+  &:last-child() {
+    position: absolute;
+  }
 `;
 
 const HomePresenter = () => {
-  const { budgetSum, monthlyBudget } = useSelector(({ budgetReducer }) => ({
-    budgetSum: budgetReducer.budgetSum,
-    monthlyBudget: budgetReducer.monthlyBudget,
-  }));
-
-  const { payingSum } = useSelector(({ payingReducer }) => ({
-    payingSum: payingReducer.payingSum,
-  }));
-
-  const { savingGoalSum, monthlySavingGoal } = useSelector(
-    ({ savingGoalReducer }) => ({
-      savingGoalSum: savingGoalReducer.savingGoalSum,
-      monthlySavingGoal: savingGoalReducer.monthlySavingGoal,
+  const { budgetSum, monthlyBudget, budgetCategorySum } = useSelector(
+    ({ budgetReducer }) => ({
+      budgetSum: budgetReducer.budgetSum,
+      monthlyBudget: budgetReducer.monthlyBudget,
+      budgetCategorySum: budgetReducer.categorySum,
     })
   );
 
-  const { savingSum } = useSelector(({ savingReducer }) => ({
-    savingSum: savingReducer.savingSum,
+  const {
+    savingGoalSum,
+    monthlySavingGoal,
+    savingGoalCategorySum,
+  } = useSelector(({ savingGoalReducer }) => ({
+    savingGoalSum: savingGoalReducer.savingGoalSum,
+    monthlySavingGoal: savingGoalReducer.monthlySavingGoal,
+    savingGoalCategorySum: savingGoalReducer.categorySum,
   }));
 
   const payingData = [
     {
       id: "총 소비액수",
-      value: payingSum, // 전체 소비액
+      value: budgetCategorySum, // 전체 소비액
       color: "hsl(181, 70%, 50%)", // 카테고리 색상
     },
     {
       id: "남은 예산",
-      value: savingGoalSum - payingSum,
+      value: savingGoalSum - budgetCategorySum,
       color: "hsl(236, 70%, 50%)",
     },
   ];
@@ -66,12 +80,12 @@ const HomePresenter = () => {
   const savingData = [
     {
       id: "총 저축액수",
-      value: savingSum, // 전체 소비액
+      value: savingGoalCategorySum, // 전체 소비액
       color: "hsl(181, 70%, 50%)", // 카테고리 색상
     },
     {
       id: "남은 저축목표액",
-      value: savingGoalSum - savingSum,
+      value: savingGoalSum - savingGoalCategorySum,
       color: "hsl(236, 70%, 50%)",
     },
   ];
@@ -79,40 +93,51 @@ const HomePresenter = () => {
   return (
     <>
       <HomePresenterBlock>
-        <DateModal />
         <ColumnBlock>
           <MonthDataList
             isBudget={true}
             monthlyData={monthlyBudget}
             color={COLORS.apricot}
+            isCategory={false}
           />
           <MonthDataList
             isBudget={false}
             monthlyData={monthlySavingGoal}
             color={COLORS.pink}
+            isCategory={false}
           />
         </ColumnBlock>
-        <ChartBlock>
-          <span>예산 및 지출내역</span>
-          <PieTotalRatio data={payingData} color="set1" />
-          <p>
-            {`소비율 ` +
-              Math.floor((1 - (budgetSum - payingSum) / budgetSum) * 100, 2) +
-              `%`}
-          </p>
-        </ChartBlock>
-        <ChartBlock>
-          <span>저축 목표 및 내역</span>
-          <PieTotalRatio data={savingData} color="set1" />
-          <p>
-            {`달성률 ` +
-              Math.floor(
-                (1 - (savingGoalSum - savingSum) / savingGoalSum) * 100,
-                2
-              ) +
-              `%`}
-          </p>
-        </ChartBlock>
+        <ColumnBlock>
+          <ChartBlock>
+            <span>예산/지출액</span>
+            <PieTotalRatio data={payingData} color="set1" />
+            <p>
+              {`소비율 ` +
+                Math.floor(
+                  (1 - (budgetSum - budgetCategorySum) / budgetSum) * 100,
+                  2
+                ) +
+                `%`}
+            </p>
+          </ChartBlock>
+          <ChartBlock>
+            <span>목표액/저축액</span>
+            <PieTotalRatio data={savingData} color="set1" />
+            <p>
+              {`달성률 ` +
+                Math.floor(
+                  (1 -
+                    (savingGoalSum - savingGoalCategorySum) / savingGoalSum) *
+                    100,
+                  2
+                ) +
+                `%`}
+            </p>
+          </ChartBlock>
+        </ColumnBlock>
+        <div>
+          <DateModal />
+        </div>
       </HomePresenterBlock>
     </>
   );
