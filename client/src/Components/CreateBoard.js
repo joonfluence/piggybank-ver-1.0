@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { createPaying } from "../actions/payingActions";
 import { createSaving } from "../actions/savingActions";
 import { COLORS } from "./GlobalStyles";
 
 const CreateBoardBlock = styled.section`
-  /* border: 1px solid black; */
   margin: 0 auto;
-  /* padding: 20px; */
   width: 50%;
 `;
 
@@ -20,6 +19,7 @@ const FormTitle = styled.h1`
 
 const CreateFormBlock = styled.form`
   display: flex;
+  margin-top: 1rem;
   flex-direction: column;
 `;
 
@@ -41,6 +41,13 @@ const FormInput = styled.input`
   }
 `;
 
+const FormSelect = styled.select`
+  margin: 0 auto;
+  border: 1px solid black;
+  width: 364px;
+  height: 3rem;
+`;
+
 const IconContainer = styled.div`
   svg {
     border-radius: 20px;
@@ -53,22 +60,27 @@ const IconContainer = styled.div`
   }
 `;
 
-const CreateBoard = ({ userInfo, InfoName, isPaying, location }) => {
+const CreateBoard = ({
+  InfoName,
+  isPaying,
+  selectOptions,
+  dataList,
+  isOpen,
+}) => {
+  const { userInfo } = useSelector(({ userReducer }) => ({
+    userInfo: userReducer.user,
+  }));
   const dispatch = useDispatch();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(isOpen);
   const [name, setName] = useState("");
   const [inputPrice, setInputPrice] = useState("");
-  const [inputMemo, setInputMemo] = useState("");
+  const [category, setCategory] = useState("");
   const [selectedOption, setSelectedOption] = useState("소비");
   const [createdDate, setcreatedDate] = useState("");
   const onButtonClick = () => setOpen(!open);
 
-  let body = {
-    user: userInfo,
-    date: createdDate,
-    title: name,
-    price: inputPrice,
-    memo: inputMemo,
+  const onChangeCategory = (e) => {
+    setCategory(e.target.value);
   };
 
   const onChangeName = (e) => {
@@ -77,10 +89,6 @@ const CreateBoard = ({ userInfo, InfoName, isPaying, location }) => {
 
   const onChangePrice = (e) => {
     setInputPrice(e.target.value);
-  };
-
-  const onChangeMemo = (e) => {
-    setInputMemo(e.target.value);
   };
 
   const onChangeDate = (e) => {
@@ -93,6 +101,13 @@ const CreateBoard = ({ userInfo, InfoName, isPaying, location }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    let body = {
+      user: userInfo,
+      date: createdDate,
+      category: category,
+      title: name,
+      price: inputPrice,
+    };
     if (selectedOption === "소비") {
       dispatch(createPaying(body));
     } else if (selectedOption === "저축") {
@@ -100,7 +115,6 @@ const CreateBoard = ({ userInfo, InfoName, isPaying, location }) => {
     }
     setName("");
     setInputPrice("");
-    setInputMemo("");
     setcreatedDate("");
   };
 
@@ -123,6 +137,7 @@ const CreateBoard = ({ userInfo, InfoName, isPaying, location }) => {
                 onChange={onChangeName}
                 placeholder={InfoName + "명"}
                 value={name}
+                required
               ></FormInput>
             </FormInputContainer>
             <FormInputContainer>
@@ -130,20 +145,25 @@ const CreateBoard = ({ userInfo, InfoName, isPaying, location }) => {
                 onChange={onChangePrice}
                 placeholder={InfoName + "액"}
                 value={inputPrice}
+                required
               ></FormInput>
             </FormInputContainer>
-            <FormInputContainer>
-              <FormInput
-                onChange={onChangeMemo}
-                placeholder="메모"
-                value={inputMemo}
-              ></FormInput>
-            </FormInputContainer>
+            <FormSelect value={category} onChange={onChangeCategory}>
+              <option>카테고리</option>
+              {selectOptions ? (
+                selectOptions.map((data) => (
+                  <option value={data._id}>{data.title}</option>
+                ))
+              ) : (
+                <></>
+              )}
+            </FormSelect>
             <FormInputContainer>
               <FormInput
                 onChange={onChangeDate}
                 type="date"
                 value={createdDate}
+                required
               ></FormInput>
             </FormInputContainer>
             <FormInputContainer>
@@ -156,6 +176,7 @@ const CreateBoard = ({ userInfo, InfoName, isPaying, location }) => {
                     type="radio"
                     checked={selectedOption === "소비"}
                     value="소비"
+                    required
                   ></FormInput>
                   <label htmlFor="CS">소비 </label>
                 </>
@@ -168,6 +189,7 @@ const CreateBoard = ({ userInfo, InfoName, isPaying, location }) => {
                     type="radio"
                     checked={selectedOption === "저축"}
                     value="저축"
+                    required
                   ></FormInput>
                   <label htmlFor="SV">저축 </label>
                 </>

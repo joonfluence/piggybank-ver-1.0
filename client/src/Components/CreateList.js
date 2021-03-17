@@ -1,22 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { COLORS } from "./GlobalStyles";
-import { BsCheckCircle } from "react-icons/bs";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import CategoryBlock from "./visuals/CategoryBlock";
+import { useDispatch } from "react-redux";
+import { readSaving } from "../actions/savingActions";
+import { deletePaying, readPaying } from "../actions/payingActions";
+import { deleteSaving } from "../actions/savingActions";
 
-const CreateListBlock = styled.div`
-  padding-bottom: 1rem;
-`;
+const CreateListBlock = styled.div``;
 
 const InputContentBlock = styled.div`
   background-color: ${(props) => props.color};
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1rem;
+  /* margin: 3rem; */
   & > div > svg {
     cursor: pointer;
+  }
+`;
+
+const PriceBlock = styled.div`
+  display: flex;
+  align-items: center;
+  width: 80%;
+
+  & > div:nth-child(2) {
+    flex: 1;
+    font-size: 2rem;
+    & > p {
+      font-size: 1rem;
+    }
+  }
+
+  /* 이모티콘들 */
+  & > div:nth-child(3) > div {
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+    margin: 1.5rem;
   }
 `;
 
@@ -32,26 +55,57 @@ const BackgroundBlock = styled.div`
   }
 `;
 
-const CreateList = ({ dataList }) => {
+const CreateList = ({ dataList, isCategory, isPaying }) => {
+  const dispatch = useDispatch();
+  async function fetchSavingData() {
+    await dispatch(readSaving());
+  }
+
+  async function fetchPayingData() {
+    await dispatch(readPaying());
+  }
+
+  useEffect(() => {
+    fetchSavingData();
+  }, [dataList.length]);
+
+  useEffect(() => {
+    fetchPayingData();
+  }, [dataList.length]);
+
+  const onDelete = (id) => {
+    if (isPaying) {
+      dispatch(deletePaying(id));
+    } else {
+      dispatch(deleteSaving(id));
+    }
+    fetchSavingData();
+    fetchPayingData();
+  };
+
   return (
     <CreateListBlock>
       <InputContentBlock color={COLORS.pink}>
         {dataList ? (
           dataList.map((data) => (
             <BackgroundBlock color={COLORS.white}>
-              <div>
-                <CategoryBlock
-                  data={data}
-                  color={COLORS.skyblue}
-                  isCategory={data.category ? true : false}
-                />
-              </div>
-              <div>
-                <span>{data.price}</span>
-                <span>{data.memo}</span>
-                <BsCheckCircle />
-                <RiDeleteBack2Fill />
-              </div>
+              <CategoryBlock
+                data={data}
+                isCategory={isCategory}
+                color={COLORS.skyblue}
+              />
+              <PriceBlock>
+                <div>생성일 : {data.date}</div>
+                <div>
+                  <span>{data.price + `원`}</span>
+                  {data.memo ? <p> data.memo </p> : <p></p>}
+                </div>
+                <div>
+                  <div>
+                    <RiDeleteBack2Fill onClick={() => onDelete(data._id)} />
+                  </div>
+                </div>
+              </PriceBlock>
             </BackgroundBlock>
           ))
         ) : (
