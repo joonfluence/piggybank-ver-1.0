@@ -5,9 +5,10 @@
   "main": "server.js",
   "scripts": {
     "client": "cd client && npm run start",
-    "server": "nodemon init.js",
+    "build": "npm run build:back",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "cd client && npm run build"
+    "build:front": "cd client && npm run build",
+    "build:back": "nodemon init.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/Joonfluence/react-express/issues"
   },
-  "homepage": "https://github.com/Joonfluence/react-express#readme",
+  "homepage": "https://piggybanks.netlify.app",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",

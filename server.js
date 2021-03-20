@@ -1,5 +1,5 @@
 import bodyParser from "body-parser";
-import express, { Router } from "express";
+import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import apiRouter from "./routers/apiRouter.js";
@@ -12,7 +12,7 @@ app.use(morgan("dev"));
 app.use(
   cors({
     // frontend-server의 url으로 설정해줄 것.
-    origin: "http://localhost:3000",
+    origin: "https://piggybanks.netlify.app",
     credentials: true,
   })
 );
