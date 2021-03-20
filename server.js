@@ -9,6 +9,7 @@ import routes from "./routes.js";
 const app = express();
 
 app.use(morgan("dev"));
+console.log("check");
 app.use(
   cors({
     // frontend-server의 url으로 설정해줄 것.
