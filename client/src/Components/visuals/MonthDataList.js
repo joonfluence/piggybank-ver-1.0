@@ -38,7 +38,7 @@ const MonthDataList = ({ monthlyData, color, isBudget }) => {
     } else {
       dispatch(monthSavingGoal(body));
     }
-  }, [monthlyData.length]);
+  }, []);
 
   return (
     <MonthDataListBlock>

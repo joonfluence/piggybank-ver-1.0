@@ -11,12 +11,13 @@ const app = express();
 app.use(morgan("dev"));
 app.use(
   cors({
+    // frontend-server의 url으로 설정해줄 것.
     origin: "http://localhost:3000",
     credentials: true,
   })
 );
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(routes.api, apiRouter);
 

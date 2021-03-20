@@ -97,7 +97,6 @@ const Join = () => {
       password: Password,
       passwordConfirm: PasswordConfirm,
     };
-    console.log(body);
     dispatch(joinUser(body));
     setName("");
     setId("");
