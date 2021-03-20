@@ -10,13 +10,12 @@ const app = express();
 
 app.use(morgan("dev"));
 console.log("check");
-app.use(
-  cors({
-    // frontend-server의 url으로 설정해줄 것.
-    origin: "https://piggybanks.netlify.app/",
-    credentials: true,
-  })
-);
+app.use(cors());
+// {
+//     frontend-server의 url으로 설정해줄 것.
+//     origin: "https://piggybanks.netlify.app",
+//     credentials: true,
+//   }
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());

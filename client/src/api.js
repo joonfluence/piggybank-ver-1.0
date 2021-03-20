@@ -2,7 +2,7 @@ import axios from "axios";
 import routes from "./routes";
 
 const api = axios.create({
-  baseURL: "https://fierce-river-84582.herokuapp.com/api",
+  baseURL: "http:localhost:5000/api",
   withCredentials: true,
 });
 
