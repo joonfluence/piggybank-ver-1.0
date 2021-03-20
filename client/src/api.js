@@ -2,6 +2,7 @@ import axios from "axios";
 import routes from "./routes";
 
 const api = axios.create({
+  // 백엔드 호스팅 URL로 변경해줘야 함.
   baseURL: "http:localhost:5000/api",
   withCredentials: true,
 });
@@ -32,8 +33,6 @@ export const savingApi = {
   getSavingDetail: (id) => api.get(routes.savings(id)),
   getCategoryInfo: (data) => api.post(routes.categorySaving, data),
 };
-
-// Budget과 savingGoal을 추가하여야 함.
 
 export const budgetApi = {
   getBudgetInfo: () => api.get(routes.budget),
