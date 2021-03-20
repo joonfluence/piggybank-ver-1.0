@@ -9,7 +9,13 @@ import routes from "./routes.js";
 const app = express();
 
 app.use(morgan("dev"));
-app.use(cors());
+app.use(
+  cors({
+    // frontend-server의 url으로 설정해줄 것.
+    origin: "https://master--piggybanks.netlify.app",
+    credentials: true,
+  })
+);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
