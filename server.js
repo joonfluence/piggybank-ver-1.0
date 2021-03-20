@@ -12,7 +12,7 @@ app.use(morgan("dev"));
 app.use(
   cors({
     // frontend-server의 url으로 설정해줄 것.
-    origin: "https://master--piggybanks.netlify.app",
+    origin: "https://piggybanks.netlify.app/",
     credentials: true,
   })
 );
