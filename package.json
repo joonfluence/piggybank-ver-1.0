@@ -5,10 +5,8 @@
   "main": "server.js",
   "scripts": {
     "client": "cd client && npm run start",
-    "build": "npm run build:back",
     "server": "nodemon init.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build:back": "node init.js"
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
