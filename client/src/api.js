@@ -3,11 +3,11 @@ import routes from "./routes";
 import dotenv from "dotenv";
 dotenv.config();
 
+console.log(process.env.PRODUCTION);
+
 const api = axios.create({
   // 백엔드 호스팅 URL로 변경해줘야 함.
-  baseURL: process.env.PRODUCTION
-    ? process.env.PROD_URL
-    : process.env.DEPLOY_URL,
+  baseURL: "https://fierce-river-84582.herokuapp.com/api",
   withCredentials: true,
 });
 
