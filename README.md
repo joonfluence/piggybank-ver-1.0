@@ -19,7 +19,7 @@ Frontend : React, Backend : Express, DB : MongoDB으로 만들어진 자산관�
 - React Hooks를 사용하여 함수형 컴퍼넌트 구성
 - Form, Input, Button 등 재활용 가능한 컴포넌트 설계 및 구현 
 - 상태관리 라이브러리 Redux(+redux-thunk, redux-promise)를 통해, 백엔드와의 비동기 통신 구현
-- JS-in-CSS를 통한 스타일링 
+- Styled-Component를 통한 컴포넌트 기반 스타일링 
 
 [Backend] 
 - REST 기반 API 설계 
