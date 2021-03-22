@@ -13,7 +13,8 @@ console.log("check");
 app.use(
   cors({
     // frontend-server의 url으로 설정해줄 것.
-    origin: "https://piggybanks.netlify.app",
+    // origin: "https://piggybanks.netlify.app",
+    origin: "http://localhost:3000",
     credentials: true,
   })
 );

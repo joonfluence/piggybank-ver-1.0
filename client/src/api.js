@@ -1,9 +1,13 @@
 import axios from "axios";
 import routes from "./routes";
+import dotenv from "dotenv";
+dotenv.config();
 
 const api = axios.create({
   // 백엔드 호스팅 URL로 변경해줘야 함.
-  baseURL: "http:localhost:5000/api",
+  baseURL: process.env.PRODUCTION
+    ? process.env.PROD_URL
+    : process.env.DEPLOY_URL,
   withCredentials: true,
 });
 
