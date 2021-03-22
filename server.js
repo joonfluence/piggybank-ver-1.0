@@ -13,7 +13,7 @@ console.log("check");
 app.use(
   cors({
     // frontend-server의 url으로 설정해줄 것.
-    origin: "http://localhost:3000",
+    origin: true,
     credentials: true,
   })
 );
