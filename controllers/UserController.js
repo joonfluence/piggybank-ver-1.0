@@ -15,6 +15,7 @@ export const postJoin = async (req, res) => {
       });
       // DB에 유저 정보를 저장한다.
       user.save();
+      res.setHeader("Access-Control-Allow-Credentials", "true");
       return res.status(201).json({
         joinSucess: true,
       });
@@ -58,7 +59,7 @@ export const postLogin = async (req, res) => {
           maxAge: 86400000,
           httpOnly: true,
         });
-        console.log(user.token);
+        res.setHeader("Access-Control-Allow-Credentials", "true");
         return res.status(200).json({
           LoginSuccess: true,
           userId: user._id,
