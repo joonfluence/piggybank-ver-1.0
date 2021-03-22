@@ -3,7 +3,7 @@ import routes from "./routes";
 
 const api = axios.create({
   // 백엔드 호스팅 URL로 변경해줘야 함.
-  baseURL: "https://fierce-river-84582.herokuapp.com:5000/api",
+  baseURL: "https://fierce-river-84582.herokuapp.com/api",
   withCredentials: true,
 });
 
