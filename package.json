@@ -8,7 +8,7 @@
     "build": "npm run build:back",
     "server": "nodemon init.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build:back": "nodemon init.js"
+    "build:back": "node init.js"
   },
   "repository": {
     "type": "git",
