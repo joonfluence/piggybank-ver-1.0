@@ -57,7 +57,9 @@ export const postLogin = async (req, res) => {
         res.cookie("x_auth", user.token, {
           maxAge: 86400000,
           httpOnly: true,
+          SameSite: None,
         });
+        console.log(user.token);
         return res.status(200).json({
           LoginSuccess: true,
           userId: user._id,
