@@ -58,6 +58,7 @@ export const postLogin = async (req, res) => {
           maxAge: 86400000,
           httpOnly: true,
           sameSite: "None",
+          secure: true,
         });
         return res.status(200).json({
           LoginSuccess: true,
