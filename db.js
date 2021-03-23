@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 mongoose.set("useCreateIndex", true);
-mongoose.connect(process.env.MONGO_URL, {
+mongoose.connect(process.env.MONGO_URL_DEPLOY, {
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true,

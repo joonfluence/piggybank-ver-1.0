@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { createPaying } from "../actions/payingActions";
-import { createSaving } from "../actions/savingActions";
+import { createPaying, readPaying } from "../actions/payingActions";
+import { createSaving, readSaving } from "../actions/savingActions";
 import { COLORS } from "./GlobalStyles";
 
 const CreateBoardBlock = styled.section`
@@ -49,24 +49,28 @@ const FormSelect = styled.select`
 `;
 
 const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  font-size: 2rem;
+  span:hover {
+    cursor: pointer;
+  }
+
   svg {
     border-radius: 20px;
     background-color: ${(props) => props.color};
-    color: white;
     font-size: 2.5rem;
+
+    color: white;
     &:hover {
       cursor: pointer;
     }
   }
 `;
 
-const CreateBoard = ({
-  InfoName,
-  isPaying,
-  selectOptions,
-  dataList,
-  isOpen,
-}) => {
+const CreateBoard = ({ InfoName, isPaying, selectOptions, title, isOpen }) => {
   const { userInfo } = useSelector(({ userReducer }) => ({
     userInfo: userReducer.userId,
   }));
@@ -75,7 +79,7 @@ const CreateBoard = ({
   const [name, setName] = useState("");
   const [inputPrice, setInputPrice] = useState("");
   const [category, setCategory] = useState("");
-  const [selectedOption, setSelectedOption] = useState("소비");
+  const [selectedOption, setSelectedOption] = useState(InfoName);
   const [createdDate, setcreatedDate] = useState("");
   const onButtonClick = () => setOpen(!open);
 
@@ -109,9 +113,17 @@ const CreateBoard = ({
       price: inputPrice,
     };
     if (selectedOption === "소비") {
-      dispatch(createPaying(body));
+      dispatch(createPaying(body)).then((response) => {
+        if (response.payload.data.success) {
+          dispatch(readPaying());
+        }
+      });
     } else if (selectedOption === "저축") {
-      dispatch(createSaving(body));
+      dispatch(createSaving(body)).then((response) => {
+        if (response.payload.data.success) {
+          dispatch(readSaving());
+        }
+      });
     }
     setName("");
     setInputPrice("");
@@ -124,6 +136,7 @@ const CreateBoard = ({
   return (
     <>
       <IconContainer color={COLORS.navy} onClick={onButtonClick} open={open}>
+        <span>{title} 작성하기</span>
         <AiOutlinePlus />
       </IconContainer>
       {open && (

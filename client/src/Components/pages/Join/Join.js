@@ -7,6 +7,7 @@ import { joinUser } from "../../../actions/userActions";
 import { useDispatch } from "react-redux";
 import Auth from "../../../hoc/auth";
 import { COLORS } from "../../GlobalStyles";
+import { withRouter } from "react-router";
 
 const JoinBlock = styled.form`
   position: absolute;
@@ -57,12 +58,12 @@ const InputContainer = styled.div`
   }
 `;
 
-const Join = () => {
+const Join = ({ history }) => {
   const dispatch = useDispatch();
   const [Name, setName] = useState("");
   const [Id, setId] = useState("");
   const [Password, setPassword] = useState("");
-  const [Email, setEmail] = useState("");
+  // const [Email, setEmail] = useState("");
   const [PasswordConfirm, setPasswordConfirm] = useState("");
 
   // Join State 관리를 해주어야 함. 그래야 로그인 할 수 있음.
@@ -83,25 +84,32 @@ const Join = () => {
     setPasswordConfirm(e.target.value);
   };
 
-  const onEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+  // const onEmailChange = (e) => {
+  //   setEmail(e.target.value);
+  // };
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     let body = {
       name: Name,
-      email: Email,
+      // email: Email,
       id: Id,
       password: Password,
       passwordConfirm: PasswordConfirm,
     };
-    dispatch(joinUser(body));
-    setName("");
+    dispatch(joinUser(body)).then((response) => {
+      if (response.payload.data.joinSuccess) {
+        alert("회원가입에 성공했습니다.");
+        history.push("/login");
+      } else {
+        alert("다른 아이디를 입력해주세요.");
+      }
+    });
+    // setName("");
     setId("");
     setPassword("");
-    setEmail("");
+    // setEmail("");
     setPasswordConfirm("");
   };
 
@@ -157,8 +165,8 @@ const Join = () => {
           required
         ></Input>
       </InputContainer>
-      <label htmlFor="email"></label>
-      <InputContainer>
+      {/*<label htmlFor="email"></label>
+       <InputContainer>
         <MdEmail />
         <Input
           id="email"
@@ -167,7 +175,7 @@ const Join = () => {
           value={Email}
           required
         ></Input>
-      </InputContainer>
+      </InputContainer> */}
       <InputContainer color={COLORS.lightpurple}>
         <Input id="submit" type="submit" value="전송하기" />
       </InputContainer>
@@ -175,4 +183,4 @@ const Join = () => {
   );
 };
 
-export default Auth(Join, false);
+export default Auth(withRouter(Join), false);

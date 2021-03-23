@@ -11,6 +11,7 @@ function Auth(SpecificComponent, option, adminRoute = null) {
       if (!isAuth) {
         // console.log("isAuth : false, 즉 로그인하지 않은 상태");
         if (option) {
+          alert("로그인이 필요합니다.");
           props.history.push("/login");
         }
       } else {
@@ -20,7 +21,7 @@ function Auth(SpecificComponent, option, adminRoute = null) {
           props.history.push("/");
         } else {
           if (option === false) {
-            // console.log("로그인한 유저가 로그인하지 않은 상태로 접근 시");
+            alert("로그인한 유저가 접근할 수 없습니다");
             props.history.push("/");
           }
         }

@@ -11,20 +11,9 @@ const PayingMonthPresenterBlock = styled.div`
 `;
 
 const PayingMonthPresenter = () => {
-  const dispatch = useDispatch();
-  const { payingList } = useSelector(({ payingReducer }) => ({
-    payingList: payingReducer.payingList,
-  }));
-
-  useEffect(() => {
-    dispatch(readPaying());
-  }, [payingList.length]);
-
   return (
     <>
-      <PayingMonthPresenterBlock>
-        <CreateList isPaying={true} dataList={payingList} isCategory={true} />
-      </PayingMonthPresenterBlock>
+      <PayingMonthPresenterBlock></PayingMonthPresenterBlock>
     </>
   );
 };

@@ -12,6 +12,7 @@ export const createBudget = async (dataBody) => {
 
   return {
     type: CREATE_BUDGET,
+    CreateSuccess: request.data.CreateSuccess,
     payload: request,
   };
 };
@@ -46,8 +47,6 @@ export const deleteBudget = async (id) => {
 
 export const monthBudget = async (dataToSubmit) => {
   const request = await budgetApi.getBudgetMonth(dataToSubmit);
-
-  console.log(request);
 
   return {
     type: MONTH_BUDGET,

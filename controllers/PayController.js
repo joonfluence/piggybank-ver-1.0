@@ -5,7 +5,6 @@ import Paying from "../models/Paying.js";
 export const postPayingInfo = async (req, res) => {
   const { user, category, title, price } = req.body;
   try {
-    console.log(category);
     const newPaying = await Paying.create({
       user,
       title,

@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { AiOutlinePlus } from "react-icons/ai";
 import { COLORS } from "./GlobalStyles";
 import { useDispatch, useSelector } from "react-redux";
-import { createSavingGoal } from "../actions/savingGoalActions";
-import { createBudget } from "../actions/budgetActions";
+import {
+  createSavingGoal,
+  monthSavingGoal,
+} from "../actions/savingGoalActions";
+import { createBudget, monthBudget } from "../actions/budgetActions";
 
 const FormBoardBlock = styled.div`
   position: relative;
@@ -38,8 +41,17 @@ const Input = styled.input`
 `;
 
 const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  justify-content: center;
+  font-size: 2rem;
+  & > span:hover {
+    cursor: pointer;
+  }
   svg {
     border-radius: 20px;
+    line-height: 1rem;
     background-color: ${(props) => props.color};
     color: white;
     font-size: 2.5rem;
@@ -49,12 +61,19 @@ const IconContainer = styled.div`
   }
 `;
 
-const FormBoard = ({ isBudget, budgetInfo, mention }) => {
+const FormBoard = ({
+  isBudget,
+  budgetInfo,
+  mention,
+  yearInfo,
+  monthInfo,
+  title,
+}) => {
   const { userInfo } = useSelector(({ userReducer }) => ({
     userInfo: userReducer.userId,
   }));
   const dispatch = useDispatch();
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const onButtonClick = () => setOpen(!open);
   const [name, setName] = useState("");
   const [inputPrice, setInputPrice] = useState("");
@@ -68,10 +87,22 @@ const FormBoard = ({ isBudget, budgetInfo, mention }) => {
       title: name,
       price: inputPrice,
     };
+    let data = {
+      year: yearInfo,
+      month: monthInfo,
+    };
     if (isBudget) {
-      dispatch(createBudget(body));
+      dispatch(createBudget(body)).then((response) => {
+        if (response.payload.data.CreateSuccess) {
+          dispatch(monthBudget(data));
+        }
+      });
     } else {
-      dispatch(createSavingGoal(body));
+      dispatch(createSavingGoal(body)).then((response) => {
+        if (response.payload.data.CreateSuccess) {
+          dispatch(monthSavingGoal(data));
+        }
+      });
     }
     setName("");
     setInputPrice("");
@@ -93,7 +124,7 @@ const FormBoard = ({ isBudget, budgetInfo, mention }) => {
   return (
     <>
       <IconContainer color={COLORS.navy} onClick={onButtonClick} open={open}>
-        <AiOutlinePlus />
+        <span>{title} 추가하기</span> <AiOutlinePlus />
       </IconContainer>
       {open && (
         <FormBoardBlock>

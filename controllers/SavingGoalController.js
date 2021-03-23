@@ -11,7 +11,7 @@ export const postGoalInfo = async (req, res) => {
       title,
       price,
     });
-    return res.status(201).json(newSavingGoal);
+    return res.status(201).json({ newSavingGoal, CreateSuccess: true });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ success: false });

@@ -15,7 +15,7 @@ export const postJoin = async (req, res) => {
       // DB에 유저 정보를 저장한다.
       user.save();
       return res.status(201).json({
-        joinSucess: true,
+        joinSuccess: true,
       });
     } else {
       return res.status(500).json({

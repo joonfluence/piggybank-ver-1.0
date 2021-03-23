@@ -13,7 +13,7 @@ export const postSavingInfo = async (req, res) => {
       price,
       category: { _id: category },
     });
-    return res.status(201).json(newSaving);
+    return res.status(201).json({ newSaving, success: true });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ success: false, error });

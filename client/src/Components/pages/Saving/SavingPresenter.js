@@ -1,14 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import CreateBoard from "../../CreateBoard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import CreateList from "../../CreateList";
 
 const SavingPresenterBlock = styled.div`
   background-color: white;
 `;
 
 const SavingPresenter = ({ dataList }) => {
+  const dispatch = useDispatch();
+  const { savingList } = useSelector(({ savingReducer }) => ({
+    savingList: savingReducer.savingList,
+  }));
   const { monthlySavingGoal } = useSelector(({ savingGoalReducer }) => ({
     monthlySavingGoal: savingGoalReducer.monthlySavingGoal,
   }));
@@ -20,15 +24,13 @@ const SavingPresenter = ({ dataList }) => {
           isPaying={false}
           InfoName="저축"
           isOpen={true}
+          title="저축내역"
           selectOptions={monthlySavingGoal}
         ></CreateBoard>
+        <CreateList isPaying={true} dataList={savingList} isCategory={true} />
       </SavingPresenterBlock>
     </>
   );
-};
-
-SavingPresenter.propTypes = {
-  dataList: PropTypes.array,
 };
 
 export default SavingPresenter;

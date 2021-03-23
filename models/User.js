@@ -11,7 +11,7 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   name: { type: String, required: true },
   id: { type: String, required: true, unique: true },
-  email: { type: String, required: true, unique: true },
+  email: { type: String },
   password: { type: String, required: true },
   createdAt: { type: Date, default: getCurrentDate() },
   saving: [{ type: Schema.Types.ObjectId, ref: "Saving" }],

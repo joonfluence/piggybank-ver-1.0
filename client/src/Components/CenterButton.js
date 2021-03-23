@@ -43,8 +43,12 @@ const HiddenBlock = styled.ul`
   visibility: hidden;
   position: absolute;
   background-color: ${(props) => props.color};
-
   text-align: center;
+
+  & > li {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 `;
 
 const CenterButton = () => {
@@ -53,39 +57,39 @@ const CenterButton = () => {
       <ButtonList color={COLORS.navy} borderColor={COLORS.darkNavy}>
         <ButtonElementsList>
           <AiFillAccountBook />
-          탐색하기
+          이번달 목표 정하기
           <HiddenBlock color={COLORS.navy}>
-            <li>
+            {/* <li>
               <Link to={routes.payingMonth}>총 지출내역</Link>
             </li>
             <li>
               <Link to={routes.savingMonth}>총 저축내역</Link>
+            </li> */}
+            <li>
+              <Link to={routes.budgetMonth}>지출 목표 & 달성도</Link>
             </li>
             <li>
-              <Link to={routes.budgetMonth}>이번달 지출내역</Link>
-            </li>
-            <li>
-              <Link to={routes.savingGoalMonth}>이번달 저축내역</Link>
+              <Link to={routes.savingGoalMonth}>저축 목표 & 달성도</Link>
             </li>
           </HiddenBlock>
         </ButtonElementsList>
         <ButtonElementsList>
           <AiFillAccountBook />
-          생성하기
+          가계부 쓰기
           <HiddenBlock color={COLORS.navy}>
             <li>
               <Link to={routes.paying}>
                 <GiTakeMyMoney />
-                소비내역 작성하기
+                소비내역
               </Link>
             </li>
             <li>
               <Link to={routes.saving}>
                 <GiPiggyBank />
-                저축내역 작성하기
+                저축내역
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link to={routes.budget}>
                 <AiFillAccountBook />
                 예산목표 작성하기
@@ -96,7 +100,7 @@ const CenterButton = () => {
                 <AiFillAccountBook />
                 저축목표 작성하기
               </Link>
-            </li>
+            </li> */}
           </HiddenBlock>
         </ButtonElementsList>
       </ButtonList>

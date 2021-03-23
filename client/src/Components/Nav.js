@@ -78,7 +78,10 @@ const Nav = ({ location: { pathname }, history }) => {
                   onClick={() =>
                     dispatch(LogOutUser()).then((response) => {
                       if (response.LogOutSuccess) {
+                        alert("로그아웃 되었습니다.");
                         history.push("/");
+                      } else {
+                        alert("로그아웃에 실패하였습니다.");
                       }
                     })
                   }

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import CreateBoard from "../../CreateBoard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import CreateList from "../../CreateList";
+import { readPaying } from "../../../actions/payingActions";
 
 const PayingPresenterBlock = styled.div`
   background-color: white;
@@ -13,6 +15,15 @@ const PayingPresenter = ({ dataList, userInfo }) => {
     monthlyBudget: budgetReducer.monthlyBudget,
   }));
 
+  const dispatch = useDispatch();
+  const { payingList } = useSelector(({ payingReducer }) => ({
+    payingList: payingReducer.payingList,
+  }));
+
+  useEffect(() => {
+    dispatch(readPaying());
+  }, []);
+
   return (
     <>
       <PayingPresenterBlock>
@@ -20,10 +31,12 @@ const PayingPresenter = ({ dataList, userInfo }) => {
           userInfo={userInfo}
           dataList={dataList}
           isPaying={true}
-          InfoName="지출"
+          InfoName="소비"
           isOpen={true}
+          title="소비내역"
           selectOptions={monthlyBudget}
         />
+        <CreateList isPaying={true} dataList={payingList} isCategory={true} />
       </PayingPresenterBlock>
     </>
   );

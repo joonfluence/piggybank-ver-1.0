@@ -31,7 +31,7 @@ const CategoryBlock = ({ data, color, isCategory }) => {
         <GrMoney />
       </div>
       <span>항목 : {data.title}</span>
-      <span>금액 : {data.price}</span>
+      <span>목표금액 : {data.price}</span>
       {isCategory && data.category[0] ? (
         <span> 카테고리 : {data.category[0].title}</span>
       ) : (

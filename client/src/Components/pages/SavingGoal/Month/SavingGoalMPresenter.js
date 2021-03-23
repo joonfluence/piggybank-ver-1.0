@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { monthSavingGoal } from "../../../../actions/savingGoalActions";
 import { monthSaving } from "../../../../actions/savingActions";
 import { COLORS } from "../../../GlobalStyles";
+import FormBoard from "../../../FormBoard";
 
 const SavingGoalsPresenterBlock = styled.div`
   position: relative;
@@ -44,25 +45,42 @@ const SavingGoalsPresenter = ({
   return (
     <>
       <SavingGoalsPresenterBlock>
+        <FormBoard
+          isBudget={false}
+          yearInfo={yearInfo}
+          monthInfo={monthInfo}
+          budgetInfo="주식"
+          title="저축항목"
+          mention={`${monthInfo}월, 얼마나 모으실 건가요?`}
+        />
         <HeaderBlock>
-          <ContentHeader
-            yearInfo={yearInfo}
-            monthInfo={monthInfo}
+          {savingSum === 0 && savingGoalSum === 0 ? (
+            <></>
+          ) : (
+            <>
+              <ContentHeader
+                yearInfo={yearInfo}
+                monthInfo={monthInfo}
+                used={savingSum}
+                remained={pocketMoney}
+                isBudget={false}
+                savingGoalSum={savingGoalSum}
+              ></ContentHeader>
+            </>
+          )}
+        </HeaderBlock>
+        {monthlySavingGoal.length ? (
+          <ContentBody
+            savingGoalSum={savingGoalSum}
             used={savingSum}
             remained={pocketMoney}
+            monthlyData={monthlySavingGoal}
+            color={COLORS.pink}
             isBudget={false}
-            savingGoalSum={savingGoalSum}
-          ></ContentHeader>
-          <DateModal />
-        </HeaderBlock>
-        <ContentBody
-          savingGoalSum={savingGoalSum}
-          used={savingSum}
-          remained={pocketMoney}
-          monthlyData={monthlySavingGoal}
-          color={COLORS.pink}
-          isBudget={false}
-        ></ContentBody>
+          ></ContentBody>
+        ) : (
+          <></>
+        )}
       </SavingGoalsPresenterBlock>
     </>
   );
