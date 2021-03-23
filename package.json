@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "client": "cd client && npm run start",
-    "server": "cross-env NODE_ENV=development nodemon init.js",
-    "build": "nodemon init.js ",
+    "dev:server": "cross-env NODE_ENV=development nodemon init.js",
+    "server": "nodemon init.js ",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
