@@ -10,6 +10,7 @@ function userReducer(state = initialState, action) {
     case LOGIN_USER:
       return {
         ...state,
+        userData: action.user,
         user: action.userId,
         isAuth: action.isAuth,
         LoginSuccess: action.LoginSuccess,

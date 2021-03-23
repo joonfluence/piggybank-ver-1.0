@@ -5,7 +5,6 @@ export const postJoin = async (req, res) => {
   const { name, id, email, password, passwordConfirm } = req.body;
   try {
     // 입력한 비밀번호가 서로 같을 경우에만 가입할 수 있다.
-    console.log(req.body);
     if (password === passwordConfirm) {
       const user = await new User({
         name,

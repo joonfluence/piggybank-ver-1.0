@@ -6,10 +6,17 @@ import DateModal from '../../../utils/DateModal';
 import MonthDataList from '../../visuals/MonthDataList';
 import PieTotalRatio from '../../visuals/PieTotalRatio';
 
-
 const MypageBlock = styled.div`
-position: relative;
-  background-color: white;
+    position: relative;
+    background-color: white;
+`;
+
+const UserBlock = styled.div`
+    padding-top: 3rem;
+    height: 10vh;
+`;
+
+const DataBlock = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -24,14 +31,7 @@ position: relative;
       height: 3rem;
       border-radius: 10px;
     }
-  }
-`;
-
-const UserBlock = styled.div``;
-
-const DataBlock = styled.div``;
-
-
+  }`;
 const ChartBlock = styled.div`
   width: 20rem;
   height: 20rem;
@@ -70,6 +70,11 @@ const Mypage = () => {
         savingGoalCategorySum: savingGoalReducer.categorySum,
       }));
     
+      const { user, userdata } = useSelector(({ userReducer }) => ({
+        user : userReducer.user,
+        userdata : userReducer.userdata,
+      }));
+
       const payingData = [
         {
           id: "총 소비액수",
@@ -99,22 +104,22 @@ const Mypage = () => {
     return (
         <MypageBlock>
             <UserBlock>
-                <p>유저정보를 보여주는 곳</p>
+                <p>유저정보를 보여주는 곳 {user}</p>
             </UserBlock>
             <DataBlock>
             <ColumnBlock>
-          <MonthDataList
-            isBudget={true}
-            monthlyData={monthlyBudget}
-            color={COLORS.apricot}
-            isCategory={false}
-          />
-          <MonthDataList
-            isBudget={false}
-            monthlyData={monthlySavingGoal}
-            color={COLORS.pink}
-            isCategory={false}
-          />
+            <MonthDataList
+                isBudget={true}
+                monthlyData={monthlyBudget}
+                color={COLORS.apricot}
+                isCategory={false}
+            />
+            <MonthDataList
+                isBudget={false}
+                monthlyData={monthlySavingGoal}
+                color={COLORS.pink}
+                isCategory={false}
+            />
         </ColumnBlock>
         <ColumnBlock>
           <ChartBlock>
@@ -147,7 +152,7 @@ const Mypage = () => {
         <div>
           <DateModal />
         </div>
-            </DataBlock>
+        </DataBlock>
         </MypageBlock>
     );
 };

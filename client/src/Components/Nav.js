@@ -67,8 +67,8 @@ const Nav = ({ location: { pathname }, history }) => {
         <UserBlock>
           {isAuth ? (
             <>
-              <List current={pathname === routes.mypage(user)}>
-                <SLink to={routes.mypage(user)}>
+              <List current={pathname === routes.mypage}>
+                <SLink to={routes.mypage}>
                   <BsPerson />
                   마이페이지
                 </SLink>

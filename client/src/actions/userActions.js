@@ -12,9 +12,9 @@ export const joinUser = async (dataBody) => {
 
 export const loginUser = async (dataBody) => {
   const request = await userApi.postLogin(dataBody);
-  console.log(request.headers.cookie);
   return {
     type: LOGIN_USER,
+    user: request.data.user,
     LoginSuccess: request.data.LoginSuccess,
     userId: request.data.userId,
     isAuth: request.data.isAuth,

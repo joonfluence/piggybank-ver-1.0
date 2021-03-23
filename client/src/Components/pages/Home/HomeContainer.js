@@ -30,11 +30,7 @@ const HomeContainer = () => {
       </Helmet>
       <Header HeaderInfo="자산" />
       <CenterButton />
-      {isAuth ? (
-        <HomePresenter isAuth={isAuth}></HomePresenter>
-      ) : (
-        <LoginRequired color={COLORS.white}>로그인이 필요합니다!</LoginRequired>
-      )}
+      {isAuth ? <HomePresenter isAuth={isAuth}></HomePresenter> : <></>}
     </>
   );
 };
