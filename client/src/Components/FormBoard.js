@@ -51,7 +51,7 @@ const IconContainer = styled.div`
 
 const FormBoard = ({ isBudget, budgetInfo, mention }) => {
   const { userInfo } = useSelector(({ userReducer }) => ({
-    userInfo: userReducer.user,
+    userInfo: userReducer.userId,
   }));
   const dispatch = useDispatch();
   const [open, setOpen] = useState(true);

@@ -68,7 +68,7 @@ const CreateBoard = ({
   isOpen,
 }) => {
   const { userInfo } = useSelector(({ userReducer }) => ({
-    userInfo: userReducer.user,
+    userInfo: userReducer.userId,
   }));
   const dispatch = useDispatch();
   const [open, setOpen] = useState(isOpen);

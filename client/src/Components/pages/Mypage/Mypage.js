@@ -70,8 +70,7 @@ const Mypage = () => {
         savingGoalCategorySum: savingGoalReducer.categorySum,
       }));
     
-      const { user, userdata } = useSelector(({ userReducer }) => ({
-        user : userReducer.user,
+      const { userdata } = useSelector(({ userReducer }) => ({
         userdata : userReducer.userdata,
       }));
 
@@ -104,7 +103,7 @@ const Mypage = () => {
     return (
         <MypageBlock>
             <UserBlock>
-                <p>유저정보를 보여주는 곳 {user}</p>
+                <p>유저정보를 보여주는 곳 {userdata}</p>
             </UserBlock>
             <DataBlock>
             <ColumnBlock>

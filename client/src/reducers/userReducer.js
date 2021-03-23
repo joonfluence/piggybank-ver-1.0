@@ -2,6 +2,7 @@ import { AUTH_USER, LOGIN_USER, LOGOUT_USER, REGISTER_USER } from "../types";
 
 const initialState = {
   user: "",
+  userId: "",
   isAuth: false,
 };
 
@@ -10,8 +11,8 @@ function userReducer(state = initialState, action) {
     case LOGIN_USER:
       return {
         ...state,
-        userData: action.user,
-        user: action.userId,
+        user: action.user,
+        userId: action.userId,
         isAuth: action.isAuth,
         LoginSuccess: action.LoginSuccess,
       };
@@ -28,7 +29,7 @@ function userReducer(state = initialState, action) {
     case LOGOUT_USER:
       return {
         ...state,
-        user: action.userId,
+        userId: action.userId,
         isAuth: action.isAuth,
         LogOutSuccess: action.payload,
       };

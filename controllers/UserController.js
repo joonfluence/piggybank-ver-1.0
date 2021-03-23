@@ -61,6 +61,7 @@ export const postLogin = async (req, res) => {
         });
         return res.status(200).json({
           LoginSuccess: true,
+          user: user,
           userId: user._id,
           jwt: user.token,
           isAuth: true,

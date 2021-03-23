@@ -50,8 +50,7 @@ const SLink = styled(Link)`
 
 const Nav = ({ location: { pathname }, history }) => {
   const dispatch = useDispatch();
-  const { user, isAuth } = useSelector(({ userReducer }) => ({
-    user: userReducer.user,
+  const { isAuth } = useSelector(({ userReducer }) => ({
     isAuth: userReducer.isAuth,
   }));
   return (
