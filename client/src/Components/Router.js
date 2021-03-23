@@ -11,8 +11,8 @@ import Nav from "./Nav";
 import routes from "../routes.js";
 import SavingGoalMonth from "./pages/SavingGoal/Month";
 import BudgetMonth from "./pages/Budget/Month";
-import SavingMonth from "./pages/Saving/Month";
-import PayingMonth from "./pages/Paying/Month";
+import SavingMonth from "./pages/Saving/List";
+import PayingMonth from "./pages/Paying/List";
 
 // 나중에 user 이름을 띄워서, 안녕하세요 준호님과 같은 모습을 보여줄 수도 있을 것임.
 
@@ -21,9 +21,10 @@ const Router = () => {
     <BrowserRouter>
       <Nav />
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/join" component={Join} />
-        <Route exact path="/login" component={Login} />
+        <Route exact path={routes.home} component={Home} />
+        <Route exact path={routes.join} component={Join} />
+        <Route exact path={routes.login} component={Login} />
+        <Route exact path={routes.mypage} />
         <Route exact path={routes.paying} component={Paying} />
         <Route exact path={routes.saving} component={Saving} />
         <Route exact path={routes.budget} component={Budget} />

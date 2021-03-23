@@ -57,8 +57,8 @@ apiRouter.get(routes.logout, Auth, getLogOut);
 apiRouter.get(routes.auth, Auth, getAuth);
 
 // 3) 사용자 정보
-apiRouter.get(routes.mypage(), Auth, getUserInfo);
-apiRouter.put(routes.mypage(), Auth, editUserInfo);
+apiRouter.get(routes.mypage, Auth, getUserInfo);
+apiRouter.put(routes.mypage, Auth, editUserInfo);
 
 // 4) 소비정보 CRUD
 apiRouter.get(routes.paying, Auth, getPayingInfo);

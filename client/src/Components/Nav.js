@@ -50,7 +50,8 @@ const SLink = styled(Link)`
 
 const Nav = ({ location: { pathname }, history }) => {
   const dispatch = useDispatch();
-  const { isAuth } = useSelector(({ userReducer }) => ({
+  const { user, isAuth } = useSelector(({ userReducer }) => ({
+    user: userReducer.user,
     isAuth: userReducer.isAuth,
   }));
   return (
@@ -66,6 +67,12 @@ const Nav = ({ location: { pathname }, history }) => {
         <UserBlock>
           {isAuth ? (
             <>
+              <List current={pathname === routes.mypage(user)}>
+                <SLink to={routes.mypage(user)}>
+                  <BsPerson />
+                  마이페이지
+                </SLink>
+              </List>
               <List>
                 <span
                   style={{ cursor: "pointer" }}

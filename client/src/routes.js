@@ -3,27 +3,24 @@ const API = "/api";
 
 // Users
 
-const USER_JOIN = "/users/join";
-const USER_LOGIN = "/users/login";
-const USER_LOGOUT = "/users/logout";
-const USER_AUTH = "/users/auth";
-
-// My space
-
-const MYPAGE = "/mypage/:id";
+const USER_JOIN = "/join";
+const USER_LOGIN = "/login";
+const USER_LOGOUT = "/logout";
+const USER_AUTH = "/auth";
+const MYPAGE = "/mypage";
 
 // Payings
 
 const PAYING = "/payings";
 const PAYING_DETAIL = "/payings/:id";
-const PAYING_MONTH = "/payings/list";
+const PAYING_LIST = "/payings/list";
 const CATEGORY_PAYING = "/payings/category";
 
 // Savings
 
 const SAVING = "/savings";
 const SAVING_DETAIL = "/savings/:id";
-const SAVING_MONTH = "/savings/list";
+const SAVING_LIST = "/savings/list";
 const CATEGORY_SAVING = "/savings/category";
 
 // 예산 카테고리
@@ -49,8 +46,8 @@ const routes = {
       return SAVING_DETAIL;
     }
   },
-  payingMonth: PAYING_MONTH,
-  savingMonth: SAVING_MONTH,
+  payingMonth: PAYING_LIST,
+  savingMonth: SAVING_LIST,
   paying: PAYING,
   payings: (id) => {
     if (id) {
@@ -63,13 +60,7 @@ const routes = {
   login: USER_LOGIN,
   logout: USER_LOGOUT,
   auth: USER_AUTH,
-  mypage: (id) => {
-    if (id) {
-      return `/mypage/${id}`;
-    } else {
-      return MYPAGE;
-    }
-  },
+  mypage: MYPAGE,
   categoryPaying: CATEGORY_PAYING,
   categorySaving: CATEGORY_SAVING,
   budget: BUDGET,
