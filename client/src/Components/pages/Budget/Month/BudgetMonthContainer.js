@@ -32,13 +32,6 @@ const BudgetMonthContainer = () => {
   return (
     <>
       <Helmet>
-        <meta charSet="utf-8" />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="96x96"
-          href="http://localhost:3000/favicon-96x96.png"
-        ></link>
         <title>이번달 소비관리 | 돼지저금통</title>
       </Helmet>
       <BudgetMonthContainerBlock>

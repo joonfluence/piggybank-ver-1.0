@@ -4,7 +4,8 @@ import styled from "styled-components";
 const TotalRatioChartBlock = styled.div``;
 const TotalRatioGauge = styled.div`
   background-color: skyblue;
-  width: ${(props) => props.gaudge + `%`};
+  /* 100% 넘으면, 100%로 설정해 줄 것 */
+  width: ${(props) => (props.gaudge > 100 ? 100 + `%` : props.gaudge + `%`)};
   height: 1rem;
 `;
 const TotalRatioChart = ({ categorySum, isBudget, data }) => {

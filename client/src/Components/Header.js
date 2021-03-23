@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import logo from "../images/piggybank_illustration-removebg.png";
 
 const HeaderBlock = styled.header`
   background-color: white;
@@ -22,7 +23,7 @@ const Header = ({ HeaderInfo }) => {
     <>
       <HeaderBlock>
         <HeaderTitle>당신의 {HeaderInfo}을 좀 더 쉽게 관리하세요</HeaderTitle>
-        <HeaderImage src="http://127.0.0.1:8887/piggybank_illustration-removebg.png"></HeaderImage>
+        <HeaderImage src={logo}></HeaderImage>
       </HeaderBlock>
     </>
   );

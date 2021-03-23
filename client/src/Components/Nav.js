@@ -48,10 +48,9 @@ const SLink = styled(Link)`
 
 /* 로그인 상태와 로그인 상태가 아닌 경우를 나누어, NavBar를 구성해준다. 또한 이 부분은 아이콘으로도 뵤여줄 것. BsFillPersonFill(로그인) */
 
-const Nav = ({ location: { pathname } }) => {
+const Nav = ({ location: { pathname }, history }) => {
   const dispatch = useDispatch();
-  const { user, isAuth } = useSelector(({ userReducer }) => ({
-    user: userReducer.user,
+  const { isAuth } = useSelector(({ userReducer }) => ({
     isAuth: userReducer.isAuth,
   }));
   return (
@@ -67,19 +66,13 @@ const Nav = ({ location: { pathname } }) => {
         <UserBlock>
           {isAuth ? (
             <>
-              <List current={pathname === routes.mypage(user)}>
-                <SLink to={routes.mypage(user)}>
-                  <BsPerson />
-                  마이페이지
-                </SLink>
-              </List>
               <List>
                 <span
                   style={{ cursor: "pointer" }}
                   onClick={() =>
                     dispatch(LogOutUser()).then((response) => {
                       if (response.LogOutSuccess) {
-                        window.location.href = "/";
+                        history.push("/");
                       }
                     })
                   }
