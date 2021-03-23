@@ -12,7 +12,7 @@ const MypageBlock = styled.div`
 `;
 
 const UserBlock = styled.div`
-    padding-top: 3rem;
+    padding: 3rem;
     height: 10vh;
 `;
 
@@ -70,8 +70,12 @@ const Mypage = () => {
         savingGoalCategorySum: savingGoalReducer.categorySum,
       }));
     
-      const { userdata } = useSelector(({ userReducer }) => ({
-        userdata : userReducer.userdata,
+      const { monthInfo } = useSelector(({ dateReducer }) => ({
+        monthInfo: dateReducer.monthInfo
+      }));
+
+      const { userName } = useSelector(({ userReducer }) => ({
+        userName : userReducer.user.name,
       }));
 
       const payingData = [
@@ -103,7 +107,7 @@ const Mypage = () => {
     return (
         <MypageBlock>
             <UserBlock>
-                <p>유저정보를 보여주는 곳 {userdata}</p>
+                <h2>{userName}님의 {monthInfo}월 지출/저축 정보입니다</h2>
             </UserBlock>
             <DataBlock>
             <ColumnBlock>
