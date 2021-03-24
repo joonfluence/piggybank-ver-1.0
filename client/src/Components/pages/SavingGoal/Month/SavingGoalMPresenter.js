@@ -69,7 +69,7 @@ const SavingGoalsPresenter = ({
             </>
           )}
         </HeaderBlock>
-        {monthlySavingGoal.length ? (
+        {monthlySavingGoal !== null ? (
           <ContentBody
             savingGoalSum={savingGoalSum}
             used={savingSum}
