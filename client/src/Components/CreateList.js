@@ -75,9 +75,17 @@ const CreateList = ({ dataList, isCategory, isPaying }) => {
 
   const onDelete = (id) => {
     if (isPaying) {
-      dispatch(deletePaying(id));
+      dispatch(deletePaying(id)).then((response) => {
+        if (response.payload.data.sucess) {
+          alert("삭제되었습니다.");
+        }
+      });
     } else {
-      dispatch(deleteSaving(id));
+      dispatch(deleteSaving(id)).then((response) => {
+        if (response.payload.data.sucess) {
+          alert("삭제되었습니다.");
+        }
+      });
     }
     fetchSavingData();
     fetchPayingData();

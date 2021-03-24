@@ -8,6 +8,7 @@ import {
 import { deleteBudget, monthBudget } from "../../actions/budgetActions";
 import { useDispatch } from "react-redux";
 import TotalRatioChart from "./TotalRatioChart";
+import { response } from "express";
 
 const TotalRatioGaugeBlock = styled.div`
   position: relative;
@@ -38,10 +39,18 @@ const TotalRatioTemplate = ({
       month: monthInfo,
     };
     if (isBudget) {
-      dispatch(deleteBudget(id));
+      dispatch(deleteBudget(id)).then((response) => {
+        if (response.payload.data.success) {
+          alert("삭제 되었습니다.");
+        }
+      });
       dispatch(monthBudget(body));
     } else {
-      dispatch(deleteSavingGoal(id));
+      dispatch(deleteSavingGoal(id)).then((response) => {
+        if (response.payload.data.success) {
+          alert("삭제 되었습니다.");
+        }
+      });
       dispatch(monthSavingGoal(body));
     }
   };

@@ -66,7 +66,7 @@ export const deleteBudgetInfo = async (req, res) => {
   } = req;
   try {
     await Budget.findByIdAndRemove({ _id: id });
-    return res.status(204).json();
+    return res.status(204).json({ success: true });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ sucess: false, error });

@@ -39,7 +39,6 @@ export const updatePaying = async (id) => {
 };
 
 export const deletePaying = async (id) => {
-  console.log(id);
   const request = await payingApi.deletePayingInfo(id);
 
   return {

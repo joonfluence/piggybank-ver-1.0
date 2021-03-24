@@ -43,7 +43,7 @@ const BudgetMonthPresenter = ({
   return (
     <BudgetMonthPresenterBlock>
       <FormBoard
-        isBudget={false}
+        isBudget={true}
         budgetInfo="식비"
         title="예산항목"
         yearInfo={yearInfo}
