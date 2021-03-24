@@ -2,14 +2,13 @@ import User from "../models/User.js";
 
 // 1) 유저 관련 (Join, Login, Logout) Controllers
 export const postJoin = async (req, res) => {
-  const { name, id, email, password, passwordConfirm } = req.body;
+  const { name, id, password, passwordConfirm } = req.body;
   try {
     // 입력한 비밀번호가 서로 같을 경우에만 가입할 수 있다.
     if (password === passwordConfirm) {
       const user = await new User({
         name,
         id,
-        email,
         password,
       });
       // DB에 유저 정보를 저장한다.

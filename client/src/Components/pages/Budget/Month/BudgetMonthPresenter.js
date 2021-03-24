@@ -53,7 +53,7 @@ const BudgetMonthPresenter = ({
       <BudgetMonthBlock>
         <HeaderBlock>
           {payingSum === 0 && budgetSum === 0 ? (
-            <></>
+            <>empty</>
           ) : (
             <>
               <ContentHeader
@@ -68,7 +68,7 @@ const BudgetMonthPresenter = ({
             </>
           )}
         </HeaderBlock>
-        {monthlyBudget.length ? (
+        {monthlyBudget !== null ? (
           <ContentBody
             budgetSum={budgetSum}
             monthlyData={monthlyBudget}
@@ -79,7 +79,7 @@ const BudgetMonthPresenter = ({
             isCategory={false}
           ></ContentBody>
         ) : (
-          <></>
+          <>empty</>
         )}
       </BudgetMonthBlock>
     </BudgetMonthPresenterBlock>

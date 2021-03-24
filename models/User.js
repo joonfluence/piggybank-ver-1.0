@@ -11,7 +11,6 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   name: { type: String, required: true },
   id: { type: String, required: true, unique: true },
-  email: { type: String },
   password: { type: String, required: true },
   createdAt: { type: Date, default: getCurrentDate() },
   saving: [{ type: Schema.Types.ObjectId, ref: "Saving" }],
@@ -47,9 +46,9 @@ UserSchema.methods.comparePassword = function (plainPassword, cb) {
   });
 };
 
-UserSchema.methods.generateToken = async function () {
+UserSchema.methods.generateToken = function () {
   let user = this;
-  let token = await jwt.sign(user._id.toJSON(), process.env.TOKEN);
+  let token = jwt.sign(user._id.toJSON(), process.env.TOKEN);
   user.token = token;
   user.save();
 };

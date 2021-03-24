@@ -4,8 +4,9 @@ import { useDispatch } from "react-redux";
 import { AiFillLock } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 import { loginUser } from "../../../actions/userActions";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { COLORS } from "../../GlobalStyles";
+import routes from "../../../routes";
 
 const LoginForm = styled.form`
   position: absolute;
@@ -128,9 +129,9 @@ const Login = ({ history }) => {
           로그인
         </Button>
         {/* 로그인 안된 상태에서만 가능하도록 처리해줘야 함. */}
-        <a href="/join">
+        <Link to={routes.join}>
           <Button color={COLORS.navy}>회원가입</Button>
-        </a>
+        </Link>
       </ButtonContainer>
     </LoginForm>
   );

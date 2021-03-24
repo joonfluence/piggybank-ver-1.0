@@ -106,7 +106,7 @@ const Join = ({ history }) => {
         alert("다른 아이디를 입력해주세요.");
       }
     });
-    // setName("");
+    setName("");
     setId("");
     setPassword("");
     // setEmail("");
