@@ -8,7 +8,6 @@ import {
 import { deleteBudget, monthBudget } from "../../actions/budgetActions";
 import { useDispatch } from "react-redux";
 import TotalRatioChart from "./TotalRatioChart";
-import { response } from "express";
 
 const TotalRatioGaugeBlock = styled.div`
   position: relative;
