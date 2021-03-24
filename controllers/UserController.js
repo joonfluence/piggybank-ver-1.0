@@ -53,6 +53,7 @@ export const postLogin = async (req, res) => {
       } else {
         // 토큰을 생성하여, 쿠키에 저장해줄 것.
         user.generateToken();
+        console.log(user.token);
         res.cookie("x_auth", user.token, {
           maxAge: 86400000,
           httpOnly: true,
@@ -77,7 +78,11 @@ export const postLogin = async (req, res) => {
 export const getLogOut = (req, res) => {
   try {
     User.findByIdAndUpdate(req.user._id, { token: "" });
-    res.cookie("x_auth", "");
+    res.cookie("x_auth", "", {
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+    });
     return res.status(200).send({
       LogOutSuccess: true,
       userId: "",

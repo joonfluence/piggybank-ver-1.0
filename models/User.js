@@ -47,9 +47,9 @@ UserSchema.methods.comparePassword = function (plainPassword, cb) {
   });
 };
 
-UserSchema.methods.generateToken = function () {
+UserSchema.methods.generateToken = async function () {
   let user = this;
-  let token = jwt.sign(user._id.toJSON(), process.env.TOKEN);
+  let token = await jwt.sign(user._id.toJSON(), process.env.TOKEN);
   user.token = token;
   user.save();
 };
