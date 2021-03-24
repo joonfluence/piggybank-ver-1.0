@@ -27,7 +27,7 @@ const SavingPresenter = ({ dataList }) => {
           title="저축내역"
           selectOptions={monthlySavingGoal}
         ></CreateBoard>
-        <CreateList isPaying={true} dataList={savingList} isCategory={true} />
+        <CreateList isPaying={false} dataList={savingList} isCategory={true} />
       </SavingPresenterBlock>
     </>
   );
