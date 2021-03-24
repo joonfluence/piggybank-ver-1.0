@@ -134,7 +134,7 @@ const Mypage = () => {
       </UserBlock>
       <DataBlock>
         <ColumnBlock>
-          {monthlyBudget.length ? (
+          {monthlyBudget !== null ? (
             <MonthDataList
               isBudget={true}
               monthlyData={monthlyBudget}
@@ -144,7 +144,7 @@ const Mypage = () => {
           ) : (
             <></>
           )}
-          {monthlySavingGoal.length ? (
+          {monthlySavingGoal !== null ? (
             <MonthDataList
               isBudget={false}
               monthlyData={monthlySavingGoal}
