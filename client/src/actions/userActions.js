@@ -15,6 +15,7 @@ export const loginUser = async (dataBody) => {
   return {
     type: LOGIN_USER,
     user: request.data.user,
+    message: request.data.message,
     LoginSuccess: request.data.LoginSuccess,
     userId: request.data.userId,
     isAuth: request.data.isAuth,

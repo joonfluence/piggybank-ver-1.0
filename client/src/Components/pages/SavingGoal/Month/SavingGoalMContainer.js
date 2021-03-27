@@ -6,6 +6,7 @@ import CenterButton from "../../../CenterButton";
 import Header from "../../../Header";
 import SavingGoalsPresenter from "./SavingGoalMPresenter";
 import { Helmet } from "react-helmet";
+import Footer from "../../../Footer";
 
 const SavingGoalContainerBlock = styled.div``;
 
@@ -44,6 +45,7 @@ const SavingGoalContainer = () => {
           monthlySavingGoal={monthlySavingGoal}
         />
       </SavingGoalContainerBlock>
+      <Footer />
     </>
   );
 };

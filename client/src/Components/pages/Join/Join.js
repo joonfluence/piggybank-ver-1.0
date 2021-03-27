@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { AiFillLock } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
-import { MdEmail } from "react-icons/md";
 import { joinUser } from "../../../actions/userActions";
 import { useDispatch } from "react-redux";
 import Auth from "../../../hoc/auth";
@@ -63,7 +62,6 @@ const Join = ({ history }) => {
   const [Name, setName] = useState("");
   const [Id, setId] = useState("");
   const [Password, setPassword] = useState("");
-  // const [Email, setEmail] = useState("");
   const [PasswordConfirm, setPasswordConfirm] = useState("");
 
   // Join State 관리를 해주어야 함. 그래야 로그인 할 수 있음.
@@ -84,10 +82,6 @@ const Join = ({ history }) => {
     setPasswordConfirm(e.target.value);
   };
 
-  // const onEmailChange = (e) => {
-  //   setEmail(e.target.value);
-  // };
-
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -100,16 +94,16 @@ const Join = ({ history }) => {
     };
     dispatch(joinUser(body)).then((response) => {
       if (response.payload.data.joinSuccess) {
+        // request.payload.data.message
         alert("회원가입에 성공했습니다.");
         history.push("/login");
       } else {
-        alert("다른 아이디를 입력해주세요.");
+        alert("다시 시도해주세요.");
       }
     });
     setName("");
     setId("");
     setPassword("");
-    // setEmail("");
     setPasswordConfirm("");
   };
 
@@ -165,17 +159,6 @@ const Join = ({ history }) => {
           required
         ></Input>
       </InputContainer>
-      {/*<label htmlFor="email"></label>
-       <InputContainer>
-        <MdEmail />
-        <Input
-          id="email"
-          placeholder="username111@gmail.com"
-          onChange={onEmailChange}
-          value={Email}
-          required
-        ></Input>
-      </InputContainer> */}
       <InputContainer color={COLORS.lightpurple}>
         <Input id="submit" type="submit" value="전송하기" />
       </InputContainer>

@@ -9,6 +9,7 @@ import { monthBudget } from "../../../actions/budgetActions";
 import { monthPaying } from "../../../actions/payingActions";
 import { monthSaving } from "../../../actions/savingActions";
 import { monthSavingGoal } from "../../../actions/savingGoalActions";
+import Footer from "../../Footer";
 
 const MypageBlock = styled.div`
   position: relative;
@@ -200,6 +201,7 @@ const Mypage = () => {
           <DateModal />
         </div>
       </DataBlock>
+      <Footer />
     </MypageBlock>
   );
 };

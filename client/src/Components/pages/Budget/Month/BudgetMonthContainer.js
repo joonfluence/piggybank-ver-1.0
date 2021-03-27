@@ -6,6 +6,7 @@ import BudgetMonthPresenter from "./BudgetMonthPresenter";
 import { useSelector } from "react-redux";
 import Auth from "../../../../hoc/auth";
 import { Helmet } from "react-helmet";
+import Footer from "../../../Footer";
 
 const BudgetMonthContainerBlock = styled.div`
   width: 100%;
@@ -28,6 +29,7 @@ const BudgetMonthContainer = () => {
   );
 
   const pocketMoney = budgetSum - budgetCategorySum;
+  console.log(typeof monthlyBudget);
 
   return (
     <>
@@ -46,6 +48,7 @@ const BudgetMonthContainer = () => {
           monthlyBudget={monthlyBudget}
         />
       </BudgetMonthContainerBlock>
+      <Footer />
     </>
   );
 };

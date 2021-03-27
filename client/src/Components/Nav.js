@@ -7,12 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { LogOutUser } from "../actions/userActions";
 import routes from "../routes";
 import { COLORS } from "./GlobalStyles";
+import icon from "../images/logo_img.png";
 
 const NavContainer = styled.nav`
   position: fixed;
   z-index: 3;
-  height: 10vh;
-  width: 80%;
+  width: 100%;
   line-height: 30px;
 `;
 
@@ -46,6 +46,11 @@ const SLink = styled(Link)`
   align-items: center;
 `;
 
+const IconContainer = styled.img`
+  width: 30px;
+  height: 30px;
+`;
+
 /* 로그인 상태와 로그인 상태가 아닌 경우를 나누어, NavBar를 구성해준다. 또한 이 부분은 아이콘으로도 뵤여줄 것. BsFillPersonFill(로그인) */
 
 const Nav = ({ location: { pathname }, history }) => {
@@ -55,11 +60,12 @@ const Nav = ({ location: { pathname }, history }) => {
   }));
   return (
     <NavContainer>
-      <NavBlock color={COLORS.navy} borderColor={COLORS.darkNavy}>
+      <NavBlock color={COLORS.grey} borderColor={COLORS.white}>
         <LogoBlock>
           <List current={pathname === routes.home}>
             <SLink to={routes.home}>
-              <FaPiggyBank /> PiggyBank
+              <IconContainer src={icon}></IconContainer>
+              <span>PiggyBank</span>
             </SLink>
           </List>
         </LogoBlock>

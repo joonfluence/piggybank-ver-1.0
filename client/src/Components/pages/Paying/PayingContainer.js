@@ -6,6 +6,7 @@ import CenterButton from "../../CenterButton";
 import Auth from "../../../hoc/auth";
 import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
+import Footer from "../../Footer";
 
 const PayingContainerBlock = styled.div``;
 
@@ -25,6 +26,7 @@ const PavingContainer = () => {
         <CenterButton />
         <PayingPresenter dataList={payingList}></PayingPresenter>
       </PayingContainerBlock>
+      <Footer />
     </>
   );
 };

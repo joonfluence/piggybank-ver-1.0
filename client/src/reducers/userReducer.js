@@ -4,6 +4,7 @@ const initialState = {
   user: "",
   userId: "",
   isAuth: false,
+  message: "",
 };
 
 function userReducer(state = initialState, action) {
@@ -14,6 +15,7 @@ function userReducer(state = initialState, action) {
         user: action.user,
         userId: action.userId,
         isAuth: action.isAuth,
+        message: action.message,
         LoginSuccess: action.LoginSuccess,
       };
     case REGISTER_USER:

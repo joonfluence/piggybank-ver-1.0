@@ -15,6 +15,7 @@ export const postJoin = async (req, res) => {
       user.save();
       return res.status(201).json({
         joinSuccess: true,
+        message: "회원가입에 성공했습니다.",
       });
     } else {
       return res.status(500).json({
@@ -26,8 +27,8 @@ export const postJoin = async (req, res) => {
     // 예외처리 1) 이메일이 중복됐을 경우
     if (err.keyPattern) {
       return res.status(500).json({
-        joinSucess: false,
-        errorMessage: "이메일이 중복됩니다.",
+        joinSuccess: false,
+        message: "아이디가 중복됩니다.",
       });
     }
     console.log("error: " + error);
@@ -47,7 +48,7 @@ export const postLogin = async (req, res) => {
       if (!isMatch) {
         return res.json({
           LoginSuccess: false,
-          message: "비밀번호가 틀립니다",
+          message: "로그인에 실패하였습니다.",
         });
       } else {
         // 토큰을 생성하여, 쿠키에 저장해줄 것.

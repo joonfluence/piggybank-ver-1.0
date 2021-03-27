@@ -3,11 +3,13 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { GiPiggyBank, GiTakeMyMoney } from "react-icons/gi";
 import { AiFillAccountBook } from "react-icons/ai";
+import { BsQuestionSquare } from "react-icons/bs";
 import routes from "../routes";
 import { COLORS } from "./GlobalStyles";
 
 const ButtonBlock = styled.div`
   position: relative;
+  height: 6vh;
   z-index: 2;
   display: flex;
   width: 100%;
@@ -27,10 +29,12 @@ const ButtonList = styled.ul`
 const ButtonElementsList = styled.li`
   font-size: 1.3rem;
   padding: 0.5rem;
+  margin: 1rem;
   a {
     display: flex;
     align-items: center;
   }
+
   &:hover {
     ul {
       visibility: visible;
@@ -54,11 +58,17 @@ const HiddenBlock = styled.ul`
 const CenterButton = () => {
   return (
     <ButtonBlock>
-      <ButtonList color={COLORS.navy} borderColor={COLORS.darkNavy}>
+      <ButtonList color={COLORS.grey} borderColor={COLORS.white}>
+        <ButtonElementsList>
+          <Link to={"/introduction"}>
+            <BsQuestionSquare />
+            <div>How to use</div>
+          </Link>
+        </ButtonElementsList>
         <ButtonElementsList>
           <AiFillAccountBook />
-          이번달 목표 정하기
-          <HiddenBlock color={COLORS.navy}>
+          <span>이번달 목표 정하기</span>
+          <HiddenBlock color={COLORS.grey}>
             {/* <li>
               <Link to={routes.payingMonth}>총 지출내역</Link>
             </li>
@@ -75,8 +85,8 @@ const CenterButton = () => {
         </ButtonElementsList>
         <ButtonElementsList>
           <AiFillAccountBook />
-          가계부 쓰기
-          <HiddenBlock color={COLORS.navy}>
+          <span>가계부 쓰기</span>
+          <HiddenBlock color={COLORS.grey}>
             <li>
               <Link to={routes.paying}>
                 <GiTakeMyMoney />

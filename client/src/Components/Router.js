@@ -14,6 +14,7 @@ import BudgetMonth from "./pages/Budget/Month";
 import SavingMonth from "./pages/Saving/List";
 import PayingMonth from "./pages/Paying/List";
 import Mypage from "./pages/Mypage/Mypage";
+import Introduce from "./Introduce";
 
 // 나중에 user 이름을 띄워서, 안녕하세요 준호님과 같은 모습을 보여줄 수도 있을 것임.
 
@@ -28,10 +29,10 @@ const Router = () => {
         <Route exact path={routes.mypage} component={Mypage} />
         <Route exact path={routes.paying} component={Paying} />
         <Route exact path={routes.saving} component={Saving} />
-        <Route exact path={routes.budget} component={Budget} />
-        <Route exact path={routes.savingGoal} component={SavingGoal} />
-        <Route exact path={routes.payingMonth} component={PayingMonth} />
-        <Route exact path={routes.savingMonth} component={SavingMonth} />
+        <Route exact path="/introduction" component={Introduce} />
+        {/* <Route exact path={routes.savingGoal} component={SavingGoal} /> */}
+        {/* <Route exact path={routes.payingMonth} component={PayingMonth} /> */}
+        {/* <Route exact path={routes.savingMonth} component={SavingMonth} /> */}
         <Route exact path={routes.budgetMonth} component={BudgetMonth} />
         <Route
           exact

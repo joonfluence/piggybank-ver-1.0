@@ -5,6 +5,7 @@ import SavingPresenter from "./SavingPresenter";
 import CenterButton from "../../CenterButton";
 import { useSelector } from "react-redux";
 import { Helmet } from "react-helmet";
+import Footer from "../../Footer";
 
 const SavingContainerBlock = styled.div``;
 
@@ -23,6 +24,7 @@ const SavingContainer = () => {
         <CenterButton />
         <SavingPresenter dataList={savingList} />
       </SavingContainerBlock>
+      <Footer />
     </>
   );
 };
