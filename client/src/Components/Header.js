@@ -13,22 +13,18 @@ const HeaderBlock = styled.header`
   justify-content: center;
 `;
 
-const HeaderTitle = styled.h1``;
-
 const HeaderImage = styled.img`
   width: 200px;
   height: 200px;
 `;
 
-const Header = ({ HeaderInfo }) => {
+const Header = () => {
   return (
-    <>
-      <HeaderBlock>
-        <Link to="/">
-          <HeaderImage src={logo}></HeaderImage>
-        </Link>
-      </HeaderBlock>
-    </>
+    <HeaderBlock>
+      <Link to="/">
+        <HeaderImage src={logo}></HeaderImage>
+      </Link>
+    </HeaderBlock>
   );
 };
 

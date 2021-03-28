@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import CategoryBlock from "./CategoryBlock";
-import TotalRatioTemplate from "./TotalRatioTemplate";
+import TotalRatioGauge from "./TotalRatioGauge";
 import { monthBudget } from "../../redux/actions/budgetActions";
 import { monthSavingGoal } from "../../redux/actions/savingGoalActions";
 
@@ -11,13 +11,13 @@ const MonthDataListBlock = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-`;
 
-const TotalRatioChartBlock = styled.div`
-  display: flex;
-  align-items: center;
-  background-color: ${(props) => props.theme.color.grey};
-  margin: 1.5rem;
+  .chart-block {
+    display: flex;
+    align-items: center;
+    background-color: ${(props) => props.theme.color.grey};
+    margin: 1.5rem;
+  }
 `;
 
 const MonthDataList = ({ monthlyData, color, isBudget }) => {
@@ -43,16 +43,16 @@ const MonthDataList = ({ monthlyData, color, isBudget }) => {
     <MonthDataListBlock>
       {monthlyData ? (
         monthlyData.map((data) => (
-          <TotalRatioChartBlock>
+          <div className="chart-block">
             <CategoryBlock color={color} data={data} isCategory={false} />
-            <TotalRatioTemplate
+            <TotalRatioGauge
               data={data}
               yearInfo={yearInfo}
               monthInfo={monthInfo}
               isBudget={isBudget}
               categorySum={data.categoryPrice}
             />
-          </TotalRatioChartBlock>
+          </div>
         ))
       ) : (
         <div>empty</div>

@@ -7,11 +7,10 @@ const ContentBodyBlock = styled.div`
   position: relative;
   display: flex;
   justify-content: space-around;
-`;
-
-const ChartBlock = styled.div`
-  width: 20rem;
-  height: 20rem;
+  .chart-container {
+    width: 20rem;
+    height: 20rem;
+  }
 `;
 
 const ContentBody = ({
@@ -45,9 +44,9 @@ const ContentBody = ({
           isCategory={isCategory}
         />
       </div>
-      <ChartBlock>
+      <div className="chart-container">
         <PieTotalRatio data={data} color="set1" />
-      </ChartBlock>
+      </div>
     </ContentBodyBlock>
   );
 };

@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import { useDispatch } from "react-redux";
-import TotalRatioChart from "./TotalRatioChart";
 import { deleteBudget, monthBudget } from "../../redux/actions/budgetActions";
 import {
   deleteSavingGoal,
@@ -15,16 +14,21 @@ const TotalRatioGaugeBlock = styled.div`
   width: 10rem;
   height: 1rem;
   margin-right: 1rem;
+
+  .delete-btn {
+    position: absolute;
+    top: -400%;
+    right: 0%;
+    font-size: 2rem;
+  }
+
+  .chart-gauge {
+    background-color: skyblue;
+    height: 1rem;
+  }
 `;
 
-const DeleteButton = styled.div`
-  position: absolute;
-  top: -400%;
-  right: 0%;
-  font-size: 2rem;
-`;
-
-const TotalRatioTemplate = ({
+const TotalRatioGauge = ({
   categorySum,
   isBudget,
   data,
@@ -54,18 +58,24 @@ const TotalRatioTemplate = ({
     }
   };
 
+  let gauge = Math.floor((categorySum * 100) / data.price, 2);
+
   return (
     <TotalRatioGaugeBlock>
-      <DeleteButton>
+      <button className="delete-btn">
         <RiDeleteBack2Fill onClick={() => onDelete(data._id)} />
-      </DeleteButton>
-      <TotalRatioChart
-        data={data}
-        isBudget={isBudget}
-        categorySum={categorySum}
-      ></TotalRatioChart>
+      </button>
+      <div>
+        <div className="chart-gauge" style={{ width: `${gauge}%` }} />
+        <span>총소비액 : {categorySum}원 </span>
+        {isBudget ? (
+          <span>({`소비율 ` + gauge + `%`})</span>
+        ) : (
+          <span>({`달성률 ` + gauge + `%`})</span>
+        )}
+      </div>
     </TotalRatioGaugeBlock>
   );
 };
 
-export default TotalRatioTemplate;
+export default TotalRatioGauge;

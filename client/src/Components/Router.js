@@ -1,16 +1,16 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import Home from "../Components/pages/Home/";
+import Home from "./pages/Home/Home";
 import Join from "../Components/pages/Join/Join";
 import Login from "../Components/pages/Login/Login";
-import Saving from "../Components/pages/Saving/";
-import Paying from "../Components/pages/Paying/";
+import Saving from "./pages/Saving/Saving";
+import Paying from "./pages/Paying/Paying";
 import Nav from "./Nav";
 import routes from "../routes.js";
-import SavingGoalMonth from "./pages/SavingGoal/Month";
-import BudgetMonth from "./pages/Budget/Month";
 import Mypage from "./pages/Mypage/Mypage";
-import Introduce from "./Introduce";
+import SavingGoal from "./pages/SavingGoal/SavingGoal";
+import Budget from "./pages/Budget/Budget";
+import Introduce from "./pages/Introduction/Introduce";
 
 const Router = () => {
   return (
@@ -24,12 +24,8 @@ const Router = () => {
         <Route exact path={routes.paying} component={Paying} />
         <Route exact path={routes.saving} component={Saving} />
         <Route exact path="/introduction" component={Introduce} />
-        <Route exact path={routes.budgetMonth} component={BudgetMonth} />
-        <Route
-          exact
-          path={routes.savingGoalMonth}
-          component={SavingGoalMonth}
-        />
+        <Route exact path={routes.budget} component={Budget} />
+        <Route exact path={routes.savingGoal} component={SavingGoal} />
         <Redirect from="*" to="/" />
       </Switch>
     </BrowserRouter>

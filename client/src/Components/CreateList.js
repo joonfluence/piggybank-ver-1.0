@@ -5,6 +5,7 @@ import CategoryBlock from "./visuals/CategoryBlock";
 import { useDispatch } from "react-redux";
 import { deleteSaving, readSaving } from "../redux/actions/savingActions";
 import { deletePaying, readPaying } from "../redux/actions/payingActions";
+import theme from "../Style/theme";
 
 const CreateListBlock = styled.div``;
 
@@ -53,7 +54,7 @@ const BackgroundBlock = styled.div`
   }
 `;
 
-const CreateList = ({ dataList, isCategory, isPaying }) => {
+const CreateList = ({ dataList, color, isCategory, isPaying }) => {
   const dispatch = useDispatch();
   async function fetchSavingData() {
     await dispatch(readSaving());
@@ -95,7 +96,11 @@ const CreateList = ({ dataList, isCategory, isPaying }) => {
         {dataList ? (
           dataList.map((data) => (
             <BackgroundBlock>
-              <CategoryBlock data={data} isCategory={isCategory} />
+              <CategoryBlock
+                color={color}
+                data={data}
+                isCategory={isCategory}
+              />
               <PriceBlock>
                 <div>생성일 : {data.date}</div>
                 <div>

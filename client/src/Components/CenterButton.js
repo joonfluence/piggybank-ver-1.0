@@ -14,79 +14,72 @@ const ButtonBlock = styled.div`
   width: 100%;
   margin: 0 auto;
   font-family: "Oswald", sans-serif;
-`;
 
-const ButtonList = styled.ul`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex: 1;
-  background-color: ${(props) => props.theme.color.grey};
-  box-shadow: 0px 0px 3px 1px ${(props) => props.theme.color.white};
-`;
-
-const ButtonElementsList = styled.li`
-  font-size: 1.3rem;
-  padding: 0.5rem;
-  margin: 1rem;
-  a {
+  .btn-menu {
     display: flex;
     align-items: center;
+    justify-content: space-around;
+    flex: 1;
+    background-color: ${(props) => props.theme.color.grey};
+    box-shadow: 0px 0px 3px 1px ${(props) => props.theme.color.white};
+
+    .btn-list {
+      font-size: 1.3rem;
+      padding: 0.5rem;
+      margin: 1rem;
+      a {
+        display: flex;
+        align-items: center;
+      }
+
+      &:hover {
+        ul {
+          visibility: visible;
+          display: block;
+        }
+      }
+    }
   }
 
-  &:hover {
-    ul {
-      visibility: visible;
-      display: block;
+  .popup-list {
+    visibility: hidden;
+    position: absolute;
+    background-color: ${(props) => props.theme.color.grey};
+    text-align: center;
+
+    & > li {
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
   }
 `;
 
-const HiddenBlock = styled.ul`
-  visibility: hidden;
-  position: absolute;
-  background-color: ${(props) => props.theme.color.grey};
-  text-align: center;
-
-  & > li {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-`;
-
-const CenterButton = ({ theme }) => {
+const CenterButton = () => {
   return (
     <ButtonBlock>
-      <ButtonList>
-        <ButtonElementsList>
+      <ul className="btn-menu">
+        <li className="btn-list">
           <Link to={"/introduction"}>
             <BsQuestionSquare />
             <div>How to use</div>
           </Link>
-        </ButtonElementsList>
-        <ButtonElementsList>
+        </li>
+        <li className="btn-list">
           <AiFillAccountBook />
           <span>이번달 목표 정하기</span>
-          <HiddenBlock>
-            {/* <li>
-              <Link to={routes.payingMonth}>총 지출내역</Link>
+          <ul className="popup-list">
+            <li>
+              <Link to={routes.budget}>지출 목표 & 달성도</Link>
             </li>
             <li>
-              <Link to={routes.savingMonth}>총 저축내역</Link>
-            </li> */}
-            <li>
-              <Link to={routes.budgetMonth}>지출 목표 & 달성도</Link>
+              <Link to={routes.savingGoal}>저축 목표 & 달성도</Link>
             </li>
-            <li>
-              <Link to={routes.savingGoalMonth}>저축 목표 & 달성도</Link>
-            </li>
-          </HiddenBlock>
-        </ButtonElementsList>
-        <ButtonElementsList>
+          </ul>
+        </li>
+        <li className="btn-list">
           <AiFillAccountBook />
           <span>가계부 쓰기</span>
-          <HiddenBlock>
-            {/* color={Themes.colors.grey} */}
+          <ul className="popup-list">
             <li>
               <Link to={routes.paying}>
                 <GiTakeMyMoney />
@@ -99,21 +92,9 @@ const CenterButton = ({ theme }) => {
                 저축내역
               </Link>
             </li>
-            {/* <li>
-              <Link to={routes.budget}>
-                <AiFillAccountBook />
-                예산목표 작성하기
-              </Link>
-            </li>
-            <li>
-              <Link to={routes.savingGoal}>
-                <AiFillAccountBook />
-                저축목표 작성하기
-              </Link>
-            </li> */}
-          </HiddenBlock>
-        </ButtonElementsList>
-      </ButtonList>
+          </ul>
+        </li>
+      </ul>
     </ButtonBlock>
   );
 };
