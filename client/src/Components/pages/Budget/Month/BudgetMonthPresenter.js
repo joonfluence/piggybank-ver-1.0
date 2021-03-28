@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import DateModal from "../../../../utils/DateModal";
 import ContentHeader from "../../../ContentHeader";
 import ContentBody from "../../../ContentBody";
 import { useDispatch } from "react-redux";
-import { monthBudget } from "../../../../actions/budgetActions";
-import { monthPaying } from "../../../../actions/payingActions";
-import { COLORS } from "../../../GlobalStyles";
 import FormBoard from "../../../FormBoard";
+import { monthBudget } from "../../../../redux/actions/budgetActions";
+import { monthPaying } from "../../../../redux/actions/payingActions";
 
 const BudgetMonthPresenterBlock = styled.div``;
 const BudgetMonthBlock = styled.div`
@@ -64,7 +62,6 @@ const BudgetMonthPresenter = ({
                 isBudget={true}
                 budgetSum={budgetSum}
               ></ContentHeader>
-              {/* <DateModal /> */}
             </>
           )}
         </HeaderBlock>
@@ -75,7 +72,6 @@ const BudgetMonthPresenter = ({
             used={payingSum}
             remained={pocketMoney}
             isBudget={true}
-            color={COLORS.apricot}
             isCategory={false}
           ></ContentBody>
         ) : (

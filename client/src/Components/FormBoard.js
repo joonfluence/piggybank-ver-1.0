@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { AiOutlinePlus } from "react-icons/ai";
-import { COLORS } from "./GlobalStyles";
 import { useDispatch, useSelector } from "react-redux";
+import { createBudget, monthBudget } from "../redux/actions/budgetActions";
 import {
   createSavingGoal,
   monthSavingGoal,
-} from "../actions/savingGoalActions";
-import { createBudget, monthBudget } from "../actions/budgetActions";
+} from "../redux/actions/savingGoalActions";
 
 const FormBoardBlock = styled.div`
   position: relative;
@@ -52,7 +51,7 @@ const IconContainer = styled.div`
   svg {
     border-radius: 20px;
     line-height: 1rem;
-    background-color: ${(props) => props.color};
+    background-color: ${(props) => props.theme.color.navy};
     color: white;
     font-size: 2.5rem;
     &:hover {
@@ -123,7 +122,7 @@ const FormBoard = ({
 
   return (
     <>
-      <IconContainer color={COLORS.navy} onClick={onButtonClick} open={open}>
+      <IconContainer onClick={onButtonClick} open={open}>
         <span>{title} 추가하기</span> <AiOutlinePlus />
       </IconContainer>
       {open && (

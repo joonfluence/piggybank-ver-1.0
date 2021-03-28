@@ -1,13 +1,11 @@
 import { Link, withRouter } from "react-router-dom";
-import { FaPiggyBank } from "react-icons/fa";
 import { BsPerson, BsPersonPlus } from "react-icons/bs";
 import { GrLogout, GrLogin } from "react-icons/gr";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { LogOutUser } from "../actions/userActions";
 import routes from "../routes";
-import { COLORS } from "./GlobalStyles";
 import icon from "../images/logo_img.png";
+import { LogOutUser } from "../redux/actions/userActions";
 
 const NavContainer = styled.nav`
   position: fixed;
@@ -17,8 +15,8 @@ const NavContainer = styled.nav`
 `;
 
 const NavBlock = styled.div`
-  background-color: ${(props) => props.color};
-  box-shadow: 0px 0px 3px 1px ${(props) => props.borderColor};
+  background-color: ${(props) => props.theme.color.grey};
+  box-shadow: 0px 0px 3px 1px ${(props) => props.theme.color.white};
   display: flex;
 `;
 
@@ -60,7 +58,7 @@ const Nav = ({ location: { pathname }, history }) => {
   }));
   return (
     <NavContainer>
-      <NavBlock color={COLORS.grey} borderColor={COLORS.white}>
+      <NavBlock>
         <LogoBlock>
           <List current={pathname === routes.home}>
             <SLink to={routes.home}>

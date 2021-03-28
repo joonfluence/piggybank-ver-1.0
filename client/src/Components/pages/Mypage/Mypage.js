@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { COLORS } from "../../GlobalStyles";
 import DateModal from "../../../utils/DateModal";
 import MonthDataList from "../../visuals/MonthDataList";
 import PieTotalRatio from "../../visuals/PieTotalRatio";
-import { monthBudget } from "../../../actions/budgetActions";
-import { monthPaying } from "../../../actions/payingActions";
-import { monthSaving } from "../../../actions/savingActions";
-import { monthSavingGoal } from "../../../actions/savingGoalActions";
+import { monthBudget } from "../../../redux/actions/budgetActions";
+import { monthPaying } from "../../../redux/actions/payingActions";
+import { monthSaving } from "../../../redux/actions/savingActions";
+import { monthSavingGoal } from "../../../redux/actions/savingGoalActions";
+import theme from "../../../Style/theme";
 import Footer from "../../Footer";
 
 const MypageBlock = styled.div`
@@ -139,8 +139,8 @@ const Mypage = () => {
             <MonthDataList
               isBudget={true}
               monthlyData={monthlyBudget}
-              color={COLORS.apricot}
               isCategory={false}
+              color={theme.color.apricot}
             />
           ) : (
             <></>
@@ -149,8 +149,8 @@ const Mypage = () => {
             <MonthDataList
               isBudget={false}
               monthlyData={monthlySavingGoal}
-              color={COLORS.pink}
               isCategory={false}
+              color={theme.color.pink}
             />
           ) : (
             <></>

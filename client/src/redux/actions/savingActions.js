@@ -1,4 +1,4 @@
-import { savingApi } from "../api";
+import { savingApi } from "../../api";
 import {
   CREATE_SAVING,
   READ_SAVING,

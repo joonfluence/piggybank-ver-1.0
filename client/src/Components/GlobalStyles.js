@@ -36,7 +36,7 @@ const globalStyles = createGlobalStyle`
         font-weight: 400;
         font-family: 'Lato', sans-serif;
         text-align: center;
-        background-color: #F4ECFB;
+        background-color: ${(props) => props.theme.color.apricot};
         margin: 0 auto;
         border-radius: 4px;
     }
@@ -54,18 +54,3 @@ const globalStyles = createGlobalStyle`
 `;
 
 export default globalStyles;
-
-export const COLORS = {
-  navy: "#9d9cff", //버튼색, 표 배경색, NavBar
-  darkNavy: "#5d5bfc",
-  lightpurple: "#F4ECFB", // 배경색
-  apricot: "#ffecdb", // 아이템 배경색, 유저 배경색
-  pink: "#ffdef8", //시간에 대한 배경색
-  skyblue: "#c9e8ff", //카테고리 배경색
-  black: "#000000",
-  white: "#FFFFFF",
-  red: "#F43518",
-  green: "#2E8849",
-  grey: "#dbdbdb",
-  darkgrey: "#292930",
-};

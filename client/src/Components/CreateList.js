@@ -1,17 +1,15 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { COLORS } from "./GlobalStyles";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import CategoryBlock from "./visuals/CategoryBlock";
 import { useDispatch } from "react-redux";
-import { readSaving } from "../actions/savingActions";
-import { deletePaying, readPaying } from "../actions/payingActions";
-import { deleteSaving } from "../actions/savingActions";
+import { deleteSaving, readSaving } from "../redux/actions/savingActions";
+import { deletePaying, readPaying } from "../redux/actions/payingActions";
 
 const CreateListBlock = styled.div``;
 
 const InputContentBlock = styled.div`
-  background-color: ${(props) => props.color};
+  background-color: ${(props) => props.theme.color.pink};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,7 +45,7 @@ const BackgroundBlock = styled.div`
   display: flex;
   width: 80%;
   margin: 3rem;
-  background-color: ${(props) => props.color};
+  background-color: ${(props) => props.theme.color.white};
 
   & > div:last-child() {
     flex: 1;
@@ -93,15 +91,11 @@ const CreateList = ({ dataList, isCategory, isPaying }) => {
 
   return (
     <CreateListBlock>
-      <InputContentBlock color={COLORS.pink}>
+      <InputContentBlock>
         {dataList ? (
           dataList.map((data) => (
-            <BackgroundBlock color={COLORS.white}>
-              <CategoryBlock
-                data={data}
-                isCategory={isCategory}
-                color={COLORS.skyblue}
-              />
+            <BackgroundBlock>
+              <CategoryBlock data={data} isCategory={isCategory} />
               <PriceBlock>
                 <div>생성일 : {data.date}</div>
                 <div>

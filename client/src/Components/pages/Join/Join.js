@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { AiFillLock } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
-import { joinUser } from "../../../actions/userActions";
 import { useDispatch } from "react-redux";
 import Auth from "../../../hoc/auth";
-import { COLORS } from "../../GlobalStyles";
 import { withRouter } from "react-router";
+import { joinUser } from "../../../redux/actions/userActions";
 
 const JoinBlock = styled.form`
   position: absolute;
@@ -14,9 +13,6 @@ const JoinBlock = styled.form`
   padding: 2rem;
   background-color: white;
   margin-top: 6rem;
-  /* margin-left: auto;
-  margin-right: 2rem;
-  max-width: 364px; */
 `;
 
 const Input = styled.input`
@@ -41,7 +37,7 @@ const InputContainer = styled.div`
   }
 
   &:last-child {
-    background: ${(props) => props.color};
+    background: ${(props) => props.theme.color.pink};
     border: none;
     outline: none;
     font-weight: 600;
@@ -64,8 +60,6 @@ const Join = ({ history }) => {
   const [Password, setPassword] = useState("");
   const [PasswordConfirm, setPasswordConfirm] = useState("");
 
-  // Join State 관리를 해주어야 함. 그래야 로그인 할 수 있음.
-
   const onNameChange = (e) => {
     setName(e.target.value);
   };
@@ -87,14 +81,12 @@ const Join = ({ history }) => {
 
     let body = {
       name: Name,
-      // email: Email,
       id: Id,
       password: Password,
       passwordConfirm: PasswordConfirm,
     };
     dispatch(joinUser(body)).then((response) => {
       if (response.payload.data.joinSuccess) {
-        // request.payload.data.message
         alert("회원가입에 성공했습니다.");
         history.push("/login");
       } else {
@@ -159,7 +151,7 @@ const Join = ({ history }) => {
           required
         ></Input>
       </InputContainer>
-      <InputContainer color={COLORS.lightpurple}>
+      <InputContainer>
         <Input id="submit" type="submit" value="전송하기" />
       </InputContainer>
     </JoinBlock>

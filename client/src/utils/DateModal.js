@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { getDateInfo } from "../actions/dateAction";
-import { COLORS } from "../Components/GlobalStyles";
+import { getDateInfo } from "../redux/actions/dateAction";
 
 const ModalBackground = styled.div`
   position: absolute;
@@ -43,7 +42,7 @@ const Input = styled.input`
   width: 80%;
   height: 1.5rem;
   border: 1px solid #99d4ff;
-  background-color: ${(props) => props.color};
+  background-color: ${(props) => props.theme.color.skyblue};
 `;
 const ModalButton = styled.button`
   background-color: #f4ecfb;
@@ -55,7 +54,7 @@ const ModalButton = styled.button`
   cursor: pointer;
 `;
 const SubmitBtn = styled.button`
-  background-color: ${(props) => props.color};
+  background-color: ${(props) => props.theme.color.navy};
   border: 1.7px solid #4645ff;
   margin: 0 auto;
   width: 80.3%;
@@ -124,22 +123,18 @@ const DateModal = () => {
               <h1>연/월 데이터를 입력해주세요</h1>
               <DateModalForm method="GET" onSubmit={onSubmitModal}>
                 <Input
-                  color={COLORS.skyblue}
                   type="text"
                   name="year"
                   onChange={onChangeYear}
                   value={year}
                 ></Input>
                 <Input
-                  color={COLORS.skyblue}
                   type="text"
                   name="month"
                   onChange={onChangeMonth}
                   value={month}
                 ></Input>
-                <SubmitBtn color={COLORS.navy} type="submit">
-                  전송
-                </SubmitBtn>
+                <SubmitBtn type="submit">전송</SubmitBtn>
               </DateModalForm>
             </div>
           </ModalWrapper>

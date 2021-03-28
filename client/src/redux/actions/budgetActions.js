@@ -1,4 +1,4 @@
-import { budgetApi } from "../api";
+import { budgetApi } from "../../api";
 import {
   CREATE_BUDGET,
   READ_BUDGET,

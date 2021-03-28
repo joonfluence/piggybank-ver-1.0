@@ -6,7 +6,6 @@ import Auth from "../../../hoc/auth";
 import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { COLORS } from "../../GlobalStyles";
 import Footer from "../../Footer";
 
 const LoginRequired = styled.div`
@@ -31,7 +30,11 @@ const HomeContainer = () => {
       </Helmet>
       <Header HeaderInfo="자산" />
       <CenterButton />
-      {isAuth ? <HomePresenter isAuth={isAuth}></HomePresenter> : <></>}
+      {isAuth ? (
+        <HomePresenter isAuth={isAuth}></HomePresenter>
+      ) : (
+        <LoginRequired />
+      )}
       <Footer />
     </>
   );

@@ -3,9 +3,8 @@ import styled from "styled-components";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { createPaying, readPaying } from "../actions/payingActions";
-import { createSaving, readSaving } from "../actions/savingActions";
-import { COLORS } from "./GlobalStyles";
+import { createPaying, readPaying } from "../redux/actions/payingActions";
+import { createSaving, readSaving } from "../redux/actions/savingActions";
 
 const CreateBoardBlock = styled.section`
   margin: 0 auto;
@@ -60,7 +59,7 @@ const IconContainer = styled.div`
 
   svg {
     border-radius: 20px;
-    background-color: ${(props) => props.color};
+    background-color: ${(props) => props.theme.color.navy};
     font-size: 2.5rem;
 
     color: white;
@@ -135,7 +134,8 @@ const CreateBoard = ({ InfoName, isPaying, selectOptions, title, isOpen }) => {
 
   return (
     <>
-      <IconContainer color={COLORS.navy} onClick={onButtonClick} open={open}>
+      <IconContainer onClick={onButtonClick} open={open}>
+        {/* color={Themes.navy} */}
         <span>{title} 작성하기</span>
         <AiOutlinePlus />
       </IconContainer>

@@ -5,7 +5,6 @@ import { GiPiggyBank, GiTakeMyMoney } from "react-icons/gi";
 import { AiFillAccountBook } from "react-icons/ai";
 import { BsQuestionSquare } from "react-icons/bs";
 import routes from "../routes";
-import { COLORS } from "./GlobalStyles";
 
 const ButtonBlock = styled.div`
   position: relative;
@@ -22,8 +21,8 @@ const ButtonList = styled.ul`
   align-items: center;
   justify-content: space-around;
   flex: 1;
-  background-color: ${(props) => props.color};
-  box-shadow: 0px 0px 3px 1px ${(props) => props.borderColor};
+  background-color: ${(props) => props.theme.color.grey};
+  box-shadow: 0px 0px 3px 1px ${(props) => props.theme.color.white};
 `;
 
 const ButtonElementsList = styled.li`
@@ -46,7 +45,7 @@ const ButtonElementsList = styled.li`
 const HiddenBlock = styled.ul`
   visibility: hidden;
   position: absolute;
-  background-color: ${(props) => props.color};
+  background-color: ${(props) => props.theme.color.grey};
   text-align: center;
 
   & > li {
@@ -55,10 +54,10 @@ const HiddenBlock = styled.ul`
   }
 `;
 
-const CenterButton = () => {
+const CenterButton = ({ theme }) => {
   return (
     <ButtonBlock>
-      <ButtonList color={COLORS.grey} borderColor={COLORS.white}>
+      <ButtonList>
         <ButtonElementsList>
           <Link to={"/introduction"}>
             <BsQuestionSquare />
@@ -68,7 +67,7 @@ const CenterButton = () => {
         <ButtonElementsList>
           <AiFillAccountBook />
           <span>이번달 목표 정하기</span>
-          <HiddenBlock color={COLORS.grey}>
+          <HiddenBlock>
             {/* <li>
               <Link to={routes.payingMonth}>총 지출내역</Link>
             </li>
@@ -86,7 +85,8 @@ const CenterButton = () => {
         <ButtonElementsList>
           <AiFillAccountBook />
           <span>가계부 쓰기</span>
-          <HiddenBlock color={COLORS.grey}>
+          <HiddenBlock>
+            {/* color={Themes.colors.grey} */}
             <li>
               <Link to={routes.paying}>
                 <GiTakeMyMoney />

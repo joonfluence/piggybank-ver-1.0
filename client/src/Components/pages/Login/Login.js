@@ -3,10 +3,9 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { AiFillLock } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
-import { loginUser } from "../../../actions/userActions";
 import { Link, withRouter } from "react-router-dom";
-import { COLORS } from "../../GlobalStyles";
 import routes from "../../../routes";
+import { loginUser } from "../../../redux/actions/userActions";
 
 const LoginForm = styled.form`
   position: absolute;
@@ -47,13 +46,13 @@ const ButtonContainer = styled.div`
     display: flex;
     button {
       flex: 1;
-      background-color: ${(props) => props.color};
+      background-color: ${(props) => props.theme.color.skyblue};
     }
   }
 `;
 
 const Button = styled.button`
-  background: ${(props) => props.color};
+  background: ${(props) => props.theme.color.navy};
   border: none;
   outline: none;
   font-weight: 600;
@@ -123,12 +122,10 @@ const Login = ({ history }) => {
         ></Input>
       </InputContainer>
       <ButtonContainer>
-        <Button color={COLORS.skyblue} type="submit">
-          로그인
-        </Button>
+        <Button type="submit">로그인</Button>
         {/* 로그인 안된 상태에서만 가능하도록 처리해줘야 함. */}
         <Link to={routes.join}>
-          <Button color={COLORS.navy}>회원가입</Button>
+          <Button>회원가입</Button>
         </Link>
       </ButtonContainer>
     </LoginForm>

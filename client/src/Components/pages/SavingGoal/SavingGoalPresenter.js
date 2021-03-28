@@ -5,7 +5,7 @@ import CenterButton from "../../CenterButton";
 import { useSelector } from "react-redux";
 
 const SavingGoalPresenterBlock = styled.div`
-  background-color: white;
+  background-color: ${(props) => props.theme.color.white};
 `;
 
 const SavingGoalPresenter = () => {

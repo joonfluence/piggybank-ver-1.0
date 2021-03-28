@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import CreateBoard from "../../CreateBoard";
 import { useDispatch, useSelector } from "react-redux";
 import CreateList from "../../CreateList";
-import { readPaying } from "../../../actions/payingActions";
+import { readPaying } from "../../../redux/actions/payingActions";
 
 const PayingPresenterBlock = styled.div`
   background-color: white;

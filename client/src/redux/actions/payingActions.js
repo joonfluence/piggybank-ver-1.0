@@ -1,4 +1,4 @@
-import { payingApi } from "../api";
+import { payingApi } from "../../api";
 import {
   CREATE_PAYING,
   READ_PAYING,

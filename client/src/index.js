@@ -6,11 +6,11 @@ import { applyMiddleware, createStore } from "redux";
 import promiseMiddleware from "redux-promise";
 import ReduxThunk from "redux-thunk";
 import { createLogger } from "redux-logger";
-import rootReducer from "./reducers";
 import { composeWithDevTools } from "redux-devtools-extension";
 import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore, persistReducer } from "redux-persist";
+import rootReducer from "./redux/reducers";
 
 const logger = createLogger();
 

@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { RiDeleteBack2Fill } from "react-icons/ri";
+import { useDispatch } from "react-redux";
+import TotalRatioChart from "./TotalRatioChart";
+import { deleteBudget, monthBudget } from "../../redux/actions/budgetActions";
 import {
   deleteSavingGoal,
   monthSavingGoal,
-} from "../../actions/savingGoalActions";
-import { deleteBudget, monthBudget } from "../../actions/budgetActions";
-import { useDispatch } from "react-redux";
-import TotalRatioChart from "./TotalRatioChart";
+} from "../../redux/actions/savingGoalActions";
 
 const TotalRatioGaugeBlock = styled.div`
   position: relative;

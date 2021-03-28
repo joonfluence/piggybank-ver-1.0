@@ -2,12 +2,10 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import ContentHeader from "../../../ContentHeader";
 import ContentBody from "../../../ContentBody";
-import DateModal from "../../../../utils/DateModal";
 import { useDispatch } from "react-redux";
-import { monthSavingGoal } from "../../../../actions/savingGoalActions";
-import { monthSaving } from "../../../../actions/savingActions";
-import { COLORS } from "../../../GlobalStyles";
 import FormBoard from "../../../FormBoard";
+import { monthSaving } from "../../../../redux/actions/savingActions";
+import { monthSavingGoal } from "../../../../redux/actions/savingGoalActions";
 
 const SavingGoalsPresenterBlock = styled.div`
   position: relative;
@@ -75,7 +73,6 @@ const SavingGoalsPresenter = ({
             used={savingSum}
             remained={pocketMoney}
             monthlyData={monthlySavingGoal}
-            color={COLORS.pink}
             isBudget={false}
           ></ContentBody>
         ) : (
