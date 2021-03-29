@@ -5,14 +5,14 @@ import CenterButton from "../../CenterButton";
 import { Helmet } from "react-helmet";
 import Footer from "../../Footer";
 import { useSelector } from "react-redux";
-import LoginRequired from "../../../utils/LoginRequired";
+import LoginRequired from "../../common/LoginRequired";
 import Auth from "../../../hoc/auth";
 
 const HomeBlock = styled.div`
-  height: 100%;
+  height: 100vh;
   .main-content {
     background-color: ${(props) => props.theme.color.white};
-    height: 50%;
+    height: 53vh;
   }
 `;
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { getDateInfo } from "../redux/actions/dateAction";
+import { getDateInfo } from "../../redux/actions/dateAction";
 
 const ModalBackground = styled.div`
   position: absolute;

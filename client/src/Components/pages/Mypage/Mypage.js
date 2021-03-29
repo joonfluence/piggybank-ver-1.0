@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import DateModal from "../../../utils/DateModal";
-import MonthDataList from "../../visuals/MonthDataList";
-import PieTotalRatio from "../../visuals/PieTotalRatio";
+import DateModal from "../../common/DateModal";
+import MonthDataList from "../../charts/MonthDataList";
+import PieTotalRatio from "../../charts/PieTotalRatio";
 import { monthBudget } from "../../../redux/actions/budgetActions";
 import { monthPaying } from "../../../redux/actions/payingActions";
 import { monthSaving } from "../../../redux/actions/savingActions";

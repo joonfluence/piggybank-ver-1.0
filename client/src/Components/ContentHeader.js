@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import DateModal from "../utils/DateModal";
+import DateModal from "./common/DateModal";
 
 const ContentHeaderBlock = styled.div`
   background-color: #eaf6ff;
@@ -10,7 +10,6 @@ const ContentHeaderBlock = styled.div`
   display: flex;
   align-items: center;
 `;
-const ModalBlock = styled.div``;
 
 const ContentBlock = styled.div`
   flex: 1;
@@ -63,12 +62,9 @@ const ContentHeader = ({
           )}
         </ContentInfo>
       </ContentBlock>
-      <ModalBlock>
+      <div>
         <DateModal />
-      </ModalBlock>
-      {/* <ImageCircle>
-            <PieTotalRatio data={data} color="set1"></PieTotalRatio>
-          </ImageCircle> */}
+      </div>
     </ContentHeaderBlock>
   );
 };
