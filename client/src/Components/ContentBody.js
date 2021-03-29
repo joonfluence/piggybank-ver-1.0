@@ -10,6 +10,11 @@ const ContentBodyBlock = styled.div`
   .chart-container {
     width: 20rem;
     height: 20rem;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 661px) {
+    flex-direction: column;
   }
 `;
 

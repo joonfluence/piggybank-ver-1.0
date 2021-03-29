@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { GiPiggyBank, GiTakeMyMoney } from "react-icons/gi";
-import { AiFillAccountBook } from "react-icons/ai";
+import { AiFillAccountBook, AiOutlineBook } from "react-icons/ai";
 import { BsQuestionSquare } from "react-icons/bs";
 import routes from "../routes";
+import { GiStairsGoal } from "react-icons/gi";
 
 const ButtonBlock = styled.div`
   position: relative;
@@ -38,6 +39,9 @@ const ButtonBlock = styled.div`
           display: block;
         }
       }
+      @media (max-width: 530px) {
+        font-size: 1rem;
+      }
     }
   }
 
@@ -61,35 +65,41 @@ const CenterButton = () => {
         <li className="btn-list">
           <Link to={"/introduction"}>
             <BsQuestionSquare />
-            <div>How to use</div>
+            <div> How to use</div>
           </Link>
         </li>
         <li className="btn-list">
           <AiFillAccountBook />
-          <span>이번달 목표 정하기</span>
+          <span> Setting monthly goal</span>
           <ul className="popup-list">
             <li>
-              <Link to={routes.budget}>지출 목표 & 달성도</Link>
+              <Link to={routes.budget}>
+                <AiOutlineBook />
+                Budget
+              </Link>
             </li>
             <li>
-              <Link to={routes.savingGoal}>저축 목표 & 달성도</Link>
+              <Link to={routes.savingGoal}>
+                <GiStairsGoal />
+                Saving goal
+              </Link>
             </li>
           </ul>
         </li>
         <li className="btn-list">
           <AiFillAccountBook />
-          <span>가계부 쓰기</span>
+          <span> Writting account book</span>
           <ul className="popup-list">
             <li>
               <Link to={routes.paying}>
                 <GiTakeMyMoney />
-                소비내역
+                Consumption list
               </Link>
             </li>
             <li>
               <Link to={routes.saving}>
                 <GiPiggyBank />
-                저축내역
+                Saving list
               </Link>
             </li>
           </ul>

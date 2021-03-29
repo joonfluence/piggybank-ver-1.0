@@ -1,4 +1,4 @@
-export const color = {
+const color = {
   navy: "#9d9cff", //버튼색, 표 배경색, NavBar
   darkNavy: "#5d5bfc",
   lightpurple: "#F4ECFB", // 배경색
@@ -13,8 +13,14 @@ export const color = {
   darkgrey: "#292930",
 };
 
+const device = {
+  mobile: "375px",
+  desktop: "1280px",
+};
+
 const theme = {
   color,
+  device,
 };
 
 export default theme;

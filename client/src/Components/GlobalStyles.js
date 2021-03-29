@@ -5,6 +5,9 @@ import { createGlobalStyle } from "styled-components";
 const globalStyles = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Oswald:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC&display=swap');
+
+/* 폰트 추가하기 */
     * {
         margin: 0;
         padding: 0;
@@ -26,6 +29,10 @@ const globalStyles = createGlobalStyle`
         font-style: inherit;
     }
     
+    nav, header, footer {
+        font-family: 'Alegreya Sans SC', sans-serif;
+    }
+
     ul, li > a {
       font-family: "Oswald", sans-serif;
     }
@@ -34,15 +41,17 @@ const globalStyles = createGlobalStyle`
         position: relative;
         font-size: 1rem;
         font-weight: 400;
+        height: 100vh;
         font-family: 'Lato', sans-serif;
         text-align: center;
-        background-color: ${(props) => props.theme.color.apricot};
+        background-color: ${(props) => props.theme.color.white};
         margin: 0 auto;
         border-radius: 4px;
     }
 
     #wrapper {
         width: 100%;
+        height: 100%;
         margin: 0 auto;
     }
 

@@ -9,6 +9,7 @@ import { LogOutUser } from "../redux/actions/userActions";
 
 const NavContainer = styled.nav`
   position: fixed;
+  width: 90%;
   z-index: 3;
   width: 100%;
   line-height: 30px;
@@ -63,7 +64,7 @@ const Nav = ({ location: { pathname }, history }) => {
           <List current={pathname === routes.home}>
             <SLink to={routes.home}>
               <IconContainer src={icon}></IconContainer>
-              <span>PiggyBank</span>
+              <span>PIGGYBANK</span>
             </SLink>
           </List>
         </LogoBlock>
@@ -73,7 +74,7 @@ const Nav = ({ location: { pathname }, history }) => {
               <List current={pathname === routes.mypage}>
                 <SLink to={routes.mypage}>
                   <BsPerson />
-                  마이페이지
+                  MyPage
                 </SLink>
               </List>
               <List>
@@ -91,7 +92,7 @@ const Nav = ({ location: { pathname }, history }) => {
                   }
                 >
                   <GrLogout />
-                  로그아웃
+                  Logout
                 </span>
               </List>
             </>
@@ -100,13 +101,13 @@ const Nav = ({ location: { pathname }, history }) => {
               <List current={pathname === "/join"}>
                 <SLink to="/join">
                   <BsPersonPlus />
-                  회원가입
+                  Join
                 </SLink>
               </List>
               <List current={pathname === "/login"}>
                 <SLink to="/login">
                   <GrLogin />
-                  로그인
+                  Login
                 </SLink>
               </List>
             </>
