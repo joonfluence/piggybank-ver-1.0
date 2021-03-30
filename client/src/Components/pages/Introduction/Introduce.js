@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import CenterButton from "../../common/CenterButton";
-import Footer from "../../Footer";
-import Header from "../../Header";
+import Footer from "../../common/Footer";
+import Header from "../../common/Header";
 
 const IntroduceBlock = styled.div`
   .message__container {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import logo from "../images/header_img.png";
+import logo from "../../images/header_img.png";
 
 const HeaderBlock = styled.header`
   background-color: white;

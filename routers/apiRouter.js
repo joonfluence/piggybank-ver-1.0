@@ -15,7 +15,7 @@ import {
   editPayingInfo,
   deletePayingInfo,
   getPayingMonth,
-} from "../controllers/PayController.js.js";
+} from "../controllers/PayController.js";
 import {
   postSavingInfo,
   getSavingDetail,
@@ -23,11 +23,11 @@ import {
   editSavingInfo,
   deleteSavingInfo,
   getSavingMonth,
-} from "../controllers/SaveController.js.js";
+} from "../controllers/SaveController.js";
 import {
   getPayingCategory,
   getSavingCategory,
-} from "../controllers/CategoryController.js.js";
+} from "../controllers/CategoryController.js";
 import {
   getBudgetInfo,
   postBudgetInfo,
@@ -35,7 +35,7 @@ import {
   getBudgetDetail,
   getBudgetMonth,
   deleteBudgetInfo,
-} from "../controllers/BudgetController.js.js";
+} from "../controllers/BudgetController.js";
 import {
   getGoalInfo,
   postGoalInfo,
@@ -43,7 +43,7 @@ import {
   getGoalDetail,
   getGoalMonth,
   deleteGoalInfo,
-} from "../controllers/SavingGoalController.js.js";
+} from "../controllers/SavingGoalController.js";
 import routes from "../routes.js";
 
 const apiRouter = express.Router();

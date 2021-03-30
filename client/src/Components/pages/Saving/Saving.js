@@ -2,12 +2,12 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Auth from "../../../hoc/auth";
 import styled from "styled-components";
-import Header from "../../Header";
+import Header from "../../common/Header";
 import CenterButton from "../../common/CenterButton";
 import { Helmet } from "react-helmet";
-import Footer from "../../Footer";
-import CreateBoard from "../../CreateBoard";
-import CreateList from "../../CreateList";
+import Footer from "../../common/Footer";
+import CreateBoard from "../../common/CreateBoard";
+import CreateList from "../../common/CreateList";
 import theme from "../../../Style/theme";
 
 const SavingBlock = styled.div`

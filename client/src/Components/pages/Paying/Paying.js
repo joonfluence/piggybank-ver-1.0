@@ -3,11 +3,11 @@ import styled from "styled-components";
 import Auth from "../../../hoc/auth";
 import { useSelector, useDispatch } from "react-redux";
 import CenterButton from "../../common/CenterButton";
-import Header from "../../Header";
+import Header from "../../common/Header";
 import { Helmet } from "react-helmet";
-import Footer from "../../Footer";
-import CreateBoard from "../../CreateBoard";
-import CreateList from "../../CreateList";
+import Footer from "../../common/Footer";
+import CreateBoard from "../../common/CreateBoard";
+import CreateList from "../../common/CreateList";
 import { readPaying } from "../../../redux/actions/payingActions";
 import theme from "../../../Style/theme";
 

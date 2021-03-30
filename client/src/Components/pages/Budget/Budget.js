@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
-import Footer from "../../Footer";
+import Footer from "../../common/Footer";
 import styled from "styled-components";
 import { monthBudget } from "../../../redux/actions/budgetActions";
 import CenterButton from "../../common/CenterButton";
-import Header from "../../Header";
-import ContentBody from "../../ContentBody";
-import ContentHeader from "../../ContentHeader";
+import Header from "../../common/Header";
+import ContentBody from "../../common/ContentBody";
+import ContentHeader from "../../common/ContentHeader";
 import Auth from "../../../hoc/auth";
-import CreateBoard from "../../CreateBoard";
+import CreateBoard from "../../common/CreateBoard";
 
 const BudgetBlock = styled.div`
   .content {

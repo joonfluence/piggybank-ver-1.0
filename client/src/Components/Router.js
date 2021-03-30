@@ -5,7 +5,7 @@ import Join from "../Components/pages/Join/Join";
 import Login from "../Components/pages/Login/Login";
 import Saving from "./pages/Saving/Saving";
 import Paying from "./pages/Paying/Paying";
-import Nav from "./Nav";
+import Nav from "../Components/common/Nav";
 import routes from "../routes.js";
 import Mypage from "./pages/Mypage/Mypage";
 import SavingGoal from "./pages/SavingGoal/SavingGoal";

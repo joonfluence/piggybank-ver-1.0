@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import useInput from "./hooks/useInput";
+import useInput from "../hooks/useInput";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { createPaying, readPaying } from "../redux/actions/payingActions";
-import { createSaving, readSaving } from "../redux/actions/savingActions";
-import { createBudget, monthBudget } from "../redux/actions/budgetActions";
+import { createPaying, readPaying } from "../../redux/actions/payingActions";
+import { createSaving, readSaving } from "../../redux/actions/savingActions";
+import { createBudget, monthBudget } from "../../redux/actions/budgetActions";
 import {
   createSavingGoal,
   monthSavingGoal,
-} from "../redux/actions/savingGoalActions";
-import theme from "../Style/theme";
-import Button from "./common/Button";
-import Input from "./common/Input";
+} from "../../redux/actions/savingGoalActions";
+import theme from "../../Style/theme";
+import Button from "../utils/Button";
+import Input from "../utils/Input";
 
 const CreateBoardBlock = styled.section`
   .createBoard__Block {

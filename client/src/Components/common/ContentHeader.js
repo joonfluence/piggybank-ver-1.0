@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import DateModal from "./common/DateModal";
+import DateModal from "../utils/DateModal";
 
 const ContentHeaderBlock = styled.div`
   background-color: #eaf6ff;

@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import Header from "../../Header";
+import Header from "../../common/Header";
 import { Helmet } from "react-helmet";
 import Auth from "../../../hoc/auth";
 import CenterButton from "../../common/CenterButton";
 import { useDispatch, useSelector } from "react-redux";
-import Footer from "../../Footer";
-import ContentHeader from "../../ContentHeader";
-import ContentBody from "../../ContentBody";
+import Footer from "../../common/Footer";
+import ContentHeader from "../../common/ContentHeader";
+import ContentBody from "../../common/ContentBody";
 import { monthSaving } from "../../../redux/actions/savingActions";
 import { monthSavingGoal } from "../../../redux/actions/savingGoalActions";
-import CreateBoard from "../../CreateBoard";
+import CreateBoard from "../../common/CreateBoard";
 
 const SavingGoalBlock = styled.div`
   .content {

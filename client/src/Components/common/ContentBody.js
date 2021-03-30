@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import MonthDataList from "./charts/MonthDataList";
-import PieTotalRatio from "./charts/PieTotalRatio";
+import MonthDataList from "../charts/MonthDataList";
+import PieTotalRatio from "../charts/PieTotalRatio";
 
 const ContentBodyBlock = styled.div`
   position: relative;

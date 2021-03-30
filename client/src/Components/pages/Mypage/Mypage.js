@@ -9,7 +9,7 @@ import { monthPaying } from "../../../redux/actions/payingActions";
 import { monthSaving } from "../../../redux/actions/savingActions";
 import { monthSavingGoal } from "../../../redux/actions/savingGoalActions";
 import theme from "../../../Style/theme";
-import Footer from "../../Footer";
+import Footer from "../../common/Footer";
 
 const MypageBlock = styled.div`
   position: relative;

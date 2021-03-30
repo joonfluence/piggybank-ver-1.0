@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { RiDeleteBack2Fill } from "react-icons/ri";
-import CategoryBlock from "./charts/CategoryBlock";
+import CategoryBlock from "../charts/CategoryBlock";
 import { useDispatch } from "react-redux";
-import { deleteSaving, readSaving } from "../redux/actions/savingActions";
-import { deletePaying, readPaying } from "../redux/actions/payingActions";
+import { deleteSaving, readSaving } from "../../redux/actions/savingActions";
+import { deletePaying, readPaying } from "../../redux/actions/payingActions";
 
 const CreateListBlock = styled.div``;
 

@@ -3,9 +3,9 @@ import { BsPerson, BsPersonPlus } from "react-icons/bs";
 import { GrLogout, GrLogin } from "react-icons/gr";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import routes from "../routes";
-import icon from "../images/logo_img.png";
-import { LogOutUser } from "../redux/actions/userActions";
+import routes from "../../routes";
+import icon from "../../images/logo_img.png";
+import { LogOutUser } from "../../redux/actions/userActions";
 
 const NavContainer = styled.nav`
   position: fixed;
