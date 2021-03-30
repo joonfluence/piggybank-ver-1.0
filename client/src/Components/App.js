@@ -1,8 +1,8 @@
 import React from "react";
-import GlobalStyles from "./GlobalStyles";
 import Router from "./Router";
 import { ThemeProvider } from "styled-components";
 import theme from "../Style/theme";
+import GlobalStyles from "../Style/GlobalStyles";
 
 const App = () => {
   return (

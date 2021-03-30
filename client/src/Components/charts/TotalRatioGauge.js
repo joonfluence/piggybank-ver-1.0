@@ -7,7 +7,7 @@ import {
   deleteSavingGoal,
   monthSavingGoal,
 } from "../../redux/actions/savingGoalActions";
-import Button from "../common/Button";
+import Button from "../utils/Button";
 
 const TotalRatioGaugeBlock = styled.div`
   position: relative;

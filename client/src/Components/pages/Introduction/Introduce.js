@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import CenterButton from "../../CenterButton";
+import CenterButton from "../../common/CenterButton";
 import Footer from "../../Footer";
 import Header from "../../Header";
 

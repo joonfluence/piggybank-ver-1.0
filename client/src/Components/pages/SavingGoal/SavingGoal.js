@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Header from "../../Header";
 import { Helmet } from "react-helmet";
 import Auth from "../../../hoc/auth";
-import CenterButton from "../../CenterButton";
+import CenterButton from "../../common/CenterButton";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../Footer";
 import ContentHeader from "../../ContentHeader";

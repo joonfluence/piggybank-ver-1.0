@@ -6,9 +6,9 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { Link, withRouter } from "react-router-dom";
 import routes from "../../../routes";
 import { loginUser } from "../../../redux/actions/userActions";
-import Button from "../../common/Button";
+import Button from "../../utils/Button";
 import theme from "../../../Style/theme";
-import Input from "../../common/Input";
+import Input from "../../utils/Input";
 
 const LoginForm = styled.form`
   background-color: ${(props) => props.theme.color.lightgrey};

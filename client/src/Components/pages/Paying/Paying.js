@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import Auth from "../../../hoc/auth";
 import { useSelector, useDispatch } from "react-redux";
-import CenterButton from "../../CenterButton";
+import CenterButton from "../../common/CenterButton";
 import Header from "../../Header";
 import { Helmet } from "react-helmet";
 import Footer from "../../Footer";

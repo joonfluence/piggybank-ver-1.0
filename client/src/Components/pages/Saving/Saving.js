@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Auth from "../../../hoc/auth";
 import styled from "styled-components";
 import Header from "../../Header";
-import CenterButton from "../../CenterButton";
+import CenterButton from "../../common/CenterButton";
 import { Helmet } from "react-helmet";
 import Footer from "../../Footer";
 import CreateBoard from "../../CreateBoard";

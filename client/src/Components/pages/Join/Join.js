@@ -6,8 +6,8 @@ import { useDispatch } from "react-redux";
 import Auth from "../../../hoc/auth";
 import { withRouter } from "react-router";
 import { joinUser } from "../../../redux/actions/userActions";
-import Input from "../../common/Input";
-import Button from "../../common/Button";
+import Input from "../../utils/Input";
+import Button from "../../utils/Button";
 
 const JoinBlock = styled.form`
   background-color: ${(props) => props.theme.color.lightgrey};

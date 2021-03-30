@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import Footer from "../../Footer";
 import styled from "styled-components";
 import { monthBudget } from "../../../redux/actions/budgetActions";
-import CenterButton from "../../CenterButton";
+import CenterButton from "../../common/CenterButton";
 import Header from "../../Header";
 import ContentBody from "../../ContentBody";
 import ContentHeader from "../../ContentHeader";

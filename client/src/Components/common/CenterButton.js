@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { GiPiggyBank, GiTakeMyMoney } from "react-icons/gi";
 import { AiFillAccountBook, AiOutlineBook } from "react-icons/ai";
 import { BsQuestionSquare } from "react-icons/bs";
-import routes from "../routes";
+import routes from "../../routes";
 import { GiStairsGoal } from "react-icons/gi";
 
 const ButtonBlock = styled.section`
