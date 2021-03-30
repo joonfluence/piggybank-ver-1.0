@@ -10,6 +10,7 @@ const color = {
   red: "#F43518",
   green: "#2E8849",
   grey: "#dbdbdb",
+  lightgrey: "#f5f5f5",
   darkgrey: "#292930",
 };
 

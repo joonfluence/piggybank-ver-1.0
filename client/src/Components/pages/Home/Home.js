@@ -12,7 +12,7 @@ const HomeBlock = styled.div`
   height: 100vh;
   .main-content {
     background-color: ${(props) => props.theme.color.white};
-    height: 53vh;
+    height: 45vh;
   }
 `;
 
@@ -27,7 +27,7 @@ const Home = () => {
         <meta charSet="utf-8" />
         <title>Home | 돼지저금통</title>
       </Helmet>
-      <Header HeaderInfo="자산" />
+      <Header />
       <CenterButton />
       {isAuth ? (
         <div className="main-content" isAuth={isAuth}></div>

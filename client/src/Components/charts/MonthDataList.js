@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import CategoryBlock from "./CategoryBlock";
@@ -26,7 +26,6 @@ const MonthDataList = ({ monthlyData, color, isBudget }) => {
     yearInfo: dateReducer.yearInfo,
     monthInfo: dateReducer.monthInfo,
   }));
-
   useEffect(() => {
     let body = {
       year: yearInfo,
@@ -42,7 +41,7 @@ const MonthDataList = ({ monthlyData, color, isBudget }) => {
   return (
     <MonthDataListBlock>
       {monthlyData ? (
-        monthlyData.map((data) => (
+        monthlyData.map((data, index) => (
           <div className="chart-block">
             <CategoryBlock color={color} data={data} isCategory={false} />
             <TotalRatioGauge
@@ -61,4 +60,4 @@ const MonthDataList = ({ monthlyData, color, isBudget }) => {
   );
 };
 
-export default MonthDataList;
+export default React.memo(MonthDataList);

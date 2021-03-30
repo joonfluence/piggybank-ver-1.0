@@ -6,29 +6,24 @@ import { useDispatch } from "react-redux";
 import Auth from "../../../hoc/auth";
 import { withRouter } from "react-router";
 import { joinUser } from "../../../redux/actions/userActions";
+import Input from "../../common/Input";
+import Button from "../../common/Button";
 
 const JoinBlock = styled.form`
+  background-color: ${(props) => props.theme.color.lightgrey};
   position: absolute;
-  left: 40%;
+  left: 35%;
   padding: 2rem;
-  background-color: white;
   margin-top: 6rem;
 `;
 
-const Input = styled.input`
-  background: none;
-  border: none;
-  outline: none;
+const StyledInput = styled(Input)`
   flex: 1;
-  height: 3rem;
-  font-size: 1.2rem;
-
-  &::placeholder {
-  }
 `;
 
 const InputContainer = styled.div`
   display: flex;
+  background: ${(props) => props.theme.color.white};
   align-items: center;
   border: 1.5px solid black;
 
@@ -116,7 +111,7 @@ const Join = ({ history }) => {
       <label htmlFor="ID"></label>
       <InputContainer>
         <BsFillPersonFill />
-        <Input
+        <StyledInput
           id="id"
           type="id"
           placeholder="아이디를 입력하세요"
@@ -128,7 +123,7 @@ const Join = ({ history }) => {
       <label htmlFor="password"></label>
       <InputContainer>
         <AiFillLock />
-        <Input
+        <StyledInput
           id="password"
           type="password"
           autoComplete="new-password"
@@ -136,12 +131,12 @@ const Join = ({ history }) => {
           onChange={onPasswordChange}
           value={Password}
           required
-        ></Input>
+        ></StyledInput>
       </InputContainer>
       <label htmlFor="password2"></label>
       <InputContainer>
         <AiFillLock />
-        <Input
+        <StyledInput
           id="password2"
           type="password"
           autoComplete="new-password"
@@ -149,10 +144,10 @@ const Join = ({ history }) => {
           onChange={onPasswordConfirmChange}
           value={PasswordConfirm}
           required
-        ></Input>
+        ></StyledInput>
       </InputContainer>
       <InputContainer>
-        <Input id="submit" type="submit" value="전송하기" />
+        <Button type="submit">전송하기</Button>
       </InputContainer>
     </JoinBlock>
   );

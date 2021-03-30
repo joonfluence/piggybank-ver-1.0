@@ -14,6 +14,11 @@ import theme from "../../../Style/theme";
 const PayingBlock = styled.div`
   .content {
     background-color: ${(props) => props.theme.color.white};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
   }
 `;
 

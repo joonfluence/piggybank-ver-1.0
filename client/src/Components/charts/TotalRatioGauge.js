@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import { useDispatch } from "react-redux";
@@ -7,6 +7,7 @@ import {
   deleteSavingGoal,
   monthSavingGoal,
 } from "../../redux/actions/savingGoalActions";
+import Button from "../common/Button";
 
 const TotalRatioGaugeBlock = styled.div`
   position: relative;
@@ -15,17 +16,17 @@ const TotalRatioGaugeBlock = styled.div`
   height: 1rem;
   margin-right: 1rem;
 
-  .delete-btn {
-    position: absolute;
-    top: -400%;
-    right: 0%;
-    font-size: 2rem;
-  }
-
   .chart-gauge {
     background-color: skyblue;
     height: 1rem;
   }
+`;
+
+const StyledButton = styled(Button)`
+  position: absolute;
+  top: -400%;
+  right: -40%;
+  font-size: 2rem;
 `;
 
 const TotalRatioGauge = ({
@@ -37,24 +38,39 @@ const TotalRatioGauge = ({
 }) => {
   const dispatch = useDispatch();
   const onDelete = (id) => {
-    let body = {
-      year: yearInfo,
-      month: monthInfo,
-    };
     if (isBudget) {
       dispatch(deleteBudget(id)).then((response) => {
         if (response.payload.data.success) {
           alert("삭제 되었습니다.");
         }
       });
-      dispatch(monthBudget(body));
     } else {
       dispatch(deleteSavingGoal(id)).then((response) => {
         if (response.payload.data.success) {
           alert("삭제 되었습니다.");
         }
       });
+    }
+  };
+
+  useEffect(() => {
+    let body = {
+      year: yearInfo,
+      month: monthInfo,
+    };
+    if (isBudget) {
+      dispatch(monthBudget(body));
+    } else {
       dispatch(monthSavingGoal(body));
+    }
+  }, [dispatch]);
+
+  const confirmDelete = () => {
+    if (window.confirm("정말 삭제하시겠습니까?")) {
+      alert("삭제되었습니다");
+      onDelete(data._id);
+    } else {
+      alert("취소되었습니다");
     }
   };
 
@@ -62,9 +78,9 @@ const TotalRatioGauge = ({
 
   return (
     <TotalRatioGaugeBlock>
-      <button className="delete-btn">
-        <RiDeleteBack2Fill onClick={() => onDelete(data._id)} />
-      </button>
+      <StyledButton>
+        <RiDeleteBack2Fill onClick={confirmDelete} />
+      </StyledButton>
       <div>
         <div className="chart-gauge" style={{ width: `${gauge}%` }} />
         <span>총소비액 : {categorySum}원 </span>
@@ -78,4 +94,4 @@ const TotalRatioGauge = ({
   );
 };
 
-export default TotalRatioGauge;
+export default React.memo(TotalRatioGauge);

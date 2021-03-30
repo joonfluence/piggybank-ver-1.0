@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet";
 import Footer from "../../Footer";
 import styled from "styled-components";
 import { monthBudget } from "../../../redux/actions/budgetActions";
-import { monthPaying } from "../../../redux/actions/payingActions";
 import CenterButton from "../../CenterButton";
 import Header from "../../Header";
 import ContentBody from "../../ContentBody";
@@ -46,7 +45,6 @@ const Budget = () => {
     };
     async function fetchPageData() {
       await dispatch(monthBudget(body));
-      await dispatch(monthPaying(body));
     }
     fetchPageData();
   }, [yearInfo, monthInfo]);
@@ -60,7 +58,7 @@ const Budget = () => {
       </Helmet>
       <Header />
       <CenterButton />
-      <div className="content">
+      <main className="content">
         <CreateBoard isBudget={true} InfoName="예산" />
         <div>
           {payingSum === 0 && budgetSum === 0 ? (
@@ -88,7 +86,7 @@ const Budget = () => {
             <>empty</>
           )}
         </div>
-      </div>
+      </main>
       <Footer />
     </BudgetBlock>
   );

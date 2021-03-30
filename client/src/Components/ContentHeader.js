@@ -5,8 +5,7 @@ import DateModal from "./common/DateModal";
 const ContentHeaderBlock = styled.div`
   background-color: #eaf6ff;
   margin: 2rem;
-  height: 20vh;
-  width: 80%;
+  padding: 2rem;
   display: flex;
   align-items: center;
 `;
@@ -44,13 +43,13 @@ const ContentHeader = ({
             {remained < 0 ? 0 : remained}원
           </span>
           {isBudget ? (
-            <span>
+            <div>
               {` (소비율 ` +
                 Math.floor((1 - (budgetSum - used) / budgetSum) * 100, 2) +
                 `%)`}
-            </span>
+            </div>
           ) : (
-            <span>
+            <div>
               {` (달성률 ` +
                 Math.floor(
                   (1 - (savingGoalSum - used) / savingGoalSum) * 100,
@@ -58,12 +57,12 @@ const ContentHeader = ({
                   2
                 ) +
                 `%)`}
-            </span>
+            </div>
           )}
         </ContentInfo>
       </ContentBlock>
       <div>
-        <DateModal />
+        <DateModal yearInfo={yearInfo} monthInfo={monthInfo} />
       </div>
     </ContentHeaderBlock>
   );

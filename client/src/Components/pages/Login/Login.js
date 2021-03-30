@@ -6,65 +6,41 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { Link, withRouter } from "react-router-dom";
 import routes from "../../../routes";
 import { loginUser } from "../../../redux/actions/userActions";
+import Button from "../../common/Button";
+import theme from "../../../Style/theme";
+import Input from "../../common/Input";
 
 const LoginForm = styled.form`
+  background-color: ${(props) => props.theme.color.lightgrey};
   position: absolute;
   padding: 2rem;
-  left: 40%;
-  background-color: white;
+  left: 35%;
   margin-top: 6rem;
   max-width: 364px;
-`;
 
-const Input = styled.input`
-  background: none;
-  border: none;
-  outline: none;
-  flex: 1;
-  height: 3rem;
-  font-size: 1.2rem;
-`;
-
-const InputContainer = styled.div`
-  display: flex;
-  align-items: center;
-  border: 1.5px solid black;
-
-  svg {
-    font-size: 1.7rem;
-  }
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  button {
-    flex: 1;
-  }
-  a {
+  .input__container {
+    background: ${(props) => props.theme.color.white};
     display: flex;
-    button {
-      flex: 1;
-      background-color: ${(props) => props.theme.color.skyblue};
+    align-items: center;
+    border: 1.5px solid black;
+
+    svg {
+      font-size: 1.7rem;
     }
   }
+  .btn__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
-const Button = styled.button`
-  background: ${(props) => props.theme.color.navy};
-  border: none;
-  outline: none;
-  font-weight: 600;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 10px;
-  width: 100%;
+const StyledInput = styled(Input)`
   flex: 1;
+`;
 
-  &:hover {
-    cursor: pointer;
-  }
+const StyledButton = styled(Button)`
+  margin-top: 10px;
 `;
 
 const Login = ({ history }) => {
@@ -94,40 +70,38 @@ const Login = ({ history }) => {
       history.push("/");
     } else {
       alert(response.message);
-      // Popup.alert("로그인에 실패하였습니다.");
     }
-
-    // NavBar 같은 곳에서 로그인 이후에 reducer에 존재하는 user에 user_id를 할당해주면 될 것 같음. 그리고 나머지 요소들에서 로그인 여부에 따른 처리를 해주면 될 것 같음.
   };
 
   return (
     <LoginForm onSubmit={onSubmit}>
-      <InputContainer>
+      <div className="input__container">
         <BsFillPersonFill />
-        <Input
+        <StyledInput
           type="id"
           placeholder="ID를 입력하세요"
           onChange={onIdChange}
           required
-        ></Input>
-      </InputContainer>
-      <InputContainer>
+        ></StyledInput>
+      </div>
+      <div className="input__container">
         <AiFillLock />
-        <Input
+        <StyledInput
           type="password"
           placeholder="비밀번호를 입력하세요"
           onChange={onPasswordChange}
           autoComplete="cc-number"
           required
-        ></Input>
-      </InputContainer>
-      <ButtonContainer>
-        <Button type="submit">로그인</Button>
-        {/* 로그인 안된 상태에서만 가능하도록 처리해줘야 함. */}
+        ></StyledInput>
+      </div>
+      <div className="btn__container">
+        <StyledButton color={theme.color.skyblue} type="submit">
+          로그인
+        </StyledButton>
         <Link to={routes.join}>
-          <Button>회원가입</Button>
+          <StyledButton color={theme.color.navy}>회원가입</StyledButton>
         </Link>
-      </ButtonContainer>
+      </div>
     </LoginForm>
   );
 };

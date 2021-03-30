@@ -24,9 +24,15 @@ const PriceBlock = styled.div`
   align-items: center;
   width: 80%;
 
+  & > div:nth-child(1) {
+    width: 30%;
+    font-size: 0.7rem;
+  }
+
+  /* 금액 */
   & > div:nth-child(2) {
     flex: 1;
-    font-size: 2rem;
+    font-size: 1.5rem;
     & > p {
       font-size: 1rem;
     }
@@ -63,30 +69,37 @@ const CreateList = ({ dataList, color, isCategory, isPaying }) => {
     await dispatch(readPaying());
   }
 
-  useEffect(() => {
-    fetchSavingData();
-  }, [dataList.length]);
-
-  useEffect(() => {
-    fetchPayingData();
-  }, [dataList.length]);
-
   const onDelete = (id) => {
     if (isPaying) {
       dispatch(deletePaying(id)).then((response) => {
-        if (response.payload.data.sucess) {
-          alert("삭제되었습니다.");
+        if (response.payload.data.success) {
+          fetchPayingData();
         }
       });
     } else {
       dispatch(deleteSaving(id)).then((response) => {
-        if (response.payload.data.sucess) {
-          alert("삭제되었습니다.");
+        if (response.payload.data.success) {
+          fetchSavingData();
         }
       });
     }
+  };
+
+  useEffect(() => {
     fetchSavingData();
+  }, []);
+
+  useEffect(() => {
     fetchPayingData();
+  }, []);
+
+  const confirmDelete = (id) => {
+    if (window.confirm("정말 삭제하시겠습니까?")) {
+      alert("삭제되었습니다");
+      onDelete(id);
+    } else {
+      alert("취소되었습니다");
+    }
   };
 
   return (
@@ -108,7 +121,9 @@ const CreateList = ({ dataList, color, isCategory, isPaying }) => {
                 </div>
                 <div>
                   <div>
-                    <RiDeleteBack2Fill onClick={() => onDelete(data._id)} />
+                    <RiDeleteBack2Fill
+                      onClick={() => confirmDelete(data._id)}
+                    />
                   </div>
                 </div>
               </PriceBlock>
@@ -122,4 +137,4 @@ const CreateList = ({ dataList, color, isCategory, isPaying }) => {
   );
 };
 
-export default CreateList;
+export default React.memo(CreateList);

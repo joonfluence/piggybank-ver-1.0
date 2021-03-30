@@ -6,24 +6,22 @@ import logo from "../images/header_img.png";
 const HeaderBlock = styled.header`
   background-color: white;
   box-shadow: 0px 2px 5px 1px white;
-  height: 20vh;
-  padding-top: 10vh;
-  padding: 5vh;
+  padding-top: 5vh;
   display: flex;
   align-items: center;
   justify-content: center;
-`;
 
-const HeaderImage = styled.img`
-  width: 200px;
-  height: 200px;
+  .header__image {
+    width: 200px;
+    height: 200px;
+  }
 `;
 
 const Header = () => {
   return (
     <HeaderBlock>
       <Link to="/">
-        <HeaderImage src={logo}></HeaderImage>
+        <img className="header__image" alt="piggybank logo" src={logo} />
       </Link>
     </HeaderBlock>
   );

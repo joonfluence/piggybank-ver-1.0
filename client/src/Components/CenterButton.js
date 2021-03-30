@@ -7,9 +7,8 @@ import { BsQuestionSquare } from "react-icons/bs";
 import routes from "../routes";
 import { GiStairsGoal } from "react-icons/gi";
 
-const ButtonBlock = styled.div`
+const ButtonBlock = styled.section`
   position: relative;
-  height: 6vh;
   z-index: 2;
   display: flex;
   width: 100%;
@@ -27,7 +26,6 @@ const ButtonBlock = styled.div`
     .btn-list {
       font-size: 1.3rem;
       padding: 0.5rem;
-      margin: 1rem;
       a {
         display: flex;
         align-items: center;
@@ -41,6 +39,10 @@ const ButtonBlock = styled.div`
       }
       @media (max-width: 530px) {
         font-size: 1rem;
+      }
+
+      .btn-content {
+        padding: 0.5rem;
       }
     }
   }
@@ -65,13 +67,14 @@ const CenterButton = () => {
         <li className="btn-list">
           <Link to={"/introduction"}>
             <BsQuestionSquare />
-            <div> How to use</div>
+            <span className="btn-content"> How to use</span>
           </Link>
         </li>
         <li className="btn-list">
           <AiFillAccountBook />
-          <span> Setting monthly goal</span>
+          <span className="btn-content">Setting goal</span>
           <ul className="popup-list">
+            {" "}
             <li>
               <Link to={routes.budget}>
                 <AiOutlineBook />
@@ -88,7 +91,7 @@ const CenterButton = () => {
         </li>
         <li className="btn-list">
           <AiFillAccountBook />
-          <span> Writting account book</span>
+          <span className="btn-content">Writting book</span>
           <ul className="popup-list">
             <li>
               <Link to={routes.paying}>

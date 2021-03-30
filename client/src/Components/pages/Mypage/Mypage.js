@@ -17,8 +17,13 @@ const MypageBlock = styled.div`
 `;
 
 const UserBlock = styled.div`
+  display: flex;
   padding-top: 6rem;
   height: 10vh;
+
+  h2 {
+    flex: 9;
+  }
 `;
 
 const DataBlock = styled.div`
@@ -132,6 +137,7 @@ const Mypage = () => {
         <h2>
           {userName}님의 {monthInfo}월 지출/저축 정보입니다
         </h2>
+        <DateModal yearInfo={yearInfo} monthInfo={monthInfo} />
       </UserBlock>
       <DataBlock>
         <ColumnBlock>
@@ -197,9 +203,7 @@ const Mypage = () => {
             )}
           </ChartBlock>
         </ColumnBlock>
-        <div>
-          <DateModal />
-        </div>
+        <div></div>
       </DataBlock>
       <Footer />
     </MypageBlock>

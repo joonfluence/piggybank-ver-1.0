@@ -11,11 +11,18 @@ import {
   createSavingGoal,
   monthSavingGoal,
 } from "../redux/actions/savingGoalActions";
+import theme from "../Style/theme";
+import Button from "./common/Button";
+import Input from "./common/Input";
 
 const CreateBoardBlock = styled.section`
   .createBoard__Block {
-    margin: 0 auto;
-    width: 50%;
+    padding: 2rem;
+    background-color: ${(props) => props.theme.color.lightgrey};
+
+    .input__container {
+      background-color: ${(props) => props.theme.color.white};
+    }
   }
 
   .icon__container {
@@ -46,26 +53,24 @@ const CreateBoardBlock = styled.section`
     flex-direction: column;
   }
 
-  .form-input {
-    border: 1px solid black;
-    width: 364px;
-    height: 3rem;
-
-    &::placeholder {
-      font-size: 1.2rem;
-    }
-
-    &:last-child {
-      cursor: pointer;
-    }
-  }
-
   .form-select {
     margin: 0 auto;
     border: 1px solid black;
     width: 364px;
     height: 3rem;
   }
+`;
+
+const StyledInput = styled(Input)`
+  border: 1px solid black;
+  width: 364px;
+  height: 3rem;
+`;
+
+const StyledButton = styled(Button)`
+  border: 1px solid black;
+  width: 364px;
+  height: 3rem;
 `;
 
 const CreateBoard = ({
@@ -113,13 +118,13 @@ const CreateBoard = ({
       if (isBudget) {
         dispatch(createBudget(body)).then((response) => {
           if (response.payload.data.CreateSuccess) {
-            dispatch(monthBudget({ yearInfo, monthInfo }));
+            dispatch(monthBudget({ year: yearInfo, month: monthInfo }));
           }
         });
       } else {
         dispatch(createSavingGoal(body)).then((response) => {
           if (response.payload.data.CreateSuccess) {
-            dispatch(monthSavingGoal({ yearInfo, monthInfo }));
+            dispatch(monthSavingGoal({ year: yearInfo, month: monthInfo }));
           }
         });
       }
@@ -164,52 +169,46 @@ const CreateBoard = ({
         <AiOutlinePlus />
       </div>
       {open && (
-        <div className="createBoard__block">
+        <div className="createBoard__Block">
           <h1>
             {year}년 {month}월 {InfoName}정보
           </h1>
           <form className="create-form" onSubmit={onSubmit}>
-            <div>
-              <input
-                className="form-input"
+            <div className="input__container">
+              <StyledInput
                 placeholder={InfoName + "명"}
                 {...bindName}
                 required
-              ></input>
+              ></StyledInput>
             </div>
-            <div>
-              <input
-                className="form-input"
+            <div className="input__container">
+              <StyledInput
                 placeholder={InfoName + "액"}
                 {...bindInputPrice}
                 required
-              ></input>
+              ></StyledInput>
             </div>
-            <div>
-              <input
-                className="form-input"
-                type="date"
-                {...bindDate}
-                required
-              ></input>
+            <div className="input__container">
+              <StyledInput type="date" {...bindDate} required></StyledInput>
             </div>
             {isPaying || isSaving ? (
               <>
                 <select className="form-select" {...bindCategory}>
                   <option>카테고리</option>
                   {selectOptions ? (
-                    selectOptions.map((data) => (
-                      <option value={data._id}>{data.title}</option>
+                    selectOptions.map((data, index) => (
+                      <option key={index} value={data._id}>
+                        {data.title}
+                      </option>
                     ))
                   ) : (
                     <></>
                   )}
                 </select>
-                <div>
+                <div className="input__container">
                   {isPaying ? (
                     <>
                       <input
-                        className="form-input"
                         style={{ width: "30px" }}
                         id="CS"
                         type="radio"
@@ -222,7 +221,6 @@ const CreateBoard = ({
                   ) : (
                     <>
                       <input
-                        className="form-input"
                         style={{ width: "30px" }}
                         id="SV"
                         type="radio"
@@ -239,11 +237,9 @@ const CreateBoard = ({
               <></>
             )}
             <div>
-              <input
-                className="form-input"
-                type="submit"
-                value="전송하기"
-              ></input>
+              <StyledButton color={theme.color.navy} type="submit">
+                전송하기
+              </StyledButton>
             </div>
           </form>
         </div>

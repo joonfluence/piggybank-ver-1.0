@@ -62,7 +62,7 @@ export const deletePayingInfo = async (req, res) => {
   } = req;
   try {
     await Paying.findByIdAndRemove({ _id: id });
-    return res.status(204).json({ success: true });
+    return res.status(200).json({ success: true });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ success: false, error });

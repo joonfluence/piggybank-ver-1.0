@@ -6,7 +6,7 @@ import { MdLocalPostOffice } from "react-icons/md";
 
 const FooterBlock = styled.footer`
   background-color: ${(props) => props.theme.color.grey};
-  height: 10vh;
+  /* height: 10vh; */
   font-size: 1.2rem;
   display: flex;
   justify-content: center;
@@ -23,11 +23,9 @@ const Footer = () => {
             display: "flex",
             alignitems: "center",
             justifyContent: "center",
-            margin: "1rem",
+            margin: "0.5rem",
           }}
         >
-          {/* AiFillGithub */}
-
           <dt>
             <a href="http://joonfluence.tistory.com/">
               <SiBlogger /> Blog
@@ -35,7 +33,7 @@ const Footer = () => {
           </dt>
           <dt>
             <a href="https://github.com/heyJoon">
-              <AiOutlineGithub /> Git-hub{" "}
+              <AiOutlineGithub /> Git-hub
             </a>
           </dt>
           <dt>© 2021, heyJoon</dt>
