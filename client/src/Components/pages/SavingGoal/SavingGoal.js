@@ -61,7 +61,7 @@ const SavingGoal = () => {
       <Header />
       <CenterButton />
       <div className="content">
-        <CreateBoard isSavingGoal={true} InfoName="예산" />
+        <CreateBoard isSavingGoal={true} InfoName="저축목표" />
         <div>
           {savingSum === 0 && savingGoalSum === 0 ? (
             <></>
