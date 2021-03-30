@@ -68,7 +68,7 @@ export const deleteSavingInfo = async (req, res) => {
   } = req;
   try {
     await Saving.findByIdAndRemove({ _id: id });
-    return res.status(204).json();
+    return res.status(200).json({ success: false });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ success: false, error });
