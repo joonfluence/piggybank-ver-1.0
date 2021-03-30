@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import getCurrentDate from "../date.js";
+import getCurrentDate from "../../date.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
