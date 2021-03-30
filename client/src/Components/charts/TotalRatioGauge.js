@@ -41,12 +41,14 @@ const TotalRatioGauge = ({
     if (isBudget) {
       dispatch(deleteBudget(id)).then((response) => {
         if (response.payload.data.success) {
+          dispatch(monthBudget({ year: yearInfo, month: monthInfo }));
           alert("삭제 되었습니다.");
         }
       });
     } else {
       dispatch(deleteSavingGoal(id)).then((response) => {
         if (response.payload.data.success) {
+          dispatch(monthSavingGoal({ year: yearInfo, month: monthInfo }));
           alert("삭제 되었습니다.");
         }
       });

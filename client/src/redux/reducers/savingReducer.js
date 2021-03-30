@@ -26,7 +26,7 @@ const savingReducer = (state = initialState, action) => {
     case UPDATE_SAVING:
       return { ...state, UpdateSuccess: action.payload };
     case DELETE_SAVING:
-      return { ...state, DeleteSuccess: action.payload };
+      return { ...state, payload: action.payload };
     case MONTH_SAVING:
       return {
         ...state,

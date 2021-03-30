@@ -61,9 +61,7 @@ const ContentHeader = ({
           )}
         </ContentInfo>
       </ContentBlock>
-      <div>
-        <DateModal yearInfo={yearInfo} monthInfo={monthInfo} />
-      </div>
+      <div></div>
     </ContentHeaderBlock>
   );
 };

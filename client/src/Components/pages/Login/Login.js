@@ -14,7 +14,7 @@ const LoginForm = styled.form`
   background-color: ${(props) => props.theme.color.lightgrey};
   position: absolute;
   padding: 2rem;
-  left: 35%;
+  left: 40%;
   margin-top: 6rem;
   max-width: 364px;
 

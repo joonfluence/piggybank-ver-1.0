@@ -8,6 +8,7 @@ export const postPayingInfo = async (req, res) => {
     const newPaying = await Paying.create({
       user,
       title,
+      date,
       price,
       category,
     });

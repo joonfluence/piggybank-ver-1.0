@@ -2,12 +2,13 @@ import SavingGoal from "../models/SavingGoal.js";
 import Saving from "../models/Saving.js";
 
 export const postGoalInfo = async (req, res) => {
-  const { title, price } = req.body;
+  const { title, date, price } = req.body;
   const { _id } = req.user;
   try {
     // monthlyBudget은 삭제하고 항목별 budget의 합으로 값을 저장해주자.
     const newSavingGoal = await SavingGoal.create({
       user: [_id],
+      date,
       title,
       price,
     });
@@ -63,7 +64,7 @@ export const deleteGoalInfo = async (req, res) => {
 
   try {
     await SavingGoal.findByIdAndRemove({ _id: id });
-    return res.status(204).json({ success: true });
+    return res.status(200).json({ success: true });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ sucess: false, error });

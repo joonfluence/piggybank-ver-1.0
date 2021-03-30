@@ -159,9 +159,6 @@ const CreateBoard = ({
     }
   };
 
-  const year = new Date().getFullYear();
-  const month = new Date().getMonth() + 1;
-
   return (
     <CreateBoardBlock>
       <div className="icon__container" onClick={onButtonClick} open={open}>
@@ -171,7 +168,7 @@ const CreateBoard = ({
       {open && (
         <div className="createBoard__Block">
           <h1>
-            {year}년 {month}월 {InfoName}정보
+            {yearInfo}년 {monthInfo}월 {InfoName}정보
           </h1>
           <form className="create-form" onSubmit={onSubmit}>
             <div className="input__container">

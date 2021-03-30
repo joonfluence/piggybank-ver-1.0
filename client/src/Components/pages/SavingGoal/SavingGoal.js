@@ -11,6 +11,7 @@ import ContentBody from "../../common/ContentBody";
 import { monthSaving } from "../../../redux/actions/savingActions";
 import { monthSavingGoal } from "../../../redux/actions/savingGoalActions";
 import CreateBoard from "../../common/CreateBoard";
+import DateModal from "../../utils/DateModal";
 
 const SavingGoalBlock = styled.div`
   .content {
@@ -62,6 +63,9 @@ const SavingGoal = () => {
       <CenterButton />
       <div className="content">
         <CreateBoard isSavingGoal={true} InfoName="저축목표" />
+        <div className="modal__container">
+          <DateModal yearInfo={yearInfo} monthInfo={monthInfo} />
+        </div>
         <div>
           {savingSum === 0 && savingGoalSum === 0 ? (
             <></>

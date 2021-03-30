@@ -33,7 +33,7 @@ function budgetReducer(state = initialState, action) {
     case UPDATE_BUDGET:
       return { ...state, UpdateSuccess: action.payload };
     case DELETE_BUDGET:
-      return { ...state, DeleteSuccess: action.payload };
+      return { ...state, payload: action.payload };
     case MONTH_BUDGET:
       return {
         ...state,

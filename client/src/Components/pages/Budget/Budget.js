@@ -10,6 +10,7 @@ import ContentBody from "../../common/ContentBody";
 import ContentHeader from "../../common/ContentHeader";
 import Auth from "../../../hoc/auth";
 import CreateBoard from "../../common/CreateBoard";
+import DateModal from "../../utils/DateModal";
 
 const BudgetBlock = styled.div`
   .content {
@@ -19,6 +20,10 @@ const BudgetBlock = styled.div`
     justify-content: center;
     align-items: center;
     background-color: ${(props) => props.theme.color.white};
+  }
+
+  .modal__container {
+    width: 10%;
   }
 `;
 
@@ -60,9 +65,12 @@ const Budget = () => {
       <CenterButton />
       <main className="content">
         <CreateBoard isBudget={true} InfoName="예산" />
+        <div className="modal__container">
+          <DateModal yearInfo={yearInfo} monthInfo={monthInfo} />
+        </div>
         <div>
           {payingSum === 0 && budgetSum === 0 ? (
-            <>empty</>
+            <></>
           ) : (
             <ContentHeader
               yearInfo={yearInfo}
@@ -83,7 +91,7 @@ const Budget = () => {
               isCategory={false}
             ></ContentBody>
           ) : (
-            <>empty</>
+            <></>
           )}
         </div>
       </main>

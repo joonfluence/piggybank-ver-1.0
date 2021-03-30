@@ -29,11 +29,7 @@ const Home = () => {
       </Helmet>
       <Header />
       <CenterButton />
-      {isAuth ? (
-        <div className="main-content" isAuth={isAuth}></div>
-      ) : (
-        <LoginRequired />
-      )}
+      <div className="main-content" isAuth={isAuth}></div>
       <Footer />
     </HomeBlock>
   );

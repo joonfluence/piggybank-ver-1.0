@@ -12,7 +12,7 @@ import Button from "../../utils/Button";
 const JoinBlock = styled.form`
   background-color: ${(props) => props.theme.color.lightgrey};
   position: absolute;
-  left: 35%;
+  left: 40%;
   padding: 2rem;
   margin-top: 6rem;
 `;

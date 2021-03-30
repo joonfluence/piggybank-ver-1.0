@@ -73,12 +73,14 @@ const CreateList = ({ dataList, color, isCategory, isPaying }) => {
     if (isPaying) {
       dispatch(deletePaying(id)).then((response) => {
         if (response.payload.data.success) {
+          console.log("실행됨");
           fetchPayingData();
         }
       });
     } else {
       dispatch(deleteSaving(id)).then((response) => {
         if (response.payload.data.success) {
+          console.log("실행됨");
           fetchSavingData();
         }
       });

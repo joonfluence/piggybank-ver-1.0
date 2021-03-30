@@ -3,12 +3,13 @@ import Saving from "../models/Saving.js";
 // 4) 저축정보 CRUD Controller
 
 export const postSavingInfo = async (req, res) => {
-  const { category, title, price } = req.body;
+  const { category, title, date, price } = req.body;
   const { _id: userID } = req.user;
   try {
     const newSaving = await Saving.create({
       user: [userID],
       category,
+      date,
       title,
       price,
       category: { _id: category },
@@ -68,7 +69,7 @@ export const deleteSavingInfo = async (req, res) => {
   } = req;
   try {
     await Saving.findByIdAndRemove({ _id: id });
-    return res.status(200).json({ success: false });
+    return res.status(200).json({ success: true });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ success: false, error });
