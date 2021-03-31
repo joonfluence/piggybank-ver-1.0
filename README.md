@@ -31,5 +31,5 @@
 
 ### Introduction Page
 
-If you are more interested with this project, Please visit this link. 
+더 자세한 설명은 아래 링크를 참조해주세요. If you are more interested with this project, Please visit this link. 
 https://www.notion.so/dreamcometrue8/Web-Project-e3d46594a3f54849afa75c2a61c1c83a
