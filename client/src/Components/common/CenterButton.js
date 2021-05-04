@@ -57,6 +57,10 @@ const ButtonBlock = styled.section`
       padding-left: 1rem;
       padding-right: 1rem;
     }
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
   }
 `;
 

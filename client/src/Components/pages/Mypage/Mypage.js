@@ -163,28 +163,24 @@ const Mypage = () => {
           )}
         </ColumnBlock>
         <ColumnBlock>
-          {budgetCategorySum === 0 && budgetSum === 0 ? (
-            <></>
+          {budgetCategorySum !== 0 && budgetSum !== 0 ? (
+            <ChartBlock>
+              <span>예산/지출액</span>
+              <PieTotalRatio data={payingData} color="set1" />
+              <p>
+                {`소비율 ` +
+                  Math.floor(
+                    (1 - (budgetSum - budgetCategorySum) / budgetSum) * 100,
+                    2
+                  ) +
+                  `%`}
+              </p>
+            </ChartBlock>
           ) : (
-            <>
-              <ChartBlock>
-                <span>예산/지출액</span>
-                <PieTotalRatio data={payingData} color="set1" />
-                <p>
-                  {`소비율 ` +
-                    Math.floor(
-                      (1 - (budgetSum - budgetCategorySum) / budgetSum) * 100,
-                      2
-                    ) +
-                    `%`}
-                </p>
-              </ChartBlock>
-            </>
+            <></>
           )}
           <ChartBlock>
-            {budgetCategorySum === 0 && budgetSum === 0 ? (
-              <></>
-            ) : (
+            {budgetCategorySum !== 0 && budgetSum !== 0 ? (
               <>
                 <span>목표액/저축액</span>
                 <PieTotalRatio data={savingData} color="set1" />
@@ -200,6 +196,8 @@ const Mypage = () => {
                     `%`}
                 </p>
               </>
+            ) : (
+              <></>
             )}
           </ChartBlock>
         </ColumnBlock>
