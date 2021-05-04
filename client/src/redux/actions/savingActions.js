@@ -24,7 +24,6 @@ export const readSaving = async () => {
     type: READ_SAVING,
     savingList: request.data.savingList,
     success: request.data.success,
-    test: request.data.test,
   };
 };
 

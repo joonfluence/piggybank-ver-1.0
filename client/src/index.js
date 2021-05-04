@@ -2,37 +2,27 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./Components/App";
 import { Provider } from "react-redux";
-import { applyMiddleware, createStore } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
+import ReduxSaga from "redux-saga";
 import promiseMiddleware from "redux-promise";
-import ReduxThunk from "redux-thunk";
 import { createLogger } from "redux-logger";
 import { composeWithDevTools } from "redux-devtools-extension";
-// import storage from "redux-persist/lib/storage";
-// import { PersistGate } from "redux-persist/integration/react";
-// import { persistStore, persistReducer } from "redux-persist";
 import rootReducer from "./redux/reducers";
 
 const logger = createLogger();
 
-// const persistConfig = {
-//   key: "root",
-//   storage,
-// };
-
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
+const middlewares = [logger, ReduxSaga, promiseMiddleware];
 
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(logger, ReduxThunk, promiseMiddleware))
+  process.env.NODE_ENV === "production"
+    ? compose(applyMiddleware(...middlewares))
+    : composeWithDevTools(applyMiddleware(...middlewares))
 );
-
-// let persistor = persistStore(store);
 
 ReactDOM.render(
   <Provider store={store}>
-    {/* <PersistGate persistor={persistor}> */}
     <App />
-    {/* </PersistGate> */}
   </Provider>,
   document.getElementById("wrapper")
 );

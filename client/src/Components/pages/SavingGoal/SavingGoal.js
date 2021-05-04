@@ -39,15 +39,17 @@ const SavingGoal = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  async function fetchPageData() {
     let body = {
       year: yearInfo,
       month: monthInfo,
     };
-    async function fetchPageData() {
-      await dispatch(monthSaving(body));
-      await dispatch(monthSavingGoal(body));
-    }
+
+    await dispatch(monthSaving(body));
+    await dispatch(monthSavingGoal(body));
+  }
+
+  useEffect(() => {
     fetchPageData();
   }, [yearInfo, monthInfo]);
 

@@ -33,7 +33,6 @@ export const postJoin = async (req, res) => {
     }
     console.log("error: " + error);
     throw err;
-  } finally {
   }
 };
 

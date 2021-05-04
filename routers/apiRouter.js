@@ -44,7 +44,7 @@ import {
   deleteGoalInfo,
 } from "../controllers/SavingGoalController.js";
 import routes from "../routes.js";
-import Auth from "../client/src/hoc/auth.js";
+import { Auth } from "../middlewares.js";
 
 const apiRouter = express.Router();
 
