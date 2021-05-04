@@ -65,8 +65,8 @@ const Login = ({ history }) => {
     };
 
     const response = await dispatch(loginUser(body));
-
-    if (response.LoginSuccess) {
+    console.log(response);
+    if (response.LoginSuccess === true) {
       history.push("/");
     } else {
       alert(response.message);

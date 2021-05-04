@@ -11,6 +11,7 @@ export const joinUser = async (dataBody) => {
 
 export const loginUser = async (dataBody) => {
   const request = await userApi.postLogin(dataBody);
+
   return {
     type: LOGIN_USER,
     user: request.data.user,
@@ -23,6 +24,7 @@ export const loginUser = async (dataBody) => {
 
 export const AuthCheck = async () => {
   const request = await userApi.getAuth();
+
   return {
     type: AUTH_USER,
     success: request.data.success,

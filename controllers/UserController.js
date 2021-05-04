@@ -65,6 +65,7 @@ export const postLogin = async (req, res) => {
           userId: user._id,
           jwt: user.token,
           isAuth: true,
+          message: "로그인에 성공하였습니다.",
         });
       }
     });
