@@ -39,19 +39,25 @@ const ContentBody = ({
     },
   ];
 
+  console.log(used, remained);
+
   return (
     <ContentBodyBlock>
-      <div>
-        <MonthDataList
-          monthlyData={monthlyData}
-          color={color}
-          isBudget={isBudget}
-          isCategory={isCategory}
-        />
-      </div>
-      <div className="chart-container">
-        <PieTotalRatio data={data} color="set1" />
-      </div>
+      {used !== 0 && remained !== 0 ? (
+        <div>
+          <MonthDataList
+            monthlyData={monthlyData}
+            color={color}
+            isBudget={isBudget}
+            isCategory={isCategory}
+          />
+          <div className="chart-container">
+            <PieTotalRatio data={data} color="set1" />
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
     </ContentBodyBlock>
   );
 };

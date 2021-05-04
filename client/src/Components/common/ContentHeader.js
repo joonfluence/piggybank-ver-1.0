@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import DateModal from "../utils/DateModal";
 
 const ContentHeaderBlock = styled.div`
   background-color: #eaf6ff;
@@ -8,19 +7,12 @@ const ContentHeaderBlock = styled.div`
   padding: 2rem;
   display: flex;
   align-items: center;
-`;
 
-const ContentBlock = styled.div`
-  flex: 1;
-`;
-
-const ContentInfo = styled.div`
-  span:nth-child(1) {
+  .content__info {
     font-weight: 600;
     font-size: 2rem;
-
     @media (max-width: 790px) {
-      font-size: 1rem;
+      font-size: "1rem";
     }
   }
 `;
@@ -36,32 +28,40 @@ const ContentHeader = ({
 }) => {
   return (
     <ContentHeaderBlock>
-      <ContentBlock>
-        <ContentInfo>
-          <span>
-            {yearInfo}년 {monthInfo}월 {isBudget ? "남은금액" : "남은목표액"}{" "}
-            {remained < 0 ? 0 : remained}원
+      <div style={{ flex: "1" }}>
+        <div>
+          <span className="content__info">
+            {yearInfo}년 {monthInfo}월 {isBudget ? "남은금액" : "남은목표액"}
+            {remained < 0 || isNaN(remained) ? 0 : remained}원
           </span>
-          {isBudget ? (
+        </div>
+        <div>
+          {isBudget && !isNaN(budgetSum) && !isNaN(used) && budgetSum !== 0 ? (
             <div>
               {` (소비율 ` +
                 Math.floor((1 - (budgetSum - used) / budgetSum) * 100, 2) +
                 `%)`}
             </div>
           ) : (
+            <></>
+          )}
+          {!isBudget &&
+          !isNaN(savingGoalSum) &&
+          !isNaN(used) &&
+          savingGoalSum !== 0 ? (
             <div>
               {` (달성률 ` +
                 Math.floor(
                   (1 - (savingGoalSum - used) / savingGoalSum) * 100,
-                  2,
                   2
                 ) +
                 `%)`}
             </div>
+          ) : (
+            <></>
           )}
-        </ContentInfo>
-      </ContentBlock>
-      <div></div>
+        </div>
+      </div>
     </ContentHeaderBlock>
   );
 };

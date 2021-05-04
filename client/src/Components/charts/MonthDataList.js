@@ -54,7 +54,7 @@ const MonthDataList = ({ monthlyData, color, isBudget }) => {
           </div>
         ))
       ) : (
-        <div>empty</div>
+        <div></div>
       )}
     </MonthDataListBlock>
   );

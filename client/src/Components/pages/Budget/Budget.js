@@ -69,30 +69,22 @@ const Budget = () => {
           <DateModal yearInfo={yearInfo} monthInfo={monthInfo} />
         </div>
         <div>
-          {payingSum === 0 && budgetSum === 0 ? (
-            <></>
-          ) : (
-            <ContentHeader
-              yearInfo={yearInfo}
-              monthInfo={monthInfo}
-              used={payingSum}
-              remained={pocketMoney}
-              isBudget={true}
-              budgetSum={budgetSum}
-            ></ContentHeader>
-          )}
-          {monthlyBudget !== null ? (
-            <ContentBody
-              budgetSum={budgetSum}
-              monthlyData={monthlyBudget}
-              used={payingSum}
-              remained={pocketMoney}
-              isBudget={true}
-              isCategory={false}
-            ></ContentBody>
-          ) : (
-            <></>
-          )}
+          <ContentHeader
+            yearInfo={yearInfo}
+            monthInfo={monthInfo}
+            used={payingSum}
+            remained={pocketMoney}
+            isBudget={true}
+            budgetSum={budgetSum}
+          ></ContentHeader>
+          <ContentBody
+            budgetSum={budgetSum}
+            monthlyData={monthlyBudget}
+            used={payingSum}
+            remained={pocketMoney}
+            isBudget={true}
+            isCategory={false}
+          ></ContentBody>
         </div>
       </main>
       <Footer />

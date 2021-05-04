@@ -69,30 +69,22 @@ const SavingGoal = () => {
           <DateModal yearInfo={yearInfo} monthInfo={monthInfo} />
         </div>
         <div>
-          {savingSum === 0 && savingGoalSum === 0 ? (
-            <></>
-          ) : (
-            <ContentHeader
-              yearInfo={yearInfo}
-              monthInfo={monthInfo}
-              used={savingSum}
-              remained={pocketMoney}
-              isBudget={false}
-              savingGoalSum={savingGoalSum}
-            ></ContentHeader>
-          )}
-        </div>
-        {monthlySavingGoal !== null ? (
-          <ContentBody
-            savingGoalSum={savingGoalSum}
+          <ContentHeader
+            yearInfo={yearInfo}
+            monthInfo={monthInfo}
             used={savingSum}
             remained={pocketMoney}
-            monthlyData={monthlySavingGoal}
             isBudget={false}
-          ></ContentBody>
-        ) : (
-          <div>empty</div>
-        )}
+            savingGoalSum={savingGoalSum}
+          ></ContentHeader>
+        </div>
+        <ContentBody
+          savingGoalSum={savingGoalSum}
+          used={savingSum}
+          remained={pocketMoney}
+          monthlyData={monthlySavingGoal}
+          isBudget={false}
+        ></ContentBody>
       </div>
       <Footer />
     </SavingGoalBlock>
