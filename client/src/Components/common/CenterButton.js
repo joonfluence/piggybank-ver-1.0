@@ -78,7 +78,6 @@ const CenterButton = () => {
           <AiFillAccountBook />
           <span className="btn-content">Setting goal</span>
           <ul className="popup-list">
-            {" "}
             <li>
               <Link to={routes.budget}>
                 <AiOutlineBook />

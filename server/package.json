@@ -4,7 +4,7 @@
   "description": "money management app",
   "main": "server.js",
   "scripts": {
-    "dev:client": "cd client && npm run start",
+    "dev:client": "cd ../client && npm run start",
     "dev:server": "cross-env NODE_ENV=development nodemon init.js",
     "server": "nodemon init.js",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\""
