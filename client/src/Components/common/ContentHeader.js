@@ -8,6 +8,10 @@ const ContentHeaderBlock = styled.div`
   display: flex;
   align-items: center;
 
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    width: 25vw;
+  }
+
   .content__info {
     font-weight: 600;
     font-size: 2rem;

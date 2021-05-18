@@ -25,6 +25,10 @@ const LoginForm = styled.form`
     align-items: center;
     border: 1.5px solid black;
 
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      width: 300px;
+    }
+
     svg {
       font-size: 1.7rem;
     }
@@ -66,7 +70,7 @@ const Login = ({ history }) => {
     };
 
     const response = await dispatch(loginUser(body));
-    console.log(response);
+    // console.log(response);
     if (response.LoginSuccess === true) {
       history.push("/");
     } else {

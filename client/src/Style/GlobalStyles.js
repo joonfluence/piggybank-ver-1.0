@@ -1,9 +1,11 @@
 import { createGlobalStyle } from "styled-components";
+import { normalize } from "styled-normalize";
 
 const globalStyles = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Oswald:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC&display=swap');
+    ${normalize};
 
     * {
         margin: 0;
