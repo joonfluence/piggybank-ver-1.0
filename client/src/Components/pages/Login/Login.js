@@ -11,6 +11,7 @@ import theme from "../../../Style/theme";
 import Input from "../../utils/Input";
 
 const LoginForm = styled.form`
+  display: block;
   background-color: ${(props) => props.theme.color.lightgrey};
   position: absolute;
   padding: 2rem;

@@ -3,15 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@nivo/bar": "^0.67.0",
-    "@nivo/core": "^0.67.0",
-    "@nivo/pie": "^0.67.0",
+    "@nivo/bar": "^0.69.1",
+    "@nivo/core": "^0.69.0",
+    "@nivo/pie": "^0.69.0",
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
     "antd": "^4.14.1",
     "axios": "^0.21.1",
+    "babel-plugin-async-to-promises": "^1.0.5",
+    "core-js": "^3.12.1",
+    "customize-cra": "^1.0.0",
     "react": "^17.0.1",
+    "react-app-polyfill": "^2.0.0",
+    "react-app-rewired": "^2.1.8",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.1.0",
@@ -31,9 +36,9 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": [
@@ -48,10 +53,11 @@
       "not op_mini all"
     ],
     "development": [
+      "ie 9",
+      "ie 11",
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "type": "module"
+  }
 }
