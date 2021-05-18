@@ -9,10 +9,20 @@ import LoginRequired from "../../utils/LoginRequired";
 import Auth from "../../../hoc/auth";
 
 const HomeBlock = styled.div`
-  height: 100vh;
-  .main-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  .main__container {
     background-color: ${(props) => props.theme.color.white};
-    height: 51vh;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .main__content {
+      flex: 1;
+      overflow: auto;
+    }
   }
 `;
 
@@ -29,7 +39,9 @@ const Home = () => {
       </Helmet>
       <Header />
       <CenterButton />
-      <div className="main-content" isAuth={isAuth}></div>
+      <div className="main__container" isAuth={isAuth}>
+        <main className="main__content"></main>
+      </div>
       <Footer />
     </HomeBlock>
   );

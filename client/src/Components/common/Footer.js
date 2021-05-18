@@ -6,7 +6,6 @@ import { MdLocalPostOffice } from "react-icons/md";
 
 const FooterBlock = styled.footer`
   background-color: ${(props) => props.theme.color.grey};
-  /* height: 10vh; */
   font-size: 1.2rem;
   display: flex;
   justify-content: center;

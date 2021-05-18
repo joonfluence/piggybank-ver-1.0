@@ -14,9 +14,14 @@ import CreateBoard from "../../common/CreateBoard";
 import DateModal from "../../utils/DateModal";
 
 const SavingGoalBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
   .content {
     margin: 0 auto;
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -63,21 +68,19 @@ const SavingGoal = () => {
       </Helmet>
       <Header />
       <CenterButton />
-      <div className="content">
+      <main className="content">
         <CreateBoard isSavingGoal={true} InfoName="저축목표" />
         <div className="modal__container">
           <DateModal yearInfo={yearInfo} monthInfo={monthInfo} />
         </div>
-        <div>
-          <ContentHeader
-            yearInfo={yearInfo}
-            monthInfo={monthInfo}
-            used={savingSum}
-            remained={pocketMoney}
-            isBudget={false}
-            savingGoalSum={savingGoalSum}
-          ></ContentHeader>
-        </div>
+        <ContentHeader
+          yearInfo={yearInfo}
+          monthInfo={monthInfo}
+          used={savingSum}
+          remained={pocketMoney}
+          isBudget={false}
+          savingGoalSum={savingGoalSum}
+        ></ContentHeader>
         <ContentBody
           savingGoalSum={savingGoalSum}
           used={savingSum}
@@ -85,7 +88,7 @@ const SavingGoal = () => {
           monthlyData={monthlySavingGoal}
           isBudget={false}
         ></ContentBody>
-      </div>
+      </main>
       <Footer />
     </SavingGoalBlock>
   );

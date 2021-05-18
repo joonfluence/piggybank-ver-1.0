@@ -36,11 +36,15 @@ const globalStyles = createGlobalStyle`
       font-family: "Oswald", sans-serif;
     }
     
+    html, body {
+        height: 100%;
+    }
+
     body {
         position: relative;
         font-size: 1rem;
         font-weight: 400;
-        height: 100vh;
+        height: 100%;
         font-family: 'Lato', sans-serif;
         text-align: center;
         background-color: ${(props) => props.theme.color.white};
@@ -48,9 +52,10 @@ const globalStyles = createGlobalStyle`
         border-radius: 4px;
     }
 
-    #wrapper {
-        width: 100%;
-        height: 100%;
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
         margin: 0 auto;
     }
 

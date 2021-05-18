@@ -13,17 +13,18 @@ import CreateBoard from "../../common/CreateBoard";
 import DateModal from "../../utils/DateModal";
 
 const BudgetBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
   .content {
     margin: 0 auto;
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: ${(props) => props.theme.color.white};
-  }
-
-  .modal__container {
-    width: 10%;
   }
 `;
 
@@ -65,27 +66,25 @@ const Budget = () => {
       <CenterButton />
       <main className="content">
         <CreateBoard isBudget={true} InfoName="예산" />
-        <div className="modal__container">
+        <div>
           <DateModal yearInfo={yearInfo} monthInfo={monthInfo} />
         </div>
-        <div>
-          <ContentHeader
-            yearInfo={yearInfo}
-            monthInfo={monthInfo}
-            used={payingSum}
-            remained={pocketMoney}
-            isBudget={true}
-            budgetSum={budgetSum}
-          ></ContentHeader>
-          <ContentBody
-            budgetSum={budgetSum}
-            monthlyData={monthlyBudget}
-            used={payingSum}
-            remained={pocketMoney}
-            isBudget={true}
-            isCategory={false}
-          ></ContentBody>
-        </div>
+        <ContentHeader
+          yearInfo={yearInfo}
+          monthInfo={monthInfo}
+          used={payingSum}
+          remained={pocketMoney}
+          isBudget={true}
+          budgetSum={budgetSum}
+        ></ContentHeader>
+        <ContentBody
+          budgetSum={budgetSum}
+          monthlyData={monthlyBudget}
+          used={payingSum}
+          remained={pocketMoney}
+          isBudget={true}
+          isCategory={false}
+        ></ContentBody>
       </main>
       <Footer />
     </BudgetBlock>
