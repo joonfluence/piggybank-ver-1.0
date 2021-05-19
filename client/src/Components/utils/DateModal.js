@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { getDateInfo } from "../../redux/actions/dateAction";
@@ -85,7 +85,7 @@ const DateModal = ({ yearInfo, monthInfo }) => {
     };
   }, [modalOpen]);
 
-  const onSubmitModal = async (e) => {
+  const onSubmitModal = useCallback(async (e) => {
     e.preventDefault();
     let body = {
       year: `${year}`,
@@ -95,15 +95,15 @@ const DateModal = ({ yearInfo, monthInfo }) => {
     setYear("");
     setMonth("");
     setModalOpen(false);
-  };
+  }, []);
 
-  const onChangeYear = (e) => {
+  const onChangeYear = useCallback((e) => {
     setYear(e.target.value);
-  };
+  }, []);
 
-  const onChangeMonth = (e) => {
+  const onChangeMonth = useCallback((e) => {
     setMonth(e.target.value);
-  };
+  }, []);
 
   return (
     <DateModalBlock>

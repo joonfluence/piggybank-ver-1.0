@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { AiFillLock } from "react-icons/ai";
@@ -61,7 +61,7 @@ const Login = ({ history }) => {
     setPassword(e.target.value);
   };
 
-  const onSubmit = async (e) => {
+  const onSubmit = useCallback(async (e) => {
     e.preventDefault();
 
     let body = {
@@ -76,7 +76,7 @@ const Login = ({ history }) => {
     } else {
       alert(response.message);
     }
-  };
+  }, []);
 
   return (
     <LoginForm onSubmit={onSubmit}>

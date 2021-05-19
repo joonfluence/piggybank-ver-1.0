@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import styled from "styled-components";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import CategoryBlock from "../charts/CategoryBlock";
@@ -69,7 +69,7 @@ const CreateList = ({ dataList, color, isCategory, isPaying }) => {
     await dispatch(readPaying());
   }
 
-  const onDelete = (id) => {
+  const onDelete = useCallback((id) => {
     if (isPaying) {
       dispatch(deletePaying(id)).then((response) => {
         if (response.payload.data.success) {
@@ -85,7 +85,7 @@ const CreateList = ({ dataList, color, isCategory, isPaying }) => {
         }
       });
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchSavingData();
@@ -95,14 +95,14 @@ const CreateList = ({ dataList, color, isCategory, isPaying }) => {
     fetchPayingData();
   }, []);
 
-  const confirmDelete = (id) => {
+  const confirmDelete = useCallback((id) => {
     if (window.confirm("정말 삭제하시겠습니까?")) {
       alert("삭제되었습니다");
       onDelete(id);
     } else {
       alert("취소되었습니다");
     }
-  };
+  }, []);
 
   return (
     <CreateListBlock>

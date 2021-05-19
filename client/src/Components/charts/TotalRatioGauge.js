@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import styled from "styled-components";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import { useDispatch } from "react-redux";
@@ -37,7 +37,7 @@ const TotalRatioGauge = ({
   monthInfo,
 }) => {
   const dispatch = useDispatch();
-  const onDelete = (id) => {
+  const onDelete = useCallback((id) => {
     if (isBudget) {
       dispatch(deleteBudget(id)).then((response) => {
         if (response.payload.data.success) {
@@ -53,7 +53,7 @@ const TotalRatioGauge = ({
         }
       });
     }
-  };
+  }, []);
 
   useEffect(() => {
     let body = {

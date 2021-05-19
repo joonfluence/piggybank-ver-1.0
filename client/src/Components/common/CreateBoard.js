@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import useInput from "../hooks/useInput";
 import { AiOutlinePlus } from "react-icons/ai";
@@ -104,9 +104,9 @@ const CreateBoard = ({
     bind: bindCategory,
   } = useInput("");
   const { value: option, bind: bindOption } = useInput(InfoName);
-  const onButtonClick = () => setOpen(!open);
+  const onButtonClick = useCallback(() => setOpen(!open), []);
 
-  const onSubmit = (e) => {
+  const onSubmit = useCallback((e) => {
     e.preventDefault();
     if (isBudget || isSavingGoal) {
       let body = {
@@ -157,7 +157,7 @@ const CreateBoard = ({
       resetDate("");
       resetCategory("");
     }
-  };
+  }, []);
 
   return (
     <CreateBoardBlock>

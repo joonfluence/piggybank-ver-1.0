@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import routes from "../../routes";
 import icon from "../../images/logo_img.png";
 import { LogOutUser } from "../../redux/actions/userActions";
+import { useCallback } from "react";
 
 const NavContainer = styled.nav`
   position: fixed;
@@ -57,6 +58,20 @@ const Nav = ({ location: { pathname }, history }) => {
   const { isAuth } = useSelector(({ userReducer }) => ({
     isAuth: userReducer.isAuth,
   }));
+
+  const onLogOutUser = useCallback(
+    () =>
+      dispatch(LogOutUser()).then((response) => {
+        if (response.LogOutSuccess) {
+          alert("로그아웃 되었습니다.");
+          history.push("/");
+        } else {
+          alert("로그아웃에 실패하였습니다.");
+        }
+      }),
+    []
+  );
+
   return (
     <NavContainer>
       <NavBlock>
@@ -78,19 +93,7 @@ const Nav = ({ location: { pathname }, history }) => {
                 </SLink>
               </List>
               <List>
-                <span
-                  style={{ cursor: "pointer" }}
-                  onClick={() =>
-                    dispatch(LogOutUser()).then((response) => {
-                      if (response.LogOutSuccess) {
-                        alert("로그아웃 되었습니다.");
-                        history.push("/");
-                      } else {
-                        alert("로그아웃에 실패하였습니다.");
-                      }
-                    })
-                  }
-                >
+                <span style={{ cursor: "pointer" }} onClick={onLogOutUser}>
                   <GrLogout />
                   Logout
                 </span>

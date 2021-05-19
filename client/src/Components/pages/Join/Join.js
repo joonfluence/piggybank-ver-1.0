@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import { AiFillLock } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
@@ -55,23 +55,23 @@ const Join = ({ history }) => {
   const [Password, setPassword] = useState("");
   const [PasswordConfirm, setPasswordConfirm] = useState("");
 
-  const onNameChange = (e) => {
+  const onNameChange = useCallback((e) => {
     setName(e.target.value);
-  };
+  }, []);
 
-  const onIdChange = (e) => {
+  const onIdChange = useCallback((e) => {
     setId(e.target.value);
-  };
+  }, []);
 
-  const onPasswordChange = (e) => {
+  const onPasswordChange = useCallback((e) => {
     setPassword(e.target.value);
-  };
+  }, []);
 
-  const onPasswordConfirmChange = (e) => {
+  const onPasswordConfirmChange = useCallback((e) => {
     setPasswordConfirm(e.target.value);
-  };
+  }, []);
 
-  const onSubmit = (e) => {
+  const onSubmit = useCallback((e) => {
     e.preventDefault();
 
     let body = {
@@ -92,7 +92,7 @@ const Join = ({ history }) => {
     setId("");
     setPassword("");
     setPasswordConfirm("");
-  };
+  }, []);
 
   return (
     <JoinBlock onSubmit={onSubmit}>

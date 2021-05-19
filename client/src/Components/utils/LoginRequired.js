@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const LoginRequiredBlock = styled.div`
-background-color: ${(props) => props.color};
+  background-color: ${(props) => props.color};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,11 +12,7 @@ background-color: ${(props) => props.color};
 `;
 
 const LoginRequired = () => {
-    return (
-        <LoginRequiredBlock>
-            
-        </LoginRequiredBlock>
-    );
+  return <LoginRequiredBlock>로그인이 필요합니다.</LoginRequiredBlock>;
 };
 
 export default LoginRequired;
