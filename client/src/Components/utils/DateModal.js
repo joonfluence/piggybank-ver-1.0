@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { getDateInfo } from "../../redux/actions/dateAction";
+import { getDateInfo } from "../../Redux/actions/dateAction";
 import theme from "../../Style/theme";
 import Button from "./Button";
 import Input from "./Input";

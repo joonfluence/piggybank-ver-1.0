@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { AiFillLock } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import Auth from "../../../hoc/auth";
+import Auth from "../../../Hoc/auth";
 import { withRouter } from "react-router";
-import { joinUser } from "../../../redux/actions/userActions";
+import { joinUser } from "../../../Redux/actions/userActions";
 import Input from "../../utils/Input";
 import Button from "../../utils/Button";
 

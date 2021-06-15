@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import DateModal from "../../utils/DateModal";
 import MonthDataList from "../../charts/MonthDataList";
 import PieTotalRatio from "../../charts/PieTotalRatio";
-import { monthBudget } from "../../../redux/actions/budgetActions";
-import { monthPaying } from "../../../redux/actions/payingActions";
-import { monthSaving } from "../../../redux/actions/savingActions";
-import { monthSavingGoal } from "../../../redux/actions/savingGoalActions";
+import { monthBudget } from "../../../Redux/actions/budgetActions";
+import { monthPaying } from "../../../Redux/actions/payingActions";
+import { monthSaving } from "../../../Redux/actions/savingActions";
+import { monthSavingGoal } from "../../../Redux/actions/savingGoalActions";
 import theme from "../../../Style/theme";
 import Footer from "../../common/Footer";
 
@@ -71,15 +71,12 @@ const Mypage = () => {
     })
   );
 
-  const {
-    savingGoalSum,
-    monthlySavingGoal,
-    savingGoalCategorySum,
-  } = useSelector(({ savingGoalReducer }) => ({
-    savingGoalSum: savingGoalReducer.savingGoalSum,
-    monthlySavingGoal: savingGoalReducer.monthlySavingGoal,
-    savingGoalCategorySum: savingGoalReducer.categorySum,
-  }));
+  const { savingGoalSum, monthlySavingGoal, savingGoalCategorySum } =
+    useSelector(({ savingGoalReducer }) => ({
+      savingGoalSum: savingGoalReducer.savingGoalSum,
+      monthlySavingGoal: savingGoalReducer.monthlySavingGoal,
+      savingGoalCategorySum: savingGoalReducer.categorySum,
+    }));
   const { yearInfo, monthInfo } = useSelector(({ dateReducer }) => ({
     yearInfo: dateReducer.yearInfo,
     monthInfo: dateReducer.monthInfo,

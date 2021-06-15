@@ -2,11 +2,11 @@ import React, { useCallback, useEffect } from "react";
 import styled from "styled-components";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import { useDispatch } from "react-redux";
-import { deleteBudget, monthBudget } from "../../redux/actions/budgetActions";
+import { deleteBudget, monthBudget } from "../../Redux/actions/budgetActions";
 import {
   deleteSavingGoal,
   monthSavingGoal,
-} from "../../redux/actions/savingGoalActions";
+} from "../../Redux/actions/savingGoalActions";
 import Button from "../utils/Button";
 
 const TotalRatioGaugeBlock = styled.div`

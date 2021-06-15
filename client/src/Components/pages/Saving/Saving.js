@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Auth from "../../../hoc/auth";
+import Auth from "../../../Hoc/auth";
 import styled from "styled-components";
 import Header from "../../common/Header";
 import CenterButton from "../../common/CenterButton";

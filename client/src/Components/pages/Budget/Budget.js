@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
 import Footer from "../../common/Footer";
 import styled from "styled-components";
-import { monthBudget } from "../../../redux/actions/budgetActions";
+import { monthBudget } from "../../../Redux/actions/budgetActions";
 import CenterButton from "../../common/CenterButton";
 import Header from "../../common/Header";
 import ContentBody from "../../common/ContentBody";
 import ContentHeader from "../../common/ContentHeader";
-import Auth from "../../../hoc/auth";
+import Auth from "../../../Hoc/auth";
 import CreateBoard from "../../common/CreateBoard";
 import DateModal from "../../utils/DateModal";
 

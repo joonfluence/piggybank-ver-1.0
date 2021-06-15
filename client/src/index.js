@@ -14,7 +14,7 @@ import ReduxThunk from "redux-thunk";
 import promiseMiddleware from "redux-promise";
 import { createLogger } from "redux-logger";
 import { composeWithDevTools } from "redux-devtools-extension";
-import rootReducer from "./redux/reducers";
+import rootReducer from "./Redux/reducers";
 
 const logger = createLogger();
 

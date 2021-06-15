@@ -1,4 +1,4 @@
-import { budgetApi } from "../../api";
+import { budgetApi } from "../../Api/api.js";
 import { CREATE_DATE } from "../types";
 
 export const getDateInfo = async (dataToSubmit) => {

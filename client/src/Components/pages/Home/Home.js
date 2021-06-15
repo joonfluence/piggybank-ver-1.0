@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 import Footer from "../../common/Footer";
 import { useSelector } from "react-redux";
 import LoginRequired from "../../utils/LoginRequired";
-import Auth from "../../../hoc/auth";
+import Auth from "../../../Hoc/auth";
 
 const HomeBlock = styled.div`
   display: flex;

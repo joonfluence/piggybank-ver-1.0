@@ -1,4 +1,4 @@
-import { savingGoalApi } from "../../api";
+import { savingGoalApi } from "../../Api/api.js";
 import {
   CREATE_SAVING_GOAL,
   UPDATE_SAVING_GOAL,

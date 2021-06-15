@@ -1,4 +1,4 @@
-import { userApi } from "../../api";
+import { userApi } from "../../Api/api.js";
 import { AUTH_USER, REGISTER_USER, LOGIN_USER, LOGOUT_USER } from "../types";
 
 export const joinUser = async (dataBody) => {

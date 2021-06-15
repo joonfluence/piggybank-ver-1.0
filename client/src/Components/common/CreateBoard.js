@@ -4,13 +4,13 @@ import useInput from "../hooks/useInput";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { createPaying, readPaying } from "../../redux/actions/payingActions";
-import { createSaving, readSaving } from "../../redux/actions/savingActions";
-import { createBudget, monthBudget } from "../../redux/actions/budgetActions";
+import { createPaying, readPaying } from "../../Redux/actions/payingActions";
+import { createSaving, readSaving } from "../../Redux/actions/savingActions";
+import { createBudget, monthBudget } from "../../Redux/actions/budgetActions";
 import {
   createSavingGoal,
   monthSavingGoal,
-} from "../../redux/actions/savingGoalActions";
+} from "../../Redux/actions/savingGoalActions";
 import theme from "../../Style/theme";
 import Button from "../utils/Button";
 import Input from "../utils/Input";
