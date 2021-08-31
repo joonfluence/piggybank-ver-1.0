@@ -10,9 +10,7 @@
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
-    "antd": "^4.14.1",
     "axios": "^0.21.1",
-    "babel-plugin-async-to-promises": "^1.0.5",
     "core-js": "^3.12.1",
     "customize-cra": "^1.0.0",
     "eslint-config-react-app": "^6.0.0",
@@ -37,6 +35,9 @@
     "styled-normalize": "^8.0.7",
     "styled-reset": "^4.3.4",
     "web-vitals": "^0.2.4"
+  },
+  "devDependencies": {
+    "babel-plugin-async-to-promises": "^1.0.5"
   },
   "scripts": {
     "start": "react-app-rewired start",
