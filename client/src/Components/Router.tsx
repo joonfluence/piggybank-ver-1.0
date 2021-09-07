@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Home from "./pages/Home/Home";
-import Join from "../Components/pages/Join/Join";
-import Login from "../Components/pages/Login/Login";
+import Join from "./pages/Join/Join";
+import Login from "./pages/Login/Login";
 import Saving from "./pages/Saving/Saving";
 import Paying from "./pages/Paying/Paying";
-import Nav from "../Components/common/Nav";
+import Nav from "./common/Nav";
 import routes from "../routes.js";
 import Mypage from "./pages/Mypage/Mypage";
 import SavingGoal from "./pages/SavingGoal/SavingGoal";

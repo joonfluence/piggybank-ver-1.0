@@ -6,20 +6,6 @@ import TotalRatioGauge from "./TotalRatioGauge";
 import { monthBudget } from "../../Redux/actions/budgetActions";
 import { monthSavingGoal } from "../../Redux/actions/savingGoalActions";
 
-const MonthDataListBlock = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-
-  .chart-block {
-    display: flex;
-    align-items: center;
-    background-color: ${(props) => props.theme.color.grey};
-    margin: 1.5rem;
-  }
-`;
-
 const MonthDataList = ({ monthlyData, color, isBudget }) => {
   const dispatch = useDispatch();
   const { yearInfo, monthInfo } = useSelector(({ dateReducer }) => ({
@@ -61,3 +47,17 @@ const MonthDataList = ({ monthlyData, color, isBudget }) => {
 };
 
 export default React.memo(MonthDataList);
+
+const MonthDataListBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+
+  .chart-block {
+    display: flex;
+    align-items: center;
+    background-color: ${(props) => props.theme.color.grey};
+    margin: 1.5rem;
+  }
+`;

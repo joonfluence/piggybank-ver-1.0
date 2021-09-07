@@ -1,47 +1,35 @@
+### 프로젝트명 : 돼지저금통
 
-# Getting Started with Create React App
+목표 달성 자산관리용 웹 어플리케이션입니다. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Screens
 
-## Available Scripts
+- [ ] Join 
+- [ ] Login 
+- [ ] Home 
+- [ ] MyPage
+- [ ] Introduction
+- [ ] Paying 
+- [ ] Saving 
+- [ ] Budeget
+- [ ] SavingGoal
 
-In the project directory, you can run:
+### Works 
 
-### `yarn start`
+[Frontend]
+- nivo 라이브러리와 자체 제작한 컴포넌트를 통한 유저 데이터 시각화
+- React Hooks를 사용한 함수형 컴퍼넌트 구성 및 커스텀 hooks 활용
+- Form, Input, Button 등 재활용 가능한 컴포넌트 설계 및 구현 
+- 상태관리 라이브러리 Redux로 권한별 유저 접근 기능 구현
+- Redux-thunk, Redux-promise로 백엔드와의 비동기 통신 구현
+- Styled-Component를 통한 컴포넌트 기반 스타일링 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[Backend] 
+- REST 기반 API 설계 
+- jwt을 활용한 토큰 방식의 인증 시스템 구현
+- 월별, 카테고리별 데이터 집계를 위한 Nosql Aggregation 작성
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Introduction Page
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+더 자세한 설명은 아래 링크를 참조해주세요. If you are more interested with this project, Please visit this link. 
+https://www.notion.so/dreamcometrue8/Web-Project-e3d46594a3f54849afa75c2a61c1c83a

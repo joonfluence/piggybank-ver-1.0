@@ -3,21 +3,6 @@ import styled from "styled-components";
 import MonthDataList from "../charts/MonthDataList";
 import PieTotalRatio from "../charts/PieTotalRatio";
 
-const ContentBodyBlock = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: space-around;
-  .chart-container {
-    width: 20rem;
-    height: 20rem;
-    margin: 0 auto;
-  }
-
-  @media (max-width: 661px) {
-    flex-direction: column;
-  }
-`;
-
 const ContentBody = ({
   used,
   remained,
@@ -63,3 +48,18 @@ const ContentBody = ({
 };
 
 export default ContentBody;
+
+const ContentBodyBlock = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  .chart-container {
+    width: 20rem;
+    height: 20rem;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 661px) {
+    flex-direction: column;
+  }
+`;

@@ -12,7 +12,7 @@ import {
   monthSavingGoal,
 } from "../../Redux/actions/savingGoalActions";
 import theme from "../../Style/theme";
-import Button from "../utils/Button";
+import Button from "../utils/Button.tsx";
 import Input from "../utils/Input";
 
 const CreateBoardBlock = styled.section`

@@ -6,7 +6,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { Link, withRouter } from "react-router-dom";
 import routes from "../../../routes";
 import { loginUser } from "../../../Redux/actions/userActions";
-import Button from "../../utils/Button";
+import Button from "../../utils/Button.tsx";
 import theme from "../../../Style/theme";
 import Input from "../../utils/Input";
 
