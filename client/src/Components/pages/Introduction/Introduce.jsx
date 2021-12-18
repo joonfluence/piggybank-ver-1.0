@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import CenterButton from "../../common/CenterButton";
 import Footer from "../../common/Footer";
-import Header from "../../common/Header";
+import Header from "../../common/Header.jsx";
 
 const IntroduceBlock = styled.div`
   display: flex;

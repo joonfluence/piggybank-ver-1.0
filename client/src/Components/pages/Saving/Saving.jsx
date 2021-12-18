@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Auth from "../../../Hoc/auth";
+import Auth from "../../../hoc/auth";
 import styled from "styled-components";
-import Header from "../../common/Header";
+import Header from "../../common/Header.jsx";
 import CenterButton from "../../common/CenterButton";
 import { Helmet } from "react-helmet";
 import Footer from "../../common/Footer";

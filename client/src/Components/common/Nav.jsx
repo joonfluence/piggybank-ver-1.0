@@ -4,8 +4,8 @@ import { GrLogout, GrLogin } from "react-icons/gr";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import routes from "../../routes";
-import icon from "../../Images/logo_img.png";
-import { LogOutUser } from "../../Redux/actions/userActions";
+import icon from "../../images/logo_img.png";
+import { LogOutUser } from "../../redux/actions/userActions";
 import { useCallback } from "react";
 
 const NavContainer = styled.nav`

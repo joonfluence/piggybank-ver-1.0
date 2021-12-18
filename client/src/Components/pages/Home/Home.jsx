@@ -1,12 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "../../common/Header";
+import Header from "../../common/Header.jsx";
 import CenterButton from "../../common/CenterButton";
 import { Helmet } from "react-helmet";
 import Footer from "../../common/Footer";
 import { useSelector } from "react-redux";
-import LoginRequired from "../../utils/LoginRequired";
-import Auth from "../../../Hoc/auth";
+import Auth from "../../../hoc/auth";
 
 const HomeBlock = styled.div`
   display: flex;

@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import CategoryBlock from "./CategoryBlock";
 import TotalRatioGauge from "./TotalRatioGauge";
-import { monthBudget } from "../../Redux/actions/budgetActions";
-import { monthSavingGoal } from "../../Redux/actions/savingGoalActions";
+import { monthBudget } from "../../redux/actions/budgetActions";
+import { monthSavingGoal } from "../../redux/actions/savingGoalActions";
 
 const MonthDataList = ({ monthlyData, color, isBudget }) => {
   const dispatch = useDispatch();

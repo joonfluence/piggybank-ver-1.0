@@ -4,74 +4,16 @@ import useInput from "../hooks/useInput";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { createPaying, readPaying } from "../../Redux/actions/payingActions";
-import { createSaving, readSaving } from "../../Redux/actions/savingActions";
-import { createBudget, monthBudget } from "../../Redux/actions/budgetActions";
+import { createPaying, readPaying } from "../../redux/actions/payingActions";
+import { createSaving, readSaving } from "../../redux/actions/savingActions";
+import { createBudget, monthBudget } from "../../redux/actions/budgetActions";
 import {
   createSavingGoal,
   monthSavingGoal,
-} from "../../Redux/actions/savingGoalActions";
+} from "../../redux/actions/savingGoalActions";
 import theme from "../../Style/theme";
-import Button from "../utils/Button.tsx";
+import Button from "../utils/Button";
 import Input from "../utils/Input";
-
-const CreateBoardBlock = styled.section`
-  .createBoard__Block {
-    padding: 2rem;
-    background-color: ${(props) => props.theme.color.lightgrey};
-
-    .input__container {
-      background-color: ${(props) => props.theme.color.white};
-    }
-  }
-
-  .icon__container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    font-size: 2rem;
-    span:hover {
-      cursor: pointer;
-    }
-
-    svg {
-      border-radius: 20px;
-      background-color: ${(props) => props.theme.color.navy};
-      font-size: 2.5rem;
-
-      color: white;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-  }
-
-  .create-form {
-    display: flex;
-    margin-top: 1rem;
-    flex-direction: column;
-  }
-
-  .form-select {
-    margin: 0 auto;
-    border: 1px solid black;
-    width: 364px;
-    height: 3rem;
-  }
-`;
-
-const StyledInput = styled(Input)`
-  border: 1px solid black;
-  width: 364px;
-  height: 3rem;
-`;
-
-const StyledButton = styled(Button)`
-  border: 1px solid black;
-  width: 364px;
-  height: 3rem;
-`;
 
 const CreateBoard = ({
   isBudget,
@@ -246,3 +188,61 @@ const CreateBoard = ({
 };
 
 export default CreateBoard;
+
+const CreateBoardBlock = styled.section`
+  .createBoard__Block {
+    padding: 2rem;
+    background-color: ${(props) => props.theme.color.lightgrey};
+
+    .input__container {
+      background-color: ${(props) => props.theme.color.white};
+    }
+  }
+
+  .icon__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    font-size: 2rem;
+    span:hover {
+      cursor: pointer;
+    }
+
+    svg {
+      border-radius: 20px;
+      background-color: ${(props) => props.theme.color.navy};
+      font-size: 2.5rem;
+
+      color: white;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .create-form {
+    display: flex;
+    margin-top: 1rem;
+    flex-direction: column;
+  }
+
+  .form-select {
+    margin: 0 auto;
+    border: 1px solid black;
+    width: 364px;
+    height: 3rem;
+  }
+`;
+
+const StyledInput = styled(Input)`
+  border: 1px solid black;
+  width: 364px;
+  height: 3rem;
+`;
+
+const StyledButton = styled(Button)`
+  border: 1px solid black;
+  width: 364px;
+  height: 3rem;
+`;

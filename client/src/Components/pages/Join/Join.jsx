@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { AiFillLock } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import Auth from "../../../Hoc/auth";
+import Auth from "../../../hoc/auth";
 import { withRouter } from "react-router";
-import { joinUser } from "../../../Redux/actions/userActions";
+import { joinUser } from "../../../redux/actions/userActions";
 import Input from "../../utils/Input";
-import Button from "../../utils/Button.tsx";
+import Button from "../../utils/Button";
 
 const JoinBlock = styled.form`
   background-color: ${(props) => props.theme.color.lightgrey};

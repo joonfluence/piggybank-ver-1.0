@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import Auth from "../../../Hoc/auth";
+import Auth from "../../../hoc/auth";
 import { useSelector, useDispatch } from "react-redux";
 import CenterButton from "../../common/CenterButton";
-import Header from "../../common/Header";
+import Header from "../../common/Header.jsx";
 import { Helmet } from "react-helmet";
 import Footer from "../../common/Footer";
 import CreateBoard from "../../common/CreateBoard";
 import CreateList from "../../common/CreateList";
-import { readPaying } from "../../../Redux/actions/payingActions";
+import { readPaying } from "../../../redux/actions/payingActions";
 import theme from "../../../Style/theme";
 
 const PayingBlock = styled.div`

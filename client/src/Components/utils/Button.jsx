@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const StyledButton = styled.button`
   background-color: ${(props) => props.color};
@@ -16,9 +16,7 @@ const StyledButton = styled.button`
 `;
 
 const Button = (props) => {
-    return (
-        <StyledButton {...props}/>
-    );
+  return <StyledButton {...props} />;
 };
 
 export default React.memo(Button);

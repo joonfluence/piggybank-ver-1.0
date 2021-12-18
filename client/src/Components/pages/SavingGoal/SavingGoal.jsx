@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import Header from "../../common/Header";
+import Header from "../../common/Header.jsx";
 import { Helmet } from "react-helmet";
-import Auth from "../../../Hoc/auth";
+import Auth from "../../../hoc/auth";
 import CenterButton from "../../common/CenterButton";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../common/Footer";
 import ContentHeader from "../../common/ContentHeader";
 import ContentBody from "../../common/ContentBody";
-import { monthSaving } from "../../../Redux/actions/savingActions";
-import { monthSavingGoal } from "../../../Redux/actions/savingGoalActions";
+import { monthSaving } from "../../../redux/actions/savingActions";
+import { monthSavingGoal } from "../../../redux/actions/savingGoalActions";
 import CreateBoard from "../../common/CreateBoard";
 import DateModal from "../../utils/DateModal";
 
